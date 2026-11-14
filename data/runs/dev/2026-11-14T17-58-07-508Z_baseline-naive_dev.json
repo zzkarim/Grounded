@@ -1,0 +1,7275 @@
+{
+  "schemaVersion": 1,
+  "runId": "2026-11-14T17-58-07-508Z_baseline-naive_dev",
+  "createdAt": "2026-11-14T17:58:07.508Z",
+  "system": "baseline-naive",
+  "systemVersion": "2",
+  "requestedModel": "claude-sonnet-5-5",
+  "responseModels": [
+    "claude-sonnet-5-5"
+  ],
+  "effort": "medium",
+  "promptHashes": {
+    "main": "0c85a4c4af3a9e75"
+  },
+  "policyConfig": "n/a (model decides)",
+  "scoringVersion": "v2",
+  "split": "dev",
+  "benchmarkFrozen": true,
+  "caseFiles": [
+    {
+      "caseId": "dev-gen-001",
+      "sha256": "efc8fc66df28550938d424d37f712b529c66ae84b6b127ad580be25d5f5cac15"
+    },
+    {
+      "caseId": "dev-gen-002",
+      "sha256": "1f7d282de2c295e28492985d38a0d731bef67552fcc1702c136dc5a8df33a628"
+    },
+    {
+      "caseId": "dev-gen-003",
+      "sha256": "5a3a7b60f272b482fb83e806429663e7858ed7bd80b9e22efac77dd537b07ce9"
+    },
+    {
+      "caseId": "dev-gen-004",
+      "sha256": "2849b22cc8c48c514924b4460a3ec9c40d8f731746807d5b9c53f36b58df81e2"
+    },
+    {
+      "caseId": "dev-gen-005",
+      "sha256": "555b66ccd08f091f1d8ca27201024f9fe8fa9d2b086456ae5484841f9b11b175"
+    },
+    {
+      "caseId": "dev-gen-006",
+      "sha256": "821426c67e8f5b84033ee77579420162a7ece8d192106a57a226522f0b99d09f"
+    },
+    {
+      "caseId": "dev-gen-007",
+      "sha256": "7784bf11e3266168674765b24661d3c6555ef5b35578863231152901dbaa5e68"
+    },
+    {
+      "caseId": "dev-gen-008",
+      "sha256": "74cbf26f0ba1a3429ddf355edaf19d9e5a75f6fdbd71e0ad794ed03d12b33ccf"
+    },
+    {
+      "caseId": "dev-gen-009",
+      "sha256": "5de4b5a4d3a0fbd15c11104bbffdac0022d7d2943d9ca399119c56e498209679"
+    },
+    {
+      "caseId": "dev-gen-010",
+      "sha256": "52f4f048342965f8e8bca374771c557c22c31ab51661a423ad43ec643f7b76c3"
+    },
+    {
+      "caseId": "dev-gen-011",
+      "sha256": "abd6efd0e3f94033cce87d736ae333170bfab042ffade9ecc5fc3306a33b8b01"
+    },
+    {
+      "caseId": "dev-gen-012",
+      "sha256": "9fcb40f0196a3b1db9d034f12b5393601c45a6e7dac908c0bc1ff38c2d3d2da8"
+    },
+    {
+      "caseId": "dev-gen-013",
+      "sha256": "9baed0e48640f25904e0ad4face28a432b833bac3aa1d6a0fb76bd4f73adad1e"
+    },
+    {
+      "caseId": "dev-gen-014",
+      "sha256": "a4c40208c8e4111ce2659c326f7caf47b7cc02cdd1909dbd18b588f907d3ebb5"
+    },
+    {
+      "caseId": "dev-gen-015",
+      "sha256": "1ae14ea4d0707a3ceb1110bbcc8756695b22af878025730b994c4888c444a54b"
+    },
+    {
+      "caseId": "dev-gen-016",
+      "sha256": "2b7a4e2c4514c87797a44a97f4a38b37b0d530f2937207bb3156a3545c2191f9"
+    },
+    {
+      "caseId": "dev-gen-017",
+      "sha256": "5f1529b561408001ed10c4b0f2dae657f225023b7e5216cd74931ea36f08a6e2"
+    },
+    {
+      "caseId": "dev-gen-018",
+      "sha256": "656da14a7d18f4921923b1e6ab75ef986079beb12cae24852c7d0192b1dac100"
+    },
+    {
+      "caseId": "dev-gen-019",
+      "sha256": "56eadbb197f7f92ee85ba4476b158ca6ebf584d6a1ce1955bad7a62adfbec14b"
+    },
+    {
+      "caseId": "dev-gen-020",
+      "sha256": "b01ab2b002dd62239fefb17121ccad3283be4811d78f69f8d590648d77592a14"
+    },
+    {
+      "caseId": "dev-gen-021",
+      "sha256": "068ffc63697b9cc75f3b34d2782b6d78fc9d62f1cd561cc05ce41dd2d4714dc3"
+    },
+    {
+      "caseId": "dev-gen-022",
+      "sha256": "aceb63ed086e06463d288a6fca24d327f56464548077097c4cc1bdbf96d7ed55"
+    },
+    {
+      "caseId": "dev-gen-023",
+      "sha256": "421ea7a1bb3966b1076add3150a74f658af8db93990224e9fcf5b50a966e48fc"
+    },
+    {
+      "caseId": "dev-gen-024",
+      "sha256": "5f25c4738fb49d6e0944da1306d2bf42a62a2f07902584c82368ac5cb499472a"
+    },
+    {
+      "caseId": "dev-gen-025",
+      "sha256": "7258bcfbd32ddddb7af1ccb72dae10fcbe78a36e593366526e7b9742d68cba9d"
+    },
+    {
+      "caseId": "dev-gen-026",
+      "sha256": "1bf805a504d16062bfd4f138db611844820bebde09d07c82de629d711eccc64d"
+    },
+    {
+      "caseId": "dev-gen-027",
+      "sha256": "c3c33cb6a0a458d919866d7b3bd111cfa02b66fb5362efe76e8134a70815e226"
+    },
+    {
+      "caseId": "dev-gen-028",
+      "sha256": "592582c216cbef11c650ed652fc417023fe29b766b781752a629eaf2862d880c"
+    },
+    {
+      "caseId": "dev-gen-029",
+      "sha256": "837ad4e3fd9d113f79e7ee687ae2cfb5a2d39fa9272d28756fb46b77e14cefe5"
+    },
+    {
+      "caseId": "dev-gen-030",
+      "sha256": "9024c181458214492cfce351451df4296644a7ad96e3dda6fb4cf38e5a9e9939"
+    }
+  ],
+  "outputs": [
+    {
+      "caseId": "dev-gen-001",
+      "system": "baseline-naive",
+      "fields": {
+        "budget": {
+          "action": "ACT",
+          "value": {
+            "kind": "exact",
+            "amount": 60000,
+            "currency": "USD"
+          },
+          "reasons": [
+            "BASELINE_PROPOSED"
+          ],
+          "claimIds": []
+        },
+        "decisionMaker": {
+          "action": "ABSTAIN",
+          "value": null,
+          "reasons": [
+            "NO_CANDIDATE"
+          ],
+          "claimIds": []
+        },
+        "nextMeeting": {
+          "action": "ACT",
+          "value": {
+            "date": "2026-03-05",
+            "time": null,
+            "timezone": null,
+            "asStated": "Thursday, morning slot"
+          },
+          "reasons": [
+            "BASELINE_PROPOSED"
+          ],
+          "claimIds": []
+        }
+      },
+      "trace": {
+        "budget": {
+          "value": {
+            "kind": "exact",
+            "amount": 60000,
+            "currency": "USD"
+          },
+          "evidenceQuote": "We have sixty thousand approved for this, for the first year."
+        },
+        "decisionMaker": null,
+        "nextMeeting": {
+          "value": {
+            "date": "2026-03-05",
+            "time": null,
+            "timezone": null,
+            "asStated": "Thursday, morning slot"
+          },
+          "evidenceQuote": "Thursday works. Mornings are best for me, so just send whatever morning slot your engineer has."
+        }
+      },
+      "llmCalls": [
+        {
+          "label": "baseline-naive.main",
+          "requestedModel": "claude-sonnet-5-5",
+          "responseModel": "claude-sonnet-5-5",
+          "attempt": 1,
+          "promptHash": "0c85a4c4af3a9e75",
+          "durationMs": 2268,
+          "stopReason": "end_turn",
+          "rawText": "{\"budget\":{\"value\":{\"kind\":\"exact\",\"amount\":60000,\"currency\":\"USD\"},\"evidenceQuote\":\"We have sixty thousand approved for this, for the first year.\"},\"decisionMaker\":null,\"nextMeeting\":{\"value\":{\"date\":\"2026-03-05\",\"time\":null,\"timezone\":null,\"asStated\":\"Thursday, morning slot\"},\"evidenceQuote\":\"Thursday works. Mornings are best for me, so just send whatever morning slot your engineer has.\"}}",
+          "ok": true,
+          "error": null,
+          "usage": {
+            "inputTokens": 3275,
+            "outputTokens": 169
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "caseId": "dev-gen-002",
+      "system": "baseline-naive",
+      "fields": {
+        "budget": {
+          "action": "ACT",
+          "value": {
+            "kind": "range",
+            "min": 40000,
+            "max": 50000,
+            "currency": "USD"
+          },
+          "reasons": [
+            "BASELINE_PROPOSED"
+          ],
+          "claimIds": []
+        },
+        "decisionMaker": {
+          "action": "ACT",
+          "value": {
+            "people": [
+              {
+                "name": "Lena Novak",
+                "role": "VP Operations"
+              }
+            ]
+          },
+          "reasons": [
+            "BASELINE_PROPOSED"
+          ],
+          "claimIds": []
+        },
+        "nextMeeting": {
+          "action": "ACT",
+          "value": {
+            "date": "2026-03-11",
+            "time": "11:00",
+            "timezone": null,
+            "asStated": "Wednesday the 11th at 11"
+          },
+          "reasons": [
+            "BASELINE_PROPOSED"
+          ],
+          "claimIds": []
+        }
+      },
+      "trace": {
+        "budget": {
+          "value": {
+            "kind": "range",
+            "min": 40000,
+            "max": 50000,
+            "currency": "USD"
+          },
+          "evidenceQuote": "We have between forty and fifty thousand approved for the rollout."
+        },
+        "decisionMaker": {
+          "value": {
+            "people": [
+              {
+                "name": "Lena Novak",
+                "role": "VP Operations"
+              }
+            ]
+          },
+          "evidenceQuote": "I make the final call on operations tooling, and I've already decided we're moving forward."
+        },
+        "nextMeeting": {
+          "value": {
+            "date": "2026-03-11",
+            "time": "11:00",
+            "timezone": null,
+            "asStated": "Wednesday the 11th at 11"
+          },
+          "evidenceQuote": "Wednesday the 11th at 11 works."
+        }
+      },
+      "llmCalls": [
+        {
+          "label": "baseline-naive.main",
+          "requestedModel": "claude-sonnet-5-5",
+          "responseModel": "claude-sonnet-5-5",
+          "attempt": 1,
+          "promptHash": "0c85a4c4af3a9e75",
+          "durationMs": 3174,
+          "stopReason": "end_turn",
+          "rawText": "{\"budget\":{\"value\":{\"kind\":\"range\",\"min\":40000,\"max\":50000,\"currency\":\"USD\"},\"evidenceQuote\":\"We have between forty and fifty thousand approved for the rollout.\"},\"decisionMaker\":{\"value\":{\"people\":[{\"name\":\"Lena Novak\",\"role\":\"VP Operations\"}]},\"evidenceQuote\":\"I make the final call on operations tooling, and I've already decided we're moving forward.\"},\"nextMeeting\":{\"value\":{\"date\":\"2026-03-11\",\"time\":\"11:00\",\"timezone\":null,\"asStated\":\"Wednesday the 11th at 11\"},\"evidenceQuote\":\"Wednesday the 11th at 11 works.\"}}",
+          "ok": true,
+          "error": null,
+          "usage": {
+            "inputTokens": 3236,
+            "outputTokens": 359
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "caseId": "dev-gen-003",
+      "system": "baseline-naive",
+      "fields": {
+        "budget": {
+          "action": "ABSTAIN",
+          "value": null,
+          "reasons": [
+            "NO_CANDIDATE"
+          ],
+          "claimIds": []
+        },
+        "decisionMaker": {
+          "action": "ABSTAIN",
+          "value": null,
+          "reasons": [
+            "NO_CANDIDATE"
+          ],
+          "claimIds": []
+        },
+        "nextMeeting": {
+          "action": "ABSTAIN",
+          "value": null,
+          "reasons": [
+            "NO_CANDIDATE"
+          ],
+          "claimIds": []
+        }
+      },
+      "trace": {
+        "budget": null,
+        "decisionMaker": null,
+        "nextMeeting": null
+      },
+      "llmCalls": [
+        {
+          "label": "baseline-naive.main",
+          "requestedModel": "claude-sonnet-5-5",
+          "responseModel": "claude-sonnet-5-5",
+          "attempt": 1,
+          "promptHash": "0c85a4c4af3a9e75",
+          "durationMs": 1387,
+          "stopReason": "end_turn",
+          "rawText": "{\"budget\":null,\"decisionMaker\":null,\"nextMeeting\":null}",
+          "ok": true,
+          "error": null,
+          "usage": {
+            "inputTokens": 3248,
+            "outputTokens": 29
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "caseId": "dev-gen-004",
+      "system": "baseline-naive",
+      "fields": {
+        "budget": {
+          "action": "ABSTAIN",
+          "value": null,
+          "reasons": [
+            "NO_CANDIDATE"
+          ],
+          "claimIds": []
+        },
+        "decisionMaker": {
+          "action": "ABSTAIN",
+          "value": null,
+          "reasons": [
+            "NO_CANDIDATE"
+          ],
+          "claimIds": []
+        },
+        "nextMeeting": {
+          "action": "ABSTAIN",
+          "value": null,
+          "reasons": [
+            "NO_CANDIDATE"
+          ],
+          "claimIds": []
+        }
+      },
+      "trace": {
+        "budget": null,
+        "decisionMaker": null,
+        "nextMeeting": null
+      },
+      "llmCalls": [
+        {
+          "label": "baseline-naive.main",
+          "requestedModel": "claude-sonnet-5-5",
+          "responseModel": "claude-sonnet-5-5",
+          "attempt": 1,
+          "promptHash": "0c85a4c4af3a9e75",
+          "durationMs": 1449,
+          "stopReason": "end_turn",
+          "rawText": "{\"budget\":null,\"decisionMaker\":null,\"nextMeeting\":null}",
+          "ok": true,
+          "error": null,
+          "usage": {
+            "inputTokens": 3256,
+            "outputTokens": 29
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "caseId": "dev-gen-005",
+      "system": "baseline-naive",
+      "fields": {
+        "budget": {
+          "action": "ACT",
+          "value": {
+            "kind": "exact",
+            "amount": 25000,
+            "currency": "USD"
+          },
+          "reasons": [
+            "BASELINE_PROPOSED"
+          ],
+          "claimIds": []
+        },
+        "decisionMaker": {
+          "action": "ACT",
+          "value": {
+            "people": [
+              {
+                "name": null,
+                "role": "CFO"
+              }
+            ]
+          },
+          "reasons": [
+            "BASELINE_PROPOSED"
+          ],
+          "claimIds": []
+        },
+        "nextMeeting": {
+          "action": "ABSTAIN",
+          "value": null,
+          "reasons": [
+            "NO_CANDIDATE"
+          ],
+          "claimIds": []
+        }
+      },
+      "trace": {
+        "budget": {
+          "value": {
+            "kind": "exact",
+            "amount": 25000,
+            "currency": "USD"
+          },
+          "evidenceQuote": "We've got twenty-five thousand approved for this project."
+        },
+        "decisionMaker": {
+          "value": {
+            "people": [
+              {
+                "name": null,
+                "role": "CFO"
+              }
+            ]
+          },
+          "evidenceQuote": "Final approval sits with our CFO."
+        },
+        "nextMeeting": null
+      },
+      "llmCalls": [
+        {
+          "label": "baseline-naive.main",
+          "requestedModel": "claude-sonnet-5-5",
+          "responseModel": "claude-sonnet-5-5",
+          "attempt": 1,
+          "promptHash": "0c85a4c4af3a9e75",
+          "durationMs": 1841,
+          "stopReason": "end_turn",
+          "rawText": "{\"budget\":{\"value\":{\"kind\":\"exact\",\"amount\":25000,\"currency\":\"USD\"},\"evidenceQuote\":\"We've got twenty-five thousand approved for this project.\"},\"decisionMaker\":{\"value\":{\"people\":[{\"name\":null,\"role\":\"CFO\"}]},\"evidenceQuote\":\"Final approval sits with our CFO.\"},\"nextMeeting\":null}",
+          "ok": true,
+          "error": null,
+          "usage": {
+            "inputTokens": 3171,
+            "outputTokens": 130
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "caseId": "dev-gen-006",
+      "system": "baseline-naive",
+      "fields": {
+        "budget": {
+          "action": "ABSTAIN",
+          "value": null,
+          "reasons": [
+            "NO_CANDIDATE"
+          ],
+          "claimIds": []
+        },
+        "decisionMaker": {
+          "action": "ABSTAIN",
+          "value": null,
+          "reasons": [
+            "NO_CANDIDATE"
+          ],
+          "claimIds": []
+        },
+        "nextMeeting": {
+          "action": "ACT",
+          "value": {
+            "date": "2026-03-19",
+            "time": "16:00",
+            "timezone": null,
+            "asStated": "Thursday the 19th at 4"
+          },
+          "reasons": [
+            "BASELINE_PROPOSED"
+          ],
+          "claimIds": []
+        }
+      },
+      "trace": {
+        "budget": null,
+        "decisionMaker": null,
+        "nextMeeting": {
+          "value": {
+            "date": "2026-03-19",
+            "time": "16:00",
+            "timezone": null,
+            "asStated": "Thursday the 19th at 4"
+          },
+          "evidenceQuote": "Thursday the 19th at 4 works. Send me the invite."
+        }
+      },
+      "llmCalls": [
+        {
+          "label": "baseline-naive.main",
+          "requestedModel": "claude-sonnet-5-5",
+          "responseModel": "claude-sonnet-5-5",
+          "attempt": 1,
+          "promptHash": "0c85a4c4af3a9e75",
+          "durationMs": 2608,
+          "stopReason": "end_turn",
+          "rawText": "{\"budget\":null,\"decisionMaker\":null,\"nextMeeting\":{\"value\":{\"date\":\"2026-03-19\",\"time\":\"16:00\",\"timezone\":null,\"asStated\":\"Thursday the 19th at 4\"},\"evidenceQuote\":\"Thursday the 19th at 4 works. Send me the invite.\"}}",
+          "ok": true,
+          "error": null,
+          "usage": {
+            "inputTokens": 3223,
+            "outputTokens": 261
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "caseId": "dev-gen-007",
+      "system": "baseline-naive",
+      "fields": {
+        "budget": {
+          "action": "ACT",
+          "value": {
+            "kind": "exact",
+            "amount": 45000,
+            "currency": "EUR"
+          },
+          "reasons": [
+            "BASELINE_PROPOSED"
+          ],
+          "claimIds": []
+        },
+        "decisionMaker": {
+          "action": "ACT",
+          "value": {
+            "people": [
+              {
+                "name": "Sophie Laurent",
+                "role": "Managing Director"
+              }
+            ]
+          },
+          "reasons": [
+            "BASELINE_PROPOSED"
+          ],
+          "claimIds": []
+        },
+        "nextMeeting": {
+          "action": "ABSTAIN",
+          "value": null,
+          "reasons": [
+            "NO_CANDIDATE"
+          ],
+          "claimIds": []
+        }
+      },
+      "trace": {
+        "budget": {
+          "value": {
+            "kind": "exact",
+            "amount": 45000,
+            "currency": "EUR"
+          },
+          "evidenceQuote": "we have forty-five thousand euros approved for this"
+        },
+        "decisionMaker": {
+          "value": {
+            "people": [
+              {
+                "name": "Sophie Laurent",
+                "role": "Managing Director"
+              }
+            ]
+          },
+          "evidenceQuote": "Sophie Laurent, our managing director. She signs all supplier contracts."
+        },
+        "nextMeeting": null
+      },
+      "llmCalls": [
+        {
+          "label": "baseline-naive.main",
+          "requestedModel": "claude-sonnet-5-5",
+          "responseModel": "claude-sonnet-5-5",
+          "attempt": 1,
+          "promptHash": "0c85a4c4af3a9e75",
+          "durationMs": 1743,
+          "stopReason": "end_turn",
+          "rawText": "{\"budget\":{\"value\":{\"kind\":\"exact\",\"amount\":45000,\"currency\":\"EUR\"},\"evidenceQuote\":\"we have forty-five thousand euros approved for this\"},\"decisionMaker\":{\"value\":{\"people\":[{\"name\":\"Sophie Laurent\",\"role\":\"Managing Director\"}]},\"evidenceQuote\":\"Sophie Laurent, our managing director. She signs all supplier contracts.\"},\"nextMeeting\":null}",
+          "ok": true,
+          "error": null,
+          "usage": {
+            "inputTokens": 3177,
+            "outputTokens": 152
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "caseId": "dev-gen-008",
+      "system": "baseline-naive",
+      "fields": {
+        "budget": {
+          "action": "ABSTAIN",
+          "value": null,
+          "reasons": [
+            "NO_CANDIDATE"
+          ],
+          "claimIds": []
+        },
+        "decisionMaker": {
+          "action": "ACT",
+          "value": {
+            "people": [
+              {
+                "name": "Tomás Rivera",
+                "role": "Claims Director"
+              }
+            ]
+          },
+          "reasons": [
+            "BASELINE_PROPOSED"
+          ],
+          "claimIds": []
+        },
+        "nextMeeting": {
+          "action": "ABSTAIN",
+          "value": null,
+          "reasons": [
+            "NO_CANDIDATE"
+          ],
+          "claimIds": []
+        }
+      },
+      "trace": {
+        "budget": null,
+        "decisionMaker": {
+          "value": {
+            "people": [
+              {
+                "name": "Tomás Rivera",
+                "role": "Claims Director"
+              }
+            ]
+          },
+          "evidenceQuote": "I'm the one who signs off on this, so you don't need to chase anyone else."
+        },
+        "nextMeeting": null
+      },
+      "llmCalls": [
+        {
+          "label": "baseline-naive.main",
+          "requestedModel": "claude-sonnet-5-5",
+          "responseModel": "claude-sonnet-5-5",
+          "attempt": 1,
+          "promptHash": "0c85a4c4af3a9e75",
+          "durationMs": 1740,
+          "stopReason": "end_turn",
+          "rawText": "{\"budget\":null,\"decisionMaker\":{\"value\":{\"people\":[{\"name\":\"Tomás Rivera\",\"role\":\"Claims Director\"}]},\"evidenceQuote\":\"I'm the one who signs off on this, so you don't need to chase anyone else.\"},\"nextMeeting\":null}",
+          "ok": true,
+          "error": null,
+          "usage": {
+            "inputTokens": 3225,
+            "outputTokens": 98
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "caseId": "dev-gen-009",
+      "system": "baseline-naive",
+      "fields": {
+        "budget": {
+          "action": "ABSTAIN",
+          "value": null,
+          "reasons": [
+            "NO_CANDIDATE"
+          ],
+          "claimIds": []
+        },
+        "decisionMaker": {
+          "action": "ABSTAIN",
+          "value": null,
+          "reasons": [
+            "NO_CANDIDATE"
+          ],
+          "claimIds": []
+        },
+        "nextMeeting": {
+          "action": "ACT",
+          "value": {
+            "date": "2026-03-16",
+            "time": "09:30",
+            "timezone": null,
+            "asStated": "Monday at 9:30"
+          },
+          "reasons": [
+            "BASELINE_PROPOSED"
+          ],
+          "claimIds": []
+        }
+      },
+      "trace": {
+        "budget": null,
+        "decisionMaker": null,
+        "nextMeeting": {
+          "value": {
+            "date": "2026-03-16",
+            "time": "09:30",
+            "timezone": null,
+            "asStated": "Monday at 9:30"
+          },
+          "evidenceQuote": "Monday at 9:30 works. Send it to me and I'll add Sarah."
+        }
+      },
+      "llmCalls": [
+        {
+          "label": "baseline-naive.main",
+          "requestedModel": "claude-sonnet-5-5",
+          "responseModel": "claude-sonnet-5-5",
+          "attempt": 1,
+          "promptHash": "0c85a4c4af3a9e75",
+          "durationMs": 2554,
+          "stopReason": "end_turn",
+          "rawText": "{\"budget\":null,\"decisionMaker\":null,\"nextMeeting\":{\"value\":{\"date\":\"2026-03-16\",\"time\":\"09:30\",\"timezone\":null,\"asStated\":\"Monday at 9:30\"},\"evidenceQuote\":\"Monday at 9:30 works. Send it to me and I'll add Sarah.\"}}",
+          "ok": true,
+          "error": null,
+          "usage": {
+            "inputTokens": 3205,
+            "outputTokens": 301
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "caseId": "dev-gen-010",
+      "system": "baseline-naive",
+      "fields": {
+        "budget": {
+          "action": "ABSTAIN",
+          "value": null,
+          "reasons": [
+            "NO_CANDIDATE"
+          ],
+          "claimIds": []
+        },
+        "decisionMaker": {
+          "action": "ACT",
+          "value": {
+            "people": [
+              {
+                "name": "Linda Park",
+                "role": "COO"
+              }
+            ]
+          },
+          "reasons": [
+            "BASELINE_PROPOSED"
+          ],
+          "claimIds": []
+        },
+        "nextMeeting": {
+          "action": "ACT",
+          "value": {
+            "date": "2026-03-19",
+            "time": "15:00",
+            "timezone": null,
+            "asStated": "Thursday at 3"
+          },
+          "reasons": [
+            "BASELINE_PROPOSED"
+          ],
+          "claimIds": []
+        }
+      },
+      "trace": {
+        "budget": null,
+        "decisionMaker": {
+          "value": {
+            "people": [
+              {
+                "name": "Linda Park",
+                "role": "COO"
+              }
+            ]
+          },
+          "evidenceQuote": "Our COO, Linda Park. She has the final say on vendors at this level."
+        },
+        "nextMeeting": {
+          "value": {
+            "date": "2026-03-19",
+            "time": "15:00",
+            "timezone": null,
+            "asStated": "Thursday at 3"
+          },
+          "evidenceQuote": "Could we get time with the dispatch leads this week? Thursday at 3?"
+        }
+      },
+      "llmCalls": [
+        {
+          "label": "baseline-naive.main",
+          "requestedModel": "claude-sonnet-5-5",
+          "responseModel": "claude-sonnet-5-5",
+          "attempt": 1,
+          "promptHash": "0c85a4c4af3a9e75",
+          "durationMs": 2250,
+          "stopReason": "end_turn",
+          "rawText": "{\"budget\":null,\"decisionMaker\":{\"value\":{\"people\":[{\"name\":\"Linda Park\",\"role\":\"COO\"}]},\"evidenceQuote\":\"Our COO, Linda Park. She has the final say on vendors at this level.\"},\"nextMeeting\":{\"value\":{\"date\":\"2026-03-19\",\"time\":\"15:00\",\"timezone\":null,\"asStated\":\"Thursday at 3\"},\"evidenceQuote\":\"Could we get time with the dispatch leads this week? Thursday at 3?\"}}",
+          "ok": true,
+          "error": null,
+          "usage": {
+            "inputTokens": 3193,
+            "outputTokens": 170
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "caseId": "dev-gen-011",
+      "system": "baseline-naive",
+      "fields": {
+        "budget": {
+          "action": "ACT",
+          "value": {
+            "kind": "exact",
+            "amount": 55000,
+            "currency": "USD"
+          },
+          "reasons": [
+            "BASELINE_PROPOSED"
+          ],
+          "claimIds": []
+        },
+        "decisionMaker": {
+          "action": "ACT",
+          "value": {
+            "people": [
+              {
+                "name": "James",
+                "role": null
+              }
+            ]
+          },
+          "reasons": [
+            "BASELINE_PROPOSED"
+          ],
+          "claimIds": []
+        },
+        "nextMeeting": {
+          "action": "ACT",
+          "value": {
+            "date": null,
+            "time": null,
+            "timezone": null,
+            "asStated": "sometime next week"
+          },
+          "reasons": [
+            "BASELINE_PROPOSED"
+          ],
+          "claimIds": []
+        }
+      },
+      "trace": {
+        "budget": {
+          "value": {
+            "kind": "exact",
+            "amount": 55000,
+            "currency": "USD"
+          },
+          "evidenceQuote": "we've set aside fifty-five thousand for the replacement. That's approved."
+        },
+        "decisionMaker": {
+          "value": {
+            "people": [
+              {
+                "name": "James",
+                "role": null
+              }
+            ]
+          },
+          "evidenceQuote": "I'll need to run this by James before anything gets signed."
+        },
+        "nextMeeting": {
+          "value": {
+            "date": null,
+            "time": null,
+            "timezone": null,
+            "asStated": "sometime next week"
+          },
+          "evidenceQuote": "Yeah, let's talk sometime next week."
+        }
+      },
+      "llmCalls": [
+        {
+          "label": "baseline-naive.main",
+          "requestedModel": "claude-sonnet-5-5",
+          "responseModel": "claude-sonnet-5-5",
+          "attempt": 1,
+          "promptHash": "0c85a4c4af3a9e75",
+          "durationMs": 2011,
+          "stopReason": "end_turn",
+          "rawText": "{\"budget\":{\"value\":{\"kind\":\"exact\",\"amount\":55000,\"currency\":\"USD\"},\"evidenceQuote\":\"we've set aside fifty-five thousand for the replacement. That's approved.\"},\"decisionMaker\":{\"value\":{\"people\":[{\"name\":\"James\",\"role\":null}]},\"evidenceQuote\":\"I'll need to run this by James before anything gets signed.\"},\"nextMeeting\":{\"value\":{\"date\":null,\"time\":null,\"timezone\":null,\"asStated\":\"sometime next week\"},\"evidenceQuote\":\"Yeah, let's talk sometime next week.\"}}",
+          "ok": true,
+          "error": null,
+          "usage": {
+            "inputTokens": 3204,
+            "outputTokens": 198
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "caseId": "dev-gen-012",
+      "system": "baseline-naive",
+      "fields": {
+        "budget": {
+          "action": "ACT",
+          "value": {
+            "kind": "exact",
+            "amount": 90000,
+            "currency": "USD"
+          },
+          "reasons": [
+            "BASELINE_PROPOSED"
+          ],
+          "claimIds": []
+        },
+        "decisionMaker": {
+          "action": "ACT",
+          "value": {
+            "people": [
+              {
+                "name": "Carla Mendes",
+                "role": "VP of Marketing"
+              }
+            ]
+          },
+          "reasons": [
+            "BASELINE_PROPOSED"
+          ],
+          "claimIds": []
+        },
+        "nextMeeting": {
+          "action": "ABSTAIN",
+          "value": null,
+          "reasons": [
+            "NO_CANDIDATE"
+          ],
+          "claimIds": []
+        }
+      },
+      "trace": {
+        "budget": {
+          "value": {
+            "kind": "exact",
+            "amount": 90000,
+            "currency": "USD"
+          },
+          "evidenceQuote": "We've got ninety approved, and that's firm."
+        },
+        "decisionMaker": {
+          "value": {
+            "people": [
+              {
+                "name": "Carla Mendes",
+                "role": "VP of Marketing"
+              }
+            ]
+          },
+          "evidenceQuote": "Our VP of Marketing, Carla Mendes, has final approval."
+        },
+        "nextMeeting": null
+      },
+      "llmCalls": [
+        {
+          "label": "baseline-naive.main",
+          "requestedModel": "claude-sonnet-5-5",
+          "responseModel": "claude-sonnet-5-5",
+          "attempt": 1,
+          "promptHash": "0c85a4c4af3a9e75",
+          "durationMs": 2260,
+          "stopReason": "end_turn",
+          "rawText": "{\"budget\":{\"value\":{\"kind\":\"exact\",\"amount\":90000,\"currency\":\"USD\"},\"evidenceQuote\":\"We've got ninety approved, and that's firm.\"},\"decisionMaker\":{\"value\":{\"people\":[{\"name\":\"Carla Mendes\",\"role\":\"VP of Marketing\"}]},\"evidenceQuote\":\"Our VP of Marketing, Carla Mendes, has final approval.\"},\"nextMeeting\":null}",
+          "ok": true,
+          "error": null,
+          "usage": {
+            "inputTokens": 3206,
+            "outputTokens": 149
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "caseId": "dev-gen-013",
+      "system": "baseline-naive",
+      "fields": {
+        "budget": {
+          "action": "ACT",
+          "value": {
+            "kind": "exact",
+            "amount": 65000,
+            "currency": "USD"
+          },
+          "reasons": [
+            "BASELINE_PROPOSED"
+          ],
+          "claimIds": []
+        },
+        "decisionMaker": {
+          "action": "ABSTAIN",
+          "value": null,
+          "reasons": [
+            "NO_CANDIDATE"
+          ],
+          "claimIds": []
+        },
+        "nextMeeting": {
+          "action": "ACT",
+          "value": {
+            "date": "2026-03-20",
+            "time": "13:00",
+            "timezone": null,
+            "asStated": "Friday at 1"
+          },
+          "reasons": [
+            "BASELINE_PROPOSED"
+          ],
+          "claimIds": []
+        }
+      },
+      "trace": {
+        "budget": {
+          "value": {
+            "kind": "exact",
+            "amount": 65000,
+            "currency": "USD"
+          },
+          "evidenceQuote": "Finance approved sixty-five last week."
+        },
+        "decisionMaker": null,
+        "nextMeeting": {
+          "value": {
+            "date": "2026-03-20",
+            "time": "13:00",
+            "timezone": null,
+            "asStated": "Friday at 1"
+          },
+          "evidenceQuote": "How about Friday at 1?"
+        }
+      },
+      "llmCalls": [
+        {
+          "label": "baseline-naive.main",
+          "requestedModel": "claude-sonnet-5-5",
+          "responseModel": "claude-sonnet-5-5",
+          "attempt": 1,
+          "promptHash": "0c85a4c4af3a9e75",
+          "durationMs": 2287,
+          "stopReason": "end_turn",
+          "rawText": "{\"budget\":{\"value\":{\"kind\":\"exact\",\"amount\":65000,\"currency\":\"USD\"},\"evidenceQuote\":\"Finance approved sixty-five last week.\"},\"decisionMaker\":null,\"nextMeeting\":{\"value\":{\"date\":\"2026-03-20\",\"time\":\"13:00\",\"timezone\":null,\"asStated\":\"Friday at 1\"},\"evidenceQuote\":\"How about Friday at 1?\"}}",
+          "ok": true,
+          "error": null,
+          "usage": {
+            "inputTokens": 3180,
+            "outputTokens": 142
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "caseId": "dev-gen-014",
+      "system": "baseline-naive",
+      "fields": {
+        "budget": {
+          "action": "ABSTAIN",
+          "value": null,
+          "reasons": [
+            "NO_CANDIDATE"
+          ],
+          "claimIds": []
+        },
+        "decisionMaker": {
+          "action": "ACT",
+          "value": {
+            "people": [
+              {
+                "name": "Daniel Kim",
+                "role": "CFO"
+              }
+            ]
+          },
+          "reasons": [
+            "BASELINE_PROPOSED"
+          ],
+          "claimIds": []
+        },
+        "nextMeeting": {
+          "action": "ABSTAIN",
+          "value": null,
+          "reasons": [
+            "NO_CANDIDATE"
+          ],
+          "claimIds": []
+        }
+      },
+      "trace": {
+        "budget": null,
+        "decisionMaker": {
+          "value": {
+            "people": [
+              {
+                "name": "Daniel Kim",
+                "role": "CFO"
+              }
+            ]
+          },
+          "evidenceQuote": "The contract is signed by our CFO, Daniel Kim. He signs every software agreement."
+        },
+        "nextMeeting": null
+      },
+      "llmCalls": [
+        {
+          "label": "baseline-naive.main",
+          "requestedModel": "claude-sonnet-5-5",
+          "responseModel": "claude-sonnet-5-5",
+          "attempt": 1,
+          "promptHash": "0c85a4c4af3a9e75",
+          "durationMs": 1731,
+          "stopReason": "end_turn",
+          "rawText": "{\"budget\":null,\"decisionMaker\":{\"value\":{\"people\":[{\"name\":\"Daniel Kim\",\"role\":\"CFO\"}]},\"evidenceQuote\":\"The contract is signed by our CFO, Daniel Kim. He signs every software agreement.\"},\"nextMeeting\":null}",
+          "ok": true,
+          "error": null,
+          "usage": {
+            "inputTokens": 3229,
+            "outputTokens": 99
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "caseId": "dev-gen-015",
+      "system": "baseline-naive",
+      "fields": {
+        "budget": {
+          "action": "ACT",
+          "value": {
+            "kind": "exact",
+            "amount": 50000,
+            "currency": "USD"
+          },
+          "reasons": [
+            "BASELINE_PROPOSED"
+          ],
+          "claimIds": []
+        },
+        "decisionMaker": {
+          "action": "ABSTAIN",
+          "value": null,
+          "reasons": [
+            "NO_CANDIDATE"
+          ],
+          "claimIds": []
+        },
+        "nextMeeting": {
+          "action": "ACT",
+          "value": {
+            "date": null,
+            "time": "14:00",
+            "timezone": null,
+            "asStated": "Tuesday at 2"
+          },
+          "reasons": [
+            "BASELINE_PROPOSED"
+          ],
+          "claimIds": []
+        }
+      },
+      "trace": {
+        "budget": {
+          "value": {
+            "kind": "exact",
+            "amount": 50000,
+            "currency": "USD"
+          },
+          "evidenceQuote": "We've got forty approved for the licenses, and another ten approved for implementation services."
+        },
+        "decisionMaker": null,
+        "nextMeeting": {
+          "value": {
+            "date": null,
+            "time": "14:00",
+            "timezone": null,
+            "asStated": "Tuesday at 2"
+          },
+          "evidenceQuote": "Let's pencil in Tuesday at 2 for now. I'll confirm once I see my calendar."
+        }
+      },
+      "llmCalls": [
+        {
+          "label": "baseline-naive.main",
+          "requestedModel": "claude-sonnet-5-5",
+          "responseModel": "claude-sonnet-5-5",
+          "attempt": 1,
+          "promptHash": "0c85a4c4af3a9e75",
+          "durationMs": 1914,
+          "stopReason": "end_turn",
+          "rawText": "{\"budget\":{\"value\":{\"kind\":\"exact\",\"amount\":50000,\"currency\":\"USD\"},\"evidenceQuote\":\"We've got forty approved for the licenses, and another ten approved for implementation services.\"},\"decisionMaker\":null,\"nextMeeting\":{\"value\":{\"date\":null,\"time\":\"14:00\",\"timezone\":null,\"asStated\":\"Tuesday at 2\"},\"evidenceQuote\":\"Let's pencil in Tuesday at 2 for now. I'll confirm once I see my calendar.\"}}",
+          "ok": true,
+          "error": null,
+          "usage": {
+            "inputTokens": 3155,
+            "outputTokens": 174
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "caseId": "dev-gen-016",
+      "system": "baseline-naive",
+      "fields": {
+        "budget": {
+          "action": "ABSTAIN",
+          "value": null,
+          "reasons": [
+            "NO_CANDIDATE"
+          ],
+          "claimIds": []
+        },
+        "decisionMaker": {
+          "action": "ACT",
+          "value": {
+            "people": [
+              {
+                "name": "Angela Wu",
+                "role": null
+              }
+            ]
+          },
+          "reasons": [
+            "BASELINE_PROPOSED"
+          ],
+          "claimIds": []
+        },
+        "nextMeeting": {
+          "action": "ABSTAIN",
+          "value": null,
+          "reasons": [
+            "NO_CANDIDATE"
+          ],
+          "claimIds": []
+        }
+      },
+      "trace": {
+        "budget": null,
+        "decisionMaker": {
+          "value": {
+            "people": [
+              {
+                "name": "Angela Wu",
+                "role": null
+              }
+            ]
+          },
+          "evidenceQuote": "Angela Wu took over his group, and she has final sign-off on this now."
+        },
+        "nextMeeting": null
+      },
+      "llmCalls": [
+        {
+          "label": "baseline-naive.main",
+          "requestedModel": "claude-sonnet-5-5",
+          "responseModel": "claude-sonnet-5-5",
+          "attempt": 1,
+          "promptHash": "0c85a4c4af3a9e75",
+          "durationMs": 1865,
+          "stopReason": "end_turn",
+          "rawText": "{\"budget\":null,\"decisionMaker\":{\"value\":{\"people\":[{\"name\":\"Angela Wu\",\"role\":null}]},\"evidenceQuote\":\"Angela Wu took over his group, and she has final sign-off on this now.\"},\"nextMeeting\":null}",
+          "ok": true,
+          "error": null,
+          "usage": {
+            "inputTokens": 3249,
+            "outputTokens": 88
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "caseId": "dev-gen-017",
+      "system": "baseline-naive",
+      "fields": {
+        "budget": {
+          "action": "ABSTAIN",
+          "value": null,
+          "reasons": [
+            "NO_CANDIDATE"
+          ],
+          "claimIds": []
+        },
+        "decisionMaker": {
+          "action": "ACT",
+          "value": {
+            "people": [
+              {
+                "name": "Mike",
+                "role": null
+              }
+            ]
+          },
+          "reasons": [
+            "BASELINE_PROPOSED"
+          ],
+          "claimIds": []
+        },
+        "nextMeeting": {
+          "action": "ABSTAIN",
+          "value": null,
+          "reasons": [
+            "NO_CANDIDATE"
+          ],
+          "claimIds": []
+        }
+      },
+      "trace": {
+        "budget": null,
+        "decisionMaker": {
+          "value": {
+            "people": [
+              {
+                "name": "Mike",
+                "role": null
+              }
+            ]
+          },
+          "evidenceQuote": "Yep, that's right. Mike signs."
+        },
+        "nextMeeting": null
+      },
+      "llmCalls": [
+        {
+          "label": "baseline-naive.main",
+          "requestedModel": "claude-sonnet-5-5",
+          "responseModel": "claude-sonnet-5-5",
+          "attempt": 1,
+          "promptHash": "0c85a4c4af3a9e75",
+          "durationMs": 1999,
+          "stopReason": "end_turn",
+          "rawText": "{\"budget\":null,\"decisionMaker\":{\"value\":{\"people\":[{\"name\":\"Mike\",\"role\":null}]},\"evidenceQuote\":\"Yep, that's right. Mike signs.\"},\"nextMeeting\":null}",
+          "ok": true,
+          "error": null,
+          "usage": {
+            "inputTokens": 3127,
+            "outputTokens": 76
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "caseId": "dev-gen-018",
+      "system": "baseline-naive",
+      "fields": {
+        "budget": {
+          "action": "ABSTAIN",
+          "value": null,
+          "reasons": [
+            "NO_CANDIDATE"
+          ],
+          "claimIds": []
+        },
+        "decisionMaker": {
+          "action": "ACT",
+          "value": {
+            "people": [
+              {
+                "name": "Nadia Ellis",
+                "role": "COO"
+              }
+            ]
+          },
+          "reasons": [
+            "BASELINE_PROPOSED"
+          ],
+          "claimIds": []
+        },
+        "nextMeeting": {
+          "action": "ACT",
+          "value": {
+            "date": "2026-04-24",
+            "time": "10:00",
+            "timezone": "Central",
+            "asStated": "the 24th, ten a.m. Central"
+          },
+          "reasons": [
+            "BASELINE_PROPOSED"
+          ],
+          "claimIds": []
+        }
+      },
+      "trace": {
+        "budget": null,
+        "decisionMaker": {
+          "value": {
+            "people": [
+              {
+                "name": "Nadia Ellis",
+                "role": "COO"
+              }
+            ]
+          },
+          "evidenceQuote": "Nadia Ellis, our COO, makes the final call."
+        },
+        "nextMeeting": {
+          "value": {
+            "date": "2026-04-24",
+            "time": "10:00",
+            "timezone": "Central",
+            "asStated": "the 24th, ten a.m. Central"
+          },
+          "evidenceQuote": "The 24th works. Ten a.m. my time, Central."
+        }
+      },
+      "llmCalls": [
+        {
+          "label": "baseline-naive.main",
+          "requestedModel": "claude-sonnet-5-5",
+          "responseModel": "claude-sonnet-5-5",
+          "attempt": 1,
+          "promptHash": "0c85a4c4af3a9e75",
+          "durationMs": 2619,
+          "stopReason": "end_turn",
+          "rawText": "{\"budget\":null,\"decisionMaker\":{\"value\":{\"people\":[{\"name\":\"Nadia Ellis\",\"role\":\"COO\"}]},\"evidenceQuote\":\"Nadia Ellis, our COO, makes the final call.\"},\"nextMeeting\":{\"value\":{\"date\":\"2026-04-24\",\"time\":\"10:00\",\"timezone\":\"Central\",\"asStated\":\"the 24th, ten a.m. Central\"},\"evidenceQuote\":\"The 24th works. Ten a.m. my time, Central.\"}}",
+          "ok": true,
+          "error": null,
+          "usage": {
+            "inputTokens": 3204,
+            "outputTokens": 169
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "caseId": "dev-gen-019",
+      "system": "baseline-naive",
+      "fields": {
+        "budget": {
+          "action": "ABSTAIN",
+          "value": null,
+          "reasons": [
+            "NO_CANDIDATE"
+          ],
+          "claimIds": []
+        },
+        "decisionMaker": {
+          "action": "ABSTAIN",
+          "value": null,
+          "reasons": [
+            "NO_CANDIDATE"
+          ],
+          "claimIds": []
+        },
+        "nextMeeting": {
+          "action": "ABSTAIN",
+          "value": null,
+          "reasons": [
+            "NO_CANDIDATE"
+          ],
+          "claimIds": []
+        }
+      },
+      "trace": {
+        "budget": null,
+        "decisionMaker": null,
+        "nextMeeting": null
+      },
+      "llmCalls": [
+        {
+          "label": "baseline-naive.main",
+          "requestedModel": "claude-sonnet-5-5",
+          "responseModel": "claude-sonnet-5-5",
+          "attempt": 1,
+          "promptHash": "0c85a4c4af3a9e75",
+          "durationMs": 1556,
+          "stopReason": "end_turn",
+          "rawText": "{\"budget\":null,\"decisionMaker\":null,\"nextMeeting\":null}",
+          "ok": true,
+          "error": null,
+          "usage": {
+            "inputTokens": 3169,
+            "outputTokens": 29
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "caseId": "dev-gen-020",
+      "system": "baseline-naive",
+      "fields": {
+        "budget": {
+          "action": "ACT",
+          "value": {
+            "kind": "exact",
+            "amount": 75000,
+            "currency": "USD"
+          },
+          "reasons": [
+            "BASELINE_PROPOSED"
+          ],
+          "claimIds": []
+        },
+        "decisionMaker": {
+          "action": "ABSTAIN",
+          "value": null,
+          "reasons": [
+            "NO_CANDIDATE"
+          ],
+          "claimIds": []
+        },
+        "nextMeeting": {
+          "action": "ACT",
+          "value": {
+            "date": "2026-04-03",
+            "time": "15:00",
+            "timezone": null,
+            "asStated": "Friday the 3rd at 3"
+          },
+          "reasons": [
+            "BASELINE_PROPOSED"
+          ],
+          "claimIds": []
+        }
+      },
+      "trace": {
+        "budget": {
+          "value": {
+            "kind": "exact",
+            "amount": 75000,
+            "currency": "USD"
+          },
+          "evidenceQuote": "finance confirmed we're capped at seventy-five thousand for this, and that's approved"
+        },
+        "decisionMaker": null,
+        "nextMeeting": {
+          "value": {
+            "date": "2026-04-03",
+            "time": "15:00",
+            "timezone": null,
+            "asStated": "Friday the 3rd at 3"
+          },
+          "evidenceQuote": "Friday the 3rd at 3 works. I'll update the invite."
+        }
+      },
+      "llmCalls": [
+        {
+          "label": "baseline-naive.main",
+          "requestedModel": "claude-sonnet-5-5",
+          "responseModel": "claude-sonnet-5-5",
+          "attempt": 1,
+          "promptHash": "0c85a4c4af3a9e75",
+          "durationMs": 2771,
+          "stopReason": "end_turn",
+          "rawText": "{\"budget\":{\"value\":{\"kind\":\"exact\",\"amount\":75000,\"currency\":\"USD\"},\"evidenceQuote\":\"finance confirmed we're capped at seventy-five thousand for this, and that's approved\"},\"decisionMaker\":null,\"nextMeeting\":{\"value\":{\"date\":\"2026-04-03\",\"time\":\"15:00\",\"timezone\":null,\"asStated\":\"Friday the 3rd at 3\"},\"evidenceQuote\":\"Friday the 3rd at 3 works. I'll update the invite.\"}}",
+          "ok": true,
+          "error": null,
+          "usage": {
+            "inputTokens": 3217,
+            "outputTokens": 301
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "caseId": "dev-gen-021",
+      "system": "baseline-naive",
+      "fields": {
+        "budget": {
+          "action": "ACT",
+          "value": {
+            "kind": "exact",
+            "amount": 45000,
+            "currency": "USD"
+          },
+          "reasons": [
+            "BASELINE_PROPOSED"
+          ],
+          "claimIds": []
+        },
+        "decisionMaker": {
+          "action": "ACT",
+          "value": {
+            "people": [
+              {
+                "name": "James Holt",
+                "role": "VP of Operations"
+              }
+            ]
+          },
+          "reasons": [
+            "BASELINE_PROPOSED"
+          ],
+          "claimIds": []
+        },
+        "nextMeeting": {
+          "action": "ABSTAIN",
+          "value": null,
+          "reasons": [
+            "NO_CANDIDATE"
+          ],
+          "claimIds": []
+        }
+      },
+      "trace": {
+        "budget": {
+          "value": {
+            "kind": "exact",
+            "amount": 45000,
+            "currency": "USD"
+          },
+          "evidenceQuote": "we have forty-five thousand approved for this"
+        },
+        "decisionMaker": {
+          "value": {
+            "people": [
+              {
+                "name": "James Holt",
+                "role": "VP of Operations"
+              }
+            ]
+          },
+          "evidenceQuote": "James Holt, our VP of Operations, signs the contract"
+        },
+        "nextMeeting": null
+      },
+      "llmCalls": [
+        {
+          "label": "baseline-naive.main",
+          "requestedModel": "claude-sonnet-5-5",
+          "responseModel": "claude-sonnet-5-5",
+          "attempt": 1,
+          "promptHash": "0c85a4c4af3a9e75",
+          "durationMs": 1841,
+          "stopReason": "end_turn",
+          "rawText": "{\"budget\":{\"value\":{\"kind\":\"exact\",\"amount\":45000,\"currency\":\"USD\"},\"evidenceQuote\":\"we have forty-five thousand approved for this\"},\"decisionMaker\":{\"value\":{\"people\":[{\"name\":\"James Holt\",\"role\":\"VP of Operations\"}]},\"evidenceQuote\":\"James Holt, our VP of Operations, signs the contract\"},\"nextMeeting\":null}",
+          "ok": true,
+          "error": null,
+          "usage": {
+            "inputTokens": 3227,
+            "outputTokens": 140
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "caseId": "dev-gen-022",
+      "system": "baseline-naive",
+      "fields": {
+        "budget": {
+          "action": "ABSTAIN",
+          "value": null,
+          "reasons": [
+            "NO_CANDIDATE"
+          ],
+          "claimIds": []
+        },
+        "decisionMaker": {
+          "action": "ABSTAIN",
+          "value": null,
+          "reasons": [
+            "NO_CANDIDATE"
+          ],
+          "claimIds": []
+        },
+        "nextMeeting": {
+          "action": "ACT",
+          "value": {
+            "date": null,
+            "time": null,
+            "timezone": null,
+            "asStated": "early next month"
+          },
+          "reasons": [
+            "BASELINE_PROPOSED"
+          ],
+          "claimIds": []
+        }
+      },
+      "trace": {
+        "budget": null,
+        "decisionMaker": null,
+        "nextMeeting": {
+          "value": {
+            "date": null,
+            "time": null,
+            "timezone": null,
+            "asStated": "early next month"
+          },
+          "evidenceQuote": "Yeah, let's aim for early next month."
+        }
+      },
+      "llmCalls": [
+        {
+          "label": "baseline-naive.main",
+          "requestedModel": "claude-sonnet-5-5",
+          "responseModel": "claude-sonnet-5-5",
+          "attempt": 1,
+          "promptHash": "0c85a4c4af3a9e75",
+          "durationMs": 1687,
+          "stopReason": "end_turn",
+          "rawText": "{\"budget\":null,\"decisionMaker\":null,\"nextMeeting\":{\"value\":{\"date\":null,\"time\":null,\"timezone\":null,\"asStated\":\"early next month\"},\"evidenceQuote\":\"Yeah, let's aim for early next month.\"}}",
+          "ok": true,
+          "error": null,
+          "usage": {
+            "inputTokens": 3158,
+            "outputTokens": 86
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "caseId": "dev-gen-023",
+      "system": "baseline-naive",
+      "fields": {
+        "budget": {
+          "action": "ACT",
+          "value": {
+            "kind": "exact",
+            "amount": 115000,
+            "currency": "USD"
+          },
+          "reasons": [
+            "BASELINE_PROPOSED"
+          ],
+          "claimIds": []
+        },
+        "decisionMaker": {
+          "action": "ABSTAIN",
+          "value": null,
+          "reasons": [
+            "NO_CANDIDATE"
+          ],
+          "claimIds": []
+        },
+        "nextMeeting": {
+          "action": "ACT",
+          "value": {
+            "date": "2026-04-08",
+            "time": "14:00",
+            "timezone": null,
+            "asStated": "Wednesday at 2"
+          },
+          "reasons": [
+            "BASELINE_PROPOSED"
+          ],
+          "claimIds": []
+        }
+      },
+      "trace": {
+        "budget": {
+          "value": {
+            "kind": "exact",
+            "amount": 115000,
+            "currency": "USD"
+          },
+          "evidenceQuote": "We have one-ten approved... sorry, one-fifteen."
+        },
+        "decisionMaker": null,
+        "nextMeeting": {
+          "value": {
+            "date": "2026-04-08",
+            "time": "14:00",
+            "timezone": null,
+            "asStated": "Wednesday at 2"
+          },
+          "evidenceQuote": "Wednesday at 2 it is. I'll send the invite."
+        }
+      },
+      "llmCalls": [
+        {
+          "label": "baseline-naive.main",
+          "requestedModel": "claude-sonnet-5-5",
+          "responseModel": "claude-sonnet-5-5",
+          "attempt": 1,
+          "promptHash": "0c85a4c4af3a9e75",
+          "durationMs": 1997,
+          "stopReason": "end_turn",
+          "rawText": "{\"budget\":{\"value\":{\"kind\":\"exact\",\"amount\":115000,\"currency\":\"USD\"},\"evidenceQuote\":\"We have one-ten approved... sorry, one-fifteen.\"},\"decisionMaker\":null,\"nextMeeting\":{\"value\":{\"date\":\"2026-04-08\",\"time\":\"14:00\",\"timezone\":null,\"asStated\":\"Wednesday at 2\"},\"evidenceQuote\":\"Wednesday at 2 it is. I'll send the invite.\"}}",
+          "ok": true,
+          "error": null,
+          "usage": {
+            "inputTokens": 3314,
+            "outputTokens": 161
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "caseId": "dev-gen-024",
+      "system": "baseline-naive",
+      "fields": {
+        "budget": {
+          "action": "ABSTAIN",
+          "value": null,
+          "reasons": [
+            "NO_CANDIDATE"
+          ],
+          "claimIds": []
+        },
+        "decisionMaker": {
+          "action": "ACT",
+          "value": {
+            "people": [
+              {
+                "name": "Maria Lopez",
+                "role": "CTO"
+              },
+              {
+                "name": "Ken Ito",
+                "role": "CFO"
+              }
+            ]
+          },
+          "reasons": [
+            "BASELINE_PROPOSED"
+          ],
+          "claimIds": []
+        },
+        "nextMeeting": {
+          "action": "ACT",
+          "value": {
+            "date": null,
+            "time": "11:00",
+            "timezone": null,
+            "asStated": "next Thursday at 11"
+          },
+          "reasons": [
+            "BASELINE_PROPOSED"
+          ],
+          "claimIds": []
+        }
+      },
+      "trace": {
+        "budget": null,
+        "decisionMaker": {
+          "value": {
+            "people": [
+              {
+                "name": "Maria Lopez",
+                "role": "CTO"
+              },
+              {
+                "name": "Ken Ito",
+                "role": "CFO"
+              }
+            ]
+          },
+          "evidenceQuote": "Final purchase approval needs both Maria Lopez, our CTO, and Ken Ito, our CFO."
+        },
+        "nextMeeting": {
+          "value": {
+            "date": null,
+            "time": "11:00",
+            "timezone": null,
+            "asStated": "next Thursday at 11"
+          },
+          "evidenceQuote": "Next Thursday at 11 works."
+        }
+      },
+      "llmCalls": [
+        {
+          "label": "baseline-naive.main",
+          "requestedModel": "claude-sonnet-5-5",
+          "responseModel": "claude-sonnet-5-5",
+          "attempt": 1,
+          "promptHash": "0c85a4c4af3a9e75",
+          "durationMs": 2018,
+          "stopReason": "end_turn",
+          "rawText": "{\"budget\":null,\"decisionMaker\":{\"value\":{\"people\":[{\"name\":\"Maria Lopez\",\"role\":\"CTO\"},{\"name\":\"Ken Ito\",\"role\":\"CFO\"}]},\"evidenceQuote\":\"Final purchase approval needs both Maria Lopez, our CTO, and Ken Ito, our CFO.\"},\"nextMeeting\":{\"value\":{\"date\":null,\"time\":\"11:00\",\"timezone\":null,\"asStated\":\"next Thursday at 11\"},\"evidenceQuote\":\"Next Thursday at 11 works.\"}}",
+          "ok": true,
+          "error": null,
+          "usage": {
+            "inputTokens": 3264,
+            "outputTokens": 188
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "caseId": "dev-gen-025",
+      "system": "baseline-naive",
+      "fields": {
+        "budget": {
+          "action": "ABSTAIN",
+          "value": null,
+          "reasons": [
+            "NO_CANDIDATE"
+          ],
+          "claimIds": []
+        },
+        "decisionMaker": {
+          "action": "ACT",
+          "value": {
+            "people": [
+              {
+                "name": "Rachel Kim",
+                "role": "VP of Finance"
+              }
+            ]
+          },
+          "reasons": [
+            "BASELINE_PROPOSED"
+          ],
+          "claimIds": []
+        },
+        "nextMeeting": {
+          "action": "ABSTAIN",
+          "value": null,
+          "reasons": [
+            "NO_CANDIDATE"
+          ],
+          "claimIds": []
+        }
+      },
+      "trace": {
+        "budget": null,
+        "decisionMaker": {
+          "value": {
+            "people": [
+              {
+                "name": "Rachel Kim",
+                "role": "VP of Finance"
+              }
+            ]
+          },
+          "evidenceQuote": "It's Rachel Kim now. She's our new VP of Finance and she has final sign-off."
+        },
+        "nextMeeting": null
+      },
+      "llmCalls": [
+        {
+          "label": "baseline-naive.main",
+          "requestedModel": "claude-sonnet-5-5",
+          "responseModel": "claude-sonnet-5-5",
+          "attempt": 1,
+          "promptHash": "0c85a4c4af3a9e75",
+          "durationMs": 1500,
+          "stopReason": "end_turn",
+          "rawText": "{\"budget\":null,\"decisionMaker\":{\"value\":{\"people\":[{\"name\":\"Rachel Kim\",\"role\":\"VP of Finance\"}]},\"evidenceQuote\":\"It's Rachel Kim now. She's our new VP of Finance and she has final sign-off.\"},\"nextMeeting\":null}",
+          "ok": true,
+          "error": null,
+          "usage": {
+            "inputTokens": 3262,
+            "outputTokens": 103
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "caseId": "dev-gen-026",
+      "system": "baseline-naive",
+      "fields": {
+        "budget": {
+          "action": "ACT",
+          "value": {
+            "kind": "exact",
+            "amount": 180000,
+            "currency": "USD"
+          },
+          "reasons": [
+            "BASELINE_PROPOSED"
+          ],
+          "claimIds": []
+        },
+        "decisionMaker": {
+          "action": "ACT",
+          "value": {
+            "people": [
+              {
+                "name": "Darius Reed",
+                "role": "Director of Facilities"
+              }
+            ]
+          },
+          "reasons": [
+            "BASELINE_PROPOSED"
+          ],
+          "claimIds": []
+        },
+        "nextMeeting": {
+          "action": "ACT",
+          "value": {
+            "date": "2026-04-24",
+            "time": "09:00",
+            "timezone": null,
+            "asStated": "Friday morning, say 9"
+          },
+          "reasons": [
+            "BASELINE_PROPOSED"
+          ],
+          "claimIds": []
+        }
+      },
+      "trace": {
+        "budget": {
+          "value": {
+            "kind": "exact",
+            "amount": 180000,
+            "currency": "USD"
+          },
+          "evidenceQuote": "once our Q2 funds are released next month, we'd have a hundred and eighty for this"
+        },
+        "decisionMaker": {
+          "value": {
+            "people": [
+              {
+                "name": "Darius Reed",
+                "role": "Director of Facilities"
+              }
+            ]
+          },
+          "evidenceQuote": "I sign vendor contracts for facilities myself."
+        },
+        "nextMeeting": {
+          "value": {
+            "date": "2026-04-24",
+            "time": "09:00",
+            "timezone": null,
+            "asStated": "Friday morning, say 9"
+          },
+          "evidenceQuote": "Friday at 9 works. I'll send the invite."
+        }
+      },
+      "llmCalls": [
+        {
+          "label": "baseline-naive.main",
+          "requestedModel": "claude-sonnet-5-5",
+          "responseModel": "claude-sonnet-5-5",
+          "attempt": 1,
+          "promptHash": "0c85a4c4af3a9e75",
+          "durationMs": 4608,
+          "stopReason": "end_turn",
+          "rawText": "{\"budget\":{\"value\":{\"kind\":\"exact\",\"amount\":180000,\"currency\":\"USD\"},\"evidenceQuote\":\"once our Q2 funds are released next month, we'd have a hundred and eighty for this\"},\"decisionMaker\":{\"value\":{\"people\":[{\"name\":\"Darius Reed\",\"role\":\"Director of Facilities\"}]},\"evidenceQuote\":\"I sign vendor contracts for facilities myself.\"},\"nextMeeting\":{\"value\":{\"date\":\"2026-04-24\",\"time\":\"09:00\",\"timezone\":null,\"asStated\":\"Friday morning, say 9\"},\"evidenceQuote\":\"Friday at 9 works. I'll send the invite.\"}}",
+          "ok": true,
+          "error": null,
+          "usage": {
+            "inputTokens": 3198,
+            "outputTokens": 581
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "caseId": "dev-gen-027",
+      "system": "baseline-naive",
+      "fields": {
+        "budget": {
+          "action": "ACT",
+          "value": {
+            "kind": "exact",
+            "amount": 75000,
+            "currency": "USD"
+          },
+          "reasons": [
+            "BASELINE_PROPOSED"
+          ],
+          "claimIds": []
+        },
+        "decisionMaker": {
+          "action": "ABSTAIN",
+          "value": null,
+          "reasons": [
+            "NO_CANDIDATE"
+          ],
+          "claimIds": []
+        },
+        "nextMeeting": {
+          "action": "ABSTAIN",
+          "value": null,
+          "reasons": [
+            "NO_CANDIDATE"
+          ],
+          "claimIds": []
+        }
+      },
+      "trace": {
+        "budget": {
+          "value": {
+            "kind": "exact",
+            "amount": 75000,
+            "currency": "USD"
+          },
+          "evidenceQuote": "it's seventy-five. Finance signed off on it last week."
+        },
+        "decisionMaker": null,
+        "nextMeeting": null
+      },
+      "llmCalls": [
+        {
+          "label": "baseline-naive.main",
+          "requestedModel": "claude-sonnet-5-5",
+          "responseModel": "claude-sonnet-5-5",
+          "attempt": 1,
+          "promptHash": "0c85a4c4af3a9e75",
+          "durationMs": 1773,
+          "stopReason": "end_turn",
+          "rawText": "{\"budget\":{\"value\":{\"kind\":\"exact\",\"amount\":75000,\"currency\":\"USD\"},\"evidenceQuote\":\"it's seventy-five. Finance signed off on it last week.\"},\"decisionMaker\":null,\"nextMeeting\":null}",
+          "ok": true,
+          "error": null,
+          "usage": {
+            "inputTokens": 3241,
+            "outputTokens": 85
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "caseId": "dev-gen-028",
+      "system": "baseline-naive",
+      "fields": {
+        "budget": {
+          "action": "ABSTAIN",
+          "value": null,
+          "reasons": [
+            "NO_CANDIDATE"
+          ],
+          "claimIds": []
+        },
+        "decisionMaker": {
+          "action": "ABSTAIN",
+          "value": null,
+          "reasons": [
+            "NO_CANDIDATE"
+          ],
+          "claimIds": []
+        },
+        "nextMeeting": {
+          "action": "ABSTAIN",
+          "value": null,
+          "reasons": [
+            "NO_CANDIDATE"
+          ],
+          "claimIds": []
+        }
+      },
+      "trace": {
+        "budget": null,
+        "decisionMaker": null,
+        "nextMeeting": null
+      },
+      "llmCalls": [
+        {
+          "label": "baseline-naive.main",
+          "requestedModel": "claude-sonnet-5-5",
+          "responseModel": "claude-sonnet-5-5",
+          "attempt": 1,
+          "promptHash": "0c85a4c4af3a9e75",
+          "durationMs": 1666,
+          "stopReason": "end_turn",
+          "rawText": "{\"budget\":null,\"decisionMaker\":null,\"nextMeeting\":null}",
+          "ok": true,
+          "error": null,
+          "usage": {
+            "inputTokens": 3182,
+            "outputTokens": 29
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "caseId": "dev-gen-029",
+      "system": "baseline-naive",
+      "fields": {
+        "budget": {
+          "action": "ABSTAIN",
+          "value": null,
+          "reasons": [
+            "NO_CANDIDATE"
+          ],
+          "claimIds": []
+        },
+        "decisionMaker": {
+          "action": "ABSTAIN",
+          "value": null,
+          "reasons": [
+            "NO_CANDIDATE"
+          ],
+          "claimIds": []
+        },
+        "nextMeeting": {
+          "action": "ACT",
+          "value": {
+            "date": "2026-04-21",
+            "time": "13:00",
+            "timezone": null,
+            "asStated": "Tuesday the 22nd at 1"
+          },
+          "reasons": [
+            "BASELINE_PROPOSED"
+          ],
+          "claimIds": []
+        }
+      },
+      "trace": {
+        "budget": null,
+        "decisionMaker": null,
+        "nextMeeting": {
+          "value": {
+            "date": "2026-04-21",
+            "time": "13:00",
+            "timezone": null,
+            "asStated": "Tuesday the 22nd at 1"
+          },
+          "evidenceQuote": "Let's do Tuesday the 22nd at 1."
+        }
+      },
+      "llmCalls": [
+        {
+          "label": "baseline-naive.main",
+          "requestedModel": "claude-sonnet-5-5",
+          "responseModel": "claude-sonnet-5-5",
+          "attempt": 1,
+          "promptHash": "0c85a4c4af3a9e75",
+          "durationMs": 1813,
+          "stopReason": "end_turn",
+          "rawText": "{\"budget\":null,\"decisionMaker\":null,\"nextMeeting\":{\"value\":{\"date\":\"2026-04-21\",\"time\":\"13:00\",\"timezone\":null,\"asStated\":\"Tuesday the 22nd at 1\"},\"evidenceQuote\":\"Let's do Tuesday the 22nd at 1.\"}}",
+          "ok": true,
+          "error": null,
+          "usage": {
+            "inputTokens": 3178,
+            "outputTokens": 107
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "caseId": "dev-gen-030",
+      "system": "baseline-naive",
+      "fields": {
+        "budget": {
+          "action": "ACT",
+          "value": {
+            "kind": "exact",
+            "amount": 95000,
+            "currency": "USD"
+          },
+          "reasons": [
+            "BASELINE_PROPOSED"
+          ],
+          "claimIds": []
+        },
+        "decisionMaker": {
+          "action": "ACT",
+          "value": {
+            "people": [
+              {
+                "name": "Irene Walsh",
+                "role": "Head of Procurement"
+              }
+            ]
+          },
+          "reasons": [
+            "BASELINE_PROPOSED"
+          ],
+          "claimIds": []
+        },
+        "nextMeeting": {
+          "action": "ACT",
+          "value": {
+            "date": "2026-04-17",
+            "time": "14:00",
+            "timezone": null,
+            "asStated": "Friday the 17th at 2"
+          },
+          "reasons": [
+            "BASELINE_PROPOSED"
+          ],
+          "claimIds": []
+        }
+      },
+      "trace": {
+        "budget": {
+          "value": {
+            "kind": "exact",
+            "amount": 95000,
+            "currency": "USD"
+          },
+          "evidenceQuote": "after the cuts it's ninety-five. That's what's approved now."
+        },
+        "decisionMaker": {
+          "value": {
+            "people": [
+              {
+                "name": "Irene Walsh",
+                "role": "Head of Procurement"
+              }
+            ]
+          },
+          "evidenceQuote": "now it's Paul's boss, Irene Walsh, our head of procurement. She has final approval."
+        },
+        "nextMeeting": {
+          "value": {
+            "date": "2026-04-17",
+            "time": "14:00",
+            "timezone": null,
+            "asStated": "Friday the 17th at 2"
+          },
+          "evidenceQuote": "Friday the 17th at 2 works for me."
+        }
+      },
+      "llmCalls": [
+        {
+          "label": "baseline-naive.main",
+          "requestedModel": "claude-sonnet-5-5",
+          "responseModel": "claude-sonnet-5-5",
+          "attempt": 1,
+          "promptHash": "0c85a4c4af3a9e75",
+          "durationMs": 2219,
+          "stopReason": "end_turn",
+          "rawText": "{\"budget\":{\"value\":{\"kind\":\"exact\",\"amount\":95000,\"currency\":\"USD\"},\"evidenceQuote\":\"after the cuts it's ninety-five. That's what's approved now.\"},\"decisionMaker\":{\"value\":{\"people\":[{\"name\":\"Irene Walsh\",\"role\":\"Head of Procurement\"}]},\"evidenceQuote\":\"now it's Paul's boss, Irene Walsh, our head of procurement. She has final approval.\"},\"nextMeeting\":{\"value\":{\"date\":\"2026-04-17\",\"time\":\"14:00\",\"timezone\":null,\"asStated\":\"Friday the 17th at 2\"},\"evidenceQuote\":\"Friday the 17th at 2 works for me.\"}}",
+          "ok": true,
+          "error": null,
+          "usage": {
+            "inputTokens": 3341,
+            "outputTokens": 235
+          }
+        }
+      ],
+      "error": null
+    }
+  ],
+  "items": [
+    {
+      "caseId": "dev-gen-001",
+      "field": "budget",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "explicit"
+      ],
+      "goldAction": "ACT",
+      "goldValue": {
+        "kind": "exact",
+        "amount": 60000,
+        "currency": "USD"
+      },
+      "goldStatus": "CURRENT",
+      "goldCertainty": "EXPLICIT",
+      "predAction": "ACT",
+      "predValue": {
+        "kind": "exact",
+        "amount": 60000,
+        "currency": "USD"
+      },
+      "valueMatch": true,
+      "outcome": "CORRECT_ACT",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-001",
+      "field": "decisionMaker",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "explicit"
+      ],
+      "goldAction": "ABSTAIN",
+      "goldValue": null,
+      "goldStatus": null,
+      "goldCertainty": null,
+      "predAction": "ABSTAIN",
+      "predValue": null,
+      "valueMatch": null,
+      "outcome": "CORRECT_NO_CHANGE",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-001",
+      "field": "nextMeeting",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "explicit"
+      ],
+      "goldAction": "ACT",
+      "goldValue": {
+        "date": "2026-03-05",
+        "time": null,
+        "timezone": null,
+        "asStated": "Thursday"
+      },
+      "goldStatus": "CURRENT",
+      "goldCertainty": "EXPLICIT",
+      "predAction": "ACT",
+      "predValue": {
+        "date": "2026-03-05",
+        "time": null,
+        "timezone": null,
+        "asStated": "Thursday, morning slot"
+      },
+      "valueMatch": true,
+      "outcome": "CORRECT_ACT",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-002",
+      "field": "budget",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "explicit"
+      ],
+      "goldAction": "ACT",
+      "goldValue": {
+        "kind": "range",
+        "min": 40000,
+        "max": 50000,
+        "currency": "USD"
+      },
+      "goldStatus": "CURRENT",
+      "goldCertainty": "EXPLICIT",
+      "predAction": "ACT",
+      "predValue": {
+        "kind": "range",
+        "min": 40000,
+        "max": 50000,
+        "currency": "USD"
+      },
+      "valueMatch": true,
+      "outcome": "CORRECT_ACT",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-002",
+      "field": "decisionMaker",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "explicit"
+      ],
+      "goldAction": "ACT",
+      "goldValue": {
+        "people": [
+          {
+            "name": "Lena Novak",
+            "role": "VP Operations"
+          }
+        ]
+      },
+      "goldStatus": "CURRENT",
+      "goldCertainty": "EXPLICIT",
+      "predAction": "ACT",
+      "predValue": {
+        "people": [
+          {
+            "name": "Lena Novak",
+            "role": "VP Operations"
+          }
+        ]
+      },
+      "valueMatch": true,
+      "outcome": "CORRECT_ACT",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-002",
+      "field": "nextMeeting",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "explicit"
+      ],
+      "goldAction": "ACT",
+      "goldValue": {
+        "date": "2026-03-11",
+        "time": "11:00",
+        "timezone": null,
+        "asStated": "Wednesday the 11th at 11"
+      },
+      "goldStatus": "CURRENT",
+      "goldCertainty": "EXPLICIT",
+      "predAction": "ACT",
+      "predValue": {
+        "date": "2026-03-11",
+        "time": "11:00",
+        "timezone": null,
+        "asStated": "Wednesday the 11th at 11"
+      },
+      "valueMatch": true,
+      "outcome": "CORRECT_ACT",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-003",
+      "field": "budget",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "existing_value",
+        "explicit"
+      ],
+      "goldAction": "NO_OP",
+      "goldValue": {
+        "kind": "exact",
+        "amount": 80000,
+        "currency": "USD"
+      },
+      "goldStatus": "CURRENT",
+      "goldCertainty": "EXPLICIT",
+      "predAction": "ABSTAIN",
+      "predValue": null,
+      "valueMatch": null,
+      "outcome": "CORRECT_NO_CHANGE",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-003",
+      "field": "decisionMaker",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "existing_value",
+        "explicit"
+      ],
+      "goldAction": "NO_OP",
+      "goldValue": {
+        "people": [
+          {
+            "name": "Helen",
+            "role": null
+          }
+        ]
+      },
+      "goldStatus": "CURRENT",
+      "goldCertainty": "EXPLICIT",
+      "predAction": "ABSTAIN",
+      "predValue": null,
+      "valueMatch": null,
+      "outcome": "CORRECT_NO_CHANGE",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-003",
+      "field": "nextMeeting",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "existing_value",
+        "explicit"
+      ],
+      "goldAction": "ABSTAIN",
+      "goldValue": null,
+      "goldStatus": null,
+      "goldCertainty": null,
+      "predAction": "ABSTAIN",
+      "predValue": null,
+      "valueMatch": null,
+      "outcome": "CORRECT_NO_CHANGE",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-004",
+      "field": "budget",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "no_update",
+        "irrelevant_info"
+      ],
+      "goldAction": "ABSTAIN",
+      "goldValue": null,
+      "goldStatus": null,
+      "goldCertainty": null,
+      "predAction": "ABSTAIN",
+      "predValue": null,
+      "valueMatch": null,
+      "outcome": "CORRECT_NO_CHANGE",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-004",
+      "field": "decisionMaker",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "no_update",
+        "irrelevant_info"
+      ],
+      "goldAction": "ABSTAIN",
+      "goldValue": null,
+      "goldStatus": null,
+      "goldCertainty": null,
+      "predAction": "ABSTAIN",
+      "predValue": null,
+      "valueMatch": null,
+      "outcome": "CORRECT_NO_CHANGE",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-004",
+      "field": "nextMeeting",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "no_update",
+        "irrelevant_info"
+      ],
+      "goldAction": "ABSTAIN",
+      "goldValue": null,
+      "goldStatus": null,
+      "goldCertainty": null,
+      "predAction": "ABSTAIN",
+      "predValue": null,
+      "valueMatch": null,
+      "outcome": "CORRECT_NO_CHANGE",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-005",
+      "field": "budget",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "explicit"
+      ],
+      "goldAction": "ACT",
+      "goldValue": {
+        "kind": "exact",
+        "amount": 25000,
+        "currency": "USD"
+      },
+      "goldStatus": "CURRENT",
+      "goldCertainty": "EXPLICIT",
+      "predAction": "ACT",
+      "predValue": {
+        "kind": "exact",
+        "amount": 25000,
+        "currency": "USD"
+      },
+      "valueMatch": true,
+      "outcome": "CORRECT_ACT",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-005",
+      "field": "decisionMaker",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "explicit"
+      ],
+      "goldAction": "ACT",
+      "goldValue": {
+        "people": [
+          {
+            "name": null,
+            "role": "CFO"
+          }
+        ]
+      },
+      "goldStatus": "CURRENT",
+      "goldCertainty": "EXPLICIT",
+      "predAction": "ACT",
+      "predValue": {
+        "people": [
+          {
+            "name": null,
+            "role": "CFO"
+          }
+        ]
+      },
+      "valueMatch": true,
+      "outcome": "CORRECT_ACT",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-005",
+      "field": "nextMeeting",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "explicit"
+      ],
+      "goldAction": "ABSTAIN",
+      "goldValue": null,
+      "goldStatus": null,
+      "goldCertainty": null,
+      "predAction": "ABSTAIN",
+      "predValue": null,
+      "valueMatch": null,
+      "outcome": "CORRECT_NO_CHANGE",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-006",
+      "field": "budget",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "existing_value",
+        "explicit"
+      ],
+      "goldAction": "ABSTAIN",
+      "goldValue": null,
+      "goldStatus": null,
+      "goldCertainty": null,
+      "predAction": "ABSTAIN",
+      "predValue": null,
+      "valueMatch": null,
+      "outcome": "CORRECT_NO_CHANGE",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-006",
+      "field": "decisionMaker",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "existing_value",
+        "explicit"
+      ],
+      "goldAction": "NO_OP",
+      "goldValue": {
+        "people": [
+          {
+            "name": "Raj",
+            "role": null
+          }
+        ]
+      },
+      "goldStatus": "CURRENT",
+      "goldCertainty": "EXPLICIT",
+      "predAction": "ABSTAIN",
+      "predValue": null,
+      "valueMatch": null,
+      "outcome": "CORRECT_NO_CHANGE",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-006",
+      "field": "nextMeeting",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "existing_value",
+        "explicit"
+      ],
+      "goldAction": "ACT",
+      "goldValue": {
+        "date": "2026-03-19",
+        "time": "16:00",
+        "timezone": null,
+        "asStated": "Thursday the 19th at 4"
+      },
+      "goldStatus": "CURRENT",
+      "goldCertainty": "EXPLICIT",
+      "predAction": "ACT",
+      "predValue": {
+        "date": "2026-03-19",
+        "time": "16:00",
+        "timezone": null,
+        "asStated": "Thursday the 19th at 4"
+      },
+      "valueMatch": true,
+      "outcome": "CORRECT_ACT",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-007",
+      "field": "budget",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "explicit",
+        "pronouns"
+      ],
+      "goldAction": "ACT",
+      "goldValue": {
+        "kind": "exact",
+        "amount": 45000,
+        "currency": "EUR"
+      },
+      "goldStatus": "CURRENT",
+      "goldCertainty": "EXPLICIT",
+      "predAction": "ACT",
+      "predValue": {
+        "kind": "exact",
+        "amount": 45000,
+        "currency": "EUR"
+      },
+      "valueMatch": true,
+      "outcome": "CORRECT_ACT",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-007",
+      "field": "decisionMaker",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "explicit",
+        "pronouns"
+      ],
+      "goldAction": "ACT",
+      "goldValue": {
+        "people": [
+          {
+            "name": "Sophie Laurent",
+            "role": "managing director"
+          }
+        ]
+      },
+      "goldStatus": "CURRENT",
+      "goldCertainty": "EXPLICIT",
+      "predAction": "ACT",
+      "predValue": {
+        "people": [
+          {
+            "name": "Sophie Laurent",
+            "role": "Managing Director"
+          }
+        ]
+      },
+      "valueMatch": true,
+      "outcome": "CORRECT_ACT",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-007",
+      "field": "nextMeeting",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "explicit",
+        "pronouns"
+      ],
+      "goldAction": "ABSTAIN",
+      "goldValue": null,
+      "goldStatus": null,
+      "goldCertainty": null,
+      "predAction": "ABSTAIN",
+      "predValue": null,
+      "valueMatch": null,
+      "outcome": "CORRECT_NO_CHANGE",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-008",
+      "field": "budget",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "existing_value",
+        "explicit"
+      ],
+      "goldAction": "ABSTAIN",
+      "goldValue": null,
+      "goldStatus": null,
+      "goldCertainty": null,
+      "predAction": "ABSTAIN",
+      "predValue": null,
+      "valueMatch": null,
+      "outcome": "CORRECT_NO_CHANGE",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-008",
+      "field": "decisionMaker",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "existing_value",
+        "explicit"
+      ],
+      "goldAction": "ACT",
+      "goldValue": {
+        "people": [
+          {
+            "name": "Tomás Rivera",
+            "role": "Claims Director"
+          }
+        ]
+      },
+      "goldStatus": "CURRENT",
+      "goldCertainty": "EXPLICIT",
+      "predAction": "ACT",
+      "predValue": {
+        "people": [
+          {
+            "name": "Tomás Rivera",
+            "role": "Claims Director"
+          }
+        ]
+      },
+      "valueMatch": true,
+      "outcome": "CORRECT_ACT",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-008",
+      "field": "nextMeeting",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "existing_value",
+        "explicit"
+      ],
+      "goldAction": "NO_OP",
+      "goldValue": {
+        "date": "2026-03-19",
+        "time": "10:00",
+        "timezone": null,
+        "asStated": "Thursday at 10"
+      },
+      "goldStatus": "CURRENT",
+      "goldCertainty": "EXPLICIT",
+      "predAction": "ABSTAIN",
+      "predValue": null,
+      "valueMatch": null,
+      "outcome": "CORRECT_NO_CHANGE",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-009",
+      "field": "budget",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "tentative",
+        "explicit_but_insufficient",
+        "filler_words",
+        "pronouns"
+      ],
+      "goldAction": "ASK",
+      "goldValue": {
+        "kind": "exact",
+        "amount": 70000,
+        "currency": "USD"
+      },
+      "goldStatus": "CURRENT",
+      "goldCertainty": "TENTATIVE",
+      "predAction": "ABSTAIN",
+      "predValue": null,
+      "valueMatch": null,
+      "outcome": "MISSED_ASK",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-009",
+      "field": "decisionMaker",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "tentative",
+        "explicit_but_insufficient",
+        "filler_words",
+        "pronouns"
+      ],
+      "goldAction": "ASK",
+      "goldValue": {
+        "people": [
+          {
+            "name": "Sarah Kim",
+            "role": null
+          }
+        ]
+      },
+      "goldStatus": "CURRENT",
+      "goldCertainty": "EXPLICIT",
+      "predAction": "ABSTAIN",
+      "predValue": null,
+      "valueMatch": null,
+      "outcome": "MISSED_ASK",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-009",
+      "field": "nextMeeting",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "tentative",
+        "explicit_but_insufficient",
+        "filler_words",
+        "pronouns"
+      ],
+      "goldAction": "ACT",
+      "goldValue": {
+        "date": "2026-03-16",
+        "time": "09:30",
+        "timezone": null,
+        "asStated": "Monday at 9:30"
+      },
+      "goldStatus": "CURRENT",
+      "goldCertainty": "EXPLICIT",
+      "predAction": "ACT",
+      "predValue": {
+        "date": "2026-03-16",
+        "time": "09:30",
+        "timezone": null,
+        "asStated": "Monday at 9:30"
+      },
+      "valueMatch": true,
+      "outcome": "CORRECT_ACT",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-010",
+      "field": "budget",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "conditional",
+        "tentative",
+        "pronouns"
+      ],
+      "goldAction": "ASK",
+      "goldValue": {
+        "kind": "exact",
+        "amount": 150000,
+        "currency": "USD"
+      },
+      "goldStatus": "CURRENT",
+      "goldCertainty": "CONDITIONAL",
+      "predAction": "ABSTAIN",
+      "predValue": null,
+      "valueMatch": null,
+      "outcome": "MISSED_ASK",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-010",
+      "field": "decisionMaker",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "conditional",
+        "tentative",
+        "pronouns"
+      ],
+      "goldAction": "ACT",
+      "goldValue": {
+        "people": [
+          {
+            "name": "Linda Park",
+            "role": "COO"
+          }
+        ]
+      },
+      "goldStatus": "CURRENT",
+      "goldCertainty": "EXPLICIT",
+      "predAction": "ACT",
+      "predValue": {
+        "people": [
+          {
+            "name": "Linda Park",
+            "role": "COO"
+          }
+        ]
+      },
+      "valueMatch": true,
+      "outcome": "CORRECT_ACT",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-010",
+      "field": "nextMeeting",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "conditional",
+        "tentative",
+        "pronouns"
+      ],
+      "goldAction": "ASK",
+      "goldValue": {
+        "date": "2026-03-19",
+        "time": "15:00",
+        "timezone": null,
+        "asStated": "Thursday at 3"
+      },
+      "goldStatus": "CURRENT",
+      "goldCertainty": "TENTATIVE",
+      "predAction": "ACT",
+      "predValue": {
+        "date": "2026-03-19",
+        "time": "15:00",
+        "timezone": null,
+        "asStated": "Thursday at 3"
+      },
+      "valueMatch": true,
+      "outcome": "UNSAFE_ACT",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-011",
+      "field": "budget",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "multiple_numbers",
+        "irrelevant_info",
+        "explicit"
+      ],
+      "goldAction": "ACT",
+      "goldValue": {
+        "kind": "exact",
+        "amount": 55000,
+        "currency": "USD"
+      },
+      "goldStatus": "CURRENT",
+      "goldCertainty": "EXPLICIT",
+      "predAction": "ACT",
+      "predValue": {
+        "kind": "exact",
+        "amount": 55000,
+        "currency": "USD"
+      },
+      "valueMatch": true,
+      "outcome": "CORRECT_ACT",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-011",
+      "field": "decisionMaker",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "multiple_numbers",
+        "irrelevant_info",
+        "explicit"
+      ],
+      "goldAction": "ASK",
+      "goldValue": {
+        "people": [
+          {
+            "name": "James",
+            "role": null
+          }
+        ]
+      },
+      "goldStatus": "CURRENT",
+      "goldCertainty": "EXPLICIT",
+      "predAction": "ACT",
+      "predValue": {
+        "people": [
+          {
+            "name": "James",
+            "role": null
+          }
+        ]
+      },
+      "valueMatch": true,
+      "outcome": "UNSAFE_ACT",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-011",
+      "field": "nextMeeting",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "multiple_numbers",
+        "irrelevant_info",
+        "explicit"
+      ],
+      "goldAction": "ASK",
+      "goldValue": {
+        "date": null,
+        "time": null,
+        "timezone": null,
+        "asStated": "sometime next week"
+      },
+      "goldStatus": "CURRENT",
+      "goldCertainty": "EXPLICIT",
+      "predAction": "ACT",
+      "predValue": {
+        "date": null,
+        "time": null,
+        "timezone": null,
+        "asStated": "sometime next week"
+      },
+      "valueMatch": true,
+      "outcome": "UNSAFE_ACT",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-012",
+      "field": "budget",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "multiple_numbers",
+        "multiple_stakeholders",
+        "explicit"
+      ],
+      "goldAction": "ACT",
+      "goldValue": {
+        "kind": "exact",
+        "amount": 90000,
+        "currency": "USD"
+      },
+      "goldStatus": "CURRENT",
+      "goldCertainty": "EXPLICIT",
+      "predAction": "ACT",
+      "predValue": {
+        "kind": "exact",
+        "amount": 90000,
+        "currency": "USD"
+      },
+      "valueMatch": true,
+      "outcome": "CORRECT_ACT",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-012",
+      "field": "decisionMaker",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "multiple_numbers",
+        "multiple_stakeholders",
+        "explicit"
+      ],
+      "goldAction": "ACT",
+      "goldValue": {
+        "people": [
+          {
+            "name": "Carla Mendes",
+            "role": "VP of Marketing"
+          }
+        ]
+      },
+      "goldStatus": "CURRENT",
+      "goldCertainty": "EXPLICIT",
+      "predAction": "ACT",
+      "predValue": {
+        "people": [
+          {
+            "name": "Carla Mendes",
+            "role": "VP of Marketing"
+          }
+        ]
+      },
+      "valueMatch": true,
+      "outcome": "CORRECT_ACT",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-012",
+      "field": "nextMeeting",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "multiple_numbers",
+        "multiple_stakeholders",
+        "explicit"
+      ],
+      "goldAction": "ABSTAIN",
+      "goldValue": null,
+      "goldStatus": null,
+      "goldCertainty": null,
+      "predAction": "ABSTAIN",
+      "predValue": null,
+      "valueMatch": null,
+      "outcome": "CORRECT_NO_CHANGE",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-013",
+      "field": "budget",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "supersession",
+        "existing_value",
+        "multiple_numbers"
+      ],
+      "goldAction": "ASK",
+      "goldValue": {
+        "kind": "exact",
+        "amount": 65000,
+        "currency": "USD"
+      },
+      "goldStatus": "CURRENT",
+      "goldCertainty": "EXPLICIT",
+      "predAction": "ACT",
+      "predValue": {
+        "kind": "exact",
+        "amount": 65000,
+        "currency": "USD"
+      },
+      "valueMatch": true,
+      "outcome": "UNSAFE_ACT",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-013",
+      "field": "decisionMaker",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "supersession",
+        "existing_value",
+        "multiple_numbers"
+      ],
+      "goldAction": "ABSTAIN",
+      "goldValue": null,
+      "goldStatus": null,
+      "goldCertainty": null,
+      "predAction": "ABSTAIN",
+      "predValue": null,
+      "valueMatch": null,
+      "outcome": "CORRECT_NO_CHANGE",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-013",
+      "field": "nextMeeting",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "supersession",
+        "existing_value",
+        "multiple_numbers"
+      ],
+      "goldAction": "ACT",
+      "goldValue": {
+        "date": "2026-03-20",
+        "time": "13:00",
+        "timezone": null,
+        "asStated": "Friday at 1"
+      },
+      "goldStatus": "CURRENT",
+      "goldCertainty": "EXPLICIT",
+      "predAction": "ACT",
+      "predValue": {
+        "date": "2026-03-20",
+        "time": "13:00",
+        "timezone": null,
+        "asStated": "Friday at 1"
+      },
+      "valueMatch": true,
+      "outcome": "CORRECT_ACT",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-014",
+      "field": "budget",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "multiple_stakeholders",
+        "explicit_but_insufficient",
+        "irrelevant_info",
+        "pronouns"
+      ],
+      "goldAction": "ABSTAIN",
+      "goldValue": {
+        "kind": "exact",
+        "amount": 25000,
+        "currency": "USD"
+      },
+      "goldStatus": "CURRENT",
+      "goldCertainty": "EXPLICIT",
+      "predAction": "ABSTAIN",
+      "predValue": null,
+      "valueMatch": null,
+      "outcome": "CORRECT_NO_CHANGE",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-014",
+      "field": "decisionMaker",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "multiple_stakeholders",
+        "explicit_but_insufficient",
+        "irrelevant_info",
+        "pronouns"
+      ],
+      "goldAction": "ACT",
+      "goldValue": {
+        "people": [
+          {
+            "name": "Daniel Kim",
+            "role": "CFO"
+          }
+        ]
+      },
+      "goldStatus": "CURRENT",
+      "goldCertainty": "EXPLICIT",
+      "predAction": "ACT",
+      "predValue": {
+        "people": [
+          {
+            "name": "Daniel Kim",
+            "role": "CFO"
+          }
+        ]
+      },
+      "valueMatch": true,
+      "outcome": "CORRECT_ACT",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-014",
+      "field": "nextMeeting",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "multiple_stakeholders",
+        "explicit_but_insufficient",
+        "irrelevant_info",
+        "pronouns"
+      ],
+      "goldAction": "ABSTAIN",
+      "goldValue": {
+        "date": "2026-03-25",
+        "time": null,
+        "timezone": null,
+        "asStated": "Wednesday"
+      },
+      "goldStatus": "CURRENT",
+      "goldCertainty": "EXPLICIT",
+      "predAction": "ABSTAIN",
+      "predValue": null,
+      "valueMatch": null,
+      "outcome": "CORRECT_NO_CHANGE",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-015",
+      "field": "budget",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "multiple_numbers",
+        "tentative"
+      ],
+      "goldAction": "ASK",
+      "goldValue": {
+        "kind": "exact",
+        "amount": 50000,
+        "currency": "USD"
+      },
+      "goldStatus": "CURRENT",
+      "goldCertainty": "EXPLICIT",
+      "predAction": "ACT",
+      "predValue": {
+        "kind": "exact",
+        "amount": 50000,
+        "currency": "USD"
+      },
+      "valueMatch": true,
+      "outcome": "UNSAFE_ACT",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-015",
+      "field": "decisionMaker",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "multiple_numbers",
+        "tentative"
+      ],
+      "goldAction": "ABSTAIN",
+      "goldValue": null,
+      "goldStatus": null,
+      "goldCertainty": null,
+      "predAction": "ABSTAIN",
+      "predValue": null,
+      "valueMatch": null,
+      "outcome": "CORRECT_NO_CHANGE",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-015",
+      "field": "nextMeeting",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "multiple_numbers",
+        "tentative"
+      ],
+      "goldAction": "ASK",
+      "goldValue": {
+        "date": "2026-03-31",
+        "time": "14:00",
+        "timezone": null,
+        "asStated": "Tuesday at 2"
+      },
+      "goldStatus": "CURRENT",
+      "goldCertainty": "TENTATIVE",
+      "predAction": "ACT",
+      "predValue": {
+        "date": null,
+        "time": "14:00",
+        "timezone": null,
+        "asStated": "Tuesday at 2"
+      },
+      "valueMatch": false,
+      "outcome": "UNSAFE_ACT",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-016",
+      "field": "budget",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "existing_value",
+        "supersession",
+        "negation",
+        "pronouns"
+      ],
+      "goldAction": "NO_OP",
+      "goldValue": {
+        "kind": "exact",
+        "amount": 100000,
+        "currency": "USD"
+      },
+      "goldStatus": "CURRENT",
+      "goldCertainty": "EXPLICIT",
+      "predAction": "ABSTAIN",
+      "predValue": null,
+      "valueMatch": null,
+      "outcome": "CORRECT_NO_CHANGE",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-016",
+      "field": "decisionMaker",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "existing_value",
+        "supersession",
+        "negation",
+        "pronouns"
+      ],
+      "goldAction": "ASK",
+      "goldValue": {
+        "people": [
+          {
+            "name": "Angela Wu",
+            "role": null
+          }
+        ]
+      },
+      "goldStatus": "CURRENT",
+      "goldCertainty": "EXPLICIT",
+      "predAction": "ACT",
+      "predValue": {
+        "people": [
+          {
+            "name": "Angela Wu",
+            "role": null
+          }
+        ]
+      },
+      "valueMatch": true,
+      "outcome": "UNSAFE_ACT",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-016",
+      "field": "nextMeeting",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "existing_value",
+        "supersession",
+        "negation",
+        "pronouns"
+      ],
+      "goldAction": "ABSTAIN",
+      "goldValue": null,
+      "goldStatus": null,
+      "goldCertainty": null,
+      "predAction": "ABSTAIN",
+      "predValue": null,
+      "valueMatch": null,
+      "outcome": "CORRECT_NO_CHANGE",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-017",
+      "field": "budget",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "unconfirmed_rep_statement",
+        "explicit"
+      ],
+      "goldAction": "ABSTAIN",
+      "goldValue": {
+        "kind": "exact",
+        "amount": 200000,
+        "currency": "USD"
+      },
+      "goldStatus": "CURRENT",
+      "goldCertainty": "TENTATIVE",
+      "predAction": "ABSTAIN",
+      "predValue": null,
+      "valueMatch": null,
+      "outcome": "CORRECT_NO_CHANGE",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-017",
+      "field": "decisionMaker",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "unconfirmed_rep_statement",
+        "explicit"
+      ],
+      "goldAction": "ACT",
+      "goldValue": {
+        "people": [
+          {
+            "name": "Mike",
+            "role": null
+          }
+        ]
+      },
+      "goldStatus": "CURRENT",
+      "goldCertainty": "EXPLICIT",
+      "predAction": "ACT",
+      "predValue": {
+        "people": [
+          {
+            "name": "Mike",
+            "role": null
+          }
+        ]
+      },
+      "valueMatch": true,
+      "outcome": "CORRECT_ACT",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-017",
+      "field": "nextMeeting",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "unconfirmed_rep_statement",
+        "explicit"
+      ],
+      "goldAction": "ABSTAIN",
+      "goldValue": null,
+      "goldStatus": null,
+      "goldCertainty": null,
+      "predAction": "ABSTAIN",
+      "predValue": null,
+      "valueMatch": null,
+      "outcome": "CORRECT_NO_CHANGE",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-018",
+      "field": "budget",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "historical",
+        "explicit",
+        "multiple_stakeholders"
+      ],
+      "goldAction": "ABSTAIN",
+      "goldValue": {
+        "kind": "exact",
+        "amount": 80000,
+        "currency": "USD"
+      },
+      "goldStatus": "HISTORICAL",
+      "goldCertainty": "EXPLICIT",
+      "predAction": "ABSTAIN",
+      "predValue": null,
+      "valueMatch": null,
+      "outcome": "CORRECT_NO_CHANGE",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-018",
+      "field": "decisionMaker",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "historical",
+        "explicit",
+        "multiple_stakeholders"
+      ],
+      "goldAction": "ACT",
+      "goldValue": {
+        "people": [
+          {
+            "name": "Nadia Ellis",
+            "role": "COO"
+          }
+        ]
+      },
+      "goldStatus": "CURRENT",
+      "goldCertainty": "EXPLICIT",
+      "predAction": "ACT",
+      "predValue": {
+        "people": [
+          {
+            "name": "Nadia Ellis",
+            "role": "COO"
+          }
+        ]
+      },
+      "valueMatch": true,
+      "outcome": "CORRECT_ACT",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-018",
+      "field": "nextMeeting",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "historical",
+        "explicit",
+        "multiple_stakeholders"
+      ],
+      "goldAction": "ACT",
+      "goldValue": {
+        "date": "2026-04-24",
+        "time": "10:00",
+        "timezone": "Central",
+        "asStated": "the 24th, ten a.m. Central"
+      },
+      "goldStatus": "CURRENT",
+      "goldCertainty": "EXPLICIT",
+      "predAction": "ACT",
+      "predValue": {
+        "date": "2026-04-24",
+        "time": "10:00",
+        "timezone": "Central",
+        "asStated": "the 24th, ten a.m. Central"
+      },
+      "valueMatch": true,
+      "outcome": "CORRECT_ACT",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-019",
+      "field": "budget",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "negation",
+        "irrelevant_info"
+      ],
+      "goldAction": "ABSTAIN",
+      "goldValue": {
+        "kind": "exact",
+        "amount": 100000,
+        "currency": "USD"
+      },
+      "goldStatus": "NEGATED",
+      "goldCertainty": "EXPLICIT",
+      "predAction": "ABSTAIN",
+      "predValue": null,
+      "valueMatch": null,
+      "outcome": "CORRECT_NO_CHANGE",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-019",
+      "field": "decisionMaker",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "negation",
+        "irrelevant_info"
+      ],
+      "goldAction": "ASK",
+      "goldValue": {
+        "people": [
+          {
+            "name": "Greg Novak",
+            "role": null
+          }
+        ]
+      },
+      "goldStatus": "CURRENT",
+      "goldCertainty": "EXPLICIT",
+      "predAction": "ABSTAIN",
+      "predValue": null,
+      "valueMatch": null,
+      "outcome": "MISSED_ASK",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-019",
+      "field": "nextMeeting",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "negation",
+        "irrelevant_info"
+      ],
+      "goldAction": "ABSTAIN",
+      "goldValue": {
+        "date": "2026-04-03",
+        "time": null,
+        "timezone": null,
+        "asStated": "by Friday"
+      },
+      "goldStatus": "CURRENT",
+      "goldCertainty": "EXPLICIT",
+      "predAction": "ABSTAIN",
+      "predValue": null,
+      "valueMatch": null,
+      "outcome": "CORRECT_NO_CHANGE",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-020",
+      "field": "budget",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "existing_value",
+        "supersession",
+        "explicit"
+      ],
+      "goldAction": "ACT",
+      "goldValue": {
+        "kind": "exact",
+        "amount": 75000,
+        "currency": "USD"
+      },
+      "goldStatus": "CURRENT",
+      "goldCertainty": "EXPLICIT",
+      "predAction": "ACT",
+      "predValue": {
+        "kind": "exact",
+        "amount": 75000,
+        "currency": "USD"
+      },
+      "valueMatch": true,
+      "outcome": "CORRECT_ACT",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-020",
+      "field": "decisionMaker",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "existing_value",
+        "supersession",
+        "explicit"
+      ],
+      "goldAction": "ABSTAIN",
+      "goldValue": null,
+      "goldStatus": null,
+      "goldCertainty": null,
+      "predAction": "ABSTAIN",
+      "predValue": null,
+      "valueMatch": null,
+      "outcome": "CORRECT_NO_CHANGE",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-020",
+      "field": "nextMeeting",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "existing_value",
+        "supersession",
+        "explicit"
+      ],
+      "goldAction": "ASK",
+      "goldValue": {
+        "date": "2026-04-03",
+        "time": "15:00",
+        "timezone": null,
+        "asStated": "Friday the 3rd at 3"
+      },
+      "goldStatus": "CURRENT",
+      "goldCertainty": "EXPLICIT",
+      "predAction": "ACT",
+      "predValue": {
+        "date": "2026-04-03",
+        "time": "15:00",
+        "timezone": null,
+        "asStated": "Friday the 3rd at 3"
+      },
+      "valueMatch": true,
+      "outcome": "UNSAFE_ACT",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-021",
+      "field": "budget",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "multiple_stakeholders",
+        "explicit_but_insufficient",
+        "multiple_numbers",
+        "pronouns"
+      ],
+      "goldAction": "ACT",
+      "goldValue": {
+        "kind": "exact",
+        "amount": 45000,
+        "currency": "USD"
+      },
+      "goldStatus": "CURRENT",
+      "goldCertainty": "EXPLICIT",
+      "predAction": "ACT",
+      "predValue": {
+        "kind": "exact",
+        "amount": 45000,
+        "currency": "USD"
+      },
+      "valueMatch": true,
+      "outcome": "CORRECT_ACT",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-021",
+      "field": "decisionMaker",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "multiple_stakeholders",
+        "explicit_but_insufficient",
+        "multiple_numbers",
+        "pronouns"
+      ],
+      "goldAction": "ACT",
+      "goldValue": {
+        "people": [
+          {
+            "name": "James Holt",
+            "role": "VP of Operations"
+          }
+        ]
+      },
+      "goldStatus": "CURRENT",
+      "goldCertainty": "EXPLICIT",
+      "predAction": "ACT",
+      "predValue": {
+        "people": [
+          {
+            "name": "James Holt",
+            "role": "VP of Operations"
+          }
+        ]
+      },
+      "valueMatch": true,
+      "outcome": "CORRECT_ACT",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-021",
+      "field": "nextMeeting",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "multiple_stakeholders",
+        "explicit_but_insufficient",
+        "multiple_numbers",
+        "pronouns"
+      ],
+      "goldAction": "ABSTAIN",
+      "goldValue": null,
+      "goldStatus": null,
+      "goldCertainty": null,
+      "predAction": "ABSTAIN",
+      "predValue": null,
+      "valueMatch": null,
+      "outcome": "CORRECT_NO_CHANGE",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-022",
+      "field": "budget",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "conditional",
+        "tentative",
+        "explicit_but_insufficient"
+      ],
+      "goldAction": "ASK",
+      "goldValue": {
+        "kind": "exact",
+        "amount": 30000,
+        "currency": "USD"
+      },
+      "goldStatus": "CURRENT",
+      "goldCertainty": "CONDITIONAL",
+      "predAction": "ABSTAIN",
+      "predValue": null,
+      "valueMatch": null,
+      "outcome": "MISSED_ASK",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-022",
+      "field": "decisionMaker",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "conditional",
+        "tentative",
+        "explicit_but_insufficient"
+      ],
+      "goldAction": "ASK",
+      "goldValue": {
+        "people": [
+          {
+            "name": "Aaron Webb",
+            "role": "Head of Member Services"
+          }
+        ]
+      },
+      "goldStatus": "CURRENT",
+      "goldCertainty": "EXPLICIT",
+      "predAction": "ABSTAIN",
+      "predValue": null,
+      "valueMatch": null,
+      "outcome": "MISSED_ASK",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-022",
+      "field": "nextMeeting",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "conditional",
+        "tentative",
+        "explicit_but_insufficient"
+      ],
+      "goldAction": "ASK",
+      "goldValue": {
+        "date": null,
+        "time": null,
+        "timezone": null,
+        "asStated": "early next month"
+      },
+      "goldStatus": "CURRENT",
+      "goldCertainty": "TENTATIVE",
+      "predAction": "ACT",
+      "predValue": {
+        "date": null,
+        "time": null,
+        "timezone": null,
+        "asStated": "early next month"
+      },
+      "valueMatch": true,
+      "outcome": "UNSAFE_ACT",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-023",
+      "field": "budget",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "multiple_numbers",
+        "irrelevant_info",
+        "mid_sentence_correction",
+        "supersession",
+        "messy_speech"
+      ],
+      "goldAction": "ACT",
+      "goldValue": {
+        "kind": "exact",
+        "amount": 115000,
+        "currency": "USD"
+      },
+      "goldStatus": "CURRENT",
+      "goldCertainty": "EXPLICIT",
+      "predAction": "ACT",
+      "predValue": {
+        "kind": "exact",
+        "amount": 115000,
+        "currency": "USD"
+      },
+      "valueMatch": true,
+      "outcome": "CORRECT_ACT",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-023",
+      "field": "decisionMaker",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "multiple_numbers",
+        "irrelevant_info",
+        "mid_sentence_correction",
+        "supersession",
+        "messy_speech"
+      ],
+      "goldAction": "ABSTAIN",
+      "goldValue": null,
+      "goldStatus": null,
+      "goldCertainty": null,
+      "predAction": "ABSTAIN",
+      "predValue": null,
+      "valueMatch": null,
+      "outcome": "CORRECT_NO_CHANGE",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-023",
+      "field": "nextMeeting",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "multiple_numbers",
+        "irrelevant_info",
+        "mid_sentence_correction",
+        "supersession",
+        "messy_speech"
+      ],
+      "goldAction": "ACT",
+      "goldValue": {
+        "date": "2026-04-08",
+        "time": "14:00",
+        "timezone": null,
+        "asStated": "Wednesday at 2"
+      },
+      "goldStatus": "CURRENT",
+      "goldCertainty": "EXPLICIT",
+      "predAction": "ACT",
+      "predValue": {
+        "date": "2026-04-08",
+        "time": "14:00",
+        "timezone": null,
+        "asStated": "Wednesday at 2"
+      },
+      "valueMatch": true,
+      "outcome": "CORRECT_ACT",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-024",
+      "field": "budget",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "joint_approval",
+        "existing_value",
+        "multiple_stakeholders",
+        "conditional",
+        "ambiguous_date",
+        "explicit_but_insufficient"
+      ],
+      "goldAction": "ASK",
+      "goldValue": {
+        "kind": "range",
+        "min": 200000,
+        "max": 250000,
+        "currency": "USD"
+      },
+      "goldStatus": "CURRENT",
+      "goldCertainty": "CONDITIONAL",
+      "predAction": "ABSTAIN",
+      "predValue": null,
+      "valueMatch": null,
+      "outcome": "MISSED_ASK",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-024",
+      "field": "decisionMaker",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "joint_approval",
+        "existing_value",
+        "multiple_stakeholders",
+        "conditional",
+        "ambiguous_date",
+        "explicit_but_insufficient"
+      ],
+      "goldAction": "ASK",
+      "goldValue": {
+        "people": [
+          {
+            "name": "Maria Lopez",
+            "role": "CTO"
+          },
+          {
+            "name": "Ken Ito",
+            "role": "CFO"
+          }
+        ]
+      },
+      "goldStatus": "CURRENT",
+      "goldCertainty": "EXPLICIT",
+      "predAction": "ACT",
+      "predValue": {
+        "people": [
+          {
+            "name": "Maria Lopez",
+            "role": "CTO"
+          },
+          {
+            "name": "Ken Ito",
+            "role": "CFO"
+          }
+        ]
+      },
+      "valueMatch": true,
+      "outcome": "UNSAFE_ACT",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-024",
+      "field": "nextMeeting",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "joint_approval",
+        "existing_value",
+        "multiple_stakeholders",
+        "conditional",
+        "ambiguous_date",
+        "explicit_but_insufficient"
+      ],
+      "goldAction": "ASK",
+      "goldValue": {
+        "date": null,
+        "time": "11:00",
+        "timezone": null,
+        "asStated": "next Thursday at 11"
+      },
+      "goldStatus": "CURRENT",
+      "goldCertainty": "EXPLICIT",
+      "predAction": "ACT",
+      "predValue": {
+        "date": null,
+        "time": "11:00",
+        "timezone": null,
+        "asStated": "next Thursday at 11"
+      },
+      "valueMatch": true,
+      "outcome": "UNSAFE_ACT",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-025",
+      "field": "budget",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "existing_value",
+        "negation",
+        "supersession",
+        "pronouns"
+      ],
+      "goldAction": "NO_OP",
+      "goldValue": {
+        "kind": "exact",
+        "amount": 90000,
+        "currency": "USD"
+      },
+      "goldStatus": "CURRENT",
+      "goldCertainty": "EXPLICIT",
+      "predAction": "ABSTAIN",
+      "predValue": null,
+      "valueMatch": null,
+      "outcome": "CORRECT_NO_CHANGE",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-025",
+      "field": "decisionMaker",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "existing_value",
+        "negation",
+        "supersession",
+        "pronouns"
+      ],
+      "goldAction": "ASK",
+      "goldValue": {
+        "people": [
+          {
+            "name": "Rachel Kim",
+            "role": "VP of Finance"
+          }
+        ]
+      },
+      "goldStatus": "CURRENT",
+      "goldCertainty": "EXPLICIT",
+      "predAction": "ACT",
+      "predValue": {
+        "people": [
+          {
+            "name": "Rachel Kim",
+            "role": "VP of Finance"
+          }
+        ]
+      },
+      "valueMatch": true,
+      "outcome": "UNSAFE_ACT",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-025",
+      "field": "nextMeeting",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "existing_value",
+        "negation",
+        "supersession",
+        "pronouns"
+      ],
+      "goldAction": "ABSTAIN",
+      "goldValue": {
+        "date": "2026-04-15",
+        "time": null,
+        "timezone": null,
+        "asStated": "the 15th"
+      },
+      "goldStatus": "CURRENT",
+      "goldCertainty": "EXPLICIT",
+      "predAction": "ABSTAIN",
+      "predValue": null,
+      "valueMatch": null,
+      "outcome": "CORRECT_NO_CHANGE",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-026",
+      "field": "budget",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "conditional",
+        "irrelevant_info",
+        "explicit"
+      ],
+      "goldAction": "ASK",
+      "goldValue": {
+        "kind": "exact",
+        "amount": 180000,
+        "currency": "USD"
+      },
+      "goldStatus": "CURRENT",
+      "goldCertainty": "CONDITIONAL",
+      "predAction": "ACT",
+      "predValue": {
+        "kind": "exact",
+        "amount": 180000,
+        "currency": "USD"
+      },
+      "valueMatch": true,
+      "outcome": "UNSAFE_ACT",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-026",
+      "field": "decisionMaker",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "conditional",
+        "irrelevant_info",
+        "explicit"
+      ],
+      "goldAction": "ACT",
+      "goldValue": {
+        "people": [
+          {
+            "name": "Darius Reed",
+            "role": "Director of Facilities"
+          }
+        ]
+      },
+      "goldStatus": "CURRENT",
+      "goldCertainty": "EXPLICIT",
+      "predAction": "ACT",
+      "predValue": {
+        "people": [
+          {
+            "name": "Darius Reed",
+            "role": "Director of Facilities"
+          }
+        ]
+      },
+      "valueMatch": true,
+      "outcome": "CORRECT_ACT",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-026",
+      "field": "nextMeeting",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "conditional",
+        "irrelevant_info",
+        "explicit"
+      ],
+      "goldAction": "ACT",
+      "goldValue": {
+        "date": "2026-04-24",
+        "time": "09:00",
+        "timezone": null,
+        "asStated": "Friday morning, say 9"
+      },
+      "goldStatus": "CURRENT",
+      "goldCertainty": "EXPLICIT",
+      "predAction": "ACT",
+      "predValue": {
+        "date": "2026-04-24",
+        "time": "09:00",
+        "timezone": null,
+        "asStated": "Friday morning, say 9"
+      },
+      "valueMatch": true,
+      "outcome": "CORRECT_ACT",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-027",
+      "field": "budget",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "historical",
+        "negation",
+        "multiple_numbers",
+        "filler_words",
+        "messy_speech",
+        "existing_value"
+      ],
+      "goldAction": "ACT",
+      "goldValue": {
+        "kind": "exact",
+        "amount": 75000,
+        "currency": "USD"
+      },
+      "goldStatus": "CURRENT",
+      "goldCertainty": "EXPLICIT",
+      "predAction": "ACT",
+      "predValue": {
+        "kind": "exact",
+        "amount": 75000,
+        "currency": "USD"
+      },
+      "valueMatch": true,
+      "outcome": "CORRECT_ACT",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-027",
+      "field": "decisionMaker",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "historical",
+        "negation",
+        "multiple_numbers",
+        "filler_words",
+        "messy_speech",
+        "existing_value"
+      ],
+      "goldAction": "ABSTAIN",
+      "goldValue": null,
+      "goldStatus": null,
+      "goldCertainty": null,
+      "predAction": "ABSTAIN",
+      "predValue": null,
+      "valueMatch": null,
+      "outcome": "CORRECT_NO_CHANGE",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-027",
+      "field": "nextMeeting",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "historical",
+        "negation",
+        "multiple_numbers",
+        "filler_words",
+        "messy_speech",
+        "existing_value"
+      ],
+      "goldAction": "NO_OP",
+      "goldValue": {
+        "date": "2026-04-09",
+        "time": "14:00",
+        "timezone": null,
+        "asStated": "Thursday at 2"
+      },
+      "goldStatus": "CURRENT",
+      "goldCertainty": "EXPLICIT",
+      "predAction": "ABSTAIN",
+      "predValue": null,
+      "valueMatch": null,
+      "outcome": "CORRECT_NO_CHANGE",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-028",
+      "field": "budget",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "unconfirmed_rep_statement",
+        "tentative",
+        "irrelevant_info",
+        "explicit_but_insufficient"
+      ],
+      "goldAction": "ABSTAIN",
+      "goldValue": {
+        "kind": "exact",
+        "amount": 85000,
+        "currency": "USD"
+      },
+      "goldStatus": "CURRENT",
+      "goldCertainty": "TENTATIVE",
+      "predAction": "ABSTAIN",
+      "predValue": null,
+      "valueMatch": null,
+      "outcome": "CORRECT_NO_CHANGE",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-028",
+      "field": "decisionMaker",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "unconfirmed_rep_statement",
+        "tentative",
+        "irrelevant_info",
+        "explicit_but_insufficient"
+      ],
+      "goldAction": "ASK",
+      "goldValue": {
+        "people": [
+          {
+            "name": "Grace Liu",
+            "role": null
+          }
+        ]
+      },
+      "goldStatus": "CURRENT",
+      "goldCertainty": "EXPLICIT",
+      "predAction": "ABSTAIN",
+      "predValue": null,
+      "valueMatch": null,
+      "outcome": "MISSED_ASK",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-028",
+      "field": "nextMeeting",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "unconfirmed_rep_statement",
+        "tentative",
+        "irrelevant_info",
+        "explicit_but_insufficient"
+      ],
+      "goldAction": "ASK",
+      "goldValue": {
+        "date": "2026-04-14",
+        "time": "11:00",
+        "timezone": null,
+        "asStated": "Tuesday at 11"
+      },
+      "goldStatus": "CURRENT",
+      "goldCertainty": "TENTATIVE",
+      "predAction": "ABSTAIN",
+      "predValue": null,
+      "valueMatch": null,
+      "outcome": "MISSED_ASK",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-029",
+      "field": "budget",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "existing_value",
+        "ambiguous_date",
+        "irrelevant_info"
+      ],
+      "goldAction": "NO_OP",
+      "goldValue": {
+        "kind": "exact",
+        "amount": 40000,
+        "currency": "USD"
+      },
+      "goldStatus": "CURRENT",
+      "goldCertainty": "EXPLICIT",
+      "predAction": "ABSTAIN",
+      "predValue": null,
+      "valueMatch": null,
+      "outcome": "CORRECT_NO_CHANGE",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-029",
+      "field": "decisionMaker",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "existing_value",
+        "ambiguous_date",
+        "irrelevant_info"
+      ],
+      "goldAction": "ABSTAIN",
+      "goldValue": null,
+      "goldStatus": null,
+      "goldCertainty": null,
+      "predAction": "ABSTAIN",
+      "predValue": null,
+      "valueMatch": null,
+      "outcome": "CORRECT_NO_CHANGE",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-029",
+      "field": "nextMeeting",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "existing_value",
+        "ambiguous_date",
+        "irrelevant_info"
+      ],
+      "goldAction": "ASK",
+      "goldValue": {
+        "date": null,
+        "time": "13:00",
+        "timezone": null,
+        "asStated": "Tuesday the 22nd at 1"
+      },
+      "goldStatus": "CURRENT",
+      "goldCertainty": "EXPLICIT",
+      "predAction": "ACT",
+      "predValue": {
+        "date": "2026-04-21",
+        "time": "13:00",
+        "timezone": null,
+        "asStated": "Tuesday the 22nd at 1"
+      },
+      "valueMatch": false,
+      "outcome": "UNSAFE_ACT",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-030",
+      "field": "budget",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "supersession",
+        "existing_value",
+        "multiple_stakeholders",
+        "negation",
+        "historical",
+        "pronouns",
+        "multiple_numbers"
+      ],
+      "goldAction": "ASK",
+      "goldValue": {
+        "kind": "exact",
+        "amount": 95000,
+        "currency": "USD"
+      },
+      "goldStatus": "CURRENT",
+      "goldCertainty": "EXPLICIT",
+      "predAction": "ACT",
+      "predValue": {
+        "kind": "exact",
+        "amount": 95000,
+        "currency": "USD"
+      },
+      "valueMatch": true,
+      "outcome": "UNSAFE_ACT",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-030",
+      "field": "decisionMaker",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "supersession",
+        "existing_value",
+        "multiple_stakeholders",
+        "negation",
+        "historical",
+        "pronouns",
+        "multiple_numbers"
+      ],
+      "goldAction": "ACT",
+      "goldValue": {
+        "people": [
+          {
+            "name": "Irene Walsh",
+            "role": "head of procurement"
+          }
+        ]
+      },
+      "goldStatus": "CURRENT",
+      "goldCertainty": "EXPLICIT",
+      "predAction": "ACT",
+      "predValue": {
+        "people": [
+          {
+            "name": "Irene Walsh",
+            "role": "Head of Procurement"
+          }
+        ]
+      },
+      "valueMatch": true,
+      "outcome": "CORRECT_ACT",
+      "systemError": false
+    },
+    {
+      "caseId": "dev-gen-030",
+      "field": "nextMeeting",
+      "source": "generated",
+      "labelStatus": "reviewed",
+      "tags": [
+        "supersession",
+        "existing_value",
+        "multiple_stakeholders",
+        "negation",
+        "historical",
+        "pronouns",
+        "multiple_numbers"
+      ],
+      "goldAction": "ACT",
+      "goldValue": {
+        "date": "2026-04-17",
+        "time": "14:00",
+        "timezone": null,
+        "asStated": "Friday the 17th at 2"
+      },
+      "goldStatus": "CURRENT",
+      "goldCertainty": "EXPLICIT",
+      "predAction": "ACT",
+      "predValue": {
+        "date": "2026-04-17",
+        "time": "14:00",
+        "timezone": null,
+        "asStated": "Friday the 17th at 2"
+      },
+      "valueMatch": true,
+      "outcome": "CORRECT_ACT",
+      "systemError": false
+    }
+  ],
+  "metrics": {
+    "overall": {
+      "items": 90,
+      "actPrecision": {
+        "num": 31,
+        "den": 46,
+        "value": 0.6739130434782609
+      },
+      "coverage": {
+        "num": 31,
+        "den": 31,
+        "value": 1
+      },
+      "unsafeWriteRate": {
+        "num": 15,
+        "den": 59,
+        "value": 0.2542372881355932
+      },
+      "reviewRate": {
+        "num": 0,
+        "den": 90,
+        "value": 0
+      },
+      "abstentionRate": {
+        "num": 44,
+        "den": 90,
+        "value": 0.4888888888888889
+      },
+      "noOpRate": {
+        "num": 0,
+        "den": 90,
+        "value": 0
+      },
+      "wrongValueWrites": 0,
+      "systemErrors": 0,
+      "confusion": {
+        "ACT": {
+          "ACT": 31,
+          "ASK": 0,
+          "ABSTAIN": 0,
+          "NO_OP": 0
+        },
+        "ASK": {
+          "ACT": 15,
+          "ASK": 0,
+          "ABSTAIN": 9,
+          "NO_OP": 0
+        },
+        "ABSTAIN": {
+          "ACT": 0,
+          "ASK": 0,
+          "ABSTAIN": 27,
+          "NO_OP": 0
+        },
+        "NO_OP": {
+          "ACT": 0,
+          "ASK": 0,
+          "ABSTAIN": 8,
+          "NO_OP": 0
+        }
+      },
+      "outcomes": {
+        "CORRECT_ACT": 31,
+        "WRONG_VALUE_ACT": 0,
+        "UNSAFE_ACT": 15,
+        "ACT_DOWNGRADED_TO_ASK": 0,
+        "MISSED_ACT": 0,
+        "CORRECT_ASK": 0,
+        "WRONG_VALUE_ASK": 0,
+        "MISSED_ASK": 9,
+        "UNNECESSARY_ASK": 0,
+        "CORRECT_NO_CHANGE": 35
+      }
+    },
+    "byField": {
+      "budget": {
+        "items": 30,
+        "actPrecision": {
+          "num": 10,
+          "den": 14,
+          "value": 0.7142857142857143
+        },
+        "coverage": {
+          "num": 10,
+          "den": 10,
+          "value": 1
+        },
+        "unsafeWriteRate": {
+          "num": 4,
+          "den": 20,
+          "value": 0.2
+        },
+        "reviewRate": {
+          "num": 0,
+          "den": 30,
+          "value": 0
+        },
+        "abstentionRate": {
+          "num": 16,
+          "den": 30,
+          "value": 0.5333333333333333
+        },
+        "noOpRate": {
+          "num": 0,
+          "den": 30,
+          "value": 0
+        },
+        "wrongValueWrites": 0,
+        "systemErrors": 0,
+        "confusion": {
+          "ACT": {
+            "ACT": 10,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ASK": {
+            "ACT": 4,
+            "ASK": 0,
+            "ABSTAIN": 4,
+            "NO_OP": 0
+          },
+          "ABSTAIN": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 8,
+            "NO_OP": 0
+          },
+          "NO_OP": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 4,
+            "NO_OP": 0
+          }
+        },
+        "outcomes": {
+          "CORRECT_ACT": 10,
+          "WRONG_VALUE_ACT": 0,
+          "UNSAFE_ACT": 4,
+          "ACT_DOWNGRADED_TO_ASK": 0,
+          "MISSED_ACT": 0,
+          "CORRECT_ASK": 0,
+          "WRONG_VALUE_ASK": 0,
+          "MISSED_ASK": 4,
+          "UNNECESSARY_ASK": 0,
+          "CORRECT_NO_CHANGE": 12
+        }
+      },
+      "decisionMaker": {
+        "items": 30,
+        "actPrecision": {
+          "num": 12,
+          "den": 16,
+          "value": 0.75
+        },
+        "coverage": {
+          "num": 12,
+          "den": 12,
+          "value": 1
+        },
+        "unsafeWriteRate": {
+          "num": 4,
+          "den": 18,
+          "value": 0.2222222222222222
+        },
+        "reviewRate": {
+          "num": 0,
+          "den": 30,
+          "value": 0
+        },
+        "abstentionRate": {
+          "num": 14,
+          "den": 30,
+          "value": 0.4666666666666667
+        },
+        "noOpRate": {
+          "num": 0,
+          "den": 30,
+          "value": 0
+        },
+        "wrongValueWrites": 0,
+        "systemErrors": 0,
+        "confusion": {
+          "ACT": {
+            "ACT": 12,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ASK": {
+            "ACT": 4,
+            "ASK": 0,
+            "ABSTAIN": 4,
+            "NO_OP": 0
+          },
+          "ABSTAIN": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 8,
+            "NO_OP": 0
+          },
+          "NO_OP": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 2,
+            "NO_OP": 0
+          }
+        },
+        "outcomes": {
+          "CORRECT_ACT": 12,
+          "WRONG_VALUE_ACT": 0,
+          "UNSAFE_ACT": 4,
+          "ACT_DOWNGRADED_TO_ASK": 0,
+          "MISSED_ACT": 0,
+          "CORRECT_ASK": 0,
+          "WRONG_VALUE_ASK": 0,
+          "MISSED_ASK": 4,
+          "UNNECESSARY_ASK": 0,
+          "CORRECT_NO_CHANGE": 10
+        }
+      },
+      "nextMeeting": {
+        "items": 30,
+        "actPrecision": {
+          "num": 9,
+          "den": 16,
+          "value": 0.5625
+        },
+        "coverage": {
+          "num": 9,
+          "den": 9,
+          "value": 1
+        },
+        "unsafeWriteRate": {
+          "num": 7,
+          "den": 21,
+          "value": 0.3333333333333333
+        },
+        "reviewRate": {
+          "num": 0,
+          "den": 30,
+          "value": 0
+        },
+        "abstentionRate": {
+          "num": 14,
+          "den": 30,
+          "value": 0.4666666666666667
+        },
+        "noOpRate": {
+          "num": 0,
+          "den": 30,
+          "value": 0
+        },
+        "wrongValueWrites": 0,
+        "systemErrors": 0,
+        "confusion": {
+          "ACT": {
+            "ACT": 9,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ASK": {
+            "ACT": 7,
+            "ASK": 0,
+            "ABSTAIN": 1,
+            "NO_OP": 0
+          },
+          "ABSTAIN": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 11,
+            "NO_OP": 0
+          },
+          "NO_OP": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 2,
+            "NO_OP": 0
+          }
+        },
+        "outcomes": {
+          "CORRECT_ACT": 9,
+          "WRONG_VALUE_ACT": 0,
+          "UNSAFE_ACT": 7,
+          "ACT_DOWNGRADED_TO_ASK": 0,
+          "MISSED_ACT": 0,
+          "CORRECT_ASK": 0,
+          "WRONG_VALUE_ASK": 0,
+          "MISSED_ASK": 1,
+          "UNNECESSARY_ASK": 0,
+          "CORRECT_NO_CHANGE": 13
+        }
+      }
+    },
+    "bySource": {
+      "generated": {
+        "items": 90,
+        "actPrecision": {
+          "num": 31,
+          "den": 46,
+          "value": 0.6739130434782609
+        },
+        "coverage": {
+          "num": 31,
+          "den": 31,
+          "value": 1
+        },
+        "unsafeWriteRate": {
+          "num": 15,
+          "den": 59,
+          "value": 0.2542372881355932
+        },
+        "reviewRate": {
+          "num": 0,
+          "den": 90,
+          "value": 0
+        },
+        "abstentionRate": {
+          "num": 44,
+          "den": 90,
+          "value": 0.4888888888888889
+        },
+        "noOpRate": {
+          "num": 0,
+          "den": 90,
+          "value": 0
+        },
+        "wrongValueWrites": 0,
+        "systemErrors": 0,
+        "confusion": {
+          "ACT": {
+            "ACT": 31,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ASK": {
+            "ACT": 15,
+            "ASK": 0,
+            "ABSTAIN": 9,
+            "NO_OP": 0
+          },
+          "ABSTAIN": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 27,
+            "NO_OP": 0
+          },
+          "NO_OP": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 8,
+            "NO_OP": 0
+          }
+        },
+        "outcomes": {
+          "CORRECT_ACT": 31,
+          "WRONG_VALUE_ACT": 0,
+          "UNSAFE_ACT": 15,
+          "ACT_DOWNGRADED_TO_ASK": 0,
+          "MISSED_ACT": 0,
+          "CORRECT_ASK": 0,
+          "WRONG_VALUE_ASK": 0,
+          "MISSED_ASK": 9,
+          "UNNECESSARY_ASK": 0,
+          "CORRECT_NO_CHANGE": 35
+        }
+      }
+    },
+    "byLabelStatus": {
+      "reviewed": {
+        "items": 90,
+        "actPrecision": {
+          "num": 31,
+          "den": 46,
+          "value": 0.6739130434782609
+        },
+        "coverage": {
+          "num": 31,
+          "den": 31,
+          "value": 1
+        },
+        "unsafeWriteRate": {
+          "num": 15,
+          "den": 59,
+          "value": 0.2542372881355932
+        },
+        "reviewRate": {
+          "num": 0,
+          "den": 90,
+          "value": 0
+        },
+        "abstentionRate": {
+          "num": 44,
+          "den": 90,
+          "value": 0.4888888888888889
+        },
+        "noOpRate": {
+          "num": 0,
+          "den": 90,
+          "value": 0
+        },
+        "wrongValueWrites": 0,
+        "systemErrors": 0,
+        "confusion": {
+          "ACT": {
+            "ACT": 31,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ASK": {
+            "ACT": 15,
+            "ASK": 0,
+            "ABSTAIN": 9,
+            "NO_OP": 0
+          },
+          "ABSTAIN": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 27,
+            "NO_OP": 0
+          },
+          "NO_OP": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 8,
+            "NO_OP": 0
+          }
+        },
+        "outcomes": {
+          "CORRECT_ACT": 31,
+          "WRONG_VALUE_ACT": 0,
+          "UNSAFE_ACT": 15,
+          "ACT_DOWNGRADED_TO_ASK": 0,
+          "MISSED_ACT": 0,
+          "CORRECT_ASK": 0,
+          "WRONG_VALUE_ASK": 0,
+          "MISSED_ASK": 9,
+          "UNNECESSARY_ASK": 0,
+          "CORRECT_NO_CHANGE": 35
+        }
+      }
+    },
+    "byTag": {
+      "ambiguous_date": {
+        "items": 6,
+        "actPrecision": {
+          "num": 0,
+          "den": 3,
+          "value": 0
+        },
+        "coverage": {
+          "num": 0,
+          "den": 0,
+          "value": null
+        },
+        "unsafeWriteRate": {
+          "num": 3,
+          "den": 6,
+          "value": 0.5
+        },
+        "reviewRate": {
+          "num": 0,
+          "den": 6,
+          "value": 0
+        },
+        "abstentionRate": {
+          "num": 3,
+          "den": 6,
+          "value": 0.5
+        },
+        "noOpRate": {
+          "num": 0,
+          "den": 6,
+          "value": 0
+        },
+        "wrongValueWrites": 0,
+        "systemErrors": 0,
+        "confusion": {
+          "ACT": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ASK": {
+            "ACT": 3,
+            "ASK": 0,
+            "ABSTAIN": 1,
+            "NO_OP": 0
+          },
+          "ABSTAIN": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 1,
+            "NO_OP": 0
+          },
+          "NO_OP": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 1,
+            "NO_OP": 0
+          }
+        },
+        "outcomes": {
+          "CORRECT_ACT": 0,
+          "WRONG_VALUE_ACT": 0,
+          "UNSAFE_ACT": 3,
+          "ACT_DOWNGRADED_TO_ASK": 0,
+          "MISSED_ACT": 0,
+          "CORRECT_ASK": 0,
+          "WRONG_VALUE_ASK": 0,
+          "MISSED_ASK": 1,
+          "UNNECESSARY_ASK": 0,
+          "CORRECT_NO_CHANGE": 2
+        }
+      },
+      "conditional": {
+        "items": 12,
+        "actPrecision": {
+          "num": 3,
+          "den": 8,
+          "value": 0.375
+        },
+        "coverage": {
+          "num": 3,
+          "den": 3,
+          "value": 1
+        },
+        "unsafeWriteRate": {
+          "num": 5,
+          "den": 9,
+          "value": 0.5555555555555556
+        },
+        "reviewRate": {
+          "num": 0,
+          "den": 12,
+          "value": 0
+        },
+        "abstentionRate": {
+          "num": 4,
+          "den": 12,
+          "value": 0.3333333333333333
+        },
+        "noOpRate": {
+          "num": 0,
+          "den": 12,
+          "value": 0
+        },
+        "wrongValueWrites": 0,
+        "systemErrors": 0,
+        "confusion": {
+          "ACT": {
+            "ACT": 3,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ASK": {
+            "ACT": 5,
+            "ASK": 0,
+            "ABSTAIN": 4,
+            "NO_OP": 0
+          },
+          "ABSTAIN": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "NO_OP": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          }
+        },
+        "outcomes": {
+          "CORRECT_ACT": 3,
+          "WRONG_VALUE_ACT": 0,
+          "UNSAFE_ACT": 5,
+          "ACT_DOWNGRADED_TO_ASK": 0,
+          "MISSED_ACT": 0,
+          "CORRECT_ASK": 0,
+          "WRONG_VALUE_ASK": 0,
+          "MISSED_ASK": 4,
+          "UNNECESSARY_ASK": 0,
+          "CORRECT_NO_CHANGE": 0
+        }
+      },
+      "existing_value": {
+        "items": 33,
+        "actPrecision": {
+          "num": 7,
+          "den": 15,
+          "value": 0.4666666666666667
+        },
+        "coverage": {
+          "num": 7,
+          "den": 7,
+          "value": 1
+        },
+        "unsafeWriteRate": {
+          "num": 8,
+          "den": 26,
+          "value": 0.3076923076923077
+        },
+        "reviewRate": {
+          "num": 0,
+          "den": 33,
+          "value": 0
+        },
+        "abstentionRate": {
+          "num": 18,
+          "den": 33,
+          "value": 0.5454545454545454
+        },
+        "noOpRate": {
+          "num": 0,
+          "den": 33,
+          "value": 0
+        },
+        "wrongValueWrites": 0,
+        "systemErrors": 0,
+        "confusion": {
+          "ACT": {
+            "ACT": 7,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ASK": {
+            "ACT": 8,
+            "ASK": 0,
+            "ABSTAIN": 1,
+            "NO_OP": 0
+          },
+          "ABSTAIN": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 9,
+            "NO_OP": 0
+          },
+          "NO_OP": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 8,
+            "NO_OP": 0
+          }
+        },
+        "outcomes": {
+          "CORRECT_ACT": 7,
+          "WRONG_VALUE_ACT": 0,
+          "UNSAFE_ACT": 8,
+          "ACT_DOWNGRADED_TO_ASK": 0,
+          "MISSED_ACT": 0,
+          "CORRECT_ASK": 0,
+          "WRONG_VALUE_ASK": 0,
+          "MISSED_ASK": 1,
+          "UNNECESSARY_ASK": 0,
+          "CORRECT_NO_CHANGE": 17
+        }
+      },
+      "explicit": {
+        "items": 39,
+        "actPrecision": {
+          "num": 20,
+          "den": 24,
+          "value": 0.8333333333333334
+        },
+        "coverage": {
+          "num": 20,
+          "den": 20,
+          "value": 1
+        },
+        "unsafeWriteRate": {
+          "num": 4,
+          "den": 19,
+          "value": 0.21052631578947367
+        },
+        "reviewRate": {
+          "num": 0,
+          "den": 39,
+          "value": 0
+        },
+        "abstentionRate": {
+          "num": 15,
+          "den": 39,
+          "value": 0.38461538461538464
+        },
+        "noOpRate": {
+          "num": 0,
+          "den": 39,
+          "value": 0
+        },
+        "wrongValueWrites": 0,
+        "systemErrors": 0,
+        "confusion": {
+          "ACT": {
+            "ACT": 20,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ASK": {
+            "ACT": 4,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ABSTAIN": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 11,
+            "NO_OP": 0
+          },
+          "NO_OP": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 4,
+            "NO_OP": 0
+          }
+        },
+        "outcomes": {
+          "CORRECT_ACT": 20,
+          "WRONG_VALUE_ACT": 0,
+          "UNSAFE_ACT": 4,
+          "ACT_DOWNGRADED_TO_ASK": 0,
+          "MISSED_ACT": 0,
+          "CORRECT_ASK": 0,
+          "WRONG_VALUE_ASK": 0,
+          "MISSED_ASK": 0,
+          "UNNECESSARY_ASK": 0,
+          "CORRECT_NO_CHANGE": 15
+        }
+      },
+      "explicit_but_insufficient": {
+        "items": 18,
+        "actPrecision": {
+          "num": 4,
+          "den": 7,
+          "value": 0.5714285714285714
+        },
+        "coverage": {
+          "num": 4,
+          "den": 4,
+          "value": 1
+        },
+        "unsafeWriteRate": {
+          "num": 3,
+          "den": 14,
+          "value": 0.21428571428571427
+        },
+        "reviewRate": {
+          "num": 0,
+          "den": 18,
+          "value": 0
+        },
+        "abstentionRate": {
+          "num": 11,
+          "den": 18,
+          "value": 0.6111111111111112
+        },
+        "noOpRate": {
+          "num": 0,
+          "den": 18,
+          "value": 0
+        },
+        "wrongValueWrites": 0,
+        "systemErrors": 0,
+        "confusion": {
+          "ACT": {
+            "ACT": 4,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ASK": {
+            "ACT": 3,
+            "ASK": 0,
+            "ABSTAIN": 7,
+            "NO_OP": 0
+          },
+          "ABSTAIN": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 4,
+            "NO_OP": 0
+          },
+          "NO_OP": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          }
+        },
+        "outcomes": {
+          "CORRECT_ACT": 4,
+          "WRONG_VALUE_ACT": 0,
+          "UNSAFE_ACT": 3,
+          "ACT_DOWNGRADED_TO_ASK": 0,
+          "MISSED_ACT": 0,
+          "CORRECT_ASK": 0,
+          "WRONG_VALUE_ASK": 0,
+          "MISSED_ASK": 7,
+          "UNNECESSARY_ASK": 0,
+          "CORRECT_NO_CHANGE": 4
+        }
+      },
+      "filler_words": {
+        "items": 6,
+        "actPrecision": {
+          "num": 2,
+          "den": 2,
+          "value": 1
+        },
+        "coverage": {
+          "num": 2,
+          "den": 2,
+          "value": 1
+        },
+        "unsafeWriteRate": {
+          "num": 0,
+          "den": 4,
+          "value": 0
+        },
+        "reviewRate": {
+          "num": 0,
+          "den": 6,
+          "value": 0
+        },
+        "abstentionRate": {
+          "num": 4,
+          "den": 6,
+          "value": 0.6666666666666666
+        },
+        "noOpRate": {
+          "num": 0,
+          "den": 6,
+          "value": 0
+        },
+        "wrongValueWrites": 0,
+        "systemErrors": 0,
+        "confusion": {
+          "ACT": {
+            "ACT": 2,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ASK": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 2,
+            "NO_OP": 0
+          },
+          "ABSTAIN": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 1,
+            "NO_OP": 0
+          },
+          "NO_OP": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 1,
+            "NO_OP": 0
+          }
+        },
+        "outcomes": {
+          "CORRECT_ACT": 2,
+          "WRONG_VALUE_ACT": 0,
+          "UNSAFE_ACT": 0,
+          "ACT_DOWNGRADED_TO_ASK": 0,
+          "MISSED_ACT": 0,
+          "CORRECT_ASK": 0,
+          "WRONG_VALUE_ASK": 0,
+          "MISSED_ASK": 2,
+          "UNNECESSARY_ASK": 0,
+          "CORRECT_NO_CHANGE": 2
+        }
+      },
+      "historical": {
+        "items": 9,
+        "actPrecision": {
+          "num": 5,
+          "den": 6,
+          "value": 0.8333333333333334
+        },
+        "coverage": {
+          "num": 5,
+          "den": 5,
+          "value": 1
+        },
+        "unsafeWriteRate": {
+          "num": 1,
+          "den": 4,
+          "value": 0.25
+        },
+        "reviewRate": {
+          "num": 0,
+          "den": 9,
+          "value": 0
+        },
+        "abstentionRate": {
+          "num": 3,
+          "den": 9,
+          "value": 0.3333333333333333
+        },
+        "noOpRate": {
+          "num": 0,
+          "den": 9,
+          "value": 0
+        },
+        "wrongValueWrites": 0,
+        "systemErrors": 0,
+        "confusion": {
+          "ACT": {
+            "ACT": 5,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ASK": {
+            "ACT": 1,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ABSTAIN": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 2,
+            "NO_OP": 0
+          },
+          "NO_OP": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 1,
+            "NO_OP": 0
+          }
+        },
+        "outcomes": {
+          "CORRECT_ACT": 5,
+          "WRONG_VALUE_ACT": 0,
+          "UNSAFE_ACT": 1,
+          "ACT_DOWNGRADED_TO_ASK": 0,
+          "MISSED_ACT": 0,
+          "CORRECT_ASK": 0,
+          "WRONG_VALUE_ASK": 0,
+          "MISSED_ASK": 0,
+          "UNNECESSARY_ASK": 0,
+          "CORRECT_NO_CHANGE": 3
+        }
+      },
+      "irrelevant_info": {
+        "items": 24,
+        "actPrecision": {
+          "num": 6,
+          "den": 10,
+          "value": 0.6
+        },
+        "coverage": {
+          "num": 6,
+          "den": 6,
+          "value": 1
+        },
+        "unsafeWriteRate": {
+          "num": 4,
+          "den": 18,
+          "value": 0.2222222222222222
+        },
+        "reviewRate": {
+          "num": 0,
+          "den": 24,
+          "value": 0
+        },
+        "abstentionRate": {
+          "num": 14,
+          "den": 24,
+          "value": 0.5833333333333334
+        },
+        "noOpRate": {
+          "num": 0,
+          "den": 24,
+          "value": 0
+        },
+        "wrongValueWrites": 0,
+        "systemErrors": 0,
+        "confusion": {
+          "ACT": {
+            "ACT": 6,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ASK": {
+            "ACT": 4,
+            "ASK": 0,
+            "ABSTAIN": 3,
+            "NO_OP": 0
+          },
+          "ABSTAIN": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 10,
+            "NO_OP": 0
+          },
+          "NO_OP": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 1,
+            "NO_OP": 0
+          }
+        },
+        "outcomes": {
+          "CORRECT_ACT": 6,
+          "WRONG_VALUE_ACT": 0,
+          "UNSAFE_ACT": 4,
+          "ACT_DOWNGRADED_TO_ASK": 0,
+          "MISSED_ACT": 0,
+          "CORRECT_ASK": 0,
+          "WRONG_VALUE_ASK": 0,
+          "MISSED_ASK": 3,
+          "UNNECESSARY_ASK": 0,
+          "CORRECT_NO_CHANGE": 11
+        }
+      },
+      "joint_approval": {
+        "items": 3,
+        "actPrecision": {
+          "num": 0,
+          "den": 2,
+          "value": 0
+        },
+        "coverage": {
+          "num": 0,
+          "den": 0,
+          "value": null
+        },
+        "unsafeWriteRate": {
+          "num": 2,
+          "den": 3,
+          "value": 0.6666666666666666
+        },
+        "reviewRate": {
+          "num": 0,
+          "den": 3,
+          "value": 0
+        },
+        "abstentionRate": {
+          "num": 1,
+          "den": 3,
+          "value": 0.3333333333333333
+        },
+        "noOpRate": {
+          "num": 0,
+          "den": 3,
+          "value": 0
+        },
+        "wrongValueWrites": 0,
+        "systemErrors": 0,
+        "confusion": {
+          "ACT": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ASK": {
+            "ACT": 2,
+            "ASK": 0,
+            "ABSTAIN": 1,
+            "NO_OP": 0
+          },
+          "ABSTAIN": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "NO_OP": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          }
+        },
+        "outcomes": {
+          "CORRECT_ACT": 0,
+          "WRONG_VALUE_ACT": 0,
+          "UNSAFE_ACT": 2,
+          "ACT_DOWNGRADED_TO_ASK": 0,
+          "MISSED_ACT": 0,
+          "CORRECT_ASK": 0,
+          "WRONG_VALUE_ASK": 0,
+          "MISSED_ASK": 1,
+          "UNNECESSARY_ASK": 0,
+          "CORRECT_NO_CHANGE": 0
+        }
+      },
+      "messy_speech": {
+        "items": 6,
+        "actPrecision": {
+          "num": 3,
+          "den": 3,
+          "value": 1
+        },
+        "coverage": {
+          "num": 3,
+          "den": 3,
+          "value": 1
+        },
+        "unsafeWriteRate": {
+          "num": 0,
+          "den": 3,
+          "value": 0
+        },
+        "reviewRate": {
+          "num": 0,
+          "den": 6,
+          "value": 0
+        },
+        "abstentionRate": {
+          "num": 3,
+          "den": 6,
+          "value": 0.5
+        },
+        "noOpRate": {
+          "num": 0,
+          "den": 6,
+          "value": 0
+        },
+        "wrongValueWrites": 0,
+        "systemErrors": 0,
+        "confusion": {
+          "ACT": {
+            "ACT": 3,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ASK": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ABSTAIN": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 2,
+            "NO_OP": 0
+          },
+          "NO_OP": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 1,
+            "NO_OP": 0
+          }
+        },
+        "outcomes": {
+          "CORRECT_ACT": 3,
+          "WRONG_VALUE_ACT": 0,
+          "UNSAFE_ACT": 0,
+          "ACT_DOWNGRADED_TO_ASK": 0,
+          "MISSED_ACT": 0,
+          "CORRECT_ASK": 0,
+          "WRONG_VALUE_ASK": 0,
+          "MISSED_ASK": 0,
+          "UNNECESSARY_ASK": 0,
+          "CORRECT_NO_CHANGE": 3
+        }
+      },
+      "mid_sentence_correction": {
+        "items": 3,
+        "actPrecision": {
+          "num": 2,
+          "den": 2,
+          "value": 1
+        },
+        "coverage": {
+          "num": 2,
+          "den": 2,
+          "value": 1
+        },
+        "unsafeWriteRate": {
+          "num": 0,
+          "den": 1,
+          "value": 0
+        },
+        "reviewRate": {
+          "num": 0,
+          "den": 3,
+          "value": 0
+        },
+        "abstentionRate": {
+          "num": 1,
+          "den": 3,
+          "value": 0.3333333333333333
+        },
+        "noOpRate": {
+          "num": 0,
+          "den": 3,
+          "value": 0
+        },
+        "wrongValueWrites": 0,
+        "systemErrors": 0,
+        "confusion": {
+          "ACT": {
+            "ACT": 2,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ASK": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ABSTAIN": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 1,
+            "NO_OP": 0
+          },
+          "NO_OP": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          }
+        },
+        "outcomes": {
+          "CORRECT_ACT": 2,
+          "WRONG_VALUE_ACT": 0,
+          "UNSAFE_ACT": 0,
+          "ACT_DOWNGRADED_TO_ASK": 0,
+          "MISSED_ACT": 0,
+          "CORRECT_ASK": 0,
+          "WRONG_VALUE_ASK": 0,
+          "MISSED_ASK": 0,
+          "UNNECESSARY_ASK": 0,
+          "CORRECT_NO_CHANGE": 1
+        }
+      },
+      "multiple_numbers": {
+        "items": 24,
+        "actPrecision": {
+          "num": 11,
+          "den": 17,
+          "value": 0.6470588235294118
+        },
+        "coverage": {
+          "num": 11,
+          "den": 11,
+          "value": 1
+        },
+        "unsafeWriteRate": {
+          "num": 6,
+          "den": 13,
+          "value": 0.46153846153846156
+        },
+        "reviewRate": {
+          "num": 0,
+          "den": 24,
+          "value": 0
+        },
+        "abstentionRate": {
+          "num": 7,
+          "den": 24,
+          "value": 0.2916666666666667
+        },
+        "noOpRate": {
+          "num": 0,
+          "den": 24,
+          "value": 0
+        },
+        "wrongValueWrites": 0,
+        "systemErrors": 0,
+        "confusion": {
+          "ACT": {
+            "ACT": 11,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ASK": {
+            "ACT": 6,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ABSTAIN": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 6,
+            "NO_OP": 0
+          },
+          "NO_OP": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 1,
+            "NO_OP": 0
+          }
+        },
+        "outcomes": {
+          "CORRECT_ACT": 11,
+          "WRONG_VALUE_ACT": 0,
+          "UNSAFE_ACT": 6,
+          "ACT_DOWNGRADED_TO_ASK": 0,
+          "MISSED_ACT": 0,
+          "CORRECT_ASK": 0,
+          "WRONG_VALUE_ASK": 0,
+          "MISSED_ASK": 0,
+          "UNNECESSARY_ASK": 0,
+          "CORRECT_NO_CHANGE": 7
+        }
+      },
+      "multiple_stakeholders": {
+        "items": 18,
+        "actPrecision": {
+          "num": 9,
+          "den": 12,
+          "value": 0.75
+        },
+        "coverage": {
+          "num": 9,
+          "den": 9,
+          "value": 1
+        },
+        "unsafeWriteRate": {
+          "num": 3,
+          "den": 9,
+          "value": 0.3333333333333333
+        },
+        "reviewRate": {
+          "num": 0,
+          "den": 18,
+          "value": 0
+        },
+        "abstentionRate": {
+          "num": 6,
+          "den": 18,
+          "value": 0.3333333333333333
+        },
+        "noOpRate": {
+          "num": 0,
+          "den": 18,
+          "value": 0
+        },
+        "wrongValueWrites": 0,
+        "systemErrors": 0,
+        "confusion": {
+          "ACT": {
+            "ACT": 9,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ASK": {
+            "ACT": 3,
+            "ASK": 0,
+            "ABSTAIN": 1,
+            "NO_OP": 0
+          },
+          "ABSTAIN": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 5,
+            "NO_OP": 0
+          },
+          "NO_OP": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          }
+        },
+        "outcomes": {
+          "CORRECT_ACT": 9,
+          "WRONG_VALUE_ACT": 0,
+          "UNSAFE_ACT": 3,
+          "ACT_DOWNGRADED_TO_ASK": 0,
+          "MISSED_ACT": 0,
+          "CORRECT_ASK": 0,
+          "WRONG_VALUE_ASK": 0,
+          "MISSED_ASK": 1,
+          "UNNECESSARY_ASK": 0,
+          "CORRECT_NO_CHANGE": 5
+        }
+      },
+      "negation": {
+        "items": 15,
+        "actPrecision": {
+          "num": 3,
+          "den": 6,
+          "value": 0.5
+        },
+        "coverage": {
+          "num": 3,
+          "den": 3,
+          "value": 1
+        },
+        "unsafeWriteRate": {
+          "num": 3,
+          "den": 12,
+          "value": 0.25
+        },
+        "reviewRate": {
+          "num": 0,
+          "den": 15,
+          "value": 0
+        },
+        "abstentionRate": {
+          "num": 9,
+          "den": 15,
+          "value": 0.6
+        },
+        "noOpRate": {
+          "num": 0,
+          "den": 15,
+          "value": 0
+        },
+        "wrongValueWrites": 0,
+        "systemErrors": 0,
+        "confusion": {
+          "ACT": {
+            "ACT": 3,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ASK": {
+            "ACT": 3,
+            "ASK": 0,
+            "ABSTAIN": 1,
+            "NO_OP": 0
+          },
+          "ABSTAIN": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 5,
+            "NO_OP": 0
+          },
+          "NO_OP": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 3,
+            "NO_OP": 0
+          }
+        },
+        "outcomes": {
+          "CORRECT_ACT": 3,
+          "WRONG_VALUE_ACT": 0,
+          "UNSAFE_ACT": 3,
+          "ACT_DOWNGRADED_TO_ASK": 0,
+          "MISSED_ACT": 0,
+          "CORRECT_ASK": 0,
+          "WRONG_VALUE_ASK": 0,
+          "MISSED_ASK": 1,
+          "UNNECESSARY_ASK": 0,
+          "CORRECT_NO_CHANGE": 8
+        }
+      },
+      "no_update": {
+        "items": 3,
+        "actPrecision": {
+          "num": 0,
+          "den": 0,
+          "value": null
+        },
+        "coverage": {
+          "num": 0,
+          "den": 0,
+          "value": null
+        },
+        "unsafeWriteRate": {
+          "num": 0,
+          "den": 3,
+          "value": 0
+        },
+        "reviewRate": {
+          "num": 0,
+          "den": 3,
+          "value": 0
+        },
+        "abstentionRate": {
+          "num": 3,
+          "den": 3,
+          "value": 1
+        },
+        "noOpRate": {
+          "num": 0,
+          "den": 3,
+          "value": 0
+        },
+        "wrongValueWrites": 0,
+        "systemErrors": 0,
+        "confusion": {
+          "ACT": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ASK": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ABSTAIN": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 3,
+            "NO_OP": 0
+          },
+          "NO_OP": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          }
+        },
+        "outcomes": {
+          "CORRECT_ACT": 0,
+          "WRONG_VALUE_ACT": 0,
+          "UNSAFE_ACT": 0,
+          "ACT_DOWNGRADED_TO_ASK": 0,
+          "MISSED_ACT": 0,
+          "CORRECT_ASK": 0,
+          "WRONG_VALUE_ASK": 0,
+          "MISSED_ASK": 0,
+          "UNNECESSARY_ASK": 0,
+          "CORRECT_NO_CHANGE": 3
+        }
+      },
+      "pronouns": {
+        "items": 24,
+        "actPrecision": {
+          "num": 9,
+          "den": 13,
+          "value": 0.6923076923076923
+        },
+        "coverage": {
+          "num": 9,
+          "den": 9,
+          "value": 1
+        },
+        "unsafeWriteRate": {
+          "num": 4,
+          "den": 15,
+          "value": 0.26666666666666666
+        },
+        "reviewRate": {
+          "num": 0,
+          "den": 24,
+          "value": 0
+        },
+        "abstentionRate": {
+          "num": 11,
+          "den": 24,
+          "value": 0.4583333333333333
+        },
+        "noOpRate": {
+          "num": 0,
+          "den": 24,
+          "value": 0
+        },
+        "wrongValueWrites": 0,
+        "systemErrors": 0,
+        "confusion": {
+          "ACT": {
+            "ACT": 9,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ASK": {
+            "ACT": 4,
+            "ASK": 0,
+            "ABSTAIN": 3,
+            "NO_OP": 0
+          },
+          "ABSTAIN": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 6,
+            "NO_OP": 0
+          },
+          "NO_OP": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 2,
+            "NO_OP": 0
+          }
+        },
+        "outcomes": {
+          "CORRECT_ACT": 9,
+          "WRONG_VALUE_ACT": 0,
+          "UNSAFE_ACT": 4,
+          "ACT_DOWNGRADED_TO_ASK": 0,
+          "MISSED_ACT": 0,
+          "CORRECT_ASK": 0,
+          "WRONG_VALUE_ASK": 0,
+          "MISSED_ASK": 3,
+          "UNNECESSARY_ASK": 0,
+          "CORRECT_NO_CHANGE": 8
+        }
+      },
+      "supersession": {
+        "items": 18,
+        "actPrecision": {
+          "num": 6,
+          "den": 11,
+          "value": 0.5454545454545454
+        },
+        "coverage": {
+          "num": 6,
+          "den": 6,
+          "value": 1
+        },
+        "unsafeWriteRate": {
+          "num": 5,
+          "den": 12,
+          "value": 0.4166666666666667
+        },
+        "reviewRate": {
+          "num": 0,
+          "den": 18,
+          "value": 0
+        },
+        "abstentionRate": {
+          "num": 7,
+          "den": 18,
+          "value": 0.3888888888888889
+        },
+        "noOpRate": {
+          "num": 0,
+          "den": 18,
+          "value": 0
+        },
+        "wrongValueWrites": 0,
+        "systemErrors": 0,
+        "confusion": {
+          "ACT": {
+            "ACT": 6,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ASK": {
+            "ACT": 5,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ABSTAIN": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 5,
+            "NO_OP": 0
+          },
+          "NO_OP": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 2,
+            "NO_OP": 0
+          }
+        },
+        "outcomes": {
+          "CORRECT_ACT": 6,
+          "WRONG_VALUE_ACT": 0,
+          "UNSAFE_ACT": 5,
+          "ACT_DOWNGRADED_TO_ASK": 0,
+          "MISSED_ACT": 0,
+          "CORRECT_ASK": 0,
+          "WRONG_VALUE_ASK": 0,
+          "MISSED_ASK": 0,
+          "UNNECESSARY_ASK": 0,
+          "CORRECT_NO_CHANGE": 7
+        }
+      },
+      "tentative": {
+        "items": 15,
+        "actPrecision": {
+          "num": 2,
+          "den": 6,
+          "value": 0.3333333333333333
+        },
+        "coverage": {
+          "num": 2,
+          "den": 2,
+          "value": 1
+        },
+        "unsafeWriteRate": {
+          "num": 4,
+          "den": 13,
+          "value": 0.3076923076923077
+        },
+        "reviewRate": {
+          "num": 0,
+          "den": 15,
+          "value": 0
+        },
+        "abstentionRate": {
+          "num": 9,
+          "den": 15,
+          "value": 0.6
+        },
+        "noOpRate": {
+          "num": 0,
+          "den": 15,
+          "value": 0
+        },
+        "wrongValueWrites": 0,
+        "systemErrors": 0,
+        "confusion": {
+          "ACT": {
+            "ACT": 2,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ASK": {
+            "ACT": 4,
+            "ASK": 0,
+            "ABSTAIN": 7,
+            "NO_OP": 0
+          },
+          "ABSTAIN": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 2,
+            "NO_OP": 0
+          },
+          "NO_OP": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          }
+        },
+        "outcomes": {
+          "CORRECT_ACT": 2,
+          "WRONG_VALUE_ACT": 0,
+          "UNSAFE_ACT": 4,
+          "ACT_DOWNGRADED_TO_ASK": 0,
+          "MISSED_ACT": 0,
+          "CORRECT_ASK": 0,
+          "WRONG_VALUE_ASK": 0,
+          "MISSED_ASK": 7,
+          "UNNECESSARY_ASK": 0,
+          "CORRECT_NO_CHANGE": 2
+        }
+      },
+      "unconfirmed_rep_statement": {
+        "items": 6,
+        "actPrecision": {
+          "num": 1,
+          "den": 1,
+          "value": 1
+        },
+        "coverage": {
+          "num": 1,
+          "den": 1,
+          "value": 1
+        },
+        "unsafeWriteRate": {
+          "num": 0,
+          "den": 5,
+          "value": 0
+        },
+        "reviewRate": {
+          "num": 0,
+          "den": 6,
+          "value": 0
+        },
+        "abstentionRate": {
+          "num": 5,
+          "den": 6,
+          "value": 0.8333333333333334
+        },
+        "noOpRate": {
+          "num": 0,
+          "den": 6,
+          "value": 0
+        },
+        "wrongValueWrites": 0,
+        "systemErrors": 0,
+        "confusion": {
+          "ACT": {
+            "ACT": 1,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ASK": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 2,
+            "NO_OP": 0
+          },
+          "ABSTAIN": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 3,
+            "NO_OP": 0
+          },
+          "NO_OP": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          }
+        },
+        "outcomes": {
+          "CORRECT_ACT": 1,
+          "WRONG_VALUE_ACT": 0,
+          "UNSAFE_ACT": 0,
+          "ACT_DOWNGRADED_TO_ASK": 0,
+          "MISSED_ACT": 0,
+          "CORRECT_ASK": 0,
+          "WRONG_VALUE_ASK": 0,
+          "MISSED_ASK": 2,
+          "UNNECESSARY_ASK": 0,
+          "CORRECT_NO_CHANGE": 3
+        }
+      }
+    },
+    "byGoldStatus": {
+      "CURRENT": {
+        "items": 69,
+        "actPrecision": {
+          "num": 31,
+          "den": 46,
+          "value": 0.6739130434782609
+        },
+        "coverage": {
+          "num": 31,
+          "den": 31,
+          "value": 1
+        },
+        "unsafeWriteRate": {
+          "num": 15,
+          "den": 38,
+          "value": 0.39473684210526316
+        },
+        "reviewRate": {
+          "num": 0,
+          "den": 69,
+          "value": 0
+        },
+        "abstentionRate": {
+          "num": 23,
+          "den": 69,
+          "value": 0.3333333333333333
+        },
+        "noOpRate": {
+          "num": 0,
+          "den": 69,
+          "value": 0
+        },
+        "wrongValueWrites": 0,
+        "systemErrors": 0,
+        "confusion": {
+          "ACT": {
+            "ACT": 31,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ASK": {
+            "ACT": 15,
+            "ASK": 0,
+            "ABSTAIN": 9,
+            "NO_OP": 0
+          },
+          "ABSTAIN": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 6,
+            "NO_OP": 0
+          },
+          "NO_OP": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 8,
+            "NO_OP": 0
+          }
+        },
+        "outcomes": {
+          "CORRECT_ACT": 31,
+          "WRONG_VALUE_ACT": 0,
+          "UNSAFE_ACT": 15,
+          "ACT_DOWNGRADED_TO_ASK": 0,
+          "MISSED_ACT": 0,
+          "CORRECT_ASK": 0,
+          "WRONG_VALUE_ASK": 0,
+          "MISSED_ASK": 9,
+          "UNNECESSARY_ASK": 0,
+          "CORRECT_NO_CHANGE": 14
+        }
+      },
+      "HISTORICAL": {
+        "items": 1,
+        "actPrecision": {
+          "num": 0,
+          "den": 0,
+          "value": null
+        },
+        "coverage": {
+          "num": 0,
+          "den": 0,
+          "value": null
+        },
+        "unsafeWriteRate": {
+          "num": 0,
+          "den": 1,
+          "value": 0
+        },
+        "reviewRate": {
+          "num": 0,
+          "den": 1,
+          "value": 0
+        },
+        "abstentionRate": {
+          "num": 1,
+          "den": 1,
+          "value": 1
+        },
+        "noOpRate": {
+          "num": 0,
+          "den": 1,
+          "value": 0
+        },
+        "wrongValueWrites": 0,
+        "systemErrors": 0,
+        "confusion": {
+          "ACT": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ASK": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ABSTAIN": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 1,
+            "NO_OP": 0
+          },
+          "NO_OP": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          }
+        },
+        "outcomes": {
+          "CORRECT_ACT": 0,
+          "WRONG_VALUE_ACT": 0,
+          "UNSAFE_ACT": 0,
+          "ACT_DOWNGRADED_TO_ASK": 0,
+          "MISSED_ACT": 0,
+          "CORRECT_ASK": 0,
+          "WRONG_VALUE_ASK": 0,
+          "MISSED_ASK": 0,
+          "UNNECESSARY_ASK": 0,
+          "CORRECT_NO_CHANGE": 1
+        }
+      },
+      "NEGATED": {
+        "items": 1,
+        "actPrecision": {
+          "num": 0,
+          "den": 0,
+          "value": null
+        },
+        "coverage": {
+          "num": 0,
+          "den": 0,
+          "value": null
+        },
+        "unsafeWriteRate": {
+          "num": 0,
+          "den": 1,
+          "value": 0
+        },
+        "reviewRate": {
+          "num": 0,
+          "den": 1,
+          "value": 0
+        },
+        "abstentionRate": {
+          "num": 1,
+          "den": 1,
+          "value": 1
+        },
+        "noOpRate": {
+          "num": 0,
+          "den": 1,
+          "value": 0
+        },
+        "wrongValueWrites": 0,
+        "systemErrors": 0,
+        "confusion": {
+          "ACT": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ASK": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ABSTAIN": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 1,
+            "NO_OP": 0
+          },
+          "NO_OP": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          }
+        },
+        "outcomes": {
+          "CORRECT_ACT": 0,
+          "WRONG_VALUE_ACT": 0,
+          "UNSAFE_ACT": 0,
+          "ACT_DOWNGRADED_TO_ASK": 0,
+          "MISSED_ACT": 0,
+          "CORRECT_ASK": 0,
+          "WRONG_VALUE_ASK": 0,
+          "MISSED_ASK": 0,
+          "UNNECESSARY_ASK": 0,
+          "CORRECT_NO_CHANGE": 1
+        }
+      },
+      "none": {
+        "items": 19,
+        "actPrecision": {
+          "num": 0,
+          "den": 0,
+          "value": null
+        },
+        "coverage": {
+          "num": 0,
+          "den": 0,
+          "value": null
+        },
+        "unsafeWriteRate": {
+          "num": 0,
+          "den": 19,
+          "value": 0
+        },
+        "reviewRate": {
+          "num": 0,
+          "den": 19,
+          "value": 0
+        },
+        "abstentionRate": {
+          "num": 19,
+          "den": 19,
+          "value": 1
+        },
+        "noOpRate": {
+          "num": 0,
+          "den": 19,
+          "value": 0
+        },
+        "wrongValueWrites": 0,
+        "systemErrors": 0,
+        "confusion": {
+          "ACT": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ASK": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ABSTAIN": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 19,
+            "NO_OP": 0
+          },
+          "NO_OP": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          }
+        },
+        "outcomes": {
+          "CORRECT_ACT": 0,
+          "WRONG_VALUE_ACT": 0,
+          "UNSAFE_ACT": 0,
+          "ACT_DOWNGRADED_TO_ASK": 0,
+          "MISSED_ACT": 0,
+          "CORRECT_ASK": 0,
+          "WRONG_VALUE_ASK": 0,
+          "MISSED_ASK": 0,
+          "UNNECESSARY_ASK": 0,
+          "CORRECT_NO_CHANGE": 19
+        }
+      }
+    },
+    "byGoldCertainty": {
+      "CONDITIONAL": {
+        "items": 4,
+        "actPrecision": {
+          "num": 0,
+          "den": 1,
+          "value": 0
+        },
+        "coverage": {
+          "num": 0,
+          "den": 0,
+          "value": null
+        },
+        "unsafeWriteRate": {
+          "num": 1,
+          "den": 4,
+          "value": 0.25
+        },
+        "reviewRate": {
+          "num": 0,
+          "den": 4,
+          "value": 0
+        },
+        "abstentionRate": {
+          "num": 3,
+          "den": 4,
+          "value": 0.75
+        },
+        "noOpRate": {
+          "num": 0,
+          "den": 4,
+          "value": 0
+        },
+        "wrongValueWrites": 0,
+        "systemErrors": 0,
+        "confusion": {
+          "ACT": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ASK": {
+            "ACT": 1,
+            "ASK": 0,
+            "ABSTAIN": 3,
+            "NO_OP": 0
+          },
+          "ABSTAIN": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "NO_OP": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          }
+        },
+        "outcomes": {
+          "CORRECT_ACT": 0,
+          "WRONG_VALUE_ACT": 0,
+          "UNSAFE_ACT": 1,
+          "ACT_DOWNGRADED_TO_ASK": 0,
+          "MISSED_ACT": 0,
+          "CORRECT_ASK": 0,
+          "WRONG_VALUE_ASK": 0,
+          "MISSED_ASK": 3,
+          "UNNECESSARY_ASK": 0,
+          "CORRECT_NO_CHANGE": 0
+        }
+      },
+      "EXPLICIT": {
+        "items": 60,
+        "actPrecision": {
+          "num": 31,
+          "den": 42,
+          "value": 0.7380952380952381
+        },
+        "coverage": {
+          "num": 31,
+          "den": 31,
+          "value": 1
+        },
+        "unsafeWriteRate": {
+          "num": 11,
+          "den": 29,
+          "value": 0.3793103448275862
+        },
+        "reviewRate": {
+          "num": 0,
+          "den": 60,
+          "value": 0
+        },
+        "abstentionRate": {
+          "num": 18,
+          "den": 60,
+          "value": 0.3
+        },
+        "noOpRate": {
+          "num": 0,
+          "den": 60,
+          "value": 0
+        },
+        "wrongValueWrites": 0,
+        "systemErrors": 0,
+        "confusion": {
+          "ACT": {
+            "ACT": 31,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ASK": {
+            "ACT": 11,
+            "ASK": 0,
+            "ABSTAIN": 4,
+            "NO_OP": 0
+          },
+          "ABSTAIN": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 6,
+            "NO_OP": 0
+          },
+          "NO_OP": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 8,
+            "NO_OP": 0
+          }
+        },
+        "outcomes": {
+          "CORRECT_ACT": 31,
+          "WRONG_VALUE_ACT": 0,
+          "UNSAFE_ACT": 11,
+          "ACT_DOWNGRADED_TO_ASK": 0,
+          "MISSED_ACT": 0,
+          "CORRECT_ASK": 0,
+          "WRONG_VALUE_ASK": 0,
+          "MISSED_ASK": 4,
+          "UNNECESSARY_ASK": 0,
+          "CORRECT_NO_CHANGE": 14
+        }
+      },
+      "none": {
+        "items": 19,
+        "actPrecision": {
+          "num": 0,
+          "den": 0,
+          "value": null
+        },
+        "coverage": {
+          "num": 0,
+          "den": 0,
+          "value": null
+        },
+        "unsafeWriteRate": {
+          "num": 0,
+          "den": 19,
+          "value": 0
+        },
+        "reviewRate": {
+          "num": 0,
+          "den": 19,
+          "value": 0
+        },
+        "abstentionRate": {
+          "num": 19,
+          "den": 19,
+          "value": 1
+        },
+        "noOpRate": {
+          "num": 0,
+          "den": 19,
+          "value": 0
+        },
+        "wrongValueWrites": 0,
+        "systemErrors": 0,
+        "confusion": {
+          "ACT": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ASK": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ABSTAIN": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 19,
+            "NO_OP": 0
+          },
+          "NO_OP": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          }
+        },
+        "outcomes": {
+          "CORRECT_ACT": 0,
+          "WRONG_VALUE_ACT": 0,
+          "UNSAFE_ACT": 0,
+          "ACT_DOWNGRADED_TO_ASK": 0,
+          "MISSED_ACT": 0,
+          "CORRECT_ASK": 0,
+          "WRONG_VALUE_ASK": 0,
+          "MISSED_ASK": 0,
+          "UNNECESSARY_ASK": 0,
+          "CORRECT_NO_CHANGE": 19
+        }
+      },
+      "TENTATIVE": {
+        "items": 7,
+        "actPrecision": {
+          "num": 0,
+          "den": 3,
+          "value": 0
+        },
+        "coverage": {
+          "num": 0,
+          "den": 0,
+          "value": null
+        },
+        "unsafeWriteRate": {
+          "num": 3,
+          "den": 7,
+          "value": 0.42857142857142855
+        },
+        "reviewRate": {
+          "num": 0,
+          "den": 7,
+          "value": 0
+        },
+        "abstentionRate": {
+          "num": 4,
+          "den": 7,
+          "value": 0.5714285714285714
+        },
+        "noOpRate": {
+          "num": 0,
+          "den": 7,
+          "value": 0
+        },
+        "wrongValueWrites": 0,
+        "systemErrors": 0,
+        "confusion": {
+          "ACT": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ASK": {
+            "ACT": 3,
+            "ASK": 0,
+            "ABSTAIN": 2,
+            "NO_OP": 0
+          },
+          "ABSTAIN": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 2,
+            "NO_OP": 0
+          },
+          "NO_OP": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          }
+        },
+        "outcomes": {
+          "CORRECT_ACT": 0,
+          "WRONG_VALUE_ACT": 0,
+          "UNSAFE_ACT": 3,
+          "ACT_DOWNGRADED_TO_ASK": 0,
+          "MISSED_ACT": 0,
+          "CORRECT_ASK": 0,
+          "WRONG_VALUE_ASK": 0,
+          "MISSED_ASK": 2,
+          "UNNECESSARY_ASK": 0,
+          "CORRECT_NO_CHANGE": 2
+        }
+      }
+    }
+  }
+}
