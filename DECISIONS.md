@@ -44,3 +44,21 @@ Each entry records what was decided, why, and the alternatives considered. Newes
 
 ### D12. Illustrative cases live outside the benchmark (2026-11-13)
 **Why.** The six schema-illustration cases were drafted by Claude (`source: "generated"`, `labelStatus: "draft"`). They live in `data/benchmark/examples/` with `split: "example"`, so they can't be mistaken for dev/test data.
+
+### D13. decisionMaker: INDIRECT claims don't compete with a DIRECT claim (2026-11-14, owner-directed, policy default-v2)
+**Decision.** In field reconciliation for `decisionMaker`, if any surviving claim is DIRECT (it establishes final authority), INDIRECT claims (evaluation lead, "run it by", technical/security approver) become ABSTAIN with `OUTRANKED_BY_DIRECT` and don't trigger a conflict. Two different DIRECT claims still conflict → ASK. Joint approval is one multi-person claim.
+**Why.** Guide v1 contradicted itself: §2.2/§8 said "Sarah owns technical approval, James signs" → ACT James, while §4 step 4 turned any two different live values into ASK. The INDIRECT claim describes a *different relationship* (involvement), not a rival answer to "who has final authority". "Surviving" includes NO_OP, so a reconfirmed CRM decision maker isn't displaced by an evaluation lead.
+**Scope.** decisionMaker only. For budget and nextMeeting, an INDIRECT claim is still a candidate value for the *same* quantity (for example a derived component sum vs a stated total), so different values genuinely compete.
+**Alternative rejected.** Dropping all INDIRECT claims whenever any other claim exists. Then two INDIRECT people with no DIRECT claim would resolve arbitrarily instead of ASKing.
+
+### D14. Unaffirmed rep facts are NONE; unaccepted rep-proposed meetings stay INDIRECT (2026-11-14, owner-directed, guide v1.1 §3.4)
+**Why.** A rep's factual claim about the customer's state ("you have about 200K") that the customer deflects gives no customer-derived evidence for the field, so ABSTAIN, with the value kept as a tempting wrong candidate. A proposed future coordination action (a meeting the rep books) is a plausible pending action a human may want to confirm, so ASK. No policy code change was needed: this is a semantic labeling rule, applied through sufficiency.
+
+### D15. Prompts aligned to LABELING_GUIDE v1.1 before any dev run (2026-11-14, owner-directed)
+**What.** The Grounded classifier prompt (grounded v2) and the self-assessing baseline prompt (baseline-self-assess v2) were updated to encode guide v1.1:
+- decisionMaker hierarchy: lesser roles are not final authority, and don't make an identified final signer ambiguous; two final authorities without joint approval need review.
+- An unaffirmed seller factual assertion does not establish the fact.
+- An unaccepted seller-proposed meeting is a plausible pending item.
+The naive baseline is unchanged (v1): it keeps only the shared field definitions.
+**Why.** Specification alignment, not tuning. The changes were made **before any dev evaluation run existed** (no `data/runs/dev/`) and without consulting any model output. Without them, both model-facing systems would be scored against rules (guide v1.1) they had never been told.
+**Fairness.** Both systems get the same semantics in their own architecture's terms. The classifier gets them as status/certainty/sufficiency labeling guidance and is still never told an action. The self-assessing baseline gets them as plain-language AUTO/REVIEW guidance, with no taxonomy, policy table, reason codes, or decomposition.

@@ -57,7 +57,12 @@ ${FIELD_DEFINITIONS}
 For each field, return the updated value with a short quote from the transcript that supports it, and decide:
 - "AUTO": safe to write without human review. The customer clearly states or confirms this value as the current fact (not hedged, not conditional on something that has not happened, not past or superseded information), it matches the field definition exactly, and it does not replace a different value already in the CRM.
 - "REVIEW": a plausible, useful update that a human should confirm before it is written.
-Return null for a field if the conversation gives no reason to update it.`;
+Return null for a field if the conversation gives no reason to update it.
+
+Keep in mind:
+- Final decision authority (who gives final sign-off or signs the contract) is different from leading the evaluation, making a recommendation, owning the budget, or giving technical, security, or legal approval. If someone is clearly identified as the final signer/approver, other stakeholders' lesser roles don't make the decision maker ambiguous. If two different people are each described as the final authority and the customer does not say both must sign, that needs review.
+- Something the salesperson says about the customer's situation is not customer information unless the customer affirms or supports it. Don't propose a value that only the salesperson asserted.
+- A meeting the salesperson proposed that the customer hasn't accepted yet may still be a plausible pending item, but it needs review rather than an automatic write.`;
 
 // ───────── Shared runner ─────────
 
@@ -65,13 +70,14 @@ type Proposal = { value: unknown; evidenceQuote: string; decision?: "AUTO" | "RE
 
 function makeBaseline(
   name: string,
+  version: string,
   system: string,
   schema: z.ZodType<Record<CRMField, Proposal>>,
   toDecision: (p: NonNullable<Proposal>) => { action: "ACT" | "ASK"; reason: "BASELINE_PROPOSED" | "BASELINE_AUTO" | "BASELINE_REVIEW" },
 ): System {
   return {
     name,
-    version: "1",
+    version,
     promptHashes: { main: promptHash(system, schema) },
     async run(input, llm) {
       const user = `Current CRM record:\n${renderCRM(input.crm)}\n\n${renderTranscript(input.transcript)}`;
@@ -91,11 +97,13 @@ function makeBaseline(
   };
 }
 
-export const baselineNaive = makeBaseline("baseline-naive", NAIVE_SYSTEM_PROMPT, NaiveOutput as never, () => ({
+// v1: unchanged. Gets the shared field definitions only; no safety rules (DECISIONS.md D15).
+export const baselineNaive = makeBaseline("baseline-naive", "1", NAIVE_SYSTEM_PROMPT, NaiveOutput as never, () => ({
   action: "ACT",
   reason: "BASELINE_PROPOSED",
 }));
 
-export const baselineSelfAssess = makeBaseline("baseline-self-assess", SELF_ASSESS_SYSTEM_PROMPT, SelfAssessOutput as never, (p) =>
+// v2 (2026-11-14): high-level semantics aligned to LABELING_GUIDE v1.1 before any dev run (DECISIONS.md D15).
+export const baselineSelfAssess = makeBaseline("baseline-self-assess", "2", SELF_ASSESS_SYSTEM_PROMPT, SelfAssessOutput as never, (p) =>
   p.decision === "AUTO" ? { action: "ACT", reason: "BASELINE_AUTO" } : { action: "ASK", reason: "BASELINE_REVIEW" },
 );

@@ -25,7 +25,7 @@ import {
 import { valuesEqual } from "./values";
 
 /** Recorded with every run. Bump when any rule changes. */
-export const POLICY_CONFIG = "default-v1";
+export const POLICY_CONFIG = "default-v2";
 
 export type ClaimPolicyInput = {
   claim: CandidateClaim;
@@ -92,7 +92,12 @@ function uniq<T>(xs: T[]): T[] {
 
 /**
  * Combine per-claim decisions for ONE field into the field decision.
- * - Different values among ACT/ASK claims → conflict: ACT downgrades to ASK.
+ * - decisionMaker only: if any surviving claim has DIRECT sufficiency (it establishes final
+ *   authority), INDIRECT claims (involvement short of final authority) are signals, not competing
+ *   values. They become ABSTAIN (OUTRANKED_BY_DIRECT) and stay in the trace (LABELING_GUIDE §4 step 4).
+ * - Different values among the remaining ACT/ASK claims → conflict: ACT downgrades to ASK.
+ *   For decisionMaker this means two different DIRECT claims conflict; joint approval is one claim
+ *   listing every required signer, so it never conflicts with itself.
  * - Field action priority: ACT > ASK > NO_OP > ABSTAIN.
  * - ASK value = the ASK claim whose evidence appears latest in the transcript.
  */
@@ -107,9 +112,19 @@ export function reconcileField(
     return { decision: { action: "ABSTAIN", value: null, reasons: ["NO_CANDIDATE"], claimIds }, claimDecisions: [] };
   }
 
-  const live = own.filter((r) => r.decision.action === "ACT" || r.decision.action === "ASK");
-  const conflict = live.some((a) => live.some((b) => !valuesEqual(field, a.claim.value as never, b.claim.value as never)));
   const decisions = new Map(own.map((r) => [r.claim.id, r.decision]));
+  const surviving = (r: ClaimRecord) => r.decision.action !== "ABSTAIN"; // passed rules 1–4 (incl. NO_OP)
+
+  if (field === "decisionMaker" && own.some((r) => surviving(r) && r.classification?.sufficiency === "DIRECT")) {
+    for (const r of own) {
+      if (surviving(r) && r.classification?.sufficiency === "INDIRECT") {
+        decisions.set(r.claim.id, { ...r.decision, action: "ABSTAIN", reasons: ["OUTRANKED_BY_DIRECT"] });
+      }
+    }
+  }
+
+  const live = own.filter((r) => ["ACT", "ASK"].includes(decisions.get(r.claim.id)!.action));
+  const conflict = live.some((a) => live.some((b) => !valuesEqual(field, a.claim.value as never, b.claim.value as never)));
   if (conflict) {
     for (const r of live) {
       const d = decisions.get(r.claim.id)!;

@@ -67,7 +67,8 @@ Per claim, evaluated in order:
 | 7 | Otherwise | ACT | `SUPPORTED` |
 
 Per field (reconciliation):
-- If two or more ACT/ASK claims have different values, the ACT ones become ASK (`CONFLICTING_CANDIDATES`).
+- `decisionMaker` only: if any surviving claim (ACT, ASK or NO_OP) has `DIRECT` sufficiency, `INDIRECT` claims are signals, not competing values. They become ABSTAIN (`OUTRANKED_BY_DIRECT`) and stay in the trace.
+- If two or more remaining ACT/ASK claims have different values, the ACT ones become ASK (`CONFLICTING_CANDIDATES`). For `decisionMaker` this means two different DIRECT claims conflict. Joint approval is one claim listing all signers.
 - Field action: ACT if any claim ACTs; else ASK, using the latest-evidenced ASK value; else NO_OP; else ABSTAIN (`NO_CANDIDATE` if there were no claims at all).
 - The claims behind an ABSTAIN, including negated and historical values with their evidence, are kept in the output trace.
 

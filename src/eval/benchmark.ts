@@ -115,7 +115,7 @@ export function loadSplit(split: Split): LoadedSplit {
   return out;
 }
 
-type FrozenManifest = { frozenAt: string; splits: Partial<Record<Split, Record<string, string>>> };
+type FrozenManifest = { frozenAt: Partial<Record<Split, string>>; splits: Partial<Record<Split, Record<string, string>>> };
 
 /** Compare current files against data/benchmark/FROZEN.json, if present. */
 export function checkFrozen(split: Split, files: LoadedSplit["files"]): { frozen: boolean; problems: string[] } {

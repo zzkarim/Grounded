@@ -26,7 +26,8 @@ import { promptHash } from "@/llm/client";
 import { errorOutput, FIELD_DEFINITIONS } from "./shared";
 import type { System } from "./types";
 
-export const GROUNDED_VERSION = "1";
+/** v2 (2026-11-14): classifier prompt aligned to LABELING_GUIDE v1.1 before any dev run (DECISIONS.md D15). */
+export const GROUNDED_VERSION = "2";
 
 // ───────── Call 1: extraction ─────────
 
@@ -89,7 +90,15 @@ sufficiency (does the evidence establish the field relationship, taken at face v
 - NONE: does not support this value for this field (e.g. a price is not a budget; a deadline is not a meeting).
 Sufficiency is about the field relationship only. An explicit statement can still be INDIRECT or NONE.
 
-Only customer-side speakers can establish a value. A seller statement counts only if the customer clearly affirms it; backchannels or deflections are not affirmation.
+decisionMaker roles:
+- Leading or running the evaluation, making a recommendation, owning the budget, being someone the speaker must "run it by", or giving technical, security, or legal approval is not final purchase/sign-off authority. Such a person is INDIRECT, even when stated explicitly.
+- Label each person by their own role. A person with a lesser role stays INDIRECT; do not upgrade them to DIRECT, and do not downgrade someone who is explicitly the final signer/approver because other stakeholders are involved.
+- DIRECT means the person is explicitly established as having final purchase/sign-off authority. If two different people are each stated to have final authority, label both DIRECT. If the customer says several people must all sign (joint approval), that is one candidate listing all of them.
+
+Speakers:
+- Only customer-side speakers can establish a value. A seller statement counts only if the customer clearly affirms it; backchannels or deflections are not affirmation.
+- A factual assertion made only by the seller about the customer's current state (for example a budget figure or who signs), which the customer does not affirm or support (they deflect, change the subject, or say nothing that supports it), does not establish the fact: sufficiency NONE, certainty TENTATIVE.
+- A future meeting proposed by the seller that the customer neither accepts nor rejects is a plausible pending coordination action, not an unsupported fact: certainty TENTATIVE, sufficiency INDIRECT.
 
 Return exactly one classification per candidate id, with a one-sentence explanation.`;
 

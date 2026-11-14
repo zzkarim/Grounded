@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { groundEvidence } from "@/core/grounding";
-import { decideClaim } from "@/core/policy";
+import { decideCase, decideClaim } from "@/core/policy";
 import { BenchmarkCase, CandidateClaim, CRM_FIELDS } from "@/core/schemas";
 import { checkCase, loadSplit } from "@/eval/benchmark";
 
@@ -38,6 +38,35 @@ describe("illustrative example cases", () => {
         expect(d.action, `${c.id}.${field}`).toBe(g.action);
       }
     }
+  });
+});
+
+// Owner-requested confirmation (guide v1.1 §4 step 4): with the real transcripts, an evaluation lead /
+// technical approver (INDIRECT) next to the contract signer (gold DIRECT claim) still yields the gold ACT.
+// The INDIRECT claim is built from a quote in the case transcript; nothing case-specific is in the policy.
+describe("mixed-stakeholder cases resolve to the DIRECT signer", () => {
+  const all = [...examples.cases, ...loadSplit("dev").cases];
+  const scenarios: [string, string, string, string][] = [
+    ["dm-ex-01", "t2", "Sarah Chen's leading the evaluation.", "Sarah Chen"],
+    ["dev-gen-014", "t2", "Anil Gupta owns the technical approval", "Anil Gupta"],
+    ["dev-gen-021", "t2", "Sarah's leading the evaluation", "Sarah"],
+  ];
+  it.each(scenarios)("%s", (id, turnId, quote, indirectName) => {
+    const c = all.find((x) => x.id === id)!;
+    const g = c.expected.decisionMaker;
+    const speakerId = c.transcript.turns.find((t) => t.id === turnId)!.speakerId;
+    const direct = { id: "direct", field: "decisionMaker", value: g.value, evidence: g.evidence } as CandidateClaim;
+    const indirect = { id: "indirect", field: "decisionMaker", value: { people: [{ name: indirectName, role: null }] }, evidence: [{ turnId, speakerId, quote }] } as CandidateClaim;
+    const { fields } = decideCase(
+      [
+        { claim: indirect, classification: { claimId: "indirect", status: "CURRENT", certainty: "EXPLICIT", sufficiency: "INDIRECT", explanation: "" }, grounding: groundEvidence(indirect.evidence, c.transcript) },
+        { claim: direct, classification: { claimId: "direct", status: g.status!, certainty: g.certainty!, sufficiency: g.sufficiency!, explanation: "" }, grounding: groundEvidence(direct.evidence, c.transcript) },
+      ],
+      c.crm,
+      c.transcript,
+    );
+    expect(g.action).toBe("ACT");
+    expect(fields.decisionMaker).toMatchObject({ action: "ACT", value: g.value });
   });
 });
 

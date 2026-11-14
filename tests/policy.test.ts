@@ -236,6 +236,107 @@ describe("field reconciliation", () => {
     expect(fields.budget).toMatchObject({ action: "ASK", value: usd(75000) });
   });
 
+  describe("decisionMaker: INDIRECT claims don't compete with a DIRECT final-authority claim (guide v1.1 §4 step 4)", () => {
+    const dt = transcript([
+      ["cust", "Sarah is leading the evaluation."],
+      ["cust", "James signs the contract."],
+      ["cust", "Actually, Priya has final sign-off on this."],
+      ["cust", "I'd also run it by Omar."],
+    ]);
+    const runDM = (inputs: [CandidateClaim, SemanticClassification][], crm = emptyCRM()) =>
+      decideCase(inputs.map(([c, k]) => ({ claim: c, classification: k, grounding: groundEvidence(c.evidence, dt) })), crm, dt);
+    const sarah = () => claim("decisionMaker", people(["Sarah", null]), [ev(dt, "t1")]);
+    const james = () => claim("decisionMaker", people(["James", null]), [ev(dt, "t2")]);
+
+    it("INDIRECT + DIRECT → ACT for the DIRECT person; the INDIRECT claim is kept as an ABSTAIN signal", () => {
+      const s = sarah(), j = james();
+      const { fields, records } = runDM([
+        [s, cls(s.id, "CURRENT", "EXPLICIT", "INDIRECT")],
+        [j, cls(j.id, "CURRENT", "EXPLICIT", "DIRECT")],
+      ]);
+      expect(fields.decisionMaker).toMatchObject({ action: "ACT", value: people(["James", null]), reasons: ["SUPPORTED"] });
+      expect(records.find((r) => r.claim.id === s.id)!.decision).toMatchObject({ action: "ABSTAIN", reasons: ["OUTRANKED_BY_DIRECT"] });
+    });
+
+    it("the outranking holds even when the DIRECT claim itself must ASK (existing CRM conflict) and shows the DIRECT value", () => {
+      const s = sarah(), j = james();
+      const { fields } = runDM(
+        [
+          [j, cls(j.id, "CURRENT", "EXPLICIT", "DIRECT")],
+          [s, cls(s.id, "CURRENT", "EXPLICIT", "INDIRECT")], // stated earlier but listed later: value must still be James
+        ],
+        emptyCRM({ decisionMaker: people(["Dana", null]) }),
+      );
+      expect(fields.decisionMaker).toMatchObject({ action: "ASK", value: people(["James", null]), reasons: ["CONFLICTS_WITH_EXISTING"] });
+    });
+
+    it("a DIRECT claim that corroborates the CRM (NO_OP) also outranks INDIRECT claims", () => {
+      const s = sarah(), j = james();
+      const { fields } = runDM(
+        [
+          [s, cls(s.id, "CURRENT", "EXPLICIT", "INDIRECT")],
+          [j, cls(j.id, "CURRENT", "EXPLICIT", "DIRECT")],
+        ],
+        emptyCRM({ decisionMaker: people(["James Holt", "VP"]) }),
+      );
+      expect(fields.decisionMaker.action).toBe("NO_OP");
+    });
+
+    it("two different DIRECT claims still conflict → ASK with the latest-stated value", () => {
+      const j = james(), p = claim("decisionMaker", people(["Priya", null]), [ev(dt, "t3")]);
+      const { fields } = runDM([
+        [j, cls(j.id, "CURRENT", "EXPLICIT", "DIRECT")],
+        [p, cls(p.id, "CURRENT", "EXPLICIT", "DIRECT")],
+      ]);
+      expect(fields.decisionMaker).toMatchObject({ action: "ASK", value: people(["Priya", null]) });
+      expect(fields.decisionMaker.reasons).toContain("CONFLICTING_CANDIDATES");
+    });
+
+    it("joint approval is one claim and does not conflict with itself", () => {
+      const joint = claim("decisionMaker", people(["James", null], ["Priya", null]), [ev(dt, "t2"), ev(dt, "t3")]);
+      const s = sarah();
+      const { fields } = runDM([
+        [joint, cls(joint.id, "CURRENT", "EXPLICIT", "DIRECT")],
+        [s, cls(s.id, "CURRENT", "EXPLICIT", "INDIRECT")],
+      ]);
+      expect(fields.decisionMaker).toMatchObject({ action: "ACT", value: people(["James", null], ["Priya", null]) });
+    });
+
+    it("with no DIRECT claim, different INDIRECT claims still conflict as before", () => {
+      const s = sarah(), o = claim("decisionMaker", people(["Omar", null]), [ev(dt, "t4")]);
+      const { fields } = runDM([
+        [s, cls(s.id, "CURRENT", "EXPLICIT", "INDIRECT")],
+        [o, cls(o.id, "CURRENT", "EXPLICIT", "INDIRECT")],
+      ]);
+      expect(fields.decisionMaker).toMatchObject({ action: "ASK", value: people(["Omar", null]) });
+      expect(fields.decisionMaker.reasons).toContain("CONFLICTING_CANDIDATES");
+    });
+
+    it("a DIRECT claim that was itself discarded (e.g. NEGATED or ungrounded) does not outrank anything", () => {
+      const s = sarah(), j = james();
+      const { fields } = runDM([
+        [s, cls(s.id, "CURRENT", "EXPLICIT", "INDIRECT")],
+        [j, cls(j.id, "NEGATED", "EXPLICIT", "DIRECT")],
+      ]);
+      expect(fields.decisionMaker).toMatchObject({ action: "ASK", value: people(["Sarah", null]), reasons: ["INDIRECT_SUPPORT"] });
+    });
+
+    it("the outranking rule is decisionMaker-only: a DIRECT and an INDIRECT budget with different values still conflict", () => {
+      const bt = transcript([["cust", "We have $80K approved."], ["cust", "We have $50K approved for licenses and $40K for services."]]);
+      const direct = claim("budget", usd(80000), [ev(bt, "t1")]);
+      const derived = claim("budget", usd(90000), [ev(bt, "t2")]);
+      const { fields } = decideCase(
+        [
+          { claim: direct, classification: cls(direct.id, "CURRENT", "EXPLICIT", "DIRECT"), grounding: groundEvidence(direct.evidence, bt) },
+          { claim: derived, classification: cls(derived.id, "CURRENT", "EXPLICIT", "INDIRECT"), grounding: groundEvidence(derived.evidence, bt) },
+        ],
+        emptyCRM(),
+        bt,
+      );
+      expect(fields.budget.action).toBe("ASK");
+    });
+  });
+
   it("claims for one field never affect another field", () => {
     const b = claim("budget", usd(75000), [ev(t, "t2")]);
     expect(reconcileField("decisionMaker", [{ claim: b, classification: null, grounding: groundEvidence(b.evidence, t), decision: { claimId: b.id, field: "budget", action: "ACT", reasons: ["SUPPORTED"] } }], t).decision.action).toBe("ABSTAIN");

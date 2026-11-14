@@ -12,7 +12,9 @@
     "test:watch": "vitest",
     "validate-benchmark": "tsx scripts/validate-benchmark.ts",
     "eval": "tsx scripts/run-eval.ts",
-    "report": "tsx scripts/report.ts"
+    "report": "tsx scripts/report.ts",
+    "benchmark-review": "tsx scripts/benchmark-review.ts",
+    "freeze-benchmark": "tsx scripts/freeze-benchmark.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^1.8.0",

@@ -165,6 +165,7 @@ export const PolicyReason = z.enum([
   "SUPPORTED",
   // Field reconciliation
   "CONFLICTING_CANDIDATES",
+  "OUTRANKED_BY_DIRECT",
   "NO_CANDIDATE",
   // Baselines
   "BASELINE_PROPOSED",

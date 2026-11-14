@@ -159,6 +159,10 @@ Field-specific boundaries are listed in §2.
 - Only **customer-side** speech can establish a value. A rep statement establishes nothing unless the customer **affirms** it.
 - **Affirmation:** a customer answer to a rep's question about that specific value that clearly agrees ("Yes", "Yeah, that's right", "Correct"). The evidence then includes **both** turns: the rep's statement and the customer's affirmation.
 - **Not affirmation:** backchannels ("mm", "uh-huh", "okay" while the rep keeps talking), deflections ("let's get the security review done first"), and silence. A rep-only claim is labeled `TENTATIVE` and **cannot be ACT**.
+- **Unaffirmed rep claims: facts vs. proposed actions.**
+  - A **factual assertion** by the rep about the customer's state (a budget figure, who signs, an existing plan) that the customer does not affirm is **not evidence for the field**. If the customer deflects or gives no support for it, sufficiency is `NONE` and the field `ABSTAIN`s. The rep's value is kept as the tempting wrong candidate (`TENTATIVE`, `NONE`).
+  - A **proposed future coordination action** (a meeting the rep proposes or books) that the customer neither accepts nor declines can remain a plausible pending action. It is `TENTATIVE` + `INDIRECT` and `ASK`s (§2.3).
+  - In both cases, a customer who supports the rep's statement only partially is labeled on what the customer actually said.
 - **Denial:** "No" or a correction makes the rep's value `NEGATED` or `SUPERSEDED`.
 - **Pronouns:** resolve them only if the transcript makes the referent unambiguous. Otherwise treat the claim as `INDIRECT`.
 
@@ -171,7 +175,11 @@ Apply these steps **in order** for each field. This is the same rubric the deter
 1. **List the claims** for this field: every value a reasonable extractor might propose, including negated, historical, superseded, and distractor values.
 2. **Discard as signals only** any claim whose status is not `CURRENT`, or whose sufficiency is `NONE`. These are never written.
 3. **No remaining claims** → `ABSTAIN`. For `value`, see §6.
-4. **Remaining claims disagree on the value** → `ASK`. Gold `value` = the one stated **latest** in the transcript.
+4. **Remaining claims establish competing values** → `ASK`. Gold `value` = the competing claim stated **latest** in the transcript.
+   - Claims compete only if they are candidate values *for the same relationship*. For `budget` and `nextMeeting`, any two remaining claims with different values compete.
+   - **`decisionMaker`:** if any remaining claim is `DIRECT` (it establishes final purchase/sign-off authority), then `INDIRECT` claims (evaluation lead, "run it by", budget owner, technical/security approver) are **signals only and do not compete**. Set them aside like step 2 discards. Example: "Sarah leads the evaluation" (`INDIRECT`) + "James signs the contract" (`DIRECT`) means James, with no conflict.
+   - **Two different `DIRECT` `decisionMaker` claims do compete** (ASK), unless the transcript explicitly establishes joint approval. Joint approval is a *single* claim listing every required signer (§2.2), not two competing claims.
+   - If no remaining `decisionMaker` claim is `DIRECT`, `INDIRECT` claims with different values compete as usual.
 5. **The remaining value equals the existing CRM value** (§5) → `NO_OP`, whatever the certainty. There is nothing to write or review.
 6. → `ASK` if **any** of these hold:
    - the existing CRM value is non-null and **different** (no autonomous overwrite)
@@ -234,11 +242,14 @@ Tag the case with every applicable tag. They drive the per-category breakdowns. 
 | "Your quote of $120K is above what we'd like." | budget | ABSTAIN, value 120000 · NONE (price, not budget) |
 | Rep: "So your budget is $100K?" · Customer: "No." | budget | ABSTAIN, value 100000 · NEGATED |
 | Rep: "So $100K is approved?" · Customer: "Yep, that's right." | budget | ACT 100000 (evidence = both turns) |
+| Rep: "So you have about $100K?" · Customer: "We'll see." | budget | ABSTAIN, value 100000 · TENTATIVE/NONE (unaffirmed rep fact) |
+| Rep: "I'll book Thursday at 3." · Customer: "Let me check." | nextMeeting | ASK · TENTATIVE/INDIRECT (pending proposed action) |
 | "Sarah has final sign-off." | decisionMaker | ACT [Sarah] |
 | "Sarah is leading the evaluation." | decisionMaker | ASK [Sarah] · EXPLICIT/INDIRECT |
 | "I need to run this by James." | decisionMaker | ASK [James] · INDIRECT |
 | "Our CFO has final approval." | decisionMaker | ACT [{name: null, role: "CFO"}] |
-| "Sarah owns technical approval, but James signs the contract." | decisionMaker | ACT [James] |
+| "Sarah owns technical approval, but James signs the contract." | decisionMaker | ACT [James] (Sarah is INDIRECT and does not compete, §4 step 4) |
+| "Sarah has final sign-off." … later, unreconciled … "James has final sign-off on this." | decisionMaker | ASK (latest: James): two different DIRECT claims, no joint approval stated |
 | "Dana and Raj both have to sign." | decisionMaker | ACT [Dana, Raj] |
 | "Thursday at 2 works. Send me the invite." | nextMeeting | ACT {date: next Thu, time: 14:00} |
 | "Thursday should work; I'll confirm." | nextMeeting | ASK · TENTATIVE |
@@ -252,3 +263,7 @@ Tag the case with every applicable tag. They drive the per-category breakdowns. 
 ## Changelog
 - 2026-11-13: v1 drafted (Claude, for owner review).
 - 2026-11-13: **v1 approved by the owner.** Confirmed: an unconfirmed, proposer-only meeting is labeled ASK (§2.3, §3.4); `meeting-ex-02` stays ASK.
+- 2026-11-14: **v1.1 (owner-directed).**
+  - §4 step 4: claims conflict only when they establish competing values. For `decisionMaker`, `INDIRECT` claims don't compete with a `DIRECT` final-authority claim; two different `DIRECT` claims do compete unless joint approval is explicit. This resolves the v1 contradiction between §2.2/§8 and step 4.
+  - §3.4: an unaffirmed rep *factual* assertion is `NONE` → `ABSTAIN`, while an unaccepted rep-proposed *meeting* remains `INDIRECT` → `ASK`.
+  - Two §8 rows added for each rule.
