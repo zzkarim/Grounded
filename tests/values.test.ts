@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { compareUnknown, formatValue, valuesEqual } from "@/core/values";
+import { compareForScoring, compareUnknown, formatValue, scoringValuesEqual, valuesEqual } from "@/core/values";
 import { meeting, people, usd } from "./helpers";
 
 describe("budget equality", () => {
@@ -58,5 +58,31 @@ describe("compareUnknown", () => {
   it("formats values for reports", () => {
     expect(formatValue("budget", usd(100000))).toBe("USD 100,000");
     expect(formatValue("decisionMaker", people(["Marcus", "CFO"], [null, "COO"]))).toBe("Marcus (CFO) + (COO)");
+  });
+});
+
+describe("scoring equality (scoring v2, after DEV Run 1): exact meeting time", () => {
+  const g = (time: string | null) => meeting("2026-03-19", time);
+  it("gold has a time: a missing or different time is not an exact match", () => {
+    expect(scoringValuesEqual("nextMeeting", g("16:00"), g(null))).toBe(false);
+    expect(scoringValuesEqual("nextMeeting", g("16:00"), g("15:00"))).toBe(false);
+    expect(scoringValuesEqual("nextMeeting", g("16:00"), g("16:00"))).toBe(true);
+  });
+  it("gold has no time: null matches, an invented time does not", () => {
+    expect(scoringValuesEqual("nextMeeting", g(null), g(null))).toBe(true);
+    expect(scoringValuesEqual("nextMeeting", g(null), g("14:00"))).toBe(false);
+  });
+  it("still ignores timezone and asStated, and still requires the same date (null == null)", () => {
+    expect(scoringValuesEqual("nextMeeting", { ...g("16:00"), timezone: "ET", asStated: "x" }, { ...g("16:00"), asStated: "y" })).toBe(true);
+    expect(scoringValuesEqual("nextMeeting", meeting(null, "11:00"), meeting(null, "11:00"))).toBe(true);
+    expect(scoringValuesEqual("nextMeeting", meeting(null, "11:00"), meeting("2026-04-23", "11:00"))).toBe(false);
+  });
+  it("leaves budget and decision-maker scoring identical to semantic equality", () => {
+    expect(scoringValuesEqual("decisionMaker", people(["Sarah Chen", "CTO"]), people(["Sarah", null]))).toBe(true);
+    expect(scoringValuesEqual("budget", usd(1), usd(1))).toBe(true);
+  });
+  it("does NOT change the policy's semantic equality (used for NO_OP and conflicts)", () => {
+    expect(valuesEqual("nextMeeting", g("16:00"), g(null))).toBe(true);
+    expect(compareForScoring("nextMeeting", g("16:00"), g(null))).toBe(false);
   });
 });

@@ -7,7 +7,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { POLICY_CONFIG } from "@/core/policy";
 import { BenchmarkCase, EvaluationRun, SystemOutput } from "@/core/schemas";
-import { allMetrics, scoreCase } from "@/core/scoring";
+import { allMetrics, SCORING_VERSION, scoreCase } from "@/core/scoring";
 import type { LLMClient } from "@/llm/client";
 import type { System } from "@/systems/types";
 import { errorOutput } from "@/systems/shared";
@@ -70,6 +70,7 @@ export async function runEvaluation(opts: {
     effort: llm.config.effort,
     promptHashes: system.promptHashes,
     policyConfig: system.name === "grounded" ? POLICY_CONFIG : "n/a (model decides)",
+    scoringVersion: SCORING_VERSION,
     split,
     benchmarkFrozen: opts.frozen,
     caseFiles: opts.files.map((f) => ({ caseId: f.caseId, sha256: f.sha256 })),

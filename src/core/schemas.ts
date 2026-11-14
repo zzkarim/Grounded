@@ -347,6 +347,8 @@ export const EvaluationRun = z.object({
   effort: z.string(),
   promptHashes: z.record(z.string(), z.string()),
   policyConfig: z.string(),
+  /** Scoring rules used for `items`/`metrics`. Absent in runs made before scoring v2 (= v1). */
+  scoringVersion: z.string().optional(),
   split: z.enum(["dev", "test", "example"]),
   benchmarkFrozen: z.boolean(),
   caseFiles: z.array(z.object({ caseId: z.string(), sha256: z.string() })),

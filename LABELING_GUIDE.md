@@ -57,6 +57,9 @@ Each field-item gets one expected outcome:
 - **Currency:** use the stated symbol or word (`$` = USD, `€` = EUR, `£` = GBP). If no currency is stated and no other currency appears in the conversation, use `USD`.
 - **Approximators** ("around", "about", "roughly", "ballpark", "~") keep the stated number as `exact` but make the certainty `TENTATIVE` (§3.2).
 - If only components are approved ("80 for licenses and 20 for services") and no total is stated, the value is the sum and sufficiency is `INDIRECT`. The total was derived, not said.
+  - **Components are not competing budget values.** Each individual component is a *part* of the budget, not a candidate for it: a component claim (80K, 20K) has sufficiency `NONE` and is kept only as a signal. The canonical CRM candidate is the derived total.
+  - If a total is also stated outright, the stated total is the candidate (labeled on its own wording) and the components are `NONE`.
+  - "Latest stated" (§4 step 4) never chooses between a component and its total. It resolves only genuinely competing claims about the same CRM value.
 - Vague magnitudes with no number ("six figures", "a decent budget") are **not representable**. Do not create a candidate. Mention it in `notes` if useful.
 
 ### 2.2 `decisionMaker`
@@ -102,6 +105,10 @@ Each field-item gets one expected outcome:
 - A proposal from one side **plus unhedged acceptance** from the other ("works", "see you then", "send the invite", "booked") is agreed. Certainty `EXPLICIT`.
 - Hedged acceptance ("should work", "probably", "I'll confirm", "pencil it in") is certainty `TENTATIVE`.
 - A proposal with no acceptance is **rep-only or proposer-only**. Certainty `TENTATIVE`, and it can't be `ACT` (§4).
+- **What makes a meeting candidate at all.** There must be either:
+  - (a) an explicit agreement to meet, even with vague timing ("Yeah, let's talk sometime next week"), or
+  - (b) a specific proposed time, even if not yet accepted ("I'll send an invite for Tuesday at 11").
+- Without (a) or (b), a promise to *find* or *check* times ("I'll ask her assistant for times", "let me look at calendars") is an asynchronous action, not a meeting, and an availability constraint ("she's out until the 15th, nothing before then") is `NONE`. Checking availability only lowers the certainty of a proposal that already exists ("let me see what next week looks like" after a specific proposal → `TENTATIVE`).
 
 **Not a meeting** (sufficiency `NONE`): deadlines ("I'll have an answer Thursday"), the customer's internal meetings ("our board meets on the 20th"), async deliverables ("I'll send pricing Friday"), and events the seller won't attend.
 
@@ -161,7 +168,7 @@ Field-specific boundaries are listed in §2.
 - **Not affirmation:** backchannels ("mm", "uh-huh", "okay" while the rep keeps talking), deflections ("let's get the security review done first"), and silence. A rep-only claim is labeled `TENTATIVE` and **cannot be ACT**.
 - **Unaffirmed rep claims: facts vs. proposed actions.**
   - A **factual assertion** by the rep about the customer's state (a budget figure, who signs, an existing plan) that the customer does not affirm is **not evidence for the field**. If the customer deflects or gives no support for it, sufficiency is `NONE` and the field `ABSTAIN`s. The rep's value is kept as the tempting wrong candidate (`TENTATIVE`, `NONE`).
-  - A **proposed future coordination action** (a meeting the rep proposes or books) that the customer neither accepts nor declines can remain a plausible pending action. It is `TENTATIVE` + `INDIRECT` and `ASK`s (§2.3).
+  - A **proposed future coordination action** (a meeting the rep proposes or books) that the customer neither accepts nor declines can remain a plausible pending action. It is `TENTATIVE` + `INDIRECT` and `ASK`s (§2.3). This needs an actual meeting proposal with specific timing; it does not turn a promise to look for times into a meeting candidate (§2.3, "What makes a meeting candidate").
   - In both cases, a customer who supports the rep's statement only partially is labeled on what the customer actually said.
 - **Denial:** "No" or a correction makes the rep's value `NEGATED` or `SUPERSEDED`.
 - **Pronouns:** resolve them only if the transcript makes the referent unambiguous. Otherwise treat the claim as `INDIRECT`.
@@ -200,13 +207,19 @@ Known limitation: there is no "clear this field" action. If the transcript negat
 
 ---
 
-## 5. Value equality (used for NO_OP, conflicts, and scoring)
+## 5. Value equality (used for NO_OP and conflicts) and scoring exact match
 
 - **budget:** same `kind`, same currency, same amount (or same min and max). An `exact` value never equals a `range`.
 - **decisionMaker:** same number of people, and each person matches a distinct person on the other side.
   - Two people match if both names are present and match: case-insensitive, whitespace-normalized; a single-token name also matches a multi-token name with the same first token ("Sarah" ↔ "Sarah Chen").
   - If either side has no name, two people match only if both roles are present and equal (case-insensitive). "CFO" ≠ "Chief Financial Officer". Write roles as the transcript states them.
 - **nextMeeting:** same `date` (including both `null`), and same `time` **when both are non-null**. `timezone` and `asStated` are ignored.
+
+**Scoring uses exact match** (scoring v2, introduced 2026-11-14, after DEV Run 1). It is the same as above for `budget` and `decisionMaker`. For `nextMeeting`, `time` must also be **equal, null included**:
+- a prediction that drops a gold time, or has a different time, is not a match
+- a prediction that adds a time where gold has none is not a match
+
+The looser rule above still decides whether two claims are *the same fact*, for NO_OP corroboration and conflict detection. Scoring asks whether the *exact CRM value* would be written: a system should not get full credit for dropping known CRM information, or for writing a time the transcript doesn't establish.
 
 ---
 
@@ -239,6 +252,7 @@ Tag the case with every applicable tag. They drive the per-category breakdowns. 
 | "Our budget last year was $100K." | budget | ABSTAIN, value 100000 · HISTORICAL |
 | "I said 100 before, but finance approved 75." | budget | ACT 75000 (100000 is SUPERSEDED). ASK instead if the CRM holds a different value. |
 | "We have between $80K and $100K approved." | budget | ACT range 80000–100000 |
+| "40 approved for licenses and another 10 approved for services." | budget | ASK 50000 · INDIRECT (derived total); 40000 and 10000 are NONE components, not competitors |
 | "Your quote of $120K is above what we'd like." | budget | ABSTAIN, value 120000 · NONE (price, not budget) |
 | Rep: "So your budget is $100K?" · Customer: "No." | budget | ABSTAIN, value 100000 · NEGATED |
 | Rep: "So $100K is approved?" · Customer: "Yep, that's right." | budget | ACT 100000 (evidence = both turns) |
@@ -255,6 +269,7 @@ Tag the case with every applicable tag. They drive the per-category breakdowns. 
 | "Thursday should work; I'll confirm." | nextMeeting | ASK · TENTATIVE |
 | "Let's talk sometime next week." | nextMeeting | ASK {date: null} · underspecified |
 | "I'll have an answer Thursday." | nextMeeting | ABSTAIN, value {date: Thu} · NONE |
+| Rep: "When can we meet Rachel?" · Customer: "She's out until the 15th. I'll ask her assistant for times after that." | nextMeeting | ABSTAIN, value {date: the 15th} · NONE (constraint plus a promise to find times; no meeting candidate) |
 | Any supported value identical to the CRM value | any | NO_OP |
 | Any supported value different from a non-null CRM value | any | ASK |
 
@@ -267,3 +282,7 @@ Tag the case with every applicable tag. They drive the per-category breakdowns. 
   - §4 step 4: claims conflict only when they establish competing values. For `decisionMaker`, `INDIRECT` claims don't compete with a `DIRECT` final-authority claim; two different `DIRECT` claims do compete unless joint approval is explicit. This resolves the v1 contradiction between §2.2/§8 and step 4.
   - §3.4: an unaffirmed rep *factual* assertion is `NONE` → `ABSTAIN`, while an unaccepted rep-proposed *meeting* remains `INDIRECT` → `ASK`.
   - Two §8 rows added for each rule.
+- 2026-11-14: **v1.2: clarifications made after DEV Run 1** (POST_RUN1_DECISIONS.md). No frozen dev label changes.
+  - §2.1: budget components are NONE signals, not competitors of their derived total; "latest stated" never picks between a component and its aggregate.
+  - §2.3/§3.4: a meeting candidate needs an explicit agreement to meet or a specific proposed time; "I'll ask for times" and availability constraints are not meeting candidates.
+  - §5: scoring uses exact match, with the meeting time equal including null (scoring v2). Semantic equality for NO_OP and conflicts is unchanged.

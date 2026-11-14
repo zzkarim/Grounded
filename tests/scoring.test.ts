@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { Action, FieldDecision, ScoredItem, SystemOutput } from "@/core/schemas";
-import { classifyOutcome, computeMetrics, scoreCase } from "@/core/scoring";
+import { classifyOutcome, computeMetrics, SCORING_VERSION, scoreCase } from "@/core/scoring";
 import { loadSplit } from "@/eval/benchmark";
 import { people, usd } from "./helpers";
 
@@ -107,5 +107,20 @@ describe("scoreCase against a real example case", () => {
   it("marks items from errored outputs", () => {
     const items = scoreCase(c, { ...out({}), error: "boom" });
     expect(items.every((i) => i.systemError)).toBe(true);
+  });
+});
+
+describe("scoring v2: dropping a known meeting time is not a correct write", () => {
+  const c = loadSplit("example").cases.find((x) => x.id === "meeting-ex-01")!; // gold ACT 2026-03-12 14:00
+  const fd = (value: unknown): FieldDecision => ({ action: "ACT", value, reasons: ["SUPPORTED"], claimIds: [] });
+  const abstain: FieldDecision = { action: "ABSTAIN", value: null, reasons: ["NO_CANDIDATE"], claimIds: [] };
+  const score = (value: unknown) =>
+    scoreCase(c, { caseId: c.id, system: "t", fields: { budget: abstain, decisionMaker: abstain, nextMeeting: fd(value) }, trace: null, llmCalls: [], error: null })[2].outcome;
+  it("correct date and time → CORRECT_ACT; time dropped → WRONG_VALUE_ACT", () => {
+    expect(score({ date: "2026-03-12", time: "14:00", timezone: null, asStated: "Thursday at 2" })).toBe("CORRECT_ACT");
+    expect(score({ date: "2026-03-12", time: null, timezone: null, asStated: "Thursday" })).toBe("WRONG_VALUE_ACT");
+  });
+  it("records the scoring version", () => {
+    expect(SCORING_VERSION).toBe("v2");
   });
 });

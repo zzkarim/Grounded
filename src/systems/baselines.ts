@@ -61,8 +61,11 @@ Return null for a field if the conversation gives no reason to update it.
 
 Keep in mind:
 - Final decision authority (who gives final sign-off or signs the contract) is different from leading the evaluation, making a recommendation, owning the budget, or giving technical, security, or legal approval. If someone is clearly identified as the final signer/approver, other stakeholders' lesser roles don't make the decision maker ambiguous. If two different people are each described as the final authority and the customer does not say both must sign, that needs review.
+- If no one is established as having final authority, a stakeholder with a lesser role in the decision (leads the evaluation, makes a recommendation, is someone the customer must "run it by", owns the budget, or gives technical, security, or legal approval) can still be useful to record, but needs review rather than an automatic write.
 - Something the salesperson says about the customer's situation is not customer information unless the customer affirms or supports it. Don't propose a value that only the salesperson asserted.
-- A meeting the salesperson proposed that the customer hasn't accepted yet may still be a plausible pending item, but it needs review rather than an automatic write.`;
+- A meeting the salesperson proposed that the customer hasn't accepted yet may still be a plausible pending item, but it needs review rather than an automatic write.
+- Availability constraints and promises to find or ask about times are not meetings; don't propose them as a meeting.
+- Completeness: an agreed meeting with a specific date but no time is complete enough for an automatic write. A missing timezone alone is not a reason for review. A first name alone is enough to identify a clearly established final approver.`;
 
 // ───────── Shared runner ─────────
 
@@ -97,13 +100,14 @@ function makeBaseline(
   };
 }
 
-// v1: unchanged. Gets the shared field definitions only; no safety rules (DECISIONS.md D15).
-export const baselineNaive = makeBaseline("baseline-naive", "1", NAIVE_SYSTEM_PROMPT, NaiveOutput as never, () => ({
+// v2 (2026-11-14, before Run 2a): only the shared field definitions changed (DECISIONS.md D20). No safety rules.
+export const baselineNaive = makeBaseline("baseline-naive", "2", NAIVE_SYSTEM_PROMPT, NaiveOutput as never, () => ({
   action: "ACT",
   reason: "BASELINE_PROPOSED",
 }));
 
-// v2 (2026-11-14): high-level semantics aligned to LABELING_GUIDE v1.1 before any dev run (DECISIONS.md D15).
-export const baselineSelfAssess = makeBaseline("baseline-self-assess", "2", SELF_ASSESS_SYSTEM_PROMPT, SelfAssessOutput as never, (p) =>
+// v3 (2026-11-14, after Run 1, before Run 2a): shared definitions + AUTO/REVIEW completeness and
+// lesser-stakeholder guidance (DECISIONS.md D20). v2 was the Run 1 version (D15).
+export const baselineSelfAssess = makeBaseline("baseline-self-assess", "3", SELF_ASSESS_SYSTEM_PROMPT, SelfAssessOutput as never, (p) =>
   p.decision === "AUTO" ? { action: "ACT", reason: "BASELINE_AUTO" } : { action: "ASK", reason: "BASELINE_REVIEW" },
 );

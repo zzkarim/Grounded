@@ -112,6 +112,10 @@ Breakdowns: by field, by case tag, by gold status and gold certainty, by source 
 
 Every per-item outcome is stored, so failures can be listed and grouped.
 
+**Value matching for scoring is exact** (scoring v2, after DEV Run 1). Budget and decision maker use LABELING_GUIDE §5 equality. A meeting must match on `date` **and** `time`, null included. The policy keeps the looser "same fact" equality for NO_OP and conflict detection. Each run records `scoringVersion`; runs without it were scored with v1, where meeting time was compared only when both sides had one.
+
+**Diagnostic (not a headline metric): signal recall, Grounded only.** This is the share of gold-recorded claims (gold `value` non-null, including ABSTAIN's tempting wrong values) that Grounded extracted as candidates, matched by semantic equality. It is computed from saved traces with `npm run signal-recall -- <run.json>` and measures whether negative or historical context is preserved, independent of write decisions.
+
 ## 10. Evaluation protocol
 
 - Development uses **dev** only: one run per change by default.

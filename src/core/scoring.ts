@@ -14,7 +14,14 @@ import {
   ScoredItem,
   SystemOutput,
 } from "./schemas";
-import { compareUnknown } from "./values";
+import { compareForScoring } from "./values";
+
+/**
+ * Recorded with every run (EvaluationRun.scoringVersion). Runs without the field were scored with v1.
+ * v1: meeting time compared only when both sides have one.
+ * v2 (after DEV Run 1): meeting time must match exactly, null included (values.ts scoringValuesEqual).
+ */
+export const SCORING_VERSION = "v2";
 
 export function classifyOutcome(gold: Action, pred: Action, valueMatch: boolean | null): Outcome {
   if (gold === "ACT") {
@@ -34,7 +41,7 @@ export function classifyOutcome(gold: Action, pred: Action, valueMatch: boolean 
 export function scoreField(c: BenchmarkCase, field: CRMField, pred: FieldDecision, systemError: boolean): ScoredItem {
   const gold = c.expected[field];
   // A value only matters for ACT/ASK predictions; comparing an ABSTAIN's null is meaningless.
-  const valueMatch = pred.action === "ACT" || pred.action === "ASK" ? compareUnknown(field, gold.value, pred.value) : null;
+  const valueMatch = pred.action === "ACT" || pred.action === "ASK" ? compareForScoring(field, gold.value, pred.value) : null;
   return {
     caseId: c.id,
     field,

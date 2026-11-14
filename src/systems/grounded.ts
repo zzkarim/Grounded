@@ -26,8 +26,12 @@ import { promptHash } from "@/llm/client";
 import { errorOutput, FIELD_DEFINITIONS } from "./shared";
 import type { System } from "./types";
 
-/** v2 (2026-11-14): classifier prompt aligned to LABELING_GUIDE v1.1 before any dev run (DECISIONS.md D15). */
-export const GROUNDED_VERSION = "2";
+/**
+ * v2   (2026-11-14): classifier prompt aligned to LABELING_GUIDE v1.1 before any dev run (D15). Run 1 version.
+ * v2.1 (2026-11-14, after Run 1, before Run 2a): ONLY the shared field definitions changed (D20).
+ *      Same extraction/classification instructions, grounding, policy and reconciliation. Not v3.
+ */
+export const GROUNDED_VERSION = "2.1";
 
 // ───────── Call 1: extraction ─────────
 

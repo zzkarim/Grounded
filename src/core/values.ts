@@ -81,6 +81,36 @@ export function compareUnknown(field: CRMField, a: unknown, b: unknown): boolean
   return valuesEqual(field, pa, pb);
 }
 
+/**
+ * SCORING equality (scoring v2, introduced after DEV Run 1; POST_RUN1_DECISIONS.md §1).
+ *
+ * Scoring asks "is the predicted value exactly the gold CRM value?". That is stricter than the
+ * semantic equality above, which the POLICY uses to ask "is this the same fact?" for NO_OP
+ * corroboration and conflict detection. The policy's equality is deliberately unchanged.
+ *
+ * Only meetings differ: the time must be equal, null included.
+ *   gold 16:00, pred null  → mismatch (dropping known CRM information is not an exact match)
+ *   gold 16:00, pred 15:00 → mismatch
+ *   gold null,  pred null  → match
+ *   gold null,  pred 14:00 → mismatch (writing a time the transcript doesn't establish)
+ * Timezone and asStated stay ignored. Budget and decision-maker scoring is unchanged.
+ */
+export function scoringValuesEqual<F extends CRMField>(field: F, gold: FieldValueMap[F], pred: FieldValueMap[F]): boolean {
+  if (field === "nextMeeting") {
+    const g = gold as MeetingValue;
+    const p = pred as MeetingValue;
+    return g.date === p.date && g.time === p.time;
+  }
+  return valuesEqual(field, gold, pred);
+}
+
+/** Like compareUnknown, but with scoring equality. Used only by scoring.ts. */
+export function compareForScoring(field: CRMField, gold: unknown, pred: unknown): boolean | null {
+  if (gold === null || gold === undefined || pred === null || pred === undefined) return null;
+  const schema = VALUE_SCHEMAS[field];
+  return scoringValuesEqual(field, schema.parse(gold) as never, schema.parse(pred) as never);
+}
+
 /** Human-readable rendering for reports and the UI. */
 export function formatValue(field: CRMField, v: unknown): string {
   if (v === null || v === undefined) return "—";

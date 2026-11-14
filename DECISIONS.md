@@ -62,3 +62,37 @@ Each entry records what was decided, why, and the alternatives considered. Newes
 The naive baseline is unchanged (v1): it keeps only the shared field definitions.
 **Why.** Specification alignment, not tuning. The changes were made **before any dev evaluation run existed** (no `data/runs/dev/`) and without consulting any model output. Without them, both model-facing systems would be scored against rules (guide v1.1) they had never been told.
 **Fairness.** Both systems get the same semantics in their own architecture's terms. The classifier gets them as status/certainty/sufficiency labeling guidance and is still never told an action. The self-assessing baseline gets them as plain-language AUTO/REVIEW guidance, with no taxonomy, policy table, reason codes, or decomposition.
+
+### D16. Scoring v2: exact meeting time (2026-11-14, AFTER DEV Run 1)
+**Decision.** The scored value match requires an equal meeting `time`, null included (`scoringValuesEqual`), and runs record `scoringVersion: "v2"`. The policy's semantic equality (NO_OP and conflicts) is unchanged.
+**Why.** In Run 1, Grounded wrote dev-gen-006's meeting without its known time (16:00) and got full credit. A system shouldn't get full credit for dropping known CRM information, or for inventing a time the transcript doesn't establish.
+**Why the policy keeps the looser rule.** "Still on for Thursday", spoken without a time, *corroborates* a CRM meeting on Thursday at 10:00. Treating that as a conflicting overwrite would be wrong.
+**Historical runs.** Run 1 files and DEV_RUN1_ANALYSIS.md are untouched and remain scored under v1. The counterfactual is in POST_RUN1_DECISIONS.md.
+
+### D17. Budget components are NONE signals, not competitors (2026-11-14, AFTER DEV Run 1, guide v1.2)
+**Decision.** A component amount is a part of the budget, labeled sufficiency NONE. The derived (or stated) total is the canonical candidate. No policy code change: rule 4 already discards NONE claims, so components never reach conflict detection.
+**Rejected.** Deterministic arithmetic detection, where a claim equal to the sum of other claims marks them as components. It's fragile: coincidental sums, partially stated components, superseded parts. And it would make the policy guess at semantics that belong to classification.
+**Consequence.** Grounded's classifier prompt (v2) doesn't state this rule. Aligning it is pending and will be recorded as post-Run-1 specification alignment.
+
+### D18. A meeting candidate needs an agreement to meet or a specific proposed time (2026-11-14, AFTER DEV Run 1, guide v1.2)
+**Why.** Run 1 exposed a boundary that v1.1 left implicit (dev-gen-025): "I'll ask her assistant for times" plus an availability constraint is not a pending meeting. The v1.1 pending-coordination exception requires an actual proposal with specific timing. The dev-gen-025 label (ABSTAIN) is unchanged.
+
+### D19. Signal recall diagnostic (2026-11-14, AFTER DEV Run 1)
+**Why.** The final-action metrics can't see whether ABSTAIN preserved negative or historical context, as the PRD requires. The diagnostic is Grounded-only (baselines have no candidate trace), kept outside run files and headline metrics, and computed from saved traces.
+
+### D20. Run 2a: fair specification alignment of all prompts (2026-11-14, AFTER DEV Run 1, BEFORE Run 2a and before any Grounded v3 change)
+**Why.** Run 1 showed that the conventions which define the benchmark's correct answers (LABELING_GUIDE §2) were not communicated equally. The shared field definitions even contradicted the guide ("time null if … unclear" vs "at 2" in business context = 14:00). Every self-assess lost ACT, Grounded's dropped 006 time, and both systems' 025 review trace back to that gap (POST_RUN1_DECISIONS.md §5).
+**What changed.**
+- Shared `FIELD_DEFINITIONS`, identical for all three systems:
+  - meeting normalization: business-hours times, bare ordinals, "next <weekday>" → null, weekday/date contradiction → null, date without time is valid, timezone optional
+  - meeting-candidate rule and the non-meetings list
+  - budget components → sum, not competing values
+  - first name is a valid name
+  - final authority vs lesser roles
+- Self-assess AUTO/REVIEW guidance:
+  - completeness: date without time, timezone, first name
+  - lesser-role stakeholders → review when no final authority is established
+  - availability constraints and promises to find times are not meetings
+**Versions.** baseline-naive v1→**v2** (definitions only), baseline-self-assess v2→**v3**, grounded v2→**v2.1** (definitions only). The Grounded extraction/classification instructions, grounding, policy (`default-v2`), reconciliation and model config are unchanged, and there is no value validation, so this is not v3.
+**Not given to the baselines.** Status/certainty/sufficiency labels, quote validation, reconciliation, the policy table, reason codes, structured-value validation, the two-call architecture. `tests/prompts.test.ts` guards this.
+**Purpose.** Run 2a measures the effect of equal information alone. Grounded v3 (structured-value validation) will be a separate, later run so its effect can be attributed.

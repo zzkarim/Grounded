@@ -82,6 +82,7 @@ export function renderReport(run: EvaluationRun, opts: { cases?: BenchmarkCase[]
     `| model (requested / reported) | ${run.requestedModel} / ${run.responseModels.join(", ") || "none"} |`,
     `| effort | ${run.effort} |`,
     `| policy | ${run.policyConfig} |`,
+    `| scoring | ${run.scoringVersion ?? "v1 (run predates scoring versioning)"} |`,
     `| prompt hashes | ${Object.entries(run.promptHashes).map(([k, v]) => `${k}=${v}`).join(", ")} |`,
     `| split / cases / field-items | ${run.split} / ${run.caseFiles.length} / ${m.items} |`,
     `| created | ${run.createdAt} |`,
