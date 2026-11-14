@@ -1,0 +1,3536 @@
+{
+  "schemaVersion": 1,
+  "runId": "2026-11-14T00-35-20-741Z_grounded_example",
+  "createdAt": "2026-11-14T00:35:20.741Z",
+  "system": "grounded",
+  "systemVersion": "1",
+  "requestedModel": "claude-sonnet-5-5",
+  "responseModels": [
+    "claude-sonnet-5-5"
+  ],
+  "effort": "medium",
+  "promptHashes": {
+    "extract": "7dbf1f5f58939c9b",
+    "classify": "cf7d3413cc3d2d85"
+  },
+  "policyConfig": "default-v1",
+  "split": "example",
+  "benchmarkFrozen": false,
+  "caseFiles": [
+    {
+      "caseId": "budget-ex-01",
+      "sha256": "bf9b73caa3ee0beae47b188769ef3ff5756198f01c408c2e1aa80bb23ab0dfc6"
+    },
+    {
+      "caseId": "budget-ex-02",
+      "sha256": "afe9c0aef998c090e6a45268b20f554083abf20e0114241cf22a8889980854e5"
+    },
+    {
+      "caseId": "dm-ex-01",
+      "sha256": "35f95b8df239840031c6ac8ed7cc1ae9e1897cc1bc7804800284afcd40c56eed"
+    },
+    {
+      "caseId": "dm-ex-02",
+      "sha256": "da45050abf5a7ecb9e03db71fdb4566a72dfb3b24d4804ec010c341b68e544e2"
+    },
+    {
+      "caseId": "meeting-ex-01",
+      "sha256": "77f0a3081420ec7b9ea8bbfc5636736ec101405863f0c3843c22614e9b24ba02"
+    },
+    {
+      "caseId": "meeting-ex-02",
+      "sha256": "adfc28114e471bf32182579ff3e1c63fa598c83529c5d1869338cbbd5106136c"
+    }
+  ],
+  "outputs": [
+    {
+      "caseId": "budget-ex-01",
+      "system": "grounded",
+      "fields": {
+        "budget": {
+          "action": "ASK",
+          "value": {
+            "kind": "exact",
+            "amount": 100000,
+            "currency": "USD"
+          },
+          "reasons": [
+            "CONDITIONAL",
+            "INDIRECT_SUPPORT"
+          ],
+          "claimIds": [
+            "c1",
+            "c2"
+          ]
+        },
+        "decisionMaker": {
+          "action": "ABSTAIN",
+          "value": null,
+          "reasons": [
+            "NO_CANDIDATE"
+          ],
+          "claimIds": []
+        },
+        "nextMeeting": {
+          "action": "ABSTAIN",
+          "value": null,
+          "reasons": [
+            "NO_CANDIDATE"
+          ],
+          "claimIds": []
+        }
+      },
+      "trace": {
+        "records": [
+          {
+            "claim": {
+              "field": "budget",
+              "value": {
+                "kind": "exact",
+                "amount": 100000,
+                "currency": "USD"
+              },
+              "evidence": [
+                {
+                  "turnId": "t1",
+                  "speakerId": "dana",
+                  "quote": "what's the budget looking like on your side for this?"
+                },
+                {
+                  "turnId": "t2",
+                  "speakerId": "priya",
+                  "quote": "last I heard from finance we're probably somewhere around the 100 range? But don't quote me on that, it still has to clear finance."
+                }
+              ],
+              "id": "c1"
+            },
+            "classification": {
+              "claimId": "c1",
+              "status": "CURRENT",
+              "certainty": "CONDITIONAL",
+              "sufficiency": "INDIRECT",
+              "explanation": "Priya hedges ('probably somewhere around', 'don't quote me') and says it still has to clear finance, so the ~100K figure is pending approval and only partly establishes an approved budget."
+            },
+            "grounding": {
+              "grounded": true,
+              "hasCustomerEvidence": true,
+              "failures": []
+            },
+            "decision": {
+              "claimId": "c1",
+              "field": "budget",
+              "action": "ASK",
+              "reasons": [
+                "CONDITIONAL",
+                "INDIRECT_SUPPORT"
+              ]
+            }
+          },
+          {
+            "claim": {
+              "field": "budget",
+              "value": {
+                "kind": "exact",
+                "amount": 60000,
+                "currency": "USD"
+              },
+              "evidence": [
+                {
+                  "turnId": "t3",
+                  "speakerId": "dana",
+                  "quote": "how does that compare to what you spend today?"
+                },
+                {
+                  "turnId": "t4",
+                  "speakerId": "priya",
+                  "quote": "We're paying our current vendor like 60 a year"
+                }
+              ],
+              "id": "c2"
+            },
+            "classification": {
+              "claimId": "c2",
+              "status": "CURRENT",
+              "certainty": "EXPLICIT",
+              "sufficiency": "NONE",
+              "explanation": "The 60K is what Priya currently pays her existing vendor, which is current vendor spend and not an approved budget for this purchase."
+            },
+            "grounding": {
+              "grounded": true,
+              "hasCustomerEvidence": true,
+              "failures": []
+            },
+            "decision": {
+              "claimId": "c2",
+              "field": "budget",
+              "action": "ABSTAIN",
+              "reasons": [
+                "NO_SUPPORT"
+              ]
+            }
+          }
+        ]
+      },
+      "llmCalls": [
+        {
+          "label": "grounded.extract",
+          "requestedModel": "claude-sonnet-5-5",
+          "responseModel": "claude-sonnet-5-5",
+          "attempt": 1,
+          "promptHash": "7dbf1f5f58939c9b",
+          "durationMs": 4045,
+          "stopReason": "end_turn",
+          "rawText": "{\"candidates\":[{\"field\":\"budget\",\"value\":{\"kind\":\"exact\",\"amount\":100000,\"currency\":\"USD\"},\"evidence\":[{\"turnId\":\"t1\",\"speakerId\":\"dana\",\"quote\":\"what's the budget looking like on your side for this?\"},{\"turnId\":\"t2\",\"speakerId\":\"priya\",\"quote\":\"last I heard from finance we're probably somewhere around the 100 range? But don't quote me on that, it still has to clear finance.\"}]},{\"field\":\"budget\",\"value\":{\"kind\":\"exact\",\"amount\":60000,\"currency\":\"USD\"},\"evidence\":[{\"turnId\":\"t3\",\"speakerId\":\"dana\",\"quote\":\"how does that compare to what you spend today?\"},{\"turnId\":\"t4\",\"speakerId\":\"priya\",\"quote\":\"We're paying our current vendor like 60 a year\"}]}]}",
+          "ok": true,
+          "error": null,
+          "usage": {
+            "inputTokens": 3338,
+            "outputTokens": 275
+          }
+        },
+        {
+          "label": "grounded.classify",
+          "requestedModel": "claude-sonnet-5-5",
+          "responseModel": "claude-sonnet-5-5",
+          "attempt": 1,
+          "promptHash": "cf7d3413cc3d2d85",
+          "durationMs": 3194,
+          "stopReason": "end_turn",
+          "rawText": "{\"classifications\":[{\"claimId\":\"c1\",\"status\":\"CURRENT\",\"certainty\":\"CONDITIONAL\",\"sufficiency\":\"INDIRECT\",\"explanation\":\"Priya hedges ('probably somewhere around', 'don't quote me') and says it still has to clear finance, so the ~100K figure is pending approval and only partly establishes an approved budget.\"},{\"claimId\":\"c2\",\"status\":\"CURRENT\",\"certainty\":\"EXPLICIT\",\"sufficiency\":\"NONE\",\"explanation\":\"The 60K is what Priya currently pays her existing vendor, which is current vendor spend and not an approved budget for this purchase.\"}]}",
+          "ok": true,
+          "error": null,
+          "usage": {
+            "inputTokens": 2539,
+            "outputTokens": 215
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "caseId": "budget-ex-02",
+      "system": "grounded",
+      "fields": {
+        "budget": {
+          "action": "ASK",
+          "value": {
+            "kind": "exact",
+            "amount": 120000,
+            "currency": "USD"
+          },
+          "reasons": [
+            "CONFLICTS_WITH_EXISTING"
+          ],
+          "claimIds": [
+            "c1",
+            "c2"
+          ]
+        },
+        "decisionMaker": {
+          "action": "ABSTAIN",
+          "value": null,
+          "reasons": [
+            "NO_CANDIDATE"
+          ],
+          "claimIds": []
+        },
+        "nextMeeting": {
+          "action": "ACT",
+          "value": {
+            "date": "2026-03-17",
+            "time": "10:00",
+            "timezone": "America/New_York",
+            "asStated": "Tuesday the 17th at 10 Eastern"
+          },
+          "reasons": [
+            "SUPPORTED"
+          ],
+          "claimIds": [
+            "c3"
+          ]
+        }
+      },
+      "trace": {
+        "records": [
+          {
+            "claim": {
+              "field": "budget",
+              "value": {
+                "kind": "exact",
+                "amount": 120000,
+                "currency": "USD"
+              },
+              "evidence": [
+                {
+                  "turnId": "t4",
+                  "speakerId": "ellen",
+                  "quote": "We've got 120 approved now."
+                },
+                {
+                  "turnId": "t5",
+                  "speakerId": "marco",
+                  "quote": "Okay, 120."
+                }
+              ],
+              "id": "c1"
+            },
+            "classification": {
+              "claimId": "c1",
+              "status": "CURRENT",
+              "certainty": "EXPLICIT",
+              "sufficiency": "DIRECT",
+              "explanation": "Ellen, the customer, states 120 (thousand) is now approved and signed off, which is current approved budget for this purchase."
+            },
+            "grounding": {
+              "grounded": true,
+              "hasCustomerEvidence": true,
+              "failures": []
+            },
+            "decision": {
+              "claimId": "c1",
+              "field": "budget",
+              "action": "ASK",
+              "reasons": [
+                "CONFLICTS_WITH_EXISTING"
+              ]
+            }
+          },
+          {
+            "claim": {
+              "field": "budget",
+              "value": {
+                "kind": "exact",
+                "amount": 150000,
+                "currency": "USD"
+              },
+              "evidence": [
+                {
+                  "turnId": "t1",
+                  "speakerId": "marco",
+                  "quote": "Last time we spoke you mentioned 150 had been set aside for this."
+                },
+                {
+                  "turnId": "t2",
+                  "speakerId": "ellen",
+                  "quote": "So, the 150, that's changed, unfortunately. Finance cut it after the reforecast."
+                }
+              ],
+              "id": "c2"
+            },
+            "classification": {
+              "claimId": "c2",
+              "status": "SUPERSEDED",
+              "certainty": "EXPLICIT",
+              "sufficiency": "DIRECT",
+              "explanation": "The 150K set-aside was explicitly cut by Finance and replaced by the newer 120K approved amount."
+            },
+            "grounding": {
+              "grounded": true,
+              "hasCustomerEvidence": true,
+              "failures": []
+            },
+            "decision": {
+              "claimId": "c2",
+              "field": "budget",
+              "action": "ABSTAIN",
+              "reasons": [
+                "STATUS_SUPERSEDED"
+              ]
+            }
+          },
+          {
+            "claim": {
+              "field": "nextMeeting",
+              "value": {
+                "date": "2026-03-17",
+                "time": "10:00",
+                "timezone": "America/New_York",
+                "asStated": "Tuesday the 17th at 10 Eastern"
+              },
+              "evidence": [
+                {
+                  "turnId": "t5",
+                  "speakerId": "marco",
+                  "quote": "Should we get a follow-up on the calendar to walk through the revised scope?"
+                },
+                {
+                  "turnId": "t6",
+                  "speakerId": "ellen",
+                  "quote": "Yes, let's do Tuesday the 17th at 10 Eastern."
+                },
+                {
+                  "turnId": "t7",
+                  "speakerId": "marco",
+                  "quote": "Will do."
+                }
+              ],
+              "id": "c3"
+            },
+            "classification": {
+              "claimId": "c3",
+              "status": "CURRENT",
+              "certainty": "EXPLICIT",
+              "sufficiency": "DIRECT",
+              "explanation": "Ellen accepted the seller's proposal and set Tuesday the 17th (2026-03-17) at 10 Eastern, and Marco confirmed the invite, making it a mutually agreed future meeting."
+            },
+            "grounding": {
+              "grounded": true,
+              "hasCustomerEvidence": true,
+              "failures": []
+            },
+            "decision": {
+              "claimId": "c3",
+              "field": "nextMeeting",
+              "action": "ACT",
+              "reasons": [
+                "SUPPORTED"
+              ]
+            }
+          }
+        ]
+      },
+      "llmCalls": [
+        {
+          "label": "grounded.extract",
+          "requestedModel": "claude-sonnet-5-5",
+          "responseModel": "claude-sonnet-5-5",
+          "attempt": 1,
+          "promptHash": "7dbf1f5f58939c9b",
+          "durationMs": 4846,
+          "stopReason": "end_turn",
+          "rawText": "{\"candidates\":[{\"field\":\"budget\",\"value\":{\"kind\":\"exact\",\"amount\":120000,\"currency\":\"USD\"},\"evidence\":[{\"turnId\":\"t4\",\"speakerId\":\"ellen\",\"quote\":\"We've got 120 approved now.\"},{\"turnId\":\"t5\",\"speakerId\":\"marco\",\"quote\":\"Okay, 120.\"}]},{\"field\":\"budget\",\"value\":{\"kind\":\"exact\",\"amount\":150000,\"currency\":\"USD\"},\"evidence\":[{\"turnId\":\"t1\",\"speakerId\":\"marco\",\"quote\":\"Last time we spoke you mentioned 150 had been set aside for this.\"},{\"turnId\":\"t2\",\"speakerId\":\"ellen\",\"quote\":\"So, the 150, that's changed, unfortunately. Finance cut it after the reforecast.\"}]},{\"field\":\"nextMeeting\",\"value\":{\"date\":\"2026-03-17\",\"time\":\"10:00\",\"timezone\":\"America/New_York\",\"asStated\":\"Tuesday the 17th at 10 Eastern\"},\"evidence\":[{\"turnId\":\"t5\",\"speakerId\":\"marco\",\"quote\":\"Should we get a follow-up on the calendar to walk through the revised scope?\"},{\"turnId\":\"t6\",\"speakerId\":\"ellen\",\"quote\":\"Yes, let's do Tuesday the 17th at 10 Eastern.\"},{\"turnId\":\"t7\",\"speakerId\":\"marco\",\"quote\":\"Will do.\"}]}]}",
+          "ok": true,
+          "error": null,
+          "usage": {
+            "inputTokens": 3402,
+            "outputTokens": 466
+          }
+        },
+        {
+          "label": "grounded.classify",
+          "requestedModel": "claude-sonnet-5-5",
+          "responseModel": "claude-sonnet-5-5",
+          "attempt": 1,
+          "promptHash": "cf7d3413cc3d2d85",
+          "durationMs": 2866,
+          "stopReason": "end_turn",
+          "rawText": "{\"classifications\":[{\"claimId\":\"c1\",\"status\":\"CURRENT\",\"certainty\":\"EXPLICIT\",\"sufficiency\":\"DIRECT\",\"explanation\":\"Ellen, the customer, states 120 (thousand) is now approved and signed off, which is current approved budget for this purchase.\"},{\"claimId\":\"c2\",\"status\":\"SUPERSEDED\",\"certainty\":\"EXPLICIT\",\"sufficiency\":\"DIRECT\",\"explanation\":\"The 150K set-aside was explicitly cut by Finance and replaced by the newer 120K approved amount.\"},{\"claimId\":\"c3\",\"status\":\"CURRENT\",\"certainty\":\"EXPLICIT\",\"sufficiency\":\"DIRECT\",\"explanation\":\"Ellen accepted the seller's proposal and set Tuesday the 17th (2026-03-17) at 10 Eastern, and Marco confirmed the invite, making it a mutually agreed future meeting.\"}]}",
+          "ok": true,
+          "error": null,
+          "usage": {
+            "inputTokens": 2866,
+            "outputTokens": 310
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "caseId": "dm-ex-01",
+      "system": "grounded",
+      "fields": {
+        "budget": {
+          "action": "ABSTAIN",
+          "value": null,
+          "reasons": [
+            "NO_CANDIDATE"
+          ],
+          "claimIds": []
+        },
+        "decisionMaker": {
+          "action": "ASK",
+          "value": {
+            "people": [
+              {
+                "name": "Marcus",
+                "role": "CFO"
+              }
+            ]
+          },
+          "reasons": [
+            "CONFLICTING_CANDIDATES",
+            "INDIRECT_SUPPORT"
+          ],
+          "claimIds": [
+            "c1",
+            "c2"
+          ]
+        },
+        "nextMeeting": {
+          "action": "ABSTAIN",
+          "value": null,
+          "reasons": [
+            "NO_CANDIDATE"
+          ],
+          "claimIds": []
+        }
+      },
+      "trace": {
+        "records": [
+          {
+            "claim": {
+              "field": "decisionMaker",
+              "value": {
+                "people": [
+                  {
+                    "name": "Marcus",
+                    "role": "CFO"
+                  }
+                ]
+              },
+              "evidence": [
+                {
+                  "turnId": "t3",
+                  "speakerId": "jordan",
+                  "quote": "And when it comes to actually signing?"
+                },
+                {
+                  "turnId": "t4",
+                  "speakerId": "tom",
+                  "quote": "That's Marcus, our CFO. He signs off on all vendor contracts."
+                }
+              ],
+              "id": "c1"
+            },
+            "classification": {
+              "claimId": "c1",
+              "status": "CURRENT",
+              "certainty": "EXPLICIT",
+              "sufficiency": "DIRECT",
+              "explanation": "Tom, a customer-side speaker, plainly states Marcus the CFO signs off on all vendor contracts, which establishes final signing authority."
+            },
+            "grounding": {
+              "grounded": true,
+              "hasCustomerEvidence": true,
+              "failures": []
+            },
+            "decision": {
+              "claimId": "c1",
+              "field": "decisionMaker",
+              "action": "ASK",
+              "reasons": [
+                "CONFLICTING_CANDIDATES"
+              ]
+            }
+          },
+          {
+            "claim": {
+              "field": "decisionMaker",
+              "value": {
+                "people": [
+                  {
+                    "name": "Sarah Chen",
+                    "role": null
+                  }
+                ]
+              },
+              "evidence": [
+                {
+                  "turnId": "t2",
+                  "speakerId": "tom",
+                  "quote": "Sarah Chen's leading the evaluation."
+                }
+              ],
+              "id": "c2"
+            },
+            "classification": {
+              "claimId": "c2",
+              "status": "CURRENT",
+              "certainty": "EXPLICIT",
+              "sufficiency": "INDIRECT",
+              "explanation": "Tom plainly says Sarah Chen leads the evaluation, but that makes her involved in the decision without stating final approval authority, which Tom attributes to Marcus."
+            },
+            "grounding": {
+              "grounded": true,
+              "hasCustomerEvidence": true,
+              "failures": []
+            },
+            "decision": {
+              "claimId": "c2",
+              "field": "decisionMaker",
+              "action": "ASK",
+              "reasons": [
+                "INDIRECT_SUPPORT",
+                "CONFLICTING_CANDIDATES"
+              ]
+            }
+          }
+        ]
+      },
+      "llmCalls": [
+        {
+          "label": "grounded.extract",
+          "requestedModel": "claude-sonnet-5-5",
+          "responseModel": "claude-sonnet-5-5",
+          "attempt": 1,
+          "promptHash": "7dbf1f5f58939c9b",
+          "durationMs": 2681,
+          "stopReason": "end_turn",
+          "rawText": "{\"candidates\":[{\"field\":\"decisionMaker\",\"value\":{\"people\":[{\"name\":\"Marcus\",\"role\":\"CFO\"}]},\"evidence\":[{\"turnId\":\"t3\",\"speakerId\":\"jordan\",\"quote\":\"And when it comes to actually signing?\"},{\"turnId\":\"t4\",\"speakerId\":\"tom\",\"quote\":\"That's Marcus, our CFO. He signs off on all vendor contracts.\"}]},{\"field\":\"decisionMaker\",\"value\":{\"people\":[{\"name\":\"Sarah Chen\",\"role\":null}]},\"evidence\":[{\"turnId\":\"t2\",\"speakerId\":\"tom\",\"quote\":\"Sarah Chen's leading the evaluation.\"}]}]}",
+          "ok": true,
+          "error": null,
+          "usage": {
+            "inputTokens": 3323,
+            "outputTokens": 230
+          }
+        },
+        {
+          "label": "grounded.classify",
+          "requestedModel": "claude-sonnet-5-5",
+          "responseModel": "claude-sonnet-5-5",
+          "attempt": 1,
+          "promptHash": "cf7d3413cc3d2d85",
+          "durationMs": 2331,
+          "stopReason": "end_turn",
+          "rawText": "{\"classifications\":[{\"claimId\":\"c1\",\"status\":\"CURRENT\",\"certainty\":\"EXPLICIT\",\"sufficiency\":\"DIRECT\",\"explanation\":\"Tom, a customer-side speaker, plainly states Marcus the CFO signs off on all vendor contracts, which establishes final signing authority.\"},{\"claimId\":\"c2\",\"status\":\"CURRENT\",\"certainty\":\"EXPLICIT\",\"sufficiency\":\"INDIRECT\",\"explanation\":\"Tom plainly says Sarah Chen leads the evaluation, but that makes her involved in the decision without stating final approval authority, which Tom attributes to Marcus.\"}]}",
+          "ok": true,
+          "error": null,
+          "usage": {
+            "inputTokens": 2479,
+            "outputTokens": 216
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "caseId": "dm-ex-02",
+      "system": "grounded",
+      "fields": {
+        "budget": {
+          "action": "ABSTAIN",
+          "value": null,
+          "reasons": [
+            "NO_CANDIDATE"
+          ],
+          "claimIds": []
+        },
+        "decisionMaker": {
+          "action": "ASK",
+          "value": {
+            "people": [
+              {
+                "name": "Dana",
+                "role": null
+              },
+              {
+                "name": "Raj Patel",
+                "role": "COO"
+              }
+            ]
+          },
+          "reasons": [
+            "CONFLICTING_CANDIDATES",
+            "INDIRECT_SUPPORT"
+          ],
+          "claimIds": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        "nextMeeting": {
+          "action": "ABSTAIN",
+          "value": null,
+          "reasons": [
+            "NO_CANDIDATE"
+          ],
+          "claimIds": []
+        }
+      },
+      "trace": {
+        "records": [
+          {
+            "claim": {
+              "field": "decisionMaker",
+              "value": {
+                "people": [
+                  {
+                    "name": "Dana",
+                    "role": null
+                  }
+                ]
+              },
+              "evidence": [
+                {
+                  "turnId": "t1",
+                  "speakerId": "alex",
+                  "quote": "So Dana's the one who signs off on this, right?"
+                },
+                {
+                  "turnId": "t2",
+                  "speakerId": "kim",
+                  "quote": "Dana's... well, actually it's Dana and our COO, Raj Patel."
+                }
+              ],
+              "id": "c1"
+            },
+            "classification": {
+              "claimId": "c1",
+              "status": "NEGATED",
+              "certainty": "EXPLICIT",
+              "sufficiency": "INDIRECT",
+              "explanation": "Kim corrected Alex's claim that Dana alone signs off, saying both Dana and Raj must sign, so Dana as sole approver is negated; Dana is only a partial signer."
+            },
+            "grounding": {
+              "grounded": true,
+              "hasCustomerEvidence": true,
+              "failures": []
+            },
+            "decision": {
+              "claimId": "c1",
+              "field": "decisionMaker",
+              "action": "ABSTAIN",
+              "reasons": [
+                "STATUS_NEGATED"
+              ]
+            }
+          },
+          {
+            "claim": {
+              "field": "decisionMaker",
+              "value": {
+                "people": [
+                  {
+                    "name": "Dana",
+                    "role": null
+                  },
+                  {
+                    "name": "Raj Patel",
+                    "role": "COO"
+                  }
+                ]
+              },
+              "evidence": [
+                {
+                  "turnId": "t2",
+                  "speakerId": "kim",
+                  "quote": "Dana and our COO, Raj Patel. Both of them have to sign before anything goes out."
+                },
+                {
+                  "turnId": "t3",
+                  "speakerId": "alex",
+                  "quote": "Okay, so two signatures."
+                },
+                {
+                  "turnId": "t4",
+                  "speakerId": "kim",
+                  "quote": "formally it needs both."
+                },
+                {
+                  "turnId": "t5",
+                  "speakerId": "alex",
+                  "quote": "I'll make sure the paperwork has both signature blocks."
+                }
+              ],
+              "id": "c2"
+            },
+            "classification": {
+              "claimId": "c2",
+              "status": "CURRENT",
+              "certainty": "EXPLICIT",
+              "sufficiency": "DIRECT",
+              "explanation": "Kim plainly states that both Dana and COO Raj Patel must sign, and reaffirms that formally both are needed, which is joint final approval."
+            },
+            "grounding": {
+              "grounded": true,
+              "hasCustomerEvidence": true,
+              "failures": []
+            },
+            "decision": {
+              "claimId": "c2",
+              "field": "decisionMaker",
+              "action": "ASK",
+              "reasons": [
+                "CONFLICTING_CANDIDATES"
+              ]
+            }
+          },
+          {
+            "claim": {
+              "field": "decisionMaker",
+              "value": {
+                "people": [
+                  {
+                    "name": "Raj Patel",
+                    "role": "COO"
+                  }
+                ]
+              },
+              "evidence": [
+                {
+                  "turnId": "t4",
+                  "speakerId": "kim",
+                  "quote": "Dana usually follows Raj's lead"
+                }
+              ],
+              "id": "c3"
+            },
+            "classification": {
+              "claimId": "c3",
+              "status": "CURRENT",
+              "certainty": "EXPLICIT",
+              "sufficiency": "INDIRECT",
+              "explanation": "Kim says Dana usually follows Raj's lead, which shows influence but not sole approval authority, since both must sign."
+            },
+            "grounding": {
+              "grounded": true,
+              "hasCustomerEvidence": true,
+              "failures": []
+            },
+            "decision": {
+              "claimId": "c3",
+              "field": "decisionMaker",
+              "action": "ASK",
+              "reasons": [
+                "INDIRECT_SUPPORT",
+                "CONFLICTING_CANDIDATES"
+              ]
+            }
+          }
+        ]
+      },
+      "llmCalls": [
+        {
+          "label": "grounded.extract",
+          "requestedModel": "claude-sonnet-5-5",
+          "responseModel": "claude-sonnet-5-5",
+          "attempt": 1,
+          "promptHash": "7dbf1f5f58939c9b",
+          "durationMs": 3266,
+          "stopReason": "end_turn",
+          "rawText": "{\"candidates\":[{\"field\":\"decisionMaker\",\"value\":{\"people\":[{\"name\":\"Dana\",\"role\":null}]},\"evidence\":[{\"turnId\":\"t1\",\"speakerId\":\"alex\",\"quote\":\"So Dana's the one who signs off on this, right?\"},{\"turnId\":\"t2\",\"speakerId\":\"kim\",\"quote\":\"Dana's... well, actually it's Dana and our COO, Raj Patel.\"}]},{\"field\":\"decisionMaker\",\"value\":{\"people\":[{\"name\":\"Dana\",\"role\":null},{\"name\":\"Raj Patel\",\"role\":\"COO\"}]},\"evidence\":[{\"turnId\":\"t2\",\"speakerId\":\"kim\",\"quote\":\"Dana and our COO, Raj Patel. Both of them have to sign before anything goes out.\"},{\"turnId\":\"t3\",\"speakerId\":\"alex\",\"quote\":\"Okay, so two signatures.\"},{\"turnId\":\"t4\",\"speakerId\":\"kim\",\"quote\":\"formally it needs both.\"},{\"turnId\":\"t5\",\"speakerId\":\"alex\",\"quote\":\"I'll make sure the paperwork has both signature blocks.\"}]},{\"field\":\"decisionMaker\",\"value\":{\"people\":[{\"name\":\"Raj Patel\",\"role\":\"COO\"}]},\"evidence\":[{\"turnId\":\"t4\",\"speakerId\":\"kim\",\"quote\":\"Dana usually follows Raj's lead\"}]}]}",
+          "ok": true,
+          "error": null,
+          "usage": {
+            "inputTokens": 3313,
+            "outputTokens": 453
+          }
+        },
+        {
+          "label": "grounded.classify",
+          "requestedModel": "claude-sonnet-5-5",
+          "responseModel": "claude-sonnet-5-5",
+          "attempt": 1,
+          "promptHash": "cf7d3413cc3d2d85",
+          "durationMs": 2996,
+          "stopReason": "end_turn",
+          "rawText": "{\"classifications\":[{\"claimId\":\"c1\",\"status\":\"NEGATED\",\"certainty\":\"EXPLICIT\",\"sufficiency\":\"INDIRECT\",\"explanation\":\"Kim corrected Alex's claim that Dana alone signs off, saying both Dana and Raj must sign, so Dana as sole approver is negated; Dana is only a partial signer.\"},{\"claimId\":\"c2\",\"status\":\"CURRENT\",\"certainty\":\"EXPLICIT\",\"sufficiency\":\"DIRECT\",\"explanation\":\"Kim plainly states that both Dana and COO Raj Patel must sign, and reaffirms that formally both are needed, which is joint final approval.\"},{\"claimId\":\"c3\",\"status\":\"CURRENT\",\"certainty\":\"EXPLICIT\",\"sufficiency\":\"INDIRECT\",\"explanation\":\"Kim says Dana usually follows Raj's lead, which shows influence but not sole approval authority, since both must sign.\"}]}",
+          "ok": true,
+          "error": null,
+          "usage": {
+            "inputTokens": 2788,
+            "outputTokens": 311
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "caseId": "meeting-ex-01",
+      "system": "grounded",
+      "fields": {
+        "budget": {
+          "action": "ABSTAIN",
+          "value": null,
+          "reasons": [
+            "NO_CANDIDATE"
+          ],
+          "claimIds": []
+        },
+        "decisionMaker": {
+          "action": "ABSTAIN",
+          "value": null,
+          "reasons": [
+            "NO_CANDIDATE"
+          ],
+          "claimIds": []
+        },
+        "nextMeeting": {
+          "action": "ACT",
+          "value": {
+            "date": "2026-03-12",
+            "time": "14:00",
+            "timezone": null,
+            "asStated": "Thursday at 2"
+          },
+          "reasons": [
+            "SUPPORTED"
+          ],
+          "claimIds": [
+            "c1"
+          ]
+        }
+      },
+      "trace": {
+        "records": [
+          {
+            "claim": {
+              "field": "nextMeeting",
+              "value": {
+                "date": "2026-03-12",
+                "time": "14:00",
+                "timezone": null,
+                "asStated": "Thursday at 2"
+              },
+              "evidence": [
+                {
+                  "turnId": "t1",
+                  "speakerId": "nina",
+                  "quote": "Would Thursday at 2 work for the full demo with your team?"
+                },
+                {
+                  "turnId": "t2",
+                  "speakerId": "omar",
+                  "quote": "Thursday at 2 works."
+                },
+                {
+                  "turnId": "t3",
+                  "speakerId": "nina",
+                  "quote": "Perfect, I'll send it right after this call."
+                }
+              ],
+              "id": "c1"
+            },
+            "classification": {
+              "claimId": "c1",
+              "status": "CURRENT",
+              "certainty": "EXPLICIT",
+              "sufficiency": "DIRECT",
+              "explanation": "Nina proposed Thursday at 2 for a demo and Omar accepted without hedging (\"Thursday at 2 works\"), so it is an upcoming mutually agreed meeting on 2026-03-12 at 14:00."
+            },
+            "grounding": {
+              "grounded": true,
+              "hasCustomerEvidence": true,
+              "failures": []
+            },
+            "decision": {
+              "claimId": "c1",
+              "field": "nextMeeting",
+              "action": "ACT",
+              "reasons": [
+                "SUPPORTED"
+              ]
+            }
+          }
+        ]
+      },
+      "llmCalls": [
+        {
+          "label": "grounded.extract",
+          "requestedModel": "claude-sonnet-5-5",
+          "responseModel": "claude-sonnet-5-5",
+          "attempt": 1,
+          "promptHash": "7dbf1f5f58939c9b",
+          "durationMs": 2105,
+          "stopReason": "end_turn",
+          "rawText": "{\"candidates\":[{\"field\":\"nextMeeting\",\"value\":{\"date\":\"2026-03-12\",\"time\":\"14:00\",\"timezone\":null,\"asStated\":\"Thursday at 2\"},\"evidence\":[{\"turnId\":\"t1\",\"speakerId\":\"nina\",\"quote\":\"Would Thursday at 2 work for the full demo with your team?\"},{\"turnId\":\"t2\",\"speakerId\":\"omar\",\"quote\":\"Thursday at 2 works.\"},{\"turnId\":\"t3\",\"speakerId\":\"nina\",\"quote\":\"Perfect, I'll send it right after this call.\"}]}]}",
+          "ok": true,
+          "error": null,
+          "usage": {
+            "inputTokens": 3299,
+            "outputTokens": 191
+          }
+        },
+        {
+          "label": "grounded.classify",
+          "requestedModel": "claude-sonnet-5-5",
+          "responseModel": "claude-sonnet-5-5",
+          "attempt": 1,
+          "promptHash": "cf7d3413cc3d2d85",
+          "durationMs": 2004,
+          "stopReason": "end_turn",
+          "rawText": "{\"classifications\":[{\"claimId\":\"c1\",\"status\":\"CURRENT\",\"certainty\":\"EXPLICIT\",\"sufficiency\":\"DIRECT\",\"explanation\":\"Nina proposed Thursday at 2 for a demo and Omar accepted without hedging (\\\"Thursday at 2 works\\\"), so it is an upcoming mutually agreed meeting on 2026-03-12 at 14:00.\"}]}",
+          "ok": true,
+          "error": null,
+          "usage": {
+            "inputTokens": 2373,
+            "outputTokens": 138
+          }
+        }
+      ],
+      "error": null
+    },
+    {
+      "caseId": "meeting-ex-02",
+      "system": "grounded",
+      "fields": {
+        "budget": {
+          "action": "ABSTAIN",
+          "value": null,
+          "reasons": [
+            "NO_CANDIDATE"
+          ],
+          "claimIds": []
+        },
+        "decisionMaker": {
+          "action": "ABSTAIN",
+          "value": null,
+          "reasons": [
+            "NO_CANDIDATE"
+          ],
+          "claimIds": []
+        },
+        "nextMeeting": {
+          "action": "ASK",
+          "value": {
+            "date": "2026-03-19",
+            "time": "15:00",
+            "timezone": null,
+            "asStated": "Thursday at 3"
+          },
+          "reasons": [
+            "CONDITIONAL",
+            "INDIRECT_SUPPORT"
+          ],
+          "claimIds": [
+            "c1"
+          ]
+        }
+      },
+      "trace": {
+        "records": [
+          {
+            "claim": {
+              "field": "nextMeeting",
+              "value": {
+                "date": "2026-03-19",
+                "time": "15:00",
+                "timezone": null,
+                "asStated": "Thursday at 3"
+              },
+              "evidence": [
+                {
+                  "turnId": "t1",
+                  "speakerId": "leo",
+                  "quote": "I'll put us down for Thursday at 3 to go through the contract redlines."
+                },
+                {
+                  "turnId": "t2",
+                  "speakerId": "fatima",
+                  "quote": "I'll have to check with legal on their availability."
+                },
+                {
+                  "turnId": "t4",
+                  "speakerId": "fatima",
+                  "quote": "I'll get back to you on Thursday either way about the redlines."
+                }
+              ],
+              "id": "c1"
+            },
+            "classification": {
+              "claimId": "c1",
+              "status": "CURRENT",
+              "certainty": "CONDITIONAL",
+              "sufficiency": "INDIRECT",
+              "explanation": "Leo proposed Thursday at 3, but Fatima did not accept it; she said she must check legal's availability and later only promised to get back to him Thursday, so the meeting depends on a pending confirmation and is not clearly mutually agreed."
+            },
+            "grounding": {
+              "grounded": true,
+              "hasCustomerEvidence": true,
+              "failures": []
+            },
+            "decision": {
+              "claimId": "c1",
+              "field": "nextMeeting",
+              "action": "ASK",
+              "reasons": [
+                "CONDITIONAL",
+                "INDIRECT_SUPPORT"
+              ]
+            }
+          }
+        ]
+      },
+      "llmCalls": [
+        {
+          "label": "grounded.extract",
+          "requestedModel": "claude-sonnet-5-5",
+          "responseModel": "claude-sonnet-5-5",
+          "attempt": 1,
+          "promptHash": "7dbf1f5f58939c9b",
+          "durationMs": 2243,
+          "stopReason": "end_turn",
+          "rawText": "{\"candidates\":[{\"field\":\"nextMeeting\",\"value\":{\"date\":\"2026-03-19\",\"time\":\"15:00\",\"timezone\":null,\"asStated\":\"Thursday at 3\"},\"evidence\":[{\"turnId\":\"t1\",\"speakerId\":\"leo\",\"quote\":\"I'll put us down for Thursday at 3 to go through the contract redlines.\"},{\"turnId\":\"t2\",\"speakerId\":\"fatima\",\"quote\":\"I'll have to check with legal on their availability.\"},{\"turnId\":\"t4\",\"speakerId\":\"fatima\",\"quote\":\"I'll get back to you on Thursday either way about the redlines.\"}]}]}",
+          "ok": true,
+          "error": null,
+          "usage": {
+            "inputTokens": 3270,
+            "outputTokens": 206
+          }
+        },
+        {
+          "label": "grounded.classify",
+          "requestedModel": "claude-sonnet-5-5",
+          "responseModel": "claude-sonnet-5-5",
+          "attempt": 1,
+          "promptHash": "cf7d3413cc3d2d85",
+          "durationMs": 2431,
+          "stopReason": "end_turn",
+          "rawText": "{\"classifications\":[{\"claimId\":\"c1\",\"status\":\"CURRENT\",\"certainty\":\"CONDITIONAL\",\"sufficiency\":\"INDIRECT\",\"explanation\":\"Leo proposed Thursday at 3, but Fatima did not accept it; she said she must check legal's availability and later only promised to get back to him Thursday, so the meeting depends on a pending confirmation and is not clearly mutually agreed.\"}]}",
+          "ok": true,
+          "error": null,
+          "usage": {
+            "inputTokens": 2359,
+            "outputTokens": 142
+          }
+        }
+      ],
+      "error": null
+    }
+  ],
+  "items": [
+    {
+      "caseId": "budget-ex-01",
+      "field": "budget",
+      "source": "generated",
+      "labelStatus": "draft",
+      "tags": [
+        "tentative",
+        "conditional",
+        "multiple_numbers",
+        "irrelevant_info",
+        "filler_words",
+        "messy_speech"
+      ],
+      "goldAction": "ASK",
+      "goldValue": {
+        "kind": "exact",
+        "amount": 100000,
+        "currency": "USD"
+      },
+      "goldStatus": "CURRENT",
+      "goldCertainty": "CONDITIONAL",
+      "predAction": "ASK",
+      "predValue": {
+        "kind": "exact",
+        "amount": 100000,
+        "currency": "USD"
+      },
+      "valueMatch": true,
+      "outcome": "CORRECT_ASK",
+      "systemError": false
+    },
+    {
+      "caseId": "budget-ex-01",
+      "field": "decisionMaker",
+      "source": "generated",
+      "labelStatus": "draft",
+      "tags": [
+        "tentative",
+        "conditional",
+        "multiple_numbers",
+        "irrelevant_info",
+        "filler_words",
+        "messy_speech"
+      ],
+      "goldAction": "ABSTAIN",
+      "goldValue": null,
+      "goldStatus": null,
+      "goldCertainty": null,
+      "predAction": "ABSTAIN",
+      "predValue": null,
+      "valueMatch": null,
+      "outcome": "CORRECT_NO_CHANGE",
+      "systemError": false
+    },
+    {
+      "caseId": "budget-ex-01",
+      "field": "nextMeeting",
+      "source": "generated",
+      "labelStatus": "draft",
+      "tags": [
+        "tentative",
+        "conditional",
+        "multiple_numbers",
+        "irrelevant_info",
+        "filler_words",
+        "messy_speech"
+      ],
+      "goldAction": "ABSTAIN",
+      "goldValue": null,
+      "goldStatus": null,
+      "goldCertainty": null,
+      "predAction": "ABSTAIN",
+      "predValue": null,
+      "valueMatch": null,
+      "outcome": "CORRECT_NO_CHANGE",
+      "systemError": false
+    },
+    {
+      "caseId": "budget-ex-02",
+      "field": "budget",
+      "source": "generated",
+      "labelStatus": "draft",
+      "tags": [
+        "supersession",
+        "existing_value",
+        "multiple_numbers",
+        "explicit"
+      ],
+      "goldAction": "ASK",
+      "goldValue": {
+        "kind": "exact",
+        "amount": 120000,
+        "currency": "USD"
+      },
+      "goldStatus": "CURRENT",
+      "goldCertainty": "EXPLICIT",
+      "predAction": "ASK",
+      "predValue": {
+        "kind": "exact",
+        "amount": 120000,
+        "currency": "USD"
+      },
+      "valueMatch": true,
+      "outcome": "CORRECT_ASK",
+      "systemError": false
+    },
+    {
+      "caseId": "budget-ex-02",
+      "field": "decisionMaker",
+      "source": "generated",
+      "labelStatus": "draft",
+      "tags": [
+        "supersession",
+        "existing_value",
+        "multiple_numbers",
+        "explicit"
+      ],
+      "goldAction": "ABSTAIN",
+      "goldValue": null,
+      "goldStatus": null,
+      "goldCertainty": null,
+      "predAction": "ABSTAIN",
+      "predValue": null,
+      "valueMatch": null,
+      "outcome": "CORRECT_NO_CHANGE",
+      "systemError": false
+    },
+    {
+      "caseId": "budget-ex-02",
+      "field": "nextMeeting",
+      "source": "generated",
+      "labelStatus": "draft",
+      "tags": [
+        "supersession",
+        "existing_value",
+        "multiple_numbers",
+        "explicit"
+      ],
+      "goldAction": "ACT",
+      "goldValue": {
+        "date": "2026-03-17",
+        "time": "10:00",
+        "timezone": "Eastern",
+        "asStated": "Tuesday the 17th at 10 Eastern"
+      },
+      "goldStatus": "CURRENT",
+      "goldCertainty": "EXPLICIT",
+      "predAction": "ACT",
+      "predValue": {
+        "date": "2026-03-17",
+        "time": "10:00",
+        "timezone": "America/New_York",
+        "asStated": "Tuesday the 17th at 10 Eastern"
+      },
+      "valueMatch": true,
+      "outcome": "CORRECT_ACT",
+      "systemError": false
+    },
+    {
+      "caseId": "dm-ex-01",
+      "field": "budget",
+      "source": "generated",
+      "labelStatus": "draft",
+      "tags": [
+        "multiple_stakeholders",
+        "explicit_but_insufficient",
+        "pronouns",
+        "irrelevant_info",
+        "explicit"
+      ],
+      "goldAction": "ABSTAIN",
+      "goldValue": {
+        "kind": "exact",
+        "amount": 50000,
+        "currency": "USD"
+      },
+      "goldStatus": "CURRENT",
+      "goldCertainty": "EXPLICIT",
+      "predAction": "ABSTAIN",
+      "predValue": null,
+      "valueMatch": null,
+      "outcome": "CORRECT_NO_CHANGE",
+      "systemError": false
+    },
+    {
+      "caseId": "dm-ex-01",
+      "field": "decisionMaker",
+      "source": "generated",
+      "labelStatus": "draft",
+      "tags": [
+        "multiple_stakeholders",
+        "explicit_but_insufficient",
+        "pronouns",
+        "irrelevant_info",
+        "explicit"
+      ],
+      "goldAction": "ACT",
+      "goldValue": {
+        "people": [
+          {
+            "name": "Marcus",
+            "role": "CFO"
+          }
+        ]
+      },
+      "goldStatus": "CURRENT",
+      "goldCertainty": "EXPLICIT",
+      "predAction": "ASK",
+      "predValue": {
+        "people": [
+          {
+            "name": "Marcus",
+            "role": "CFO"
+          }
+        ]
+      },
+      "valueMatch": true,
+      "outcome": "ACT_DOWNGRADED_TO_ASK",
+      "systemError": false
+    },
+    {
+      "caseId": "dm-ex-01",
+      "field": "nextMeeting",
+      "source": "generated",
+      "labelStatus": "draft",
+      "tags": [
+        "multiple_stakeholders",
+        "explicit_but_insufficient",
+        "pronouns",
+        "irrelevant_info",
+        "explicit"
+      ],
+      "goldAction": "ABSTAIN",
+      "goldValue": null,
+      "goldStatus": null,
+      "goldCertainty": null,
+      "predAction": "ABSTAIN",
+      "predValue": null,
+      "valueMatch": null,
+      "outcome": "CORRECT_NO_CHANGE",
+      "systemError": false
+    },
+    {
+      "caseId": "dm-ex-02",
+      "field": "budget",
+      "source": "generated",
+      "labelStatus": "draft",
+      "tags": [
+        "joint_approval",
+        "mid_sentence_correction",
+        "supersession",
+        "multiple_stakeholders",
+        "filler_words"
+      ],
+      "goldAction": "ABSTAIN",
+      "goldValue": null,
+      "goldStatus": null,
+      "goldCertainty": null,
+      "predAction": "ABSTAIN",
+      "predValue": null,
+      "valueMatch": null,
+      "outcome": "CORRECT_NO_CHANGE",
+      "systemError": false
+    },
+    {
+      "caseId": "dm-ex-02",
+      "field": "decisionMaker",
+      "source": "generated",
+      "labelStatus": "draft",
+      "tags": [
+        "joint_approval",
+        "mid_sentence_correction",
+        "supersession",
+        "multiple_stakeholders",
+        "filler_words"
+      ],
+      "goldAction": "ACT",
+      "goldValue": {
+        "people": [
+          {
+            "name": "Dana",
+            "role": null
+          },
+          {
+            "name": "Raj Patel",
+            "role": "COO"
+          }
+        ]
+      },
+      "goldStatus": "CURRENT",
+      "goldCertainty": "EXPLICIT",
+      "predAction": "ASK",
+      "predValue": {
+        "people": [
+          {
+            "name": "Dana",
+            "role": null
+          },
+          {
+            "name": "Raj Patel",
+            "role": "COO"
+          }
+        ]
+      },
+      "valueMatch": true,
+      "outcome": "ACT_DOWNGRADED_TO_ASK",
+      "systemError": false
+    },
+    {
+      "caseId": "dm-ex-02",
+      "field": "nextMeeting",
+      "source": "generated",
+      "labelStatus": "draft",
+      "tags": [
+        "joint_approval",
+        "mid_sentence_correction",
+        "supersession",
+        "multiple_stakeholders",
+        "filler_words"
+      ],
+      "goldAction": "ABSTAIN",
+      "goldValue": null,
+      "goldStatus": null,
+      "goldCertainty": null,
+      "predAction": "ABSTAIN",
+      "predValue": null,
+      "valueMatch": null,
+      "outcome": "CORRECT_NO_CHANGE",
+      "systemError": false
+    },
+    {
+      "caseId": "meeting-ex-01",
+      "field": "budget",
+      "source": "generated",
+      "labelStatus": "draft",
+      "tags": [
+        "explicit",
+        "irrelevant_info"
+      ],
+      "goldAction": "ABSTAIN",
+      "goldValue": null,
+      "goldStatus": null,
+      "goldCertainty": null,
+      "predAction": "ABSTAIN",
+      "predValue": null,
+      "valueMatch": null,
+      "outcome": "CORRECT_NO_CHANGE",
+      "systemError": false
+    },
+    {
+      "caseId": "meeting-ex-01",
+      "field": "decisionMaker",
+      "source": "generated",
+      "labelStatus": "draft",
+      "tags": [
+        "explicit",
+        "irrelevant_info"
+      ],
+      "goldAction": "ABSTAIN",
+      "goldValue": null,
+      "goldStatus": null,
+      "goldCertainty": null,
+      "predAction": "ABSTAIN",
+      "predValue": null,
+      "valueMatch": null,
+      "outcome": "CORRECT_NO_CHANGE",
+      "systemError": false
+    },
+    {
+      "caseId": "meeting-ex-01",
+      "field": "nextMeeting",
+      "source": "generated",
+      "labelStatus": "draft",
+      "tags": [
+        "explicit",
+        "irrelevant_info"
+      ],
+      "goldAction": "ACT",
+      "goldValue": {
+        "date": "2026-03-12",
+        "time": "14:00",
+        "timezone": null,
+        "asStated": "Thursday at 2"
+      },
+      "goldStatus": "CURRENT",
+      "goldCertainty": "EXPLICIT",
+      "predAction": "ACT",
+      "predValue": {
+        "date": "2026-03-12",
+        "time": "14:00",
+        "timezone": null,
+        "asStated": "Thursday at 2"
+      },
+      "valueMatch": true,
+      "outcome": "CORRECT_ACT",
+      "systemError": false
+    },
+    {
+      "caseId": "meeting-ex-02",
+      "field": "budget",
+      "source": "generated",
+      "labelStatus": "draft",
+      "tags": [
+        "unconfirmed_rep_statement",
+        "tentative",
+        "irrelevant_info"
+      ],
+      "goldAction": "ABSTAIN",
+      "goldValue": null,
+      "goldStatus": null,
+      "goldCertainty": null,
+      "predAction": "ABSTAIN",
+      "predValue": null,
+      "valueMatch": null,
+      "outcome": "CORRECT_NO_CHANGE",
+      "systemError": false
+    },
+    {
+      "caseId": "meeting-ex-02",
+      "field": "decisionMaker",
+      "source": "generated",
+      "labelStatus": "draft",
+      "tags": [
+        "unconfirmed_rep_statement",
+        "tentative",
+        "irrelevant_info"
+      ],
+      "goldAction": "ABSTAIN",
+      "goldValue": null,
+      "goldStatus": null,
+      "goldCertainty": null,
+      "predAction": "ABSTAIN",
+      "predValue": null,
+      "valueMatch": null,
+      "outcome": "CORRECT_NO_CHANGE",
+      "systemError": false
+    },
+    {
+      "caseId": "meeting-ex-02",
+      "field": "nextMeeting",
+      "source": "generated",
+      "labelStatus": "draft",
+      "tags": [
+        "unconfirmed_rep_statement",
+        "tentative",
+        "irrelevant_info"
+      ],
+      "goldAction": "ASK",
+      "goldValue": {
+        "date": "2026-03-19",
+        "time": "15:00",
+        "timezone": null,
+        "asStated": "Thursday at 3"
+      },
+      "goldStatus": "CURRENT",
+      "goldCertainty": "TENTATIVE",
+      "predAction": "ASK",
+      "predValue": {
+        "date": "2026-03-19",
+        "time": "15:00",
+        "timezone": null,
+        "asStated": "Thursday at 3"
+      },
+      "valueMatch": true,
+      "outcome": "CORRECT_ASK",
+      "systemError": false
+    }
+  ],
+  "metrics": {
+    "overall": {
+      "items": 18,
+      "actPrecision": {
+        "num": 2,
+        "den": 2,
+        "value": 1
+      },
+      "coverage": {
+        "num": 2,
+        "den": 4,
+        "value": 0.5
+      },
+      "unsafeWriteRate": {
+        "num": 0,
+        "den": 14,
+        "value": 0
+      },
+      "reviewRate": {
+        "num": 5,
+        "den": 18,
+        "value": 0.2777777777777778
+      },
+      "abstentionRate": {
+        "num": 11,
+        "den": 18,
+        "value": 0.6111111111111112
+      },
+      "noOpRate": {
+        "num": 0,
+        "den": 18,
+        "value": 0
+      },
+      "wrongValueWrites": 0,
+      "systemErrors": 0,
+      "confusion": {
+        "ACT": {
+          "ACT": 2,
+          "ASK": 2,
+          "ABSTAIN": 0,
+          "NO_OP": 0
+        },
+        "ASK": {
+          "ACT": 0,
+          "ASK": 3,
+          "ABSTAIN": 0,
+          "NO_OP": 0
+        },
+        "ABSTAIN": {
+          "ACT": 0,
+          "ASK": 0,
+          "ABSTAIN": 11,
+          "NO_OP": 0
+        },
+        "NO_OP": {
+          "ACT": 0,
+          "ASK": 0,
+          "ABSTAIN": 0,
+          "NO_OP": 0
+        }
+      },
+      "outcomes": {
+        "CORRECT_ACT": 2,
+        "WRONG_VALUE_ACT": 0,
+        "UNSAFE_ACT": 0,
+        "ACT_DOWNGRADED_TO_ASK": 2,
+        "MISSED_ACT": 0,
+        "CORRECT_ASK": 3,
+        "WRONG_VALUE_ASK": 0,
+        "MISSED_ASK": 0,
+        "UNNECESSARY_ASK": 0,
+        "CORRECT_NO_CHANGE": 11
+      }
+    },
+    "byField": {
+      "budget": {
+        "items": 6,
+        "actPrecision": {
+          "num": 0,
+          "den": 0,
+          "value": null
+        },
+        "coverage": {
+          "num": 0,
+          "den": 0,
+          "value": null
+        },
+        "unsafeWriteRate": {
+          "num": 0,
+          "den": 6,
+          "value": 0
+        },
+        "reviewRate": {
+          "num": 2,
+          "den": 6,
+          "value": 0.3333333333333333
+        },
+        "abstentionRate": {
+          "num": 4,
+          "den": 6,
+          "value": 0.6666666666666666
+        },
+        "noOpRate": {
+          "num": 0,
+          "den": 6,
+          "value": 0
+        },
+        "wrongValueWrites": 0,
+        "systemErrors": 0,
+        "confusion": {
+          "ACT": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ASK": {
+            "ACT": 0,
+            "ASK": 2,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ABSTAIN": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 4,
+            "NO_OP": 0
+          },
+          "NO_OP": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          }
+        },
+        "outcomes": {
+          "CORRECT_ACT": 0,
+          "WRONG_VALUE_ACT": 0,
+          "UNSAFE_ACT": 0,
+          "ACT_DOWNGRADED_TO_ASK": 0,
+          "MISSED_ACT": 0,
+          "CORRECT_ASK": 2,
+          "WRONG_VALUE_ASK": 0,
+          "MISSED_ASK": 0,
+          "UNNECESSARY_ASK": 0,
+          "CORRECT_NO_CHANGE": 4
+        }
+      },
+      "decisionMaker": {
+        "items": 6,
+        "actPrecision": {
+          "num": 0,
+          "den": 0,
+          "value": null
+        },
+        "coverage": {
+          "num": 0,
+          "den": 2,
+          "value": 0
+        },
+        "unsafeWriteRate": {
+          "num": 0,
+          "den": 4,
+          "value": 0
+        },
+        "reviewRate": {
+          "num": 2,
+          "den": 6,
+          "value": 0.3333333333333333
+        },
+        "abstentionRate": {
+          "num": 4,
+          "den": 6,
+          "value": 0.6666666666666666
+        },
+        "noOpRate": {
+          "num": 0,
+          "den": 6,
+          "value": 0
+        },
+        "wrongValueWrites": 0,
+        "systemErrors": 0,
+        "confusion": {
+          "ACT": {
+            "ACT": 0,
+            "ASK": 2,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ASK": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ABSTAIN": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 4,
+            "NO_OP": 0
+          },
+          "NO_OP": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          }
+        },
+        "outcomes": {
+          "CORRECT_ACT": 0,
+          "WRONG_VALUE_ACT": 0,
+          "UNSAFE_ACT": 0,
+          "ACT_DOWNGRADED_TO_ASK": 2,
+          "MISSED_ACT": 0,
+          "CORRECT_ASK": 0,
+          "WRONG_VALUE_ASK": 0,
+          "MISSED_ASK": 0,
+          "UNNECESSARY_ASK": 0,
+          "CORRECT_NO_CHANGE": 4
+        }
+      },
+      "nextMeeting": {
+        "items": 6,
+        "actPrecision": {
+          "num": 2,
+          "den": 2,
+          "value": 1
+        },
+        "coverage": {
+          "num": 2,
+          "den": 2,
+          "value": 1
+        },
+        "unsafeWriteRate": {
+          "num": 0,
+          "den": 4,
+          "value": 0
+        },
+        "reviewRate": {
+          "num": 1,
+          "den": 6,
+          "value": 0.16666666666666666
+        },
+        "abstentionRate": {
+          "num": 3,
+          "den": 6,
+          "value": 0.5
+        },
+        "noOpRate": {
+          "num": 0,
+          "den": 6,
+          "value": 0
+        },
+        "wrongValueWrites": 0,
+        "systemErrors": 0,
+        "confusion": {
+          "ACT": {
+            "ACT": 2,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ASK": {
+            "ACT": 0,
+            "ASK": 1,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ABSTAIN": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 3,
+            "NO_OP": 0
+          },
+          "NO_OP": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          }
+        },
+        "outcomes": {
+          "CORRECT_ACT": 2,
+          "WRONG_VALUE_ACT": 0,
+          "UNSAFE_ACT": 0,
+          "ACT_DOWNGRADED_TO_ASK": 0,
+          "MISSED_ACT": 0,
+          "CORRECT_ASK": 1,
+          "WRONG_VALUE_ASK": 0,
+          "MISSED_ASK": 0,
+          "UNNECESSARY_ASK": 0,
+          "CORRECT_NO_CHANGE": 3
+        }
+      }
+    },
+    "bySource": {
+      "generated": {
+        "items": 18,
+        "actPrecision": {
+          "num": 2,
+          "den": 2,
+          "value": 1
+        },
+        "coverage": {
+          "num": 2,
+          "den": 4,
+          "value": 0.5
+        },
+        "unsafeWriteRate": {
+          "num": 0,
+          "den": 14,
+          "value": 0
+        },
+        "reviewRate": {
+          "num": 5,
+          "den": 18,
+          "value": 0.2777777777777778
+        },
+        "abstentionRate": {
+          "num": 11,
+          "den": 18,
+          "value": 0.6111111111111112
+        },
+        "noOpRate": {
+          "num": 0,
+          "den": 18,
+          "value": 0
+        },
+        "wrongValueWrites": 0,
+        "systemErrors": 0,
+        "confusion": {
+          "ACT": {
+            "ACT": 2,
+            "ASK": 2,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ASK": {
+            "ACT": 0,
+            "ASK": 3,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ABSTAIN": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 11,
+            "NO_OP": 0
+          },
+          "NO_OP": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          }
+        },
+        "outcomes": {
+          "CORRECT_ACT": 2,
+          "WRONG_VALUE_ACT": 0,
+          "UNSAFE_ACT": 0,
+          "ACT_DOWNGRADED_TO_ASK": 2,
+          "MISSED_ACT": 0,
+          "CORRECT_ASK": 3,
+          "WRONG_VALUE_ASK": 0,
+          "MISSED_ASK": 0,
+          "UNNECESSARY_ASK": 0,
+          "CORRECT_NO_CHANGE": 11
+        }
+      }
+    },
+    "byLabelStatus": {
+      "draft": {
+        "items": 18,
+        "actPrecision": {
+          "num": 2,
+          "den": 2,
+          "value": 1
+        },
+        "coverage": {
+          "num": 2,
+          "den": 4,
+          "value": 0.5
+        },
+        "unsafeWriteRate": {
+          "num": 0,
+          "den": 14,
+          "value": 0
+        },
+        "reviewRate": {
+          "num": 5,
+          "den": 18,
+          "value": 0.2777777777777778
+        },
+        "abstentionRate": {
+          "num": 11,
+          "den": 18,
+          "value": 0.6111111111111112
+        },
+        "noOpRate": {
+          "num": 0,
+          "den": 18,
+          "value": 0
+        },
+        "wrongValueWrites": 0,
+        "systemErrors": 0,
+        "confusion": {
+          "ACT": {
+            "ACT": 2,
+            "ASK": 2,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ASK": {
+            "ACT": 0,
+            "ASK": 3,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ABSTAIN": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 11,
+            "NO_OP": 0
+          },
+          "NO_OP": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          }
+        },
+        "outcomes": {
+          "CORRECT_ACT": 2,
+          "WRONG_VALUE_ACT": 0,
+          "UNSAFE_ACT": 0,
+          "ACT_DOWNGRADED_TO_ASK": 2,
+          "MISSED_ACT": 0,
+          "CORRECT_ASK": 3,
+          "WRONG_VALUE_ASK": 0,
+          "MISSED_ASK": 0,
+          "UNNECESSARY_ASK": 0,
+          "CORRECT_NO_CHANGE": 11
+        }
+      }
+    },
+    "byTag": {
+      "conditional": {
+        "items": 3,
+        "actPrecision": {
+          "num": 0,
+          "den": 0,
+          "value": null
+        },
+        "coverage": {
+          "num": 0,
+          "den": 0,
+          "value": null
+        },
+        "unsafeWriteRate": {
+          "num": 0,
+          "den": 3,
+          "value": 0
+        },
+        "reviewRate": {
+          "num": 1,
+          "den": 3,
+          "value": 0.3333333333333333
+        },
+        "abstentionRate": {
+          "num": 2,
+          "den": 3,
+          "value": 0.6666666666666666
+        },
+        "noOpRate": {
+          "num": 0,
+          "den": 3,
+          "value": 0
+        },
+        "wrongValueWrites": 0,
+        "systemErrors": 0,
+        "confusion": {
+          "ACT": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ASK": {
+            "ACT": 0,
+            "ASK": 1,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ABSTAIN": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 2,
+            "NO_OP": 0
+          },
+          "NO_OP": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          }
+        },
+        "outcomes": {
+          "CORRECT_ACT": 0,
+          "WRONG_VALUE_ACT": 0,
+          "UNSAFE_ACT": 0,
+          "ACT_DOWNGRADED_TO_ASK": 0,
+          "MISSED_ACT": 0,
+          "CORRECT_ASK": 1,
+          "WRONG_VALUE_ASK": 0,
+          "MISSED_ASK": 0,
+          "UNNECESSARY_ASK": 0,
+          "CORRECT_NO_CHANGE": 2
+        }
+      },
+      "existing_value": {
+        "items": 3,
+        "actPrecision": {
+          "num": 1,
+          "den": 1,
+          "value": 1
+        },
+        "coverage": {
+          "num": 1,
+          "den": 1,
+          "value": 1
+        },
+        "unsafeWriteRate": {
+          "num": 0,
+          "den": 2,
+          "value": 0
+        },
+        "reviewRate": {
+          "num": 1,
+          "den": 3,
+          "value": 0.3333333333333333
+        },
+        "abstentionRate": {
+          "num": 1,
+          "den": 3,
+          "value": 0.3333333333333333
+        },
+        "noOpRate": {
+          "num": 0,
+          "den": 3,
+          "value": 0
+        },
+        "wrongValueWrites": 0,
+        "systemErrors": 0,
+        "confusion": {
+          "ACT": {
+            "ACT": 1,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ASK": {
+            "ACT": 0,
+            "ASK": 1,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ABSTAIN": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 1,
+            "NO_OP": 0
+          },
+          "NO_OP": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          }
+        },
+        "outcomes": {
+          "CORRECT_ACT": 1,
+          "WRONG_VALUE_ACT": 0,
+          "UNSAFE_ACT": 0,
+          "ACT_DOWNGRADED_TO_ASK": 0,
+          "MISSED_ACT": 0,
+          "CORRECT_ASK": 1,
+          "WRONG_VALUE_ASK": 0,
+          "MISSED_ASK": 0,
+          "UNNECESSARY_ASK": 0,
+          "CORRECT_NO_CHANGE": 1
+        }
+      },
+      "explicit": {
+        "items": 9,
+        "actPrecision": {
+          "num": 2,
+          "den": 2,
+          "value": 1
+        },
+        "coverage": {
+          "num": 2,
+          "den": 3,
+          "value": 0.6666666666666666
+        },
+        "unsafeWriteRate": {
+          "num": 0,
+          "den": 6,
+          "value": 0
+        },
+        "reviewRate": {
+          "num": 2,
+          "den": 9,
+          "value": 0.2222222222222222
+        },
+        "abstentionRate": {
+          "num": 5,
+          "den": 9,
+          "value": 0.5555555555555556
+        },
+        "noOpRate": {
+          "num": 0,
+          "den": 9,
+          "value": 0
+        },
+        "wrongValueWrites": 0,
+        "systemErrors": 0,
+        "confusion": {
+          "ACT": {
+            "ACT": 2,
+            "ASK": 1,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ASK": {
+            "ACT": 0,
+            "ASK": 1,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ABSTAIN": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 5,
+            "NO_OP": 0
+          },
+          "NO_OP": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          }
+        },
+        "outcomes": {
+          "CORRECT_ACT": 2,
+          "WRONG_VALUE_ACT": 0,
+          "UNSAFE_ACT": 0,
+          "ACT_DOWNGRADED_TO_ASK": 1,
+          "MISSED_ACT": 0,
+          "CORRECT_ASK": 1,
+          "WRONG_VALUE_ASK": 0,
+          "MISSED_ASK": 0,
+          "UNNECESSARY_ASK": 0,
+          "CORRECT_NO_CHANGE": 5
+        }
+      },
+      "explicit_but_insufficient": {
+        "items": 3,
+        "actPrecision": {
+          "num": 0,
+          "den": 0,
+          "value": null
+        },
+        "coverage": {
+          "num": 0,
+          "den": 1,
+          "value": 0
+        },
+        "unsafeWriteRate": {
+          "num": 0,
+          "den": 2,
+          "value": 0
+        },
+        "reviewRate": {
+          "num": 1,
+          "den": 3,
+          "value": 0.3333333333333333
+        },
+        "abstentionRate": {
+          "num": 2,
+          "den": 3,
+          "value": 0.6666666666666666
+        },
+        "noOpRate": {
+          "num": 0,
+          "den": 3,
+          "value": 0
+        },
+        "wrongValueWrites": 0,
+        "systemErrors": 0,
+        "confusion": {
+          "ACT": {
+            "ACT": 0,
+            "ASK": 1,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ASK": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ABSTAIN": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 2,
+            "NO_OP": 0
+          },
+          "NO_OP": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          }
+        },
+        "outcomes": {
+          "CORRECT_ACT": 0,
+          "WRONG_VALUE_ACT": 0,
+          "UNSAFE_ACT": 0,
+          "ACT_DOWNGRADED_TO_ASK": 1,
+          "MISSED_ACT": 0,
+          "CORRECT_ASK": 0,
+          "WRONG_VALUE_ASK": 0,
+          "MISSED_ASK": 0,
+          "UNNECESSARY_ASK": 0,
+          "CORRECT_NO_CHANGE": 2
+        }
+      },
+      "filler_words": {
+        "items": 6,
+        "actPrecision": {
+          "num": 0,
+          "den": 0,
+          "value": null
+        },
+        "coverage": {
+          "num": 0,
+          "den": 1,
+          "value": 0
+        },
+        "unsafeWriteRate": {
+          "num": 0,
+          "den": 5,
+          "value": 0
+        },
+        "reviewRate": {
+          "num": 2,
+          "den": 6,
+          "value": 0.3333333333333333
+        },
+        "abstentionRate": {
+          "num": 4,
+          "den": 6,
+          "value": 0.6666666666666666
+        },
+        "noOpRate": {
+          "num": 0,
+          "den": 6,
+          "value": 0
+        },
+        "wrongValueWrites": 0,
+        "systemErrors": 0,
+        "confusion": {
+          "ACT": {
+            "ACT": 0,
+            "ASK": 1,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ASK": {
+            "ACT": 0,
+            "ASK": 1,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ABSTAIN": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 4,
+            "NO_OP": 0
+          },
+          "NO_OP": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          }
+        },
+        "outcomes": {
+          "CORRECT_ACT": 0,
+          "WRONG_VALUE_ACT": 0,
+          "UNSAFE_ACT": 0,
+          "ACT_DOWNGRADED_TO_ASK": 1,
+          "MISSED_ACT": 0,
+          "CORRECT_ASK": 1,
+          "WRONG_VALUE_ASK": 0,
+          "MISSED_ASK": 0,
+          "UNNECESSARY_ASK": 0,
+          "CORRECT_NO_CHANGE": 4
+        }
+      },
+      "irrelevant_info": {
+        "items": 12,
+        "actPrecision": {
+          "num": 1,
+          "den": 1,
+          "value": 1
+        },
+        "coverage": {
+          "num": 1,
+          "den": 2,
+          "value": 0.5
+        },
+        "unsafeWriteRate": {
+          "num": 0,
+          "den": 10,
+          "value": 0
+        },
+        "reviewRate": {
+          "num": 3,
+          "den": 12,
+          "value": 0.25
+        },
+        "abstentionRate": {
+          "num": 8,
+          "den": 12,
+          "value": 0.6666666666666666
+        },
+        "noOpRate": {
+          "num": 0,
+          "den": 12,
+          "value": 0
+        },
+        "wrongValueWrites": 0,
+        "systemErrors": 0,
+        "confusion": {
+          "ACT": {
+            "ACT": 1,
+            "ASK": 1,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ASK": {
+            "ACT": 0,
+            "ASK": 2,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ABSTAIN": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 8,
+            "NO_OP": 0
+          },
+          "NO_OP": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          }
+        },
+        "outcomes": {
+          "CORRECT_ACT": 1,
+          "WRONG_VALUE_ACT": 0,
+          "UNSAFE_ACT": 0,
+          "ACT_DOWNGRADED_TO_ASK": 1,
+          "MISSED_ACT": 0,
+          "CORRECT_ASK": 2,
+          "WRONG_VALUE_ASK": 0,
+          "MISSED_ASK": 0,
+          "UNNECESSARY_ASK": 0,
+          "CORRECT_NO_CHANGE": 8
+        }
+      },
+      "joint_approval": {
+        "items": 3,
+        "actPrecision": {
+          "num": 0,
+          "den": 0,
+          "value": null
+        },
+        "coverage": {
+          "num": 0,
+          "den": 1,
+          "value": 0
+        },
+        "unsafeWriteRate": {
+          "num": 0,
+          "den": 2,
+          "value": 0
+        },
+        "reviewRate": {
+          "num": 1,
+          "den": 3,
+          "value": 0.3333333333333333
+        },
+        "abstentionRate": {
+          "num": 2,
+          "den": 3,
+          "value": 0.6666666666666666
+        },
+        "noOpRate": {
+          "num": 0,
+          "den": 3,
+          "value": 0
+        },
+        "wrongValueWrites": 0,
+        "systemErrors": 0,
+        "confusion": {
+          "ACT": {
+            "ACT": 0,
+            "ASK": 1,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ASK": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ABSTAIN": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 2,
+            "NO_OP": 0
+          },
+          "NO_OP": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          }
+        },
+        "outcomes": {
+          "CORRECT_ACT": 0,
+          "WRONG_VALUE_ACT": 0,
+          "UNSAFE_ACT": 0,
+          "ACT_DOWNGRADED_TO_ASK": 1,
+          "MISSED_ACT": 0,
+          "CORRECT_ASK": 0,
+          "WRONG_VALUE_ASK": 0,
+          "MISSED_ASK": 0,
+          "UNNECESSARY_ASK": 0,
+          "CORRECT_NO_CHANGE": 2
+        }
+      },
+      "messy_speech": {
+        "items": 3,
+        "actPrecision": {
+          "num": 0,
+          "den": 0,
+          "value": null
+        },
+        "coverage": {
+          "num": 0,
+          "den": 0,
+          "value": null
+        },
+        "unsafeWriteRate": {
+          "num": 0,
+          "den": 3,
+          "value": 0
+        },
+        "reviewRate": {
+          "num": 1,
+          "den": 3,
+          "value": 0.3333333333333333
+        },
+        "abstentionRate": {
+          "num": 2,
+          "den": 3,
+          "value": 0.6666666666666666
+        },
+        "noOpRate": {
+          "num": 0,
+          "den": 3,
+          "value": 0
+        },
+        "wrongValueWrites": 0,
+        "systemErrors": 0,
+        "confusion": {
+          "ACT": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ASK": {
+            "ACT": 0,
+            "ASK": 1,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ABSTAIN": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 2,
+            "NO_OP": 0
+          },
+          "NO_OP": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          }
+        },
+        "outcomes": {
+          "CORRECT_ACT": 0,
+          "WRONG_VALUE_ACT": 0,
+          "UNSAFE_ACT": 0,
+          "ACT_DOWNGRADED_TO_ASK": 0,
+          "MISSED_ACT": 0,
+          "CORRECT_ASK": 1,
+          "WRONG_VALUE_ASK": 0,
+          "MISSED_ASK": 0,
+          "UNNECESSARY_ASK": 0,
+          "CORRECT_NO_CHANGE": 2
+        }
+      },
+      "mid_sentence_correction": {
+        "items": 3,
+        "actPrecision": {
+          "num": 0,
+          "den": 0,
+          "value": null
+        },
+        "coverage": {
+          "num": 0,
+          "den": 1,
+          "value": 0
+        },
+        "unsafeWriteRate": {
+          "num": 0,
+          "den": 2,
+          "value": 0
+        },
+        "reviewRate": {
+          "num": 1,
+          "den": 3,
+          "value": 0.3333333333333333
+        },
+        "abstentionRate": {
+          "num": 2,
+          "den": 3,
+          "value": 0.6666666666666666
+        },
+        "noOpRate": {
+          "num": 0,
+          "den": 3,
+          "value": 0
+        },
+        "wrongValueWrites": 0,
+        "systemErrors": 0,
+        "confusion": {
+          "ACT": {
+            "ACT": 0,
+            "ASK": 1,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ASK": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ABSTAIN": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 2,
+            "NO_OP": 0
+          },
+          "NO_OP": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          }
+        },
+        "outcomes": {
+          "CORRECT_ACT": 0,
+          "WRONG_VALUE_ACT": 0,
+          "UNSAFE_ACT": 0,
+          "ACT_DOWNGRADED_TO_ASK": 1,
+          "MISSED_ACT": 0,
+          "CORRECT_ASK": 0,
+          "WRONG_VALUE_ASK": 0,
+          "MISSED_ASK": 0,
+          "UNNECESSARY_ASK": 0,
+          "CORRECT_NO_CHANGE": 2
+        }
+      },
+      "multiple_numbers": {
+        "items": 6,
+        "actPrecision": {
+          "num": 1,
+          "den": 1,
+          "value": 1
+        },
+        "coverage": {
+          "num": 1,
+          "den": 1,
+          "value": 1
+        },
+        "unsafeWriteRate": {
+          "num": 0,
+          "den": 5,
+          "value": 0
+        },
+        "reviewRate": {
+          "num": 2,
+          "den": 6,
+          "value": 0.3333333333333333
+        },
+        "abstentionRate": {
+          "num": 3,
+          "den": 6,
+          "value": 0.5
+        },
+        "noOpRate": {
+          "num": 0,
+          "den": 6,
+          "value": 0
+        },
+        "wrongValueWrites": 0,
+        "systemErrors": 0,
+        "confusion": {
+          "ACT": {
+            "ACT": 1,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ASK": {
+            "ACT": 0,
+            "ASK": 2,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ABSTAIN": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 3,
+            "NO_OP": 0
+          },
+          "NO_OP": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          }
+        },
+        "outcomes": {
+          "CORRECT_ACT": 1,
+          "WRONG_VALUE_ACT": 0,
+          "UNSAFE_ACT": 0,
+          "ACT_DOWNGRADED_TO_ASK": 0,
+          "MISSED_ACT": 0,
+          "CORRECT_ASK": 2,
+          "WRONG_VALUE_ASK": 0,
+          "MISSED_ASK": 0,
+          "UNNECESSARY_ASK": 0,
+          "CORRECT_NO_CHANGE": 3
+        }
+      },
+      "multiple_stakeholders": {
+        "items": 6,
+        "actPrecision": {
+          "num": 0,
+          "den": 0,
+          "value": null
+        },
+        "coverage": {
+          "num": 0,
+          "den": 2,
+          "value": 0
+        },
+        "unsafeWriteRate": {
+          "num": 0,
+          "den": 4,
+          "value": 0
+        },
+        "reviewRate": {
+          "num": 2,
+          "den": 6,
+          "value": 0.3333333333333333
+        },
+        "abstentionRate": {
+          "num": 4,
+          "den": 6,
+          "value": 0.6666666666666666
+        },
+        "noOpRate": {
+          "num": 0,
+          "den": 6,
+          "value": 0
+        },
+        "wrongValueWrites": 0,
+        "systemErrors": 0,
+        "confusion": {
+          "ACT": {
+            "ACT": 0,
+            "ASK": 2,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ASK": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ABSTAIN": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 4,
+            "NO_OP": 0
+          },
+          "NO_OP": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          }
+        },
+        "outcomes": {
+          "CORRECT_ACT": 0,
+          "WRONG_VALUE_ACT": 0,
+          "UNSAFE_ACT": 0,
+          "ACT_DOWNGRADED_TO_ASK": 2,
+          "MISSED_ACT": 0,
+          "CORRECT_ASK": 0,
+          "WRONG_VALUE_ASK": 0,
+          "MISSED_ASK": 0,
+          "UNNECESSARY_ASK": 0,
+          "CORRECT_NO_CHANGE": 4
+        }
+      },
+      "pronouns": {
+        "items": 3,
+        "actPrecision": {
+          "num": 0,
+          "den": 0,
+          "value": null
+        },
+        "coverage": {
+          "num": 0,
+          "den": 1,
+          "value": 0
+        },
+        "unsafeWriteRate": {
+          "num": 0,
+          "den": 2,
+          "value": 0
+        },
+        "reviewRate": {
+          "num": 1,
+          "den": 3,
+          "value": 0.3333333333333333
+        },
+        "abstentionRate": {
+          "num": 2,
+          "den": 3,
+          "value": 0.6666666666666666
+        },
+        "noOpRate": {
+          "num": 0,
+          "den": 3,
+          "value": 0
+        },
+        "wrongValueWrites": 0,
+        "systemErrors": 0,
+        "confusion": {
+          "ACT": {
+            "ACT": 0,
+            "ASK": 1,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ASK": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ABSTAIN": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 2,
+            "NO_OP": 0
+          },
+          "NO_OP": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          }
+        },
+        "outcomes": {
+          "CORRECT_ACT": 0,
+          "WRONG_VALUE_ACT": 0,
+          "UNSAFE_ACT": 0,
+          "ACT_DOWNGRADED_TO_ASK": 1,
+          "MISSED_ACT": 0,
+          "CORRECT_ASK": 0,
+          "WRONG_VALUE_ASK": 0,
+          "MISSED_ASK": 0,
+          "UNNECESSARY_ASK": 0,
+          "CORRECT_NO_CHANGE": 2
+        }
+      },
+      "supersession": {
+        "items": 6,
+        "actPrecision": {
+          "num": 1,
+          "den": 1,
+          "value": 1
+        },
+        "coverage": {
+          "num": 1,
+          "den": 2,
+          "value": 0.5
+        },
+        "unsafeWriteRate": {
+          "num": 0,
+          "den": 4,
+          "value": 0
+        },
+        "reviewRate": {
+          "num": 2,
+          "den": 6,
+          "value": 0.3333333333333333
+        },
+        "abstentionRate": {
+          "num": 3,
+          "den": 6,
+          "value": 0.5
+        },
+        "noOpRate": {
+          "num": 0,
+          "den": 6,
+          "value": 0
+        },
+        "wrongValueWrites": 0,
+        "systemErrors": 0,
+        "confusion": {
+          "ACT": {
+            "ACT": 1,
+            "ASK": 1,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ASK": {
+            "ACT": 0,
+            "ASK": 1,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ABSTAIN": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 3,
+            "NO_OP": 0
+          },
+          "NO_OP": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          }
+        },
+        "outcomes": {
+          "CORRECT_ACT": 1,
+          "WRONG_VALUE_ACT": 0,
+          "UNSAFE_ACT": 0,
+          "ACT_DOWNGRADED_TO_ASK": 1,
+          "MISSED_ACT": 0,
+          "CORRECT_ASK": 1,
+          "WRONG_VALUE_ASK": 0,
+          "MISSED_ASK": 0,
+          "UNNECESSARY_ASK": 0,
+          "CORRECT_NO_CHANGE": 3
+        }
+      },
+      "tentative": {
+        "items": 6,
+        "actPrecision": {
+          "num": 0,
+          "den": 0,
+          "value": null
+        },
+        "coverage": {
+          "num": 0,
+          "den": 0,
+          "value": null
+        },
+        "unsafeWriteRate": {
+          "num": 0,
+          "den": 6,
+          "value": 0
+        },
+        "reviewRate": {
+          "num": 2,
+          "den": 6,
+          "value": 0.3333333333333333
+        },
+        "abstentionRate": {
+          "num": 4,
+          "den": 6,
+          "value": 0.6666666666666666
+        },
+        "noOpRate": {
+          "num": 0,
+          "den": 6,
+          "value": 0
+        },
+        "wrongValueWrites": 0,
+        "systemErrors": 0,
+        "confusion": {
+          "ACT": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ASK": {
+            "ACT": 0,
+            "ASK": 2,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ABSTAIN": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 4,
+            "NO_OP": 0
+          },
+          "NO_OP": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          }
+        },
+        "outcomes": {
+          "CORRECT_ACT": 0,
+          "WRONG_VALUE_ACT": 0,
+          "UNSAFE_ACT": 0,
+          "ACT_DOWNGRADED_TO_ASK": 0,
+          "MISSED_ACT": 0,
+          "CORRECT_ASK": 2,
+          "WRONG_VALUE_ASK": 0,
+          "MISSED_ASK": 0,
+          "UNNECESSARY_ASK": 0,
+          "CORRECT_NO_CHANGE": 4
+        }
+      },
+      "unconfirmed_rep_statement": {
+        "items": 3,
+        "actPrecision": {
+          "num": 0,
+          "den": 0,
+          "value": null
+        },
+        "coverage": {
+          "num": 0,
+          "den": 0,
+          "value": null
+        },
+        "unsafeWriteRate": {
+          "num": 0,
+          "den": 3,
+          "value": 0
+        },
+        "reviewRate": {
+          "num": 1,
+          "den": 3,
+          "value": 0.3333333333333333
+        },
+        "abstentionRate": {
+          "num": 2,
+          "den": 3,
+          "value": 0.6666666666666666
+        },
+        "noOpRate": {
+          "num": 0,
+          "den": 3,
+          "value": 0
+        },
+        "wrongValueWrites": 0,
+        "systemErrors": 0,
+        "confusion": {
+          "ACT": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ASK": {
+            "ACT": 0,
+            "ASK": 1,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ABSTAIN": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 2,
+            "NO_OP": 0
+          },
+          "NO_OP": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          }
+        },
+        "outcomes": {
+          "CORRECT_ACT": 0,
+          "WRONG_VALUE_ACT": 0,
+          "UNSAFE_ACT": 0,
+          "ACT_DOWNGRADED_TO_ASK": 0,
+          "MISSED_ACT": 0,
+          "CORRECT_ASK": 1,
+          "WRONG_VALUE_ASK": 0,
+          "MISSED_ASK": 0,
+          "UNNECESSARY_ASK": 0,
+          "CORRECT_NO_CHANGE": 2
+        }
+      }
+    },
+    "byGoldStatus": {
+      "CURRENT": {
+        "items": 8,
+        "actPrecision": {
+          "num": 2,
+          "den": 2,
+          "value": 1
+        },
+        "coverage": {
+          "num": 2,
+          "den": 4,
+          "value": 0.5
+        },
+        "unsafeWriteRate": {
+          "num": 0,
+          "den": 4,
+          "value": 0
+        },
+        "reviewRate": {
+          "num": 5,
+          "den": 8,
+          "value": 0.625
+        },
+        "abstentionRate": {
+          "num": 1,
+          "den": 8,
+          "value": 0.125
+        },
+        "noOpRate": {
+          "num": 0,
+          "den": 8,
+          "value": 0
+        },
+        "wrongValueWrites": 0,
+        "systemErrors": 0,
+        "confusion": {
+          "ACT": {
+            "ACT": 2,
+            "ASK": 2,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ASK": {
+            "ACT": 0,
+            "ASK": 3,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ABSTAIN": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 1,
+            "NO_OP": 0
+          },
+          "NO_OP": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          }
+        },
+        "outcomes": {
+          "CORRECT_ACT": 2,
+          "WRONG_VALUE_ACT": 0,
+          "UNSAFE_ACT": 0,
+          "ACT_DOWNGRADED_TO_ASK": 2,
+          "MISSED_ACT": 0,
+          "CORRECT_ASK": 3,
+          "WRONG_VALUE_ASK": 0,
+          "MISSED_ASK": 0,
+          "UNNECESSARY_ASK": 0,
+          "CORRECT_NO_CHANGE": 1
+        }
+      },
+      "none": {
+        "items": 10,
+        "actPrecision": {
+          "num": 0,
+          "den": 0,
+          "value": null
+        },
+        "coverage": {
+          "num": 0,
+          "den": 0,
+          "value": null
+        },
+        "unsafeWriteRate": {
+          "num": 0,
+          "den": 10,
+          "value": 0
+        },
+        "reviewRate": {
+          "num": 0,
+          "den": 10,
+          "value": 0
+        },
+        "abstentionRate": {
+          "num": 10,
+          "den": 10,
+          "value": 1
+        },
+        "noOpRate": {
+          "num": 0,
+          "den": 10,
+          "value": 0
+        },
+        "wrongValueWrites": 0,
+        "systemErrors": 0,
+        "confusion": {
+          "ACT": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ASK": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ABSTAIN": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 10,
+            "NO_OP": 0
+          },
+          "NO_OP": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          }
+        },
+        "outcomes": {
+          "CORRECT_ACT": 0,
+          "WRONG_VALUE_ACT": 0,
+          "UNSAFE_ACT": 0,
+          "ACT_DOWNGRADED_TO_ASK": 0,
+          "MISSED_ACT": 0,
+          "CORRECT_ASK": 0,
+          "WRONG_VALUE_ASK": 0,
+          "MISSED_ASK": 0,
+          "UNNECESSARY_ASK": 0,
+          "CORRECT_NO_CHANGE": 10
+        }
+      }
+    },
+    "byGoldCertainty": {
+      "CONDITIONAL": {
+        "items": 1,
+        "actPrecision": {
+          "num": 0,
+          "den": 0,
+          "value": null
+        },
+        "coverage": {
+          "num": 0,
+          "den": 0,
+          "value": null
+        },
+        "unsafeWriteRate": {
+          "num": 0,
+          "den": 1,
+          "value": 0
+        },
+        "reviewRate": {
+          "num": 1,
+          "den": 1,
+          "value": 1
+        },
+        "abstentionRate": {
+          "num": 0,
+          "den": 1,
+          "value": 0
+        },
+        "noOpRate": {
+          "num": 0,
+          "den": 1,
+          "value": 0
+        },
+        "wrongValueWrites": 0,
+        "systemErrors": 0,
+        "confusion": {
+          "ACT": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ASK": {
+            "ACT": 0,
+            "ASK": 1,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ABSTAIN": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "NO_OP": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          }
+        },
+        "outcomes": {
+          "CORRECT_ACT": 0,
+          "WRONG_VALUE_ACT": 0,
+          "UNSAFE_ACT": 0,
+          "ACT_DOWNGRADED_TO_ASK": 0,
+          "MISSED_ACT": 0,
+          "CORRECT_ASK": 1,
+          "WRONG_VALUE_ASK": 0,
+          "MISSED_ASK": 0,
+          "UNNECESSARY_ASK": 0,
+          "CORRECT_NO_CHANGE": 0
+        }
+      },
+      "EXPLICIT": {
+        "items": 6,
+        "actPrecision": {
+          "num": 2,
+          "den": 2,
+          "value": 1
+        },
+        "coverage": {
+          "num": 2,
+          "den": 4,
+          "value": 0.5
+        },
+        "unsafeWriteRate": {
+          "num": 0,
+          "den": 2,
+          "value": 0
+        },
+        "reviewRate": {
+          "num": 3,
+          "den": 6,
+          "value": 0.5
+        },
+        "abstentionRate": {
+          "num": 1,
+          "den": 6,
+          "value": 0.16666666666666666
+        },
+        "noOpRate": {
+          "num": 0,
+          "den": 6,
+          "value": 0
+        },
+        "wrongValueWrites": 0,
+        "systemErrors": 0,
+        "confusion": {
+          "ACT": {
+            "ACT": 2,
+            "ASK": 2,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ASK": {
+            "ACT": 0,
+            "ASK": 1,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ABSTAIN": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 1,
+            "NO_OP": 0
+          },
+          "NO_OP": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          }
+        },
+        "outcomes": {
+          "CORRECT_ACT": 2,
+          "WRONG_VALUE_ACT": 0,
+          "UNSAFE_ACT": 0,
+          "ACT_DOWNGRADED_TO_ASK": 2,
+          "MISSED_ACT": 0,
+          "CORRECT_ASK": 1,
+          "WRONG_VALUE_ASK": 0,
+          "MISSED_ASK": 0,
+          "UNNECESSARY_ASK": 0,
+          "CORRECT_NO_CHANGE": 1
+        }
+      },
+      "none": {
+        "items": 10,
+        "actPrecision": {
+          "num": 0,
+          "den": 0,
+          "value": null
+        },
+        "coverage": {
+          "num": 0,
+          "den": 0,
+          "value": null
+        },
+        "unsafeWriteRate": {
+          "num": 0,
+          "den": 10,
+          "value": 0
+        },
+        "reviewRate": {
+          "num": 0,
+          "den": 10,
+          "value": 0
+        },
+        "abstentionRate": {
+          "num": 10,
+          "den": 10,
+          "value": 1
+        },
+        "noOpRate": {
+          "num": 0,
+          "den": 10,
+          "value": 0
+        },
+        "wrongValueWrites": 0,
+        "systemErrors": 0,
+        "confusion": {
+          "ACT": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ASK": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ABSTAIN": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 10,
+            "NO_OP": 0
+          },
+          "NO_OP": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          }
+        },
+        "outcomes": {
+          "CORRECT_ACT": 0,
+          "WRONG_VALUE_ACT": 0,
+          "UNSAFE_ACT": 0,
+          "ACT_DOWNGRADED_TO_ASK": 0,
+          "MISSED_ACT": 0,
+          "CORRECT_ASK": 0,
+          "WRONG_VALUE_ASK": 0,
+          "MISSED_ASK": 0,
+          "UNNECESSARY_ASK": 0,
+          "CORRECT_NO_CHANGE": 10
+        }
+      },
+      "TENTATIVE": {
+        "items": 1,
+        "actPrecision": {
+          "num": 0,
+          "den": 0,
+          "value": null
+        },
+        "coverage": {
+          "num": 0,
+          "den": 0,
+          "value": null
+        },
+        "unsafeWriteRate": {
+          "num": 0,
+          "den": 1,
+          "value": 0
+        },
+        "reviewRate": {
+          "num": 1,
+          "den": 1,
+          "value": 1
+        },
+        "abstentionRate": {
+          "num": 0,
+          "den": 1,
+          "value": 0
+        },
+        "noOpRate": {
+          "num": 0,
+          "den": 1,
+          "value": 0
+        },
+        "wrongValueWrites": 0,
+        "systemErrors": 0,
+        "confusion": {
+          "ACT": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ASK": {
+            "ACT": 0,
+            "ASK": 1,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ABSTAIN": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "NO_OP": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          }
+        },
+        "outcomes": {
+          "CORRECT_ACT": 0,
+          "WRONG_VALUE_ACT": 0,
+          "UNSAFE_ACT": 0,
+          "ACT_DOWNGRADED_TO_ASK": 0,
+          "MISSED_ACT": 0,
+          "CORRECT_ASK": 1,
+          "WRONG_VALUE_ASK": 0,
+          "MISSED_ASK": 0,
+          "UNNECESSARY_ASK": 0,
+          "CORRECT_NO_CHANGE": 0
+        }
+      }
+    }
+  }
+}

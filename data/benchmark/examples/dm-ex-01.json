@@ -1,0 +1,60 @@
+{
+  "id": "dm-ex-01",
+  "split": "example",
+  "source": "generated",
+  "labelStatus": "draft",
+  "tags": ["multiple_stakeholders", "explicit_but_insufficient", "pronouns", "irrelevant_info", "explicit"],
+  "description": "One stakeholder explicitly leads the evaluation (insufficient for decision maker); another explicitly signs contracts. A legal-review threshold is a budget distractor.",
+  "crm": { "company": "Brightline Retail", "budget": null, "decisionMaker": null, "nextMeeting": null },
+  "transcript": {
+    "id": "t-dm-ex-01",
+    "occurredAt": "2026-03-11",
+    "participants": [
+      { "id": "jordan", "name": "Jordan Ames", "side": "rep", "title": "Account Executive" },
+      { "id": "tom", "name": "Tom Becker", "side": "customer", "title": "Engineering Manager" }
+    ],
+    "turns": [
+      { "id": "t1", "speakerId": "jordan", "text": "Who else is involved on your side as this moves forward?" },
+      { "id": "t2", "speakerId": "tom", "text": "Sarah Chen's leading the evaluation. She'll run the technical review with her team." },
+      { "id": "t3", "speakerId": "jordan", "text": "Great. And when it comes to actually signing?" },
+      { "id": "t4", "speakerId": "tom", "text": "That's Marcus, our CFO. He signs off on all vendor contracts." },
+      { "id": "t5", "speakerId": "jordan", "text": "Understood. Anything else I should know about the approval process?" },
+      { "id": "t6", "speakerId": "tom", "text": "Just that legal reviews anything over 50K first, so build in a couple of weeks." }
+    ]
+  },
+  "expected": {
+    "budget": {
+      "action": "ABSTAIN",
+      "value": { "kind": "exact", "amount": 50000, "currency": "USD" },
+      "status": "CURRENT",
+      "certainty": "EXPLICIT",
+      "sufficiency": "NONE",
+      "evidence": [
+        { "turnId": "t6", "speakerId": "tom", "quote": "legal reviews anything over 50K first" }
+      ],
+      "rationale": "50K is a legal-review threshold, not an approved budget for this purchase."
+    },
+    "decisionMaker": {
+      "action": "ACT",
+      "value": { "people": [{ "name": "Marcus", "role": "CFO" }] },
+      "status": "CURRENT",
+      "certainty": "EXPLICIT",
+      "sufficiency": "DIRECT",
+      "evidence": [
+        { "turnId": "t3", "speakerId": "jordan", "quote": "And when it comes to actually signing?" },
+        { "turnId": "t4", "speakerId": "tom", "quote": "That's Marcus, our CFO. He signs off on all vendor contracts." }
+      ],
+      "rationale": "Contract signature authority is stated plainly by the customer ('He' = Marcus). Sarah leads the evaluation, which is explicit but only INDIRECT for decision maker, and she is not the gold value."
+    },
+    "nextMeeting": {
+      "action": "ABSTAIN",
+      "value": null,
+      "status": null,
+      "certainty": null,
+      "sufficiency": null,
+      "evidence": [],
+      "rationale": "No meeting is discussed; 'a couple of weeks' is a review duration."
+    }
+  },
+  "notes": "Illustrative schema-validation case drafted by Claude. NOT part of the benchmark. A system that writes Sarah, or Sarah + Marcus, should be scored as a wrong-value write."
+}

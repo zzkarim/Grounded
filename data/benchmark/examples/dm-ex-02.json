@@ -1,0 +1,57 @@
+{
+  "id": "dm-ex-02",
+  "split": "example",
+  "source": "generated",
+  "labelStatus": "draft",
+  "tags": ["joint_approval", "mid_sentence_correction", "supersession", "multiple_stakeholders", "filler_words"],
+  "description": "The rep assumes a single signer; the customer corrects mid-sentence to joint approval by two people.",
+  "crm": { "company": "Corvid Manufacturing", "budget": null, "decisionMaker": null, "nextMeeting": null },
+  "transcript": {
+    "id": "t-dm-ex-02",
+    "occurredAt": "2026-03-13",
+    "participants": [
+      { "id": "alex", "name": "Alex Moreno", "side": "rep", "title": "Account Executive" },
+      { "id": "kim", "name": "Kim Osei", "side": "customer", "title": "VP Operations" }
+    ],
+    "turns": [
+      { "id": "t1", "speakerId": "alex", "text": "So Dana's the one who signs off on this, right?" },
+      { "id": "t2", "speakerId": "kim", "text": "Dana's... well, actually it's Dana and our COO, Raj Patel. Both of them have to sign before anything goes out." },
+      { "id": "t3", "speakerId": "alex", "text": "Okay, so two signatures. Good to know." },
+      { "id": "t4", "speakerId": "kim", "text": "Yeah. And honestly, uh, Dana usually follows Raj's lead, but formally it needs both." },
+      { "id": "t5", "speakerId": "alex", "text": "Got it. I'll make sure the paperwork has both signature blocks." }
+    ]
+  },
+  "expected": {
+    "budget": {
+      "action": "ABSTAIN",
+      "value": null,
+      "status": null,
+      "certainty": null,
+      "sufficiency": null,
+      "evidence": [],
+      "rationale": "No budget discussed."
+    },
+    "decisionMaker": {
+      "action": "ACT",
+      "value": { "people": [{ "name": "Dana", "role": null }, { "name": "Raj Patel", "role": "COO" }] },
+      "status": "CURRENT",
+      "certainty": "EXPLICIT",
+      "sufficiency": "DIRECT",
+      "evidence": [
+        { "turnId": "t2", "speakerId": "kim", "quote": "it's Dana and our COO, Raj Patel. Both of them have to sign before anything goes out." },
+        { "turnId": "t4", "speakerId": "kim", "quote": "formally it needs both" }
+      ],
+      "rationale": "Joint sign-off is stated explicitly and reaffirmed. The rep's Dana-only assumption is SUPERSEDED by the mid-sentence correction. Collapsing to Raj only ('Dana usually follows Raj's lead') would be wrong."
+    },
+    "nextMeeting": {
+      "action": "ABSTAIN",
+      "value": null,
+      "status": null,
+      "certainty": null,
+      "sufficiency": null,
+      "evidence": [],
+      "rationale": "No meeting discussed."
+    }
+  },
+  "notes": "Illustrative schema-validation case drafted by Claude. NOT part of the benchmark."
+}

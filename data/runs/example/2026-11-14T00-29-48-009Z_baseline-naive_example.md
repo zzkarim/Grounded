@@ -1,0 +1,133 @@
+# Run 2026-11-14T00-29-48-009Z_baseline-naive_example
+
+> Synthetic benchmark. These numbers say nothing about performance on real sales conversations.
+> ⚠️ 6 case(s) have **draft** labels that the owner has not reviewed. Treat results as provisional.
+> ⚠️ `example` split: schema-illustration cases, NOT the benchmark.
+> Benchmark split is not frozen.
+
+| | |
+|---|---|
+| system | baseline-naive v1 |
+| model (requested / reported) | claude-sonnet-5-5 / none |
+| effort | medium |
+| policy | n/a (model decides) |
+| prompt hashes | main=171a122f1f237e21 |
+| split / cases / field-items | example / 6 / 18 |
+| created | 2026-11-14T00:29:48.009Z |
+
+## Headline
+| metric | value |
+|---|---|
+| **ACT precision** | **0/0 (n/a)** |
+| autonomous coverage | 0/4 (0.0%) |
+| unsafe write rate | 0/14 (0.0%) |
+| human review rate | 0/18 (0.0%) |
+| abstention rate | 18/18 (100.0%) |
+| no-op rate | 0/18 (0.0%) |
+| wrong-value writes | 0 |
+| field-items affected by system errors | 18 |
+
+## Gold × predicted action
+| gold \ pred | ACT | ASK | ABSTAIN | NO_OP |
+|---|---|---|---|---|
+| ACT | 0 | 0 | 4 | 0 |
+| ASK | 0 | 0 | 3 | 0 |
+| ABSTAIN | 0 | 0 | 11 | 0 |
+| NO_OP | 0 | 0 | 0 | 0 |
+
+## Outcomes
+- MISSED_ACT: 4
+- MISSED_ASK: 3
+- CORRECT_NO_CHANGE: 11
+
+## Breakdowns
+### By field
+| group | items | ACT precision | coverage | unsafe write rate | review rate | abstention rate |
+|---|---|---|---|---|---|---|
+| budget | 6 | 0/0 (n/a) | 0/0 (n/a) | 0/6 (0.0%) | 0/6 (0.0%) | 6/6 (100.0%) |
+| decisionMaker | 6 | 0/0 (n/a) | 0/2 (0.0%) | 0/4 (0.0%) | 0/6 (0.0%) | 6/6 (100.0%) |
+| nextMeeting | 6 | 0/0 (n/a) | 0/2 (0.0%) | 0/4 (0.0%) | 0/6 (0.0%) | 6/6 (100.0%) |
+
+### By source
+| group | items | ACT precision | coverage | unsafe write rate | review rate | abstention rate |
+|---|---|---|---|---|---|---|
+| generated | 18 | 0/0 (n/a) | 0/4 (0.0%) | 0/14 (0.0%) | 0/18 (0.0%) | 18/18 (100.0%) |
+
+### By label status
+| group | items | ACT precision | coverage | unsafe write rate | review rate | abstention rate |
+|---|---|---|---|---|---|---|
+| draft | 18 | 0/0 (n/a) | 0/4 (0.0%) | 0/14 (0.0%) | 0/18 (0.0%) | 18/18 (100.0%) |
+
+### By gold status
+| group | items | ACT precision | coverage | unsafe write rate | review rate | abstention rate |
+|---|---|---|---|---|---|---|
+| CURRENT | 8 | 0/0 (n/a) | 0/4 (0.0%) | 0/4 (0.0%) | 0/8 (0.0%) | 8/8 (100.0%) |
+| none | 10 | 0/0 (n/a) | 0/0 (n/a) | 0/10 (0.0%) | 0/10 (0.0%) | 10/10 (100.0%) |
+
+### By gold certainty
+| group | items | ACT precision | coverage | unsafe write rate | review rate | abstention rate |
+|---|---|---|---|---|---|---|
+| CONDITIONAL | 1 | 0/0 (n/a) | 0/0 (n/a) | 0/1 (0.0%) | 0/1 (0.0%) | 1/1 (100.0%) |
+| EXPLICIT | 6 | 0/0 (n/a) | 0/4 (0.0%) | 0/2 (0.0%) | 0/6 (0.0%) | 6/6 (100.0%) |
+| none | 10 | 0/0 (n/a) | 0/0 (n/a) | 0/10 (0.0%) | 0/10 (0.0%) | 10/10 (100.0%) |
+| TENTATIVE | 1 | 0/0 (n/a) | 0/0 (n/a) | 0/1 (0.0%) | 0/1 (0.0%) | 1/1 (100.0%) |
+
+### By case tag (an item appears under every tag of its case)
+| group | items | ACT precision | coverage | unsafe write rate | review rate | abstention rate |
+|---|---|---|---|---|---|---|
+| conditional | 3 | 0/0 (n/a) | 0/0 (n/a) | 0/3 (0.0%) | 0/3 (0.0%) | 3/3 (100.0%) |
+| existing_value | 3 | 0/0 (n/a) | 0/1 (0.0%) | 0/2 (0.0%) | 0/3 (0.0%) | 3/3 (100.0%) |
+| explicit | 9 | 0/0 (n/a) | 0/3 (0.0%) | 0/6 (0.0%) | 0/9 (0.0%) | 9/9 (100.0%) |
+| explicit_but_insufficient | 3 | 0/0 (n/a) | 0/1 (0.0%) | 0/2 (0.0%) | 0/3 (0.0%) | 3/3 (100.0%) |
+| filler_words | 6 | 0/0 (n/a) | 0/1 (0.0%) | 0/5 (0.0%) | 0/6 (0.0%) | 6/6 (100.0%) |
+| irrelevant_info | 12 | 0/0 (n/a) | 0/2 (0.0%) | 0/10 (0.0%) | 0/12 (0.0%) | 12/12 (100.0%) |
+| joint_approval | 3 | 0/0 (n/a) | 0/1 (0.0%) | 0/2 (0.0%) | 0/3 (0.0%) | 3/3 (100.0%) |
+| messy_speech | 3 | 0/0 (n/a) | 0/0 (n/a) | 0/3 (0.0%) | 0/3 (0.0%) | 3/3 (100.0%) |
+| mid_sentence_correction | 3 | 0/0 (n/a) | 0/1 (0.0%) | 0/2 (0.0%) | 0/3 (0.0%) | 3/3 (100.0%) |
+| multiple_numbers | 6 | 0/0 (n/a) | 0/1 (0.0%) | 0/5 (0.0%) | 0/6 (0.0%) | 6/6 (100.0%) |
+| multiple_stakeholders | 6 | 0/0 (n/a) | 0/2 (0.0%) | 0/4 (0.0%) | 0/6 (0.0%) | 6/6 (100.0%) |
+| pronouns | 3 | 0/0 (n/a) | 0/1 (0.0%) | 0/2 (0.0%) | 0/3 (0.0%) | 3/3 (100.0%) |
+| supersession | 6 | 0/0 (n/a) | 0/2 (0.0%) | 0/4 (0.0%) | 0/6 (0.0%) | 6/6 (100.0%) |
+| tentative | 6 | 0/0 (n/a) | 0/0 (n/a) | 0/6 (0.0%) | 0/6 (0.0%) | 6/6 (100.0%) |
+| unconfirmed_rep_statement | 3 | 0/0 (n/a) | 0/0 (n/a) | 0/3 (0.0%) | 0/3 (0.0%) | 3/3 (100.0%) |
+
+## Failures (7)
+### MISSED_ASK (3)
+- **budget-ex-01 · budget · MISSED_ASK** (system error)
+  - gold: ASK USD 100,000 · CURRENT/CONDITIONAL
+  - pred: ABSTAIN — · reasons: SYSTEM_ERROR
+  - gold rationale: Answers the budget question directly, but the figure is hedged ('probably', 'around', 'don't quote me') and still pending finance approval. CONDITIONAL takes precedence over TENTATIVE, so ASK.
+  - error: api error: Could not resolve authentication method. Expected one of apiKey, authToken, credentials, config, or profile to be set. Or for the "Authorization" header to be explicitly omitted
+- **budget-ex-02 · budget · MISSED_ASK** (system error)
+  - gold: ASK USD 120,000 · CURRENT/EXPLICIT
+  - pred: ABSTAIN — · reasons: SYSTEM_ERROR
+  - gold rationale: 120K is explicitly approved and supersedes 150K. But the CRM already holds 150K, and the default policy never overwrites an existing value autonomously, so ASK.
+  - error: api error: Could not resolve authentication method. Expected one of apiKey, authToken, credentials, config, or profile to be set. Or for the "Authorization" header to be explicitly omitted
+- **meeting-ex-02 · nextMeeting · MISSED_ASK** (system error)
+  - gold: ASK 2026-03-19 15:00 ["Thursday at 3"] · CURRENT/TENTATIVE
+  - pred: ABSTAIN — · reasons: SYSTEM_ERROR
+  - gold rationale: Only the rep commits to the time. The customer backchannels ('Mm') and defers to legal, so the meeting is plausible but not agreed: TENTATIVE + INDIRECT → ASK. Call date Monday 2026-03-16 → Thursday = 2026-03-19.
+  - error: api error: Could not resolve authentication method. Expected one of apiKey, authToken, credentials, config, or profile to be set. Or for the "Authorization" header to be explicitly omitted
+
+### MISSED_ACT (4)
+- **budget-ex-02 · nextMeeting · MISSED_ACT** (system error)
+  - gold: ACT 2026-03-17 10:00 Eastern ["Tuesday the 17th at 10 Eastern"] · CURRENT/EXPLICIT
+  - pred: ABSTAIN — · reasons: SYSTEM_ERROR
+  - gold rationale: The rep asks for a follow-up; the customer names a specific date and time and asks for the invite. 2026-03-17 is a Tuesday, so weekday and date agree. Agreed and specific: ACT.
+  - error: api error: Could not resolve authentication method. Expected one of apiKey, authToken, credentials, config, or profile to be set. Or for the "Authorization" header to be explicitly omitted
+- **dm-ex-01 · decisionMaker · MISSED_ACT** (system error)
+  - gold: ACT Marcus (CFO) · CURRENT/EXPLICIT
+  - pred: ABSTAIN — · reasons: SYSTEM_ERROR
+  - gold rationale: Contract signature authority is stated plainly by the customer ('He' = Marcus). Sarah leads the evaluation, which is explicit but only INDIRECT for decision maker, and she is not the gold value.
+  - error: api error: Could not resolve authentication method. Expected one of apiKey, authToken, credentials, config, or profile to be set. Or for the "Authorization" header to be explicitly omitted
+- **dm-ex-02 · decisionMaker · MISSED_ACT** (system error)
+  - gold: ACT Dana + Raj Patel (COO) · CURRENT/EXPLICIT
+  - pred: ABSTAIN — · reasons: SYSTEM_ERROR
+  - gold rationale: Joint sign-off is stated explicitly and reaffirmed. The rep's Dana-only assumption is SUPERSEDED by the mid-sentence correction. Collapsing to Raj only ('Dana usually follows Raj's lead') would be wrong.
+  - error: api error: Could not resolve authentication method. Expected one of apiKey, authToken, credentials, config, or profile to be set. Or for the "Authorization" header to be explicitly omitted
+- **meeting-ex-01 · nextMeeting · MISSED_ACT** (system error)
+  - gold: ACT 2026-03-12 14:00 ["Thursday at 2"] · CURRENT/EXPLICIT
+  - pred: ABSTAIN — · reasons: SYSTEM_ERROR
+  - gold rationale: Rep proposes, customer accepts without hedging. Call date is Monday 2026-03-09, so Thursday = 2026-03-12; 'at 2' in business context = 14:00.
+  - error: api error: Could not resolve authentication method. Expected one of apiKey, authToken, credentials, config, or profile to be set. Or for the "Authorization" header to be explicitly omitted
+

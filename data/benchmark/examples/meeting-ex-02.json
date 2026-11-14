@@ -1,0 +1,56 @@
+{
+  "id": "meeting-ex-02",
+  "split": "example",
+  "source": "generated",
+  "labelStatus": "draft",
+  "tags": ["unconfirmed_rep_statement", "tentative", "irrelevant_info"],
+  "description": "The rep unilaterally books a time; the customer only backchannels and defers. A later 'get back to you Thursday' is a deadline, not a meeting.",
+  "crm": { "company": "Saltmarsh Foods", "budget": null, "decisionMaker": null, "nextMeeting": null },
+  "transcript": {
+    "id": "t-meeting-ex-02",
+    "occurredAt": "2026-03-16",
+    "participants": [
+      { "id": "leo", "name": "Leo Grant", "side": "rep", "title": "Account Executive" },
+      { "id": "fatima", "name": "Fatima Al-Sayed", "side": "customer", "title": "Procurement Lead" }
+    ],
+    "turns": [
+      { "id": "t1", "speakerId": "leo", "text": "I'll put us down for Thursday at 3 to go through the contract redlines." },
+      { "id": "t2", "speakerId": "fatima", "text": "Mm. I'll have to check with legal on their availability." },
+      { "id": "t3", "speakerId": "leo", "text": "Sure. Anything else you need from me before then?" },
+      { "id": "t4", "speakerId": "fatima", "text": "No, I think we're good. I'll get back to you on Thursday either way about the redlines." }
+    ]
+  },
+  "expected": {
+    "budget": {
+      "action": "ABSTAIN",
+      "value": null,
+      "status": null,
+      "certainty": null,
+      "sufficiency": null,
+      "evidence": [],
+      "rationale": "No budget discussed."
+    },
+    "decisionMaker": {
+      "action": "ABSTAIN",
+      "value": null,
+      "status": null,
+      "certainty": null,
+      "sufficiency": null,
+      "evidence": [],
+      "rationale": "Legal is consulted about availability only; no approval authority is stated."
+    },
+    "nextMeeting": {
+      "action": "ASK",
+      "value": { "date": "2026-03-19", "time": "15:00", "timezone": null, "asStated": "Thursday at 3" },
+      "status": "CURRENT",
+      "certainty": "TENTATIVE",
+      "sufficiency": "INDIRECT",
+      "evidence": [
+        { "turnId": "t1", "speakerId": "leo", "quote": "I'll put us down for Thursday at 3 to go through the contract redlines." },
+        { "turnId": "t2", "speakerId": "fatima", "quote": "I'll have to check with legal on their availability." }
+      ],
+      "rationale": "Only the rep commits to the time. The customer backchannels ('Mm') and defers to legal, so the meeting is plausible but not agreed: TENTATIVE + INDIRECT → ASK. Call date Monday 2026-03-16 → Thursday = 2026-03-19."
+    }
+  },
+  "notes": "Illustrative schema-validation case drafted by Claude. NOT part of the benchmark. 'I'll get back to you on Thursday' is a deadline (sufficiency NONE) and must not be written as a meeting."
+}

@@ -1,0 +1,2740 @@
+{
+  "schemaVersion": 1,
+  "runId": "2026-11-14T00-29-48-600Z_grounded_example",
+  "createdAt": "2026-11-14T00:29:48.600Z",
+  "system": "grounded",
+  "systemVersion": "1",
+  "requestedModel": "claude-sonnet-5-5",
+  "responseModels": [],
+  "effort": "medium",
+  "promptHashes": {
+    "extract": "7dbf1f5f58939c9b",
+    "classify": "cf7d3413cc3d2d85"
+  },
+  "policyConfig": "default-v1",
+  "split": "example",
+  "benchmarkFrozen": false,
+  "caseFiles": [
+    {
+      "caseId": "budget-ex-01",
+      "sha256": "bf9b73caa3ee0beae47b188769ef3ff5756198f01c408c2e1aa80bb23ab0dfc6"
+    },
+    {
+      "caseId": "budget-ex-02",
+      "sha256": "afe9c0aef998c090e6a45268b20f554083abf20e0114241cf22a8889980854e5"
+    },
+    {
+      "caseId": "dm-ex-01",
+      "sha256": "35f95b8df239840031c6ac8ed7cc1ae9e1897cc1bc7804800284afcd40c56eed"
+    },
+    {
+      "caseId": "dm-ex-02",
+      "sha256": "da45050abf5a7ecb9e03db71fdb4566a72dfb3b24d4804ec010c341b68e544e2"
+    },
+    {
+      "caseId": "meeting-ex-01",
+      "sha256": "77f0a3081420ec7b9ea8bbfc5636736ec101405863f0c3843c22614e9b24ba02"
+    },
+    {
+      "caseId": "meeting-ex-02",
+      "sha256": "adfc28114e471bf32182579ff3e1c63fa598c83529c5d1869338cbbd5106136c"
+    }
+  ],
+  "outputs": [
+    {
+      "caseId": "budget-ex-01",
+      "system": "grounded",
+      "fields": {
+        "budget": {
+          "action": "ABSTAIN",
+          "value": null,
+          "reasons": [
+            "SYSTEM_ERROR"
+          ],
+          "claimIds": []
+        },
+        "decisionMaker": {
+          "action": "ABSTAIN",
+          "value": null,
+          "reasons": [
+            "SYSTEM_ERROR"
+          ],
+          "claimIds": []
+        },
+        "nextMeeting": {
+          "action": "ABSTAIN",
+          "value": null,
+          "reasons": [
+            "SYSTEM_ERROR"
+          ],
+          "claimIds": []
+        }
+      },
+      "trace": null,
+      "llmCalls": [
+        {
+          "label": "grounded.extract",
+          "requestedModel": "claude-sonnet-5-5",
+          "responseModel": null,
+          "attempt": 1,
+          "promptHash": "7dbf1f5f58939c9b",
+          "durationMs": 12,
+          "stopReason": null,
+          "rawText": null,
+          "ok": false,
+          "error": "api error: Could not resolve authentication method. Expected one of apiKey, authToken, credentials, config, or profile to be set. Or for the \"Authorization\" header to be explicitly omitted",
+          "usage": null
+        }
+      ],
+      "error": "extraction failed: api error: Could not resolve authentication method. Expected one of apiKey, authToken, credentials, config, or profile to be set. Or for the \"Authorization\" header to be explicitly omitted"
+    },
+    {
+      "caseId": "budget-ex-02",
+      "system": "grounded",
+      "fields": {
+        "budget": {
+          "action": "ABSTAIN",
+          "value": null,
+          "reasons": [
+            "SYSTEM_ERROR"
+          ],
+          "claimIds": []
+        },
+        "decisionMaker": {
+          "action": "ABSTAIN",
+          "value": null,
+          "reasons": [
+            "SYSTEM_ERROR"
+          ],
+          "claimIds": []
+        },
+        "nextMeeting": {
+          "action": "ABSTAIN",
+          "value": null,
+          "reasons": [
+            "SYSTEM_ERROR"
+          ],
+          "claimIds": []
+        }
+      },
+      "trace": null,
+      "llmCalls": [
+        {
+          "label": "grounded.extract",
+          "requestedModel": "claude-sonnet-5-5",
+          "responseModel": null,
+          "attempt": 1,
+          "promptHash": "7dbf1f5f58939c9b",
+          "durationMs": 5,
+          "stopReason": null,
+          "rawText": null,
+          "ok": false,
+          "error": "api error: Could not resolve authentication method. Expected one of apiKey, authToken, credentials, config, or profile to be set. Or for the \"Authorization\" header to be explicitly omitted",
+          "usage": null
+        }
+      ],
+      "error": "extraction failed: api error: Could not resolve authentication method. Expected one of apiKey, authToken, credentials, config, or profile to be set. Or for the \"Authorization\" header to be explicitly omitted"
+    },
+    {
+      "caseId": "dm-ex-01",
+      "system": "grounded",
+      "fields": {
+        "budget": {
+          "action": "ABSTAIN",
+          "value": null,
+          "reasons": [
+            "SYSTEM_ERROR"
+          ],
+          "claimIds": []
+        },
+        "decisionMaker": {
+          "action": "ABSTAIN",
+          "value": null,
+          "reasons": [
+            "SYSTEM_ERROR"
+          ],
+          "claimIds": []
+        },
+        "nextMeeting": {
+          "action": "ABSTAIN",
+          "value": null,
+          "reasons": [
+            "SYSTEM_ERROR"
+          ],
+          "claimIds": []
+        }
+      },
+      "trace": null,
+      "llmCalls": [
+        {
+          "label": "grounded.extract",
+          "requestedModel": "claude-sonnet-5-5",
+          "responseModel": null,
+          "attempt": 1,
+          "promptHash": "7dbf1f5f58939c9b",
+          "durationMs": 4,
+          "stopReason": null,
+          "rawText": null,
+          "ok": false,
+          "error": "api error: Could not resolve authentication method. Expected one of apiKey, authToken, credentials, config, or profile to be set. Or for the \"Authorization\" header to be explicitly omitted",
+          "usage": null
+        }
+      ],
+      "error": "extraction failed: api error: Could not resolve authentication method. Expected one of apiKey, authToken, credentials, config, or profile to be set. Or for the \"Authorization\" header to be explicitly omitted"
+    },
+    {
+      "caseId": "dm-ex-02",
+      "system": "grounded",
+      "fields": {
+        "budget": {
+          "action": "ABSTAIN",
+          "value": null,
+          "reasons": [
+            "SYSTEM_ERROR"
+          ],
+          "claimIds": []
+        },
+        "decisionMaker": {
+          "action": "ABSTAIN",
+          "value": null,
+          "reasons": [
+            "SYSTEM_ERROR"
+          ],
+          "claimIds": []
+        },
+        "nextMeeting": {
+          "action": "ABSTAIN",
+          "value": null,
+          "reasons": [
+            "SYSTEM_ERROR"
+          ],
+          "claimIds": []
+        }
+      },
+      "trace": null,
+      "llmCalls": [
+        {
+          "label": "grounded.extract",
+          "requestedModel": "claude-sonnet-5-5",
+          "responseModel": null,
+          "attempt": 1,
+          "promptHash": "7dbf1f5f58939c9b",
+          "durationMs": 3,
+          "stopReason": null,
+          "rawText": null,
+          "ok": false,
+          "error": "api error: Could not resolve authentication method. Expected one of apiKey, authToken, credentials, config, or profile to be set. Or for the \"Authorization\" header to be explicitly omitted",
+          "usage": null
+        }
+      ],
+      "error": "extraction failed: api error: Could not resolve authentication method. Expected one of apiKey, authToken, credentials, config, or profile to be set. Or for the \"Authorization\" header to be explicitly omitted"
+    },
+    {
+      "caseId": "meeting-ex-01",
+      "system": "grounded",
+      "fields": {
+        "budget": {
+          "action": "ABSTAIN",
+          "value": null,
+          "reasons": [
+            "SYSTEM_ERROR"
+          ],
+          "claimIds": []
+        },
+        "decisionMaker": {
+          "action": "ABSTAIN",
+          "value": null,
+          "reasons": [
+            "SYSTEM_ERROR"
+          ],
+          "claimIds": []
+        },
+        "nextMeeting": {
+          "action": "ABSTAIN",
+          "value": null,
+          "reasons": [
+            "SYSTEM_ERROR"
+          ],
+          "claimIds": []
+        }
+      },
+      "trace": null,
+      "llmCalls": [
+        {
+          "label": "grounded.extract",
+          "requestedModel": "claude-sonnet-5-5",
+          "responseModel": null,
+          "attempt": 1,
+          "promptHash": "7dbf1f5f58939c9b",
+          "durationMs": 1,
+          "stopReason": null,
+          "rawText": null,
+          "ok": false,
+          "error": "api error: Could not resolve authentication method. Expected one of apiKey, authToken, credentials, config, or profile to be set. Or for the \"Authorization\" header to be explicitly omitted",
+          "usage": null
+        }
+      ],
+      "error": "extraction failed: api error: Could not resolve authentication method. Expected one of apiKey, authToken, credentials, config, or profile to be set. Or for the \"Authorization\" header to be explicitly omitted"
+    },
+    {
+      "caseId": "meeting-ex-02",
+      "system": "grounded",
+      "fields": {
+        "budget": {
+          "action": "ABSTAIN",
+          "value": null,
+          "reasons": [
+            "SYSTEM_ERROR"
+          ],
+          "claimIds": []
+        },
+        "decisionMaker": {
+          "action": "ABSTAIN",
+          "value": null,
+          "reasons": [
+            "SYSTEM_ERROR"
+          ],
+          "claimIds": []
+        },
+        "nextMeeting": {
+          "action": "ABSTAIN",
+          "value": null,
+          "reasons": [
+            "SYSTEM_ERROR"
+          ],
+          "claimIds": []
+        }
+      },
+      "trace": null,
+      "llmCalls": [
+        {
+          "label": "grounded.extract",
+          "requestedModel": "claude-sonnet-5-5",
+          "responseModel": null,
+          "attempt": 1,
+          "promptHash": "7dbf1f5f58939c9b",
+          "durationMs": 0,
+          "stopReason": null,
+          "rawText": null,
+          "ok": false,
+          "error": "api error: Could not resolve authentication method. Expected one of apiKey, authToken, credentials, config, or profile to be set. Or for the \"Authorization\" header to be explicitly omitted",
+          "usage": null
+        }
+      ],
+      "error": "extraction failed: api error: Could not resolve authentication method. Expected one of apiKey, authToken, credentials, config, or profile to be set. Or for the \"Authorization\" header to be explicitly omitted"
+    }
+  ],
+  "items": [
+    {
+      "caseId": "budget-ex-01",
+      "field": "budget",
+      "source": "generated",
+      "labelStatus": "draft",
+      "tags": [
+        "tentative",
+        "conditional",
+        "multiple_numbers",
+        "irrelevant_info",
+        "filler_words",
+        "messy_speech"
+      ],
+      "goldAction": "ASK",
+      "goldValue": {
+        "kind": "exact",
+        "amount": 100000,
+        "currency": "USD"
+      },
+      "goldStatus": "CURRENT",
+      "goldCertainty": "CONDITIONAL",
+      "predAction": "ABSTAIN",
+      "predValue": null,
+      "valueMatch": null,
+      "outcome": "MISSED_ASK",
+      "systemError": true
+    },
+    {
+      "caseId": "budget-ex-01",
+      "field": "decisionMaker",
+      "source": "generated",
+      "labelStatus": "draft",
+      "tags": [
+        "tentative",
+        "conditional",
+        "multiple_numbers",
+        "irrelevant_info",
+        "filler_words",
+        "messy_speech"
+      ],
+      "goldAction": "ABSTAIN",
+      "goldValue": null,
+      "goldStatus": null,
+      "goldCertainty": null,
+      "predAction": "ABSTAIN",
+      "predValue": null,
+      "valueMatch": null,
+      "outcome": "CORRECT_NO_CHANGE",
+      "systemError": true
+    },
+    {
+      "caseId": "budget-ex-01",
+      "field": "nextMeeting",
+      "source": "generated",
+      "labelStatus": "draft",
+      "tags": [
+        "tentative",
+        "conditional",
+        "multiple_numbers",
+        "irrelevant_info",
+        "filler_words",
+        "messy_speech"
+      ],
+      "goldAction": "ABSTAIN",
+      "goldValue": null,
+      "goldStatus": null,
+      "goldCertainty": null,
+      "predAction": "ABSTAIN",
+      "predValue": null,
+      "valueMatch": null,
+      "outcome": "CORRECT_NO_CHANGE",
+      "systemError": true
+    },
+    {
+      "caseId": "budget-ex-02",
+      "field": "budget",
+      "source": "generated",
+      "labelStatus": "draft",
+      "tags": [
+        "supersession",
+        "existing_value",
+        "multiple_numbers",
+        "explicit"
+      ],
+      "goldAction": "ASK",
+      "goldValue": {
+        "kind": "exact",
+        "amount": 120000,
+        "currency": "USD"
+      },
+      "goldStatus": "CURRENT",
+      "goldCertainty": "EXPLICIT",
+      "predAction": "ABSTAIN",
+      "predValue": null,
+      "valueMatch": null,
+      "outcome": "MISSED_ASK",
+      "systemError": true
+    },
+    {
+      "caseId": "budget-ex-02",
+      "field": "decisionMaker",
+      "source": "generated",
+      "labelStatus": "draft",
+      "tags": [
+        "supersession",
+        "existing_value",
+        "multiple_numbers",
+        "explicit"
+      ],
+      "goldAction": "ABSTAIN",
+      "goldValue": null,
+      "goldStatus": null,
+      "goldCertainty": null,
+      "predAction": "ABSTAIN",
+      "predValue": null,
+      "valueMatch": null,
+      "outcome": "CORRECT_NO_CHANGE",
+      "systemError": true
+    },
+    {
+      "caseId": "budget-ex-02",
+      "field": "nextMeeting",
+      "source": "generated",
+      "labelStatus": "draft",
+      "tags": [
+        "supersession",
+        "existing_value",
+        "multiple_numbers",
+        "explicit"
+      ],
+      "goldAction": "ACT",
+      "goldValue": {
+        "date": "2026-03-17",
+        "time": "10:00",
+        "timezone": "Eastern",
+        "asStated": "Tuesday the 17th at 10 Eastern"
+      },
+      "goldStatus": "CURRENT",
+      "goldCertainty": "EXPLICIT",
+      "predAction": "ABSTAIN",
+      "predValue": null,
+      "valueMatch": null,
+      "outcome": "MISSED_ACT",
+      "systemError": true
+    },
+    {
+      "caseId": "dm-ex-01",
+      "field": "budget",
+      "source": "generated",
+      "labelStatus": "draft",
+      "tags": [
+        "multiple_stakeholders",
+        "explicit_but_insufficient",
+        "pronouns",
+        "irrelevant_info",
+        "explicit"
+      ],
+      "goldAction": "ABSTAIN",
+      "goldValue": {
+        "kind": "exact",
+        "amount": 50000,
+        "currency": "USD"
+      },
+      "goldStatus": "CURRENT",
+      "goldCertainty": "EXPLICIT",
+      "predAction": "ABSTAIN",
+      "predValue": null,
+      "valueMatch": null,
+      "outcome": "CORRECT_NO_CHANGE",
+      "systemError": true
+    },
+    {
+      "caseId": "dm-ex-01",
+      "field": "decisionMaker",
+      "source": "generated",
+      "labelStatus": "draft",
+      "tags": [
+        "multiple_stakeholders",
+        "explicit_but_insufficient",
+        "pronouns",
+        "irrelevant_info",
+        "explicit"
+      ],
+      "goldAction": "ACT",
+      "goldValue": {
+        "people": [
+          {
+            "name": "Marcus",
+            "role": "CFO"
+          }
+        ]
+      },
+      "goldStatus": "CURRENT",
+      "goldCertainty": "EXPLICIT",
+      "predAction": "ABSTAIN",
+      "predValue": null,
+      "valueMatch": null,
+      "outcome": "MISSED_ACT",
+      "systemError": true
+    },
+    {
+      "caseId": "dm-ex-01",
+      "field": "nextMeeting",
+      "source": "generated",
+      "labelStatus": "draft",
+      "tags": [
+        "multiple_stakeholders",
+        "explicit_but_insufficient",
+        "pronouns",
+        "irrelevant_info",
+        "explicit"
+      ],
+      "goldAction": "ABSTAIN",
+      "goldValue": null,
+      "goldStatus": null,
+      "goldCertainty": null,
+      "predAction": "ABSTAIN",
+      "predValue": null,
+      "valueMatch": null,
+      "outcome": "CORRECT_NO_CHANGE",
+      "systemError": true
+    },
+    {
+      "caseId": "dm-ex-02",
+      "field": "budget",
+      "source": "generated",
+      "labelStatus": "draft",
+      "tags": [
+        "joint_approval",
+        "mid_sentence_correction",
+        "supersession",
+        "multiple_stakeholders",
+        "filler_words"
+      ],
+      "goldAction": "ABSTAIN",
+      "goldValue": null,
+      "goldStatus": null,
+      "goldCertainty": null,
+      "predAction": "ABSTAIN",
+      "predValue": null,
+      "valueMatch": null,
+      "outcome": "CORRECT_NO_CHANGE",
+      "systemError": true
+    },
+    {
+      "caseId": "dm-ex-02",
+      "field": "decisionMaker",
+      "source": "generated",
+      "labelStatus": "draft",
+      "tags": [
+        "joint_approval",
+        "mid_sentence_correction",
+        "supersession",
+        "multiple_stakeholders",
+        "filler_words"
+      ],
+      "goldAction": "ACT",
+      "goldValue": {
+        "people": [
+          {
+            "name": "Dana",
+            "role": null
+          },
+          {
+            "name": "Raj Patel",
+            "role": "COO"
+          }
+        ]
+      },
+      "goldStatus": "CURRENT",
+      "goldCertainty": "EXPLICIT",
+      "predAction": "ABSTAIN",
+      "predValue": null,
+      "valueMatch": null,
+      "outcome": "MISSED_ACT",
+      "systemError": true
+    },
+    {
+      "caseId": "dm-ex-02",
+      "field": "nextMeeting",
+      "source": "generated",
+      "labelStatus": "draft",
+      "tags": [
+        "joint_approval",
+        "mid_sentence_correction",
+        "supersession",
+        "multiple_stakeholders",
+        "filler_words"
+      ],
+      "goldAction": "ABSTAIN",
+      "goldValue": null,
+      "goldStatus": null,
+      "goldCertainty": null,
+      "predAction": "ABSTAIN",
+      "predValue": null,
+      "valueMatch": null,
+      "outcome": "CORRECT_NO_CHANGE",
+      "systemError": true
+    },
+    {
+      "caseId": "meeting-ex-01",
+      "field": "budget",
+      "source": "generated",
+      "labelStatus": "draft",
+      "tags": [
+        "explicit",
+        "irrelevant_info"
+      ],
+      "goldAction": "ABSTAIN",
+      "goldValue": null,
+      "goldStatus": null,
+      "goldCertainty": null,
+      "predAction": "ABSTAIN",
+      "predValue": null,
+      "valueMatch": null,
+      "outcome": "CORRECT_NO_CHANGE",
+      "systemError": true
+    },
+    {
+      "caseId": "meeting-ex-01",
+      "field": "decisionMaker",
+      "source": "generated",
+      "labelStatus": "draft",
+      "tags": [
+        "explicit",
+        "irrelevant_info"
+      ],
+      "goldAction": "ABSTAIN",
+      "goldValue": null,
+      "goldStatus": null,
+      "goldCertainty": null,
+      "predAction": "ABSTAIN",
+      "predValue": null,
+      "valueMatch": null,
+      "outcome": "CORRECT_NO_CHANGE",
+      "systemError": true
+    },
+    {
+      "caseId": "meeting-ex-01",
+      "field": "nextMeeting",
+      "source": "generated",
+      "labelStatus": "draft",
+      "tags": [
+        "explicit",
+        "irrelevant_info"
+      ],
+      "goldAction": "ACT",
+      "goldValue": {
+        "date": "2026-03-12",
+        "time": "14:00",
+        "timezone": null,
+        "asStated": "Thursday at 2"
+      },
+      "goldStatus": "CURRENT",
+      "goldCertainty": "EXPLICIT",
+      "predAction": "ABSTAIN",
+      "predValue": null,
+      "valueMatch": null,
+      "outcome": "MISSED_ACT",
+      "systemError": true
+    },
+    {
+      "caseId": "meeting-ex-02",
+      "field": "budget",
+      "source": "generated",
+      "labelStatus": "draft",
+      "tags": [
+        "unconfirmed_rep_statement",
+        "tentative",
+        "irrelevant_info"
+      ],
+      "goldAction": "ABSTAIN",
+      "goldValue": null,
+      "goldStatus": null,
+      "goldCertainty": null,
+      "predAction": "ABSTAIN",
+      "predValue": null,
+      "valueMatch": null,
+      "outcome": "CORRECT_NO_CHANGE",
+      "systemError": true
+    },
+    {
+      "caseId": "meeting-ex-02",
+      "field": "decisionMaker",
+      "source": "generated",
+      "labelStatus": "draft",
+      "tags": [
+        "unconfirmed_rep_statement",
+        "tentative",
+        "irrelevant_info"
+      ],
+      "goldAction": "ABSTAIN",
+      "goldValue": null,
+      "goldStatus": null,
+      "goldCertainty": null,
+      "predAction": "ABSTAIN",
+      "predValue": null,
+      "valueMatch": null,
+      "outcome": "CORRECT_NO_CHANGE",
+      "systemError": true
+    },
+    {
+      "caseId": "meeting-ex-02",
+      "field": "nextMeeting",
+      "source": "generated",
+      "labelStatus": "draft",
+      "tags": [
+        "unconfirmed_rep_statement",
+        "tentative",
+        "irrelevant_info"
+      ],
+      "goldAction": "ASK",
+      "goldValue": {
+        "date": "2026-03-19",
+        "time": "15:00",
+        "timezone": null,
+        "asStated": "Thursday at 3"
+      },
+      "goldStatus": "CURRENT",
+      "goldCertainty": "TENTATIVE",
+      "predAction": "ABSTAIN",
+      "predValue": null,
+      "valueMatch": null,
+      "outcome": "MISSED_ASK",
+      "systemError": true
+    }
+  ],
+  "metrics": {
+    "overall": {
+      "items": 18,
+      "actPrecision": {
+        "num": 0,
+        "den": 0,
+        "value": null
+      },
+      "coverage": {
+        "num": 0,
+        "den": 4,
+        "value": 0
+      },
+      "unsafeWriteRate": {
+        "num": 0,
+        "den": 14,
+        "value": 0
+      },
+      "reviewRate": {
+        "num": 0,
+        "den": 18,
+        "value": 0
+      },
+      "abstentionRate": {
+        "num": 18,
+        "den": 18,
+        "value": 1
+      },
+      "noOpRate": {
+        "num": 0,
+        "den": 18,
+        "value": 0
+      },
+      "wrongValueWrites": 0,
+      "systemErrors": 18,
+      "confusion": {
+        "ACT": {
+          "ACT": 0,
+          "ASK": 0,
+          "ABSTAIN": 4,
+          "NO_OP": 0
+        },
+        "ASK": {
+          "ACT": 0,
+          "ASK": 0,
+          "ABSTAIN": 3,
+          "NO_OP": 0
+        },
+        "ABSTAIN": {
+          "ACT": 0,
+          "ASK": 0,
+          "ABSTAIN": 11,
+          "NO_OP": 0
+        },
+        "NO_OP": {
+          "ACT": 0,
+          "ASK": 0,
+          "ABSTAIN": 0,
+          "NO_OP": 0
+        }
+      },
+      "outcomes": {
+        "CORRECT_ACT": 0,
+        "WRONG_VALUE_ACT": 0,
+        "UNSAFE_ACT": 0,
+        "ACT_DOWNGRADED_TO_ASK": 0,
+        "MISSED_ACT": 4,
+        "CORRECT_ASK": 0,
+        "WRONG_VALUE_ASK": 0,
+        "MISSED_ASK": 3,
+        "UNNECESSARY_ASK": 0,
+        "CORRECT_NO_CHANGE": 11
+      }
+    },
+    "byField": {
+      "budget": {
+        "items": 6,
+        "actPrecision": {
+          "num": 0,
+          "den": 0,
+          "value": null
+        },
+        "coverage": {
+          "num": 0,
+          "den": 0,
+          "value": null
+        },
+        "unsafeWriteRate": {
+          "num": 0,
+          "den": 6,
+          "value": 0
+        },
+        "reviewRate": {
+          "num": 0,
+          "den": 6,
+          "value": 0
+        },
+        "abstentionRate": {
+          "num": 6,
+          "den": 6,
+          "value": 1
+        },
+        "noOpRate": {
+          "num": 0,
+          "den": 6,
+          "value": 0
+        },
+        "wrongValueWrites": 0,
+        "systemErrors": 6,
+        "confusion": {
+          "ACT": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ASK": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 2,
+            "NO_OP": 0
+          },
+          "ABSTAIN": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 4,
+            "NO_OP": 0
+          },
+          "NO_OP": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          }
+        },
+        "outcomes": {
+          "CORRECT_ACT": 0,
+          "WRONG_VALUE_ACT": 0,
+          "UNSAFE_ACT": 0,
+          "ACT_DOWNGRADED_TO_ASK": 0,
+          "MISSED_ACT": 0,
+          "CORRECT_ASK": 0,
+          "WRONG_VALUE_ASK": 0,
+          "MISSED_ASK": 2,
+          "UNNECESSARY_ASK": 0,
+          "CORRECT_NO_CHANGE": 4
+        }
+      },
+      "decisionMaker": {
+        "items": 6,
+        "actPrecision": {
+          "num": 0,
+          "den": 0,
+          "value": null
+        },
+        "coverage": {
+          "num": 0,
+          "den": 2,
+          "value": 0
+        },
+        "unsafeWriteRate": {
+          "num": 0,
+          "den": 4,
+          "value": 0
+        },
+        "reviewRate": {
+          "num": 0,
+          "den": 6,
+          "value": 0
+        },
+        "abstentionRate": {
+          "num": 6,
+          "den": 6,
+          "value": 1
+        },
+        "noOpRate": {
+          "num": 0,
+          "den": 6,
+          "value": 0
+        },
+        "wrongValueWrites": 0,
+        "systemErrors": 6,
+        "confusion": {
+          "ACT": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 2,
+            "NO_OP": 0
+          },
+          "ASK": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ABSTAIN": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 4,
+            "NO_OP": 0
+          },
+          "NO_OP": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          }
+        },
+        "outcomes": {
+          "CORRECT_ACT": 0,
+          "WRONG_VALUE_ACT": 0,
+          "UNSAFE_ACT": 0,
+          "ACT_DOWNGRADED_TO_ASK": 0,
+          "MISSED_ACT": 2,
+          "CORRECT_ASK": 0,
+          "WRONG_VALUE_ASK": 0,
+          "MISSED_ASK": 0,
+          "UNNECESSARY_ASK": 0,
+          "CORRECT_NO_CHANGE": 4
+        }
+      },
+      "nextMeeting": {
+        "items": 6,
+        "actPrecision": {
+          "num": 0,
+          "den": 0,
+          "value": null
+        },
+        "coverage": {
+          "num": 0,
+          "den": 2,
+          "value": 0
+        },
+        "unsafeWriteRate": {
+          "num": 0,
+          "den": 4,
+          "value": 0
+        },
+        "reviewRate": {
+          "num": 0,
+          "den": 6,
+          "value": 0
+        },
+        "abstentionRate": {
+          "num": 6,
+          "den": 6,
+          "value": 1
+        },
+        "noOpRate": {
+          "num": 0,
+          "den": 6,
+          "value": 0
+        },
+        "wrongValueWrites": 0,
+        "systemErrors": 6,
+        "confusion": {
+          "ACT": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 2,
+            "NO_OP": 0
+          },
+          "ASK": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 1,
+            "NO_OP": 0
+          },
+          "ABSTAIN": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 3,
+            "NO_OP": 0
+          },
+          "NO_OP": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          }
+        },
+        "outcomes": {
+          "CORRECT_ACT": 0,
+          "WRONG_VALUE_ACT": 0,
+          "UNSAFE_ACT": 0,
+          "ACT_DOWNGRADED_TO_ASK": 0,
+          "MISSED_ACT": 2,
+          "CORRECT_ASK": 0,
+          "WRONG_VALUE_ASK": 0,
+          "MISSED_ASK": 1,
+          "UNNECESSARY_ASK": 0,
+          "CORRECT_NO_CHANGE": 3
+        }
+      }
+    },
+    "bySource": {
+      "generated": {
+        "items": 18,
+        "actPrecision": {
+          "num": 0,
+          "den": 0,
+          "value": null
+        },
+        "coverage": {
+          "num": 0,
+          "den": 4,
+          "value": 0
+        },
+        "unsafeWriteRate": {
+          "num": 0,
+          "den": 14,
+          "value": 0
+        },
+        "reviewRate": {
+          "num": 0,
+          "den": 18,
+          "value": 0
+        },
+        "abstentionRate": {
+          "num": 18,
+          "den": 18,
+          "value": 1
+        },
+        "noOpRate": {
+          "num": 0,
+          "den": 18,
+          "value": 0
+        },
+        "wrongValueWrites": 0,
+        "systemErrors": 18,
+        "confusion": {
+          "ACT": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 4,
+            "NO_OP": 0
+          },
+          "ASK": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 3,
+            "NO_OP": 0
+          },
+          "ABSTAIN": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 11,
+            "NO_OP": 0
+          },
+          "NO_OP": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          }
+        },
+        "outcomes": {
+          "CORRECT_ACT": 0,
+          "WRONG_VALUE_ACT": 0,
+          "UNSAFE_ACT": 0,
+          "ACT_DOWNGRADED_TO_ASK": 0,
+          "MISSED_ACT": 4,
+          "CORRECT_ASK": 0,
+          "WRONG_VALUE_ASK": 0,
+          "MISSED_ASK": 3,
+          "UNNECESSARY_ASK": 0,
+          "CORRECT_NO_CHANGE": 11
+        }
+      }
+    },
+    "byLabelStatus": {
+      "draft": {
+        "items": 18,
+        "actPrecision": {
+          "num": 0,
+          "den": 0,
+          "value": null
+        },
+        "coverage": {
+          "num": 0,
+          "den": 4,
+          "value": 0
+        },
+        "unsafeWriteRate": {
+          "num": 0,
+          "den": 14,
+          "value": 0
+        },
+        "reviewRate": {
+          "num": 0,
+          "den": 18,
+          "value": 0
+        },
+        "abstentionRate": {
+          "num": 18,
+          "den": 18,
+          "value": 1
+        },
+        "noOpRate": {
+          "num": 0,
+          "den": 18,
+          "value": 0
+        },
+        "wrongValueWrites": 0,
+        "systemErrors": 18,
+        "confusion": {
+          "ACT": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 4,
+            "NO_OP": 0
+          },
+          "ASK": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 3,
+            "NO_OP": 0
+          },
+          "ABSTAIN": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 11,
+            "NO_OP": 0
+          },
+          "NO_OP": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          }
+        },
+        "outcomes": {
+          "CORRECT_ACT": 0,
+          "WRONG_VALUE_ACT": 0,
+          "UNSAFE_ACT": 0,
+          "ACT_DOWNGRADED_TO_ASK": 0,
+          "MISSED_ACT": 4,
+          "CORRECT_ASK": 0,
+          "WRONG_VALUE_ASK": 0,
+          "MISSED_ASK": 3,
+          "UNNECESSARY_ASK": 0,
+          "CORRECT_NO_CHANGE": 11
+        }
+      }
+    },
+    "byTag": {
+      "conditional": {
+        "items": 3,
+        "actPrecision": {
+          "num": 0,
+          "den": 0,
+          "value": null
+        },
+        "coverage": {
+          "num": 0,
+          "den": 0,
+          "value": null
+        },
+        "unsafeWriteRate": {
+          "num": 0,
+          "den": 3,
+          "value": 0
+        },
+        "reviewRate": {
+          "num": 0,
+          "den": 3,
+          "value": 0
+        },
+        "abstentionRate": {
+          "num": 3,
+          "den": 3,
+          "value": 1
+        },
+        "noOpRate": {
+          "num": 0,
+          "den": 3,
+          "value": 0
+        },
+        "wrongValueWrites": 0,
+        "systemErrors": 3,
+        "confusion": {
+          "ACT": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ASK": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 1,
+            "NO_OP": 0
+          },
+          "ABSTAIN": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 2,
+            "NO_OP": 0
+          },
+          "NO_OP": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          }
+        },
+        "outcomes": {
+          "CORRECT_ACT": 0,
+          "WRONG_VALUE_ACT": 0,
+          "UNSAFE_ACT": 0,
+          "ACT_DOWNGRADED_TO_ASK": 0,
+          "MISSED_ACT": 0,
+          "CORRECT_ASK": 0,
+          "WRONG_VALUE_ASK": 0,
+          "MISSED_ASK": 1,
+          "UNNECESSARY_ASK": 0,
+          "CORRECT_NO_CHANGE": 2
+        }
+      },
+      "existing_value": {
+        "items": 3,
+        "actPrecision": {
+          "num": 0,
+          "den": 0,
+          "value": null
+        },
+        "coverage": {
+          "num": 0,
+          "den": 1,
+          "value": 0
+        },
+        "unsafeWriteRate": {
+          "num": 0,
+          "den": 2,
+          "value": 0
+        },
+        "reviewRate": {
+          "num": 0,
+          "den": 3,
+          "value": 0
+        },
+        "abstentionRate": {
+          "num": 3,
+          "den": 3,
+          "value": 1
+        },
+        "noOpRate": {
+          "num": 0,
+          "den": 3,
+          "value": 0
+        },
+        "wrongValueWrites": 0,
+        "systemErrors": 3,
+        "confusion": {
+          "ACT": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 1,
+            "NO_OP": 0
+          },
+          "ASK": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 1,
+            "NO_OP": 0
+          },
+          "ABSTAIN": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 1,
+            "NO_OP": 0
+          },
+          "NO_OP": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          }
+        },
+        "outcomes": {
+          "CORRECT_ACT": 0,
+          "WRONG_VALUE_ACT": 0,
+          "UNSAFE_ACT": 0,
+          "ACT_DOWNGRADED_TO_ASK": 0,
+          "MISSED_ACT": 1,
+          "CORRECT_ASK": 0,
+          "WRONG_VALUE_ASK": 0,
+          "MISSED_ASK": 1,
+          "UNNECESSARY_ASK": 0,
+          "CORRECT_NO_CHANGE": 1
+        }
+      },
+      "explicit": {
+        "items": 9,
+        "actPrecision": {
+          "num": 0,
+          "den": 0,
+          "value": null
+        },
+        "coverage": {
+          "num": 0,
+          "den": 3,
+          "value": 0
+        },
+        "unsafeWriteRate": {
+          "num": 0,
+          "den": 6,
+          "value": 0
+        },
+        "reviewRate": {
+          "num": 0,
+          "den": 9,
+          "value": 0
+        },
+        "abstentionRate": {
+          "num": 9,
+          "den": 9,
+          "value": 1
+        },
+        "noOpRate": {
+          "num": 0,
+          "den": 9,
+          "value": 0
+        },
+        "wrongValueWrites": 0,
+        "systemErrors": 9,
+        "confusion": {
+          "ACT": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 3,
+            "NO_OP": 0
+          },
+          "ASK": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 1,
+            "NO_OP": 0
+          },
+          "ABSTAIN": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 5,
+            "NO_OP": 0
+          },
+          "NO_OP": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          }
+        },
+        "outcomes": {
+          "CORRECT_ACT": 0,
+          "WRONG_VALUE_ACT": 0,
+          "UNSAFE_ACT": 0,
+          "ACT_DOWNGRADED_TO_ASK": 0,
+          "MISSED_ACT": 3,
+          "CORRECT_ASK": 0,
+          "WRONG_VALUE_ASK": 0,
+          "MISSED_ASK": 1,
+          "UNNECESSARY_ASK": 0,
+          "CORRECT_NO_CHANGE": 5
+        }
+      },
+      "explicit_but_insufficient": {
+        "items": 3,
+        "actPrecision": {
+          "num": 0,
+          "den": 0,
+          "value": null
+        },
+        "coverage": {
+          "num": 0,
+          "den": 1,
+          "value": 0
+        },
+        "unsafeWriteRate": {
+          "num": 0,
+          "den": 2,
+          "value": 0
+        },
+        "reviewRate": {
+          "num": 0,
+          "den": 3,
+          "value": 0
+        },
+        "abstentionRate": {
+          "num": 3,
+          "den": 3,
+          "value": 1
+        },
+        "noOpRate": {
+          "num": 0,
+          "den": 3,
+          "value": 0
+        },
+        "wrongValueWrites": 0,
+        "systemErrors": 3,
+        "confusion": {
+          "ACT": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 1,
+            "NO_OP": 0
+          },
+          "ASK": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ABSTAIN": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 2,
+            "NO_OP": 0
+          },
+          "NO_OP": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          }
+        },
+        "outcomes": {
+          "CORRECT_ACT": 0,
+          "WRONG_VALUE_ACT": 0,
+          "UNSAFE_ACT": 0,
+          "ACT_DOWNGRADED_TO_ASK": 0,
+          "MISSED_ACT": 1,
+          "CORRECT_ASK": 0,
+          "WRONG_VALUE_ASK": 0,
+          "MISSED_ASK": 0,
+          "UNNECESSARY_ASK": 0,
+          "CORRECT_NO_CHANGE": 2
+        }
+      },
+      "filler_words": {
+        "items": 6,
+        "actPrecision": {
+          "num": 0,
+          "den": 0,
+          "value": null
+        },
+        "coverage": {
+          "num": 0,
+          "den": 1,
+          "value": 0
+        },
+        "unsafeWriteRate": {
+          "num": 0,
+          "den": 5,
+          "value": 0
+        },
+        "reviewRate": {
+          "num": 0,
+          "den": 6,
+          "value": 0
+        },
+        "abstentionRate": {
+          "num": 6,
+          "den": 6,
+          "value": 1
+        },
+        "noOpRate": {
+          "num": 0,
+          "den": 6,
+          "value": 0
+        },
+        "wrongValueWrites": 0,
+        "systemErrors": 6,
+        "confusion": {
+          "ACT": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 1,
+            "NO_OP": 0
+          },
+          "ASK": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 1,
+            "NO_OP": 0
+          },
+          "ABSTAIN": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 4,
+            "NO_OP": 0
+          },
+          "NO_OP": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          }
+        },
+        "outcomes": {
+          "CORRECT_ACT": 0,
+          "WRONG_VALUE_ACT": 0,
+          "UNSAFE_ACT": 0,
+          "ACT_DOWNGRADED_TO_ASK": 0,
+          "MISSED_ACT": 1,
+          "CORRECT_ASK": 0,
+          "WRONG_VALUE_ASK": 0,
+          "MISSED_ASK": 1,
+          "UNNECESSARY_ASK": 0,
+          "CORRECT_NO_CHANGE": 4
+        }
+      },
+      "irrelevant_info": {
+        "items": 12,
+        "actPrecision": {
+          "num": 0,
+          "den": 0,
+          "value": null
+        },
+        "coverage": {
+          "num": 0,
+          "den": 2,
+          "value": 0
+        },
+        "unsafeWriteRate": {
+          "num": 0,
+          "den": 10,
+          "value": 0
+        },
+        "reviewRate": {
+          "num": 0,
+          "den": 12,
+          "value": 0
+        },
+        "abstentionRate": {
+          "num": 12,
+          "den": 12,
+          "value": 1
+        },
+        "noOpRate": {
+          "num": 0,
+          "den": 12,
+          "value": 0
+        },
+        "wrongValueWrites": 0,
+        "systemErrors": 12,
+        "confusion": {
+          "ACT": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 2,
+            "NO_OP": 0
+          },
+          "ASK": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 2,
+            "NO_OP": 0
+          },
+          "ABSTAIN": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 8,
+            "NO_OP": 0
+          },
+          "NO_OP": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          }
+        },
+        "outcomes": {
+          "CORRECT_ACT": 0,
+          "WRONG_VALUE_ACT": 0,
+          "UNSAFE_ACT": 0,
+          "ACT_DOWNGRADED_TO_ASK": 0,
+          "MISSED_ACT": 2,
+          "CORRECT_ASK": 0,
+          "WRONG_VALUE_ASK": 0,
+          "MISSED_ASK": 2,
+          "UNNECESSARY_ASK": 0,
+          "CORRECT_NO_CHANGE": 8
+        }
+      },
+      "joint_approval": {
+        "items": 3,
+        "actPrecision": {
+          "num": 0,
+          "den": 0,
+          "value": null
+        },
+        "coverage": {
+          "num": 0,
+          "den": 1,
+          "value": 0
+        },
+        "unsafeWriteRate": {
+          "num": 0,
+          "den": 2,
+          "value": 0
+        },
+        "reviewRate": {
+          "num": 0,
+          "den": 3,
+          "value": 0
+        },
+        "abstentionRate": {
+          "num": 3,
+          "den": 3,
+          "value": 1
+        },
+        "noOpRate": {
+          "num": 0,
+          "den": 3,
+          "value": 0
+        },
+        "wrongValueWrites": 0,
+        "systemErrors": 3,
+        "confusion": {
+          "ACT": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 1,
+            "NO_OP": 0
+          },
+          "ASK": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ABSTAIN": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 2,
+            "NO_OP": 0
+          },
+          "NO_OP": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          }
+        },
+        "outcomes": {
+          "CORRECT_ACT": 0,
+          "WRONG_VALUE_ACT": 0,
+          "UNSAFE_ACT": 0,
+          "ACT_DOWNGRADED_TO_ASK": 0,
+          "MISSED_ACT": 1,
+          "CORRECT_ASK": 0,
+          "WRONG_VALUE_ASK": 0,
+          "MISSED_ASK": 0,
+          "UNNECESSARY_ASK": 0,
+          "CORRECT_NO_CHANGE": 2
+        }
+      },
+      "messy_speech": {
+        "items": 3,
+        "actPrecision": {
+          "num": 0,
+          "den": 0,
+          "value": null
+        },
+        "coverage": {
+          "num": 0,
+          "den": 0,
+          "value": null
+        },
+        "unsafeWriteRate": {
+          "num": 0,
+          "den": 3,
+          "value": 0
+        },
+        "reviewRate": {
+          "num": 0,
+          "den": 3,
+          "value": 0
+        },
+        "abstentionRate": {
+          "num": 3,
+          "den": 3,
+          "value": 1
+        },
+        "noOpRate": {
+          "num": 0,
+          "den": 3,
+          "value": 0
+        },
+        "wrongValueWrites": 0,
+        "systemErrors": 3,
+        "confusion": {
+          "ACT": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ASK": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 1,
+            "NO_OP": 0
+          },
+          "ABSTAIN": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 2,
+            "NO_OP": 0
+          },
+          "NO_OP": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          }
+        },
+        "outcomes": {
+          "CORRECT_ACT": 0,
+          "WRONG_VALUE_ACT": 0,
+          "UNSAFE_ACT": 0,
+          "ACT_DOWNGRADED_TO_ASK": 0,
+          "MISSED_ACT": 0,
+          "CORRECT_ASK": 0,
+          "WRONG_VALUE_ASK": 0,
+          "MISSED_ASK": 1,
+          "UNNECESSARY_ASK": 0,
+          "CORRECT_NO_CHANGE": 2
+        }
+      },
+      "mid_sentence_correction": {
+        "items": 3,
+        "actPrecision": {
+          "num": 0,
+          "den": 0,
+          "value": null
+        },
+        "coverage": {
+          "num": 0,
+          "den": 1,
+          "value": 0
+        },
+        "unsafeWriteRate": {
+          "num": 0,
+          "den": 2,
+          "value": 0
+        },
+        "reviewRate": {
+          "num": 0,
+          "den": 3,
+          "value": 0
+        },
+        "abstentionRate": {
+          "num": 3,
+          "den": 3,
+          "value": 1
+        },
+        "noOpRate": {
+          "num": 0,
+          "den": 3,
+          "value": 0
+        },
+        "wrongValueWrites": 0,
+        "systemErrors": 3,
+        "confusion": {
+          "ACT": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 1,
+            "NO_OP": 0
+          },
+          "ASK": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ABSTAIN": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 2,
+            "NO_OP": 0
+          },
+          "NO_OP": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          }
+        },
+        "outcomes": {
+          "CORRECT_ACT": 0,
+          "WRONG_VALUE_ACT": 0,
+          "UNSAFE_ACT": 0,
+          "ACT_DOWNGRADED_TO_ASK": 0,
+          "MISSED_ACT": 1,
+          "CORRECT_ASK": 0,
+          "WRONG_VALUE_ASK": 0,
+          "MISSED_ASK": 0,
+          "UNNECESSARY_ASK": 0,
+          "CORRECT_NO_CHANGE": 2
+        }
+      },
+      "multiple_numbers": {
+        "items": 6,
+        "actPrecision": {
+          "num": 0,
+          "den": 0,
+          "value": null
+        },
+        "coverage": {
+          "num": 0,
+          "den": 1,
+          "value": 0
+        },
+        "unsafeWriteRate": {
+          "num": 0,
+          "den": 5,
+          "value": 0
+        },
+        "reviewRate": {
+          "num": 0,
+          "den": 6,
+          "value": 0
+        },
+        "abstentionRate": {
+          "num": 6,
+          "den": 6,
+          "value": 1
+        },
+        "noOpRate": {
+          "num": 0,
+          "den": 6,
+          "value": 0
+        },
+        "wrongValueWrites": 0,
+        "systemErrors": 6,
+        "confusion": {
+          "ACT": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 1,
+            "NO_OP": 0
+          },
+          "ASK": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 2,
+            "NO_OP": 0
+          },
+          "ABSTAIN": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 3,
+            "NO_OP": 0
+          },
+          "NO_OP": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          }
+        },
+        "outcomes": {
+          "CORRECT_ACT": 0,
+          "WRONG_VALUE_ACT": 0,
+          "UNSAFE_ACT": 0,
+          "ACT_DOWNGRADED_TO_ASK": 0,
+          "MISSED_ACT": 1,
+          "CORRECT_ASK": 0,
+          "WRONG_VALUE_ASK": 0,
+          "MISSED_ASK": 2,
+          "UNNECESSARY_ASK": 0,
+          "CORRECT_NO_CHANGE": 3
+        }
+      },
+      "multiple_stakeholders": {
+        "items": 6,
+        "actPrecision": {
+          "num": 0,
+          "den": 0,
+          "value": null
+        },
+        "coverage": {
+          "num": 0,
+          "den": 2,
+          "value": 0
+        },
+        "unsafeWriteRate": {
+          "num": 0,
+          "den": 4,
+          "value": 0
+        },
+        "reviewRate": {
+          "num": 0,
+          "den": 6,
+          "value": 0
+        },
+        "abstentionRate": {
+          "num": 6,
+          "den": 6,
+          "value": 1
+        },
+        "noOpRate": {
+          "num": 0,
+          "den": 6,
+          "value": 0
+        },
+        "wrongValueWrites": 0,
+        "systemErrors": 6,
+        "confusion": {
+          "ACT": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 2,
+            "NO_OP": 0
+          },
+          "ASK": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ABSTAIN": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 4,
+            "NO_OP": 0
+          },
+          "NO_OP": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          }
+        },
+        "outcomes": {
+          "CORRECT_ACT": 0,
+          "WRONG_VALUE_ACT": 0,
+          "UNSAFE_ACT": 0,
+          "ACT_DOWNGRADED_TO_ASK": 0,
+          "MISSED_ACT": 2,
+          "CORRECT_ASK": 0,
+          "WRONG_VALUE_ASK": 0,
+          "MISSED_ASK": 0,
+          "UNNECESSARY_ASK": 0,
+          "CORRECT_NO_CHANGE": 4
+        }
+      },
+      "pronouns": {
+        "items": 3,
+        "actPrecision": {
+          "num": 0,
+          "den": 0,
+          "value": null
+        },
+        "coverage": {
+          "num": 0,
+          "den": 1,
+          "value": 0
+        },
+        "unsafeWriteRate": {
+          "num": 0,
+          "den": 2,
+          "value": 0
+        },
+        "reviewRate": {
+          "num": 0,
+          "den": 3,
+          "value": 0
+        },
+        "abstentionRate": {
+          "num": 3,
+          "den": 3,
+          "value": 1
+        },
+        "noOpRate": {
+          "num": 0,
+          "den": 3,
+          "value": 0
+        },
+        "wrongValueWrites": 0,
+        "systemErrors": 3,
+        "confusion": {
+          "ACT": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 1,
+            "NO_OP": 0
+          },
+          "ASK": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ABSTAIN": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 2,
+            "NO_OP": 0
+          },
+          "NO_OP": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          }
+        },
+        "outcomes": {
+          "CORRECT_ACT": 0,
+          "WRONG_VALUE_ACT": 0,
+          "UNSAFE_ACT": 0,
+          "ACT_DOWNGRADED_TO_ASK": 0,
+          "MISSED_ACT": 1,
+          "CORRECT_ASK": 0,
+          "WRONG_VALUE_ASK": 0,
+          "MISSED_ASK": 0,
+          "UNNECESSARY_ASK": 0,
+          "CORRECT_NO_CHANGE": 2
+        }
+      },
+      "supersession": {
+        "items": 6,
+        "actPrecision": {
+          "num": 0,
+          "den": 0,
+          "value": null
+        },
+        "coverage": {
+          "num": 0,
+          "den": 2,
+          "value": 0
+        },
+        "unsafeWriteRate": {
+          "num": 0,
+          "den": 4,
+          "value": 0
+        },
+        "reviewRate": {
+          "num": 0,
+          "den": 6,
+          "value": 0
+        },
+        "abstentionRate": {
+          "num": 6,
+          "den": 6,
+          "value": 1
+        },
+        "noOpRate": {
+          "num": 0,
+          "den": 6,
+          "value": 0
+        },
+        "wrongValueWrites": 0,
+        "systemErrors": 6,
+        "confusion": {
+          "ACT": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 2,
+            "NO_OP": 0
+          },
+          "ASK": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 1,
+            "NO_OP": 0
+          },
+          "ABSTAIN": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 3,
+            "NO_OP": 0
+          },
+          "NO_OP": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          }
+        },
+        "outcomes": {
+          "CORRECT_ACT": 0,
+          "WRONG_VALUE_ACT": 0,
+          "UNSAFE_ACT": 0,
+          "ACT_DOWNGRADED_TO_ASK": 0,
+          "MISSED_ACT": 2,
+          "CORRECT_ASK": 0,
+          "WRONG_VALUE_ASK": 0,
+          "MISSED_ASK": 1,
+          "UNNECESSARY_ASK": 0,
+          "CORRECT_NO_CHANGE": 3
+        }
+      },
+      "tentative": {
+        "items": 6,
+        "actPrecision": {
+          "num": 0,
+          "den": 0,
+          "value": null
+        },
+        "coverage": {
+          "num": 0,
+          "den": 0,
+          "value": null
+        },
+        "unsafeWriteRate": {
+          "num": 0,
+          "den": 6,
+          "value": 0
+        },
+        "reviewRate": {
+          "num": 0,
+          "den": 6,
+          "value": 0
+        },
+        "abstentionRate": {
+          "num": 6,
+          "den": 6,
+          "value": 1
+        },
+        "noOpRate": {
+          "num": 0,
+          "den": 6,
+          "value": 0
+        },
+        "wrongValueWrites": 0,
+        "systemErrors": 6,
+        "confusion": {
+          "ACT": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ASK": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 2,
+            "NO_OP": 0
+          },
+          "ABSTAIN": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 4,
+            "NO_OP": 0
+          },
+          "NO_OP": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          }
+        },
+        "outcomes": {
+          "CORRECT_ACT": 0,
+          "WRONG_VALUE_ACT": 0,
+          "UNSAFE_ACT": 0,
+          "ACT_DOWNGRADED_TO_ASK": 0,
+          "MISSED_ACT": 0,
+          "CORRECT_ASK": 0,
+          "WRONG_VALUE_ASK": 0,
+          "MISSED_ASK": 2,
+          "UNNECESSARY_ASK": 0,
+          "CORRECT_NO_CHANGE": 4
+        }
+      },
+      "unconfirmed_rep_statement": {
+        "items": 3,
+        "actPrecision": {
+          "num": 0,
+          "den": 0,
+          "value": null
+        },
+        "coverage": {
+          "num": 0,
+          "den": 0,
+          "value": null
+        },
+        "unsafeWriteRate": {
+          "num": 0,
+          "den": 3,
+          "value": 0
+        },
+        "reviewRate": {
+          "num": 0,
+          "den": 3,
+          "value": 0
+        },
+        "abstentionRate": {
+          "num": 3,
+          "den": 3,
+          "value": 1
+        },
+        "noOpRate": {
+          "num": 0,
+          "den": 3,
+          "value": 0
+        },
+        "wrongValueWrites": 0,
+        "systemErrors": 3,
+        "confusion": {
+          "ACT": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ASK": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 1,
+            "NO_OP": 0
+          },
+          "ABSTAIN": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 2,
+            "NO_OP": 0
+          },
+          "NO_OP": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          }
+        },
+        "outcomes": {
+          "CORRECT_ACT": 0,
+          "WRONG_VALUE_ACT": 0,
+          "UNSAFE_ACT": 0,
+          "ACT_DOWNGRADED_TO_ASK": 0,
+          "MISSED_ACT": 0,
+          "CORRECT_ASK": 0,
+          "WRONG_VALUE_ASK": 0,
+          "MISSED_ASK": 1,
+          "UNNECESSARY_ASK": 0,
+          "CORRECT_NO_CHANGE": 2
+        }
+      }
+    },
+    "byGoldStatus": {
+      "CURRENT": {
+        "items": 8,
+        "actPrecision": {
+          "num": 0,
+          "den": 0,
+          "value": null
+        },
+        "coverage": {
+          "num": 0,
+          "den": 4,
+          "value": 0
+        },
+        "unsafeWriteRate": {
+          "num": 0,
+          "den": 4,
+          "value": 0
+        },
+        "reviewRate": {
+          "num": 0,
+          "den": 8,
+          "value": 0
+        },
+        "abstentionRate": {
+          "num": 8,
+          "den": 8,
+          "value": 1
+        },
+        "noOpRate": {
+          "num": 0,
+          "den": 8,
+          "value": 0
+        },
+        "wrongValueWrites": 0,
+        "systemErrors": 8,
+        "confusion": {
+          "ACT": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 4,
+            "NO_OP": 0
+          },
+          "ASK": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 3,
+            "NO_OP": 0
+          },
+          "ABSTAIN": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 1,
+            "NO_OP": 0
+          },
+          "NO_OP": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          }
+        },
+        "outcomes": {
+          "CORRECT_ACT": 0,
+          "WRONG_VALUE_ACT": 0,
+          "UNSAFE_ACT": 0,
+          "ACT_DOWNGRADED_TO_ASK": 0,
+          "MISSED_ACT": 4,
+          "CORRECT_ASK": 0,
+          "WRONG_VALUE_ASK": 0,
+          "MISSED_ASK": 3,
+          "UNNECESSARY_ASK": 0,
+          "CORRECT_NO_CHANGE": 1
+        }
+      },
+      "none": {
+        "items": 10,
+        "actPrecision": {
+          "num": 0,
+          "den": 0,
+          "value": null
+        },
+        "coverage": {
+          "num": 0,
+          "den": 0,
+          "value": null
+        },
+        "unsafeWriteRate": {
+          "num": 0,
+          "den": 10,
+          "value": 0
+        },
+        "reviewRate": {
+          "num": 0,
+          "den": 10,
+          "value": 0
+        },
+        "abstentionRate": {
+          "num": 10,
+          "den": 10,
+          "value": 1
+        },
+        "noOpRate": {
+          "num": 0,
+          "den": 10,
+          "value": 0
+        },
+        "wrongValueWrites": 0,
+        "systemErrors": 10,
+        "confusion": {
+          "ACT": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ASK": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ABSTAIN": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 10,
+            "NO_OP": 0
+          },
+          "NO_OP": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          }
+        },
+        "outcomes": {
+          "CORRECT_ACT": 0,
+          "WRONG_VALUE_ACT": 0,
+          "UNSAFE_ACT": 0,
+          "ACT_DOWNGRADED_TO_ASK": 0,
+          "MISSED_ACT": 0,
+          "CORRECT_ASK": 0,
+          "WRONG_VALUE_ASK": 0,
+          "MISSED_ASK": 0,
+          "UNNECESSARY_ASK": 0,
+          "CORRECT_NO_CHANGE": 10
+        }
+      }
+    },
+    "byGoldCertainty": {
+      "CONDITIONAL": {
+        "items": 1,
+        "actPrecision": {
+          "num": 0,
+          "den": 0,
+          "value": null
+        },
+        "coverage": {
+          "num": 0,
+          "den": 0,
+          "value": null
+        },
+        "unsafeWriteRate": {
+          "num": 0,
+          "den": 1,
+          "value": 0
+        },
+        "reviewRate": {
+          "num": 0,
+          "den": 1,
+          "value": 0
+        },
+        "abstentionRate": {
+          "num": 1,
+          "den": 1,
+          "value": 1
+        },
+        "noOpRate": {
+          "num": 0,
+          "den": 1,
+          "value": 0
+        },
+        "wrongValueWrites": 0,
+        "systemErrors": 1,
+        "confusion": {
+          "ACT": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ASK": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 1,
+            "NO_OP": 0
+          },
+          "ABSTAIN": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "NO_OP": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          }
+        },
+        "outcomes": {
+          "CORRECT_ACT": 0,
+          "WRONG_VALUE_ACT": 0,
+          "UNSAFE_ACT": 0,
+          "ACT_DOWNGRADED_TO_ASK": 0,
+          "MISSED_ACT": 0,
+          "CORRECT_ASK": 0,
+          "WRONG_VALUE_ASK": 0,
+          "MISSED_ASK": 1,
+          "UNNECESSARY_ASK": 0,
+          "CORRECT_NO_CHANGE": 0
+        }
+      },
+      "EXPLICIT": {
+        "items": 6,
+        "actPrecision": {
+          "num": 0,
+          "den": 0,
+          "value": null
+        },
+        "coverage": {
+          "num": 0,
+          "den": 4,
+          "value": 0
+        },
+        "unsafeWriteRate": {
+          "num": 0,
+          "den": 2,
+          "value": 0
+        },
+        "reviewRate": {
+          "num": 0,
+          "den": 6,
+          "value": 0
+        },
+        "abstentionRate": {
+          "num": 6,
+          "den": 6,
+          "value": 1
+        },
+        "noOpRate": {
+          "num": 0,
+          "den": 6,
+          "value": 0
+        },
+        "wrongValueWrites": 0,
+        "systemErrors": 6,
+        "confusion": {
+          "ACT": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 4,
+            "NO_OP": 0
+          },
+          "ASK": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 1,
+            "NO_OP": 0
+          },
+          "ABSTAIN": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 1,
+            "NO_OP": 0
+          },
+          "NO_OP": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          }
+        },
+        "outcomes": {
+          "CORRECT_ACT": 0,
+          "WRONG_VALUE_ACT": 0,
+          "UNSAFE_ACT": 0,
+          "ACT_DOWNGRADED_TO_ASK": 0,
+          "MISSED_ACT": 4,
+          "CORRECT_ASK": 0,
+          "WRONG_VALUE_ASK": 0,
+          "MISSED_ASK": 1,
+          "UNNECESSARY_ASK": 0,
+          "CORRECT_NO_CHANGE": 1
+        }
+      },
+      "none": {
+        "items": 10,
+        "actPrecision": {
+          "num": 0,
+          "den": 0,
+          "value": null
+        },
+        "coverage": {
+          "num": 0,
+          "den": 0,
+          "value": null
+        },
+        "unsafeWriteRate": {
+          "num": 0,
+          "den": 10,
+          "value": 0
+        },
+        "reviewRate": {
+          "num": 0,
+          "den": 10,
+          "value": 0
+        },
+        "abstentionRate": {
+          "num": 10,
+          "den": 10,
+          "value": 1
+        },
+        "noOpRate": {
+          "num": 0,
+          "den": 10,
+          "value": 0
+        },
+        "wrongValueWrites": 0,
+        "systemErrors": 10,
+        "confusion": {
+          "ACT": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ASK": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ABSTAIN": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 10,
+            "NO_OP": 0
+          },
+          "NO_OP": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          }
+        },
+        "outcomes": {
+          "CORRECT_ACT": 0,
+          "WRONG_VALUE_ACT": 0,
+          "UNSAFE_ACT": 0,
+          "ACT_DOWNGRADED_TO_ASK": 0,
+          "MISSED_ACT": 0,
+          "CORRECT_ASK": 0,
+          "WRONG_VALUE_ASK": 0,
+          "MISSED_ASK": 0,
+          "UNNECESSARY_ASK": 0,
+          "CORRECT_NO_CHANGE": 10
+        }
+      },
+      "TENTATIVE": {
+        "items": 1,
+        "actPrecision": {
+          "num": 0,
+          "den": 0,
+          "value": null
+        },
+        "coverage": {
+          "num": 0,
+          "den": 0,
+          "value": null
+        },
+        "unsafeWriteRate": {
+          "num": 0,
+          "den": 1,
+          "value": 0
+        },
+        "reviewRate": {
+          "num": 0,
+          "den": 1,
+          "value": 0
+        },
+        "abstentionRate": {
+          "num": 1,
+          "den": 1,
+          "value": 1
+        },
+        "noOpRate": {
+          "num": 0,
+          "den": 1,
+          "value": 0
+        },
+        "wrongValueWrites": 0,
+        "systemErrors": 1,
+        "confusion": {
+          "ACT": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "ASK": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 1,
+            "NO_OP": 0
+          },
+          "ABSTAIN": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          },
+          "NO_OP": {
+            "ACT": 0,
+            "ASK": 0,
+            "ABSTAIN": 0,
+            "NO_OP": 0
+          }
+        },
+        "outcomes": {
+          "CORRECT_ACT": 0,
+          "WRONG_VALUE_ACT": 0,
+          "UNSAFE_ACT": 0,
+          "ACT_DOWNGRADED_TO_ASK": 0,
+          "MISSED_ACT": 0,
+          "CORRECT_ASK": 0,
+          "WRONG_VALUE_ASK": 0,
+          "MISSED_ASK": 1,
+          "UNNECESSARY_ASK": 0,
+          "CORRECT_NO_CHANGE": 0
+        }
+      }
+    }
+  }
+}

@@ -3,104 +3,127 @@
 > An exploration of a technical problem relevant to AI revenue agents.
 > Not an Ergo project. No access to Ergo systems, APIs, or data. All benchmark data is synthetic.
 
-Status: **DRAFT — under review.** Items marked *(proposed)* are recommendations from `PROPOSAL.md` that have not yet been accepted.
+Status: **v1 — approved design (2026-11-13).** The labeling details live in `LABELING_GUIDE.md`, which takes precedence on labeling questions. Decision rationale lives in `DECISIONS.md`.
 
 ## 1. Research question
 
-How reliably can an AI agent determine when information extracted from a sales conversation is supported well enough to write into a CRM autonomously?
+When should an AI agent trust information extracted from a sales conversation enough to modify CRM state autonomously?
 
-**Hypothesis.** A decomposed, evidence-aware pipeline will make fewer incorrect autonomous CRM writes than a one-prompt LLM baseline. It will also send more items to human review and leave fewer handled autonomously. The goal is to **measure** this precision/coverage tradeoff honestly, not to show that Grounded wins.
+**Key experimental question.** Does decomposing the task into extraction → evidence grounding → semantic classification → deterministic action policy outperform asking the same model to make the trust decision in one call?
 
-Grounded checks **grounding**: whether the transcript supports a proposed CRM value. It does **not** check whether the customer is telling the truth.
+**Hypothesis.** Grounded makes fewer unsafe autonomous writes than both baselines, at the cost of more human review and lower autonomous coverage. The goal is to *measure* this honestly, not to show that Grounded wins.
+
+Grounded checks **grounding**: whether what was said supports the update. It does **not** check whether the customer is telling the truth.
 
 ## 2. Scope
 
-The MVP covers exactly three fields:
+The input is one transcript plus the existing CRM state. There are exactly three fields: `budget`, `decisionMaker`, `nextMeeting`.
 
-| Field | Meaning | Value representation *(proposed)* |
+The output is, per field, one of `ACT | ASK | ABSTAIN | NO_OP`, with a value, evidence, and reasons.
+
+Out of scope: other fields, CRM integrations, auth, databases, vector stores, agent frameworks, queues, MCP, calendar corroboration, cross-conversation reasoning, and speaker-authority conflicts.
+
+## 3. Field semantics (summary; full rules in LABELING_GUIDE §2)
+
+| Field | Definition | Value |
 |---|---|---|
-| `budget` | Money the customer org currently has approved or allocated for this purchase. This is not the price, a competitor quote, or a wish. | `{ amountUsd: number }` |
-| `decisionMaker` | The person with final authority to approve the purchase. | `{ name: string, title?: string }` |
-| `nextMeeting` | A specific, agreed future meeting with the customer. | `{ date: "YYYY-MM-DD", time?: "HH:MM" }`, resolved against the transcript's `occurredAt` date |
+| budget | Current customer-stated **approved or committed** budget for this purchase | `{kind:"exact", amount, currency}` or `{kind:"range", min, max, currency}`. Never an invented midpoint. |
+| decisionMaker | Named person(s) or identified role(s) with **final** approval / sign-off authority | `{people: [{name|null, role|null}]}`. Multiple people only for explicit joint approval. |
+| nextMeeting | **Mutually agreed future synchronous** seller–customer meeting with specific timing | `{date|null, time|null, timezone|null, asStated}`, resolved against the call date |
 
-Input: the existing CRM state plus one transcript. Output: one decision per candidate update.
+## 4. Claim semantics
 
-Out of scope: CRM integrations, auth, persistence beyond JSON files, vector DBs, LangChain, agent frameworks, queues, MCP, other fields, cross-conversation reasoning, calendar corroboration, and speaker-authority conflicts. The last three are stretch goals.
+Each candidate claim has three independent semantic labels:
 
-## 3. Certainty taxonomy
+- **Status:** `CURRENT | HISTORICAL | NEGATED | SUPERSEDED`. Is this about the current state? Precedence: `NEGATED > SUPERSEDED > HISTORICAL > CURRENT`.
+- **Certainty:** `EXPLICIT | TENTATIVE | CONDITIONAL`. How strongly is it asserted? Precedence: `CONDITIONAL > TENTATIVE > EXPLICIT`.
+- **Sufficiency:** `DIRECT | INDIRECT | NONE`. Does the evidence establish the *field relationship*?
 
-This describes how the speaker commits to a candidate value.
+A correction ("I said $100K before, but finance actually approved $75K") produces two claims: $100K `SUPERSEDED`, and $75K `CURRENT`/`EXPLICIT`/`DIRECT`.
 
-| Type | Definition | Example |
+There are no numeric confidence scores anywhere.
+
+## 5. Evidence grounding
+
+Every Grounded claim carries one or more `{turnId, speakerId, quote}` items. Deterministic code checks each one:
+1. The turn exists.
+2. The speaker matches the turn's actual speaker.
+3. The quote is a substring of the turn text, after normalizing whitespace, curly quotes, and dashes. Case-sensitive.
+
+If **any** evidence item fails, the claim is ungrounded and can never ACT. A claim also needs at least one evidence item from a **customer-side** speaker to ACT.
+
+## 6. Deterministic action policy (default configuration)
+
+Per claim, evaluated in order:
+
+| # | Condition | Decision | Reason |
+|---|---|---|---|
+| 1 | Classification missing or invalid | ABSTAIN | `CLASSIFICATION_MISSING` |
+| 2 | Any evidence fails grounding | ABSTAIN | `UNGROUNDED_EVIDENCE` |
+| 3 | Status ≠ CURRENT | ABSTAIN | `STATUS_NEGATED` / `STATUS_HISTORICAL` / `STATUS_SUPERSEDED` |
+| 4 | Sufficiency = NONE | ABSTAIN | `NO_SUPPORT` |
+| 5 | Value equals existing CRM value | NO_OP | `MATCHES_EXISTING` |
+| 6 | Any of: existing CRM value differs · TENTATIVE · CONDITIONAL · INDIRECT · no customer evidence · meeting date null | ASK | all that apply: `CONFLICTS_WITH_EXISTING`, `TENTATIVE`, `CONDITIONAL`, `INDIRECT_SUPPORT`, `NO_CUSTOMER_EVIDENCE`, `UNDERSPECIFIED_VALUE` |
+| 7 | Otherwise | ACT | `SUPPORTED` |
+
+Per field (reconciliation):
+- If two or more ACT/ASK claims have different values, the ACT ones become ASK (`CONFLICTING_CANDIDATES`).
+- Field action: ACT if any claim ACTs; else ASK, using the latest-evidenced ASK value; else NO_OP; else ABSTAIN (`NO_CANDIDATE` if there were no claims at all).
+- The claims behind an ABSTAIN, including negated and historical values with their evidence, are kept in the output trace.
+
+`LABELING_GUIDE.md` §4 is the human-readable version of the same rubric. Alternative configurations (CONSERVATIVE / BALANCED / AGGRESSIVE) will be explicit code rule changes, added only after the base policy is complete and tested.
+
+## 7. Systems under test
+
+All systems use one fixed model, set in `src/llm/config.ts` (env `GROUNDED_MODEL`, default `claude-sonnet-5-5`). Effort is also fixed and recorded.
+
+| System | Calls | Who decides the action |
 |---|---|---|
-| `EXPLICIT` | Directly asserted as currently true. | "Our approved budget is $75K." |
-| `TENTATIVE` | Asserted with hedging or uncertainty. | "We could probably spend around $75K." |
-| `CONDITIONAL` | True only if some other event happens. | "If finance approves, we'll have $75K." |
-| `NEGATED` | The speaker says the value is not true. | "We don't have a $75K budget." |
-| `HISTORICAL` | Describes a past state, not the current one. | "We used to have a $75K budget." |
-| `SUPERSEDED` *(proposed rename of CORRECTED)* | Was asserted, then replaced by later information in the same conversation. | "$75K initially, but finance reduced it to $50K." Here $75K is SUPERSEDED. $50K gets its own label (EXPLICIT). |
+| `baseline-naive` | 1 | Nobody. Every proposed update is a write (ACT). |
+| `baseline-self-assess` (**primary baseline**) | 1 | The model, choosing AUTO→ACT or REVIEW→ASK |
+| `grounded` | 2: extraction, then semantic classification | Deterministic code (§5–6) |
 
-When more than one type applies, labelers and the model use this precedence *(proposed)*:
-`NEGATED > SUPERSEDED > HISTORICAL > CONDITIONAL > TENTATIVE > EXPLICIT`.
+All three get the same field definitions. Only `baseline-self-assess` gets a short AUTO/REVIEW rubric, written as a high-level version of the ACT definition. No system sees benchmark labels, case ids, or examples taken from the benchmark.
 
-Values that are NEGATED, HISTORICAL, or SUPERSEDED are **kept** as signals with their evidence. They are never written as the field value.
+Across all systems, a proposed value identical to the existing CRM value is recorded as NO_OP, because writing the same value changes nothing.
 
-## 4. Evidence sufficiency
+## 8. Benchmark
 
-This is separate from certainty. It asks whether the evidence, taken at face value, states the **relationship the field requires**.
+- 60 transcripts. **dev:** 15 handwritten + 15 generated-and-reviewed. **test** (held out): 15 + 15.
+- Every case is labeled for all three fields per `LABELING_GUIDE.md`.
+- Files: `data/benchmark/{dev,test}/<id>.json`. The six schema-illustration cases live in `data/benchmark/examples/` and are **not** part of the benchmark.
+- Freezing: `data/benchmark/FROZEN.json` records per-file SHA-256 hashes. The runner refuses to use a modified frozen split, and refuses the test split without an explicit final-test flag.
 
-| Value | Meaning | Example (decisionMaker = Sarah) |
-|---|---|---|
-| `DIRECT` | The evidence states the field relationship itself. | "Sarah has final sign-off." |
-| `INDIRECT` | The evidence is related but needs inference to reach the field relationship. | "Sarah is leading the evaluation." "I'll run it by Sarah." |
-| `NONE` | The evidence does not support the field relationship for this value. | "Sarah from IT joined the call." |
+## 9. Metrics
 
-Sufficiency is a semantic judgment made by the LLM. "Is this enough to write autonomously?" is a separate question, answered by the deterministic policy (§5). There are no numeric confidence scores anywhere.
+The scoring unit is one field-item (case × field). Every metric is reported as `numerator / denominator (percent)`.
 
-## 5. Actions
-
-| Action | Meaning |
+| Metric | Definition |
 |---|---|
-| `ACT` | The evidence is sufficient to update the CRM field autonomously. |
-| `ASK` | The information is plausible and useful, but a human should confirm it before the CRM changes. |
-| `ABSTAIN` | The evidence does not justify writing this value. The signal and evidence are kept. Nothing is discarded. |
+| **ACT precision** (primary) | correct ACTs / predicted ACTs. Correct = gold ACT **and** value matches. |
+| Autonomous coverage | correct ACTs / gold ACTs |
+| Unsafe write rate | predicted ACTs on items whose gold action ≠ ACT / items whose gold action ≠ ACT |
+| Human review rate | predicted ASK / all items |
+| Abstention rate | predicted ABSTAIN / all items |
+| (also reported) | wrong-value ACTs, NO_OP rate, system errors, gold × predicted action matrix |
 
-The ACT/ASK/ABSTAIN decision is made by **deterministic, unit-tested application code** (`policy.ts`). It takes the LLM's semantic labels and the deterministic grounding check as inputs. The LLM never decides the action in Grounded.
+Breakdowns: by field, by case tag, by gold status and gold certainty, by source (handwritten/generated), and by label status (draft/reviewed).
 
-**Grounding rule.** Each evidence quote must be found, after whitespace and quote-character normalization, in the transcript turn it cites. If any quote fails this check, the result can never be ACT.
+Every per-item outcome is stored, so failures can be listed and grouped.
 
-## 6. Benchmark schema (summary; full proposal in `PROPOSAL.md`)
+## 10. Evaluation protocol
 
-Each **case** has one transcript and existing CRM state. It carries gold labels for **all three fields**:
+- Development uses **dev** only: one run per change by default.
+- Before the final test evaluation, freeze the prompts, policy, and architecture (git tag). Then run each system **3×** on test, because model output varies and sampling parameters are not available on current models.
+- Each run stores: timestamp, the requested and API-reported model, system and version, prompt hashes, policy configuration, effort, case file hashes, raw model outputs, per-item outcomes, raw counts, and computed metrics.
+- Test-set failure details are hidden by default in reports.
 
-- `id`, `source: handwritten | generated`, `split: dev | test`, `tags[]`, `labelStatus: draft | reviewed`
-- `crm`: existing CRM state
-- `transcript`: `{ occurredAt, participants[], turns[] }`
-- `expected.<field>`: `{ action, value | null, certainty?, evidence?[], notes }`
+## 11. Experimental-integrity rules (non-negotiable)
 
-The unit of scoring is a **field-item**: one (case, field) pair.
-
-## 7. Metrics
-
-Counts are reported alongside every percentage. With a small N, a single case moves a percentage by several points.
-
-- **ACT precision** (primary) = correct ACTs / all ACTs. An ACT is correct only if the gold action is ACT **and** the value matches.
-- **Coverage** = correct ACTs / gold-ACT field-items.
-- **Review rate** = ASK / all field-items. **Abstention rate** = ABSTAIN / all field-items.
-- **Unjustified writes** = ACTs where the gold action is ASK or ABSTAIN. These are reported separately from wrong-value writes.
-- A 3×3 action confusion matrix plus value correctness.
-- Breakdowns by field, gold certainty, source (handwritten vs generated), and tag.
-- Variance across repeated runs. The model is not deterministic and temperature cannot be set on current models.
-
-## 8. Experimental-integrity rules
-
-1. Never fabricate evaluation results.
-2. Never change benchmark labels because a system disagrees with them.
-3. Never modify frozen benchmark cases without explicitly telling the owner.
-4. Never hardcode phrases from benchmark cases into the implementation.
-5. Never patch individual test-set failures with case-specific fixes. Iterate on `dev` only.
-6. Clearly mark handwritten vs generated cases. LLM-drafted labels stay `draft` until a human reviews them.
-7. Keep raw baseline outputs before improving Grounded. Raw model outputs are stored and never overwritten.
-8. Report regressions as well as improvements.
-9. Prefer honest failure analysis over a perfect-looking project.
-10. Synthetic results are synthetic. Make no claims about real customer conversations.
+- Never fabricate metrics. Every reported number must be reproducible from a stored run file.
+- Never silently modify ground-truth labels. Never modify frozen test data.
+- Never hardcode benchmark phrases into production logic. No case-specific patches.
+- Never tune on held-out test failures.
+- Never hide regressions.
+- Always distinguish handwritten from generated cases. Always preserve raw baseline results.
+- Synthetic results are synthetic. Make no claims about real conversations or Ergo's systems.

@@ -1,0 +1,58 @@
+{
+  "id": "budget-ex-01",
+  "split": "example",
+  "source": "generated",
+  "labelStatus": "draft",
+  "tags": ["tentative", "conditional", "multiple_numbers", "irrelevant_info", "filler_words", "messy_speech"],
+  "description": "Hedged budget figure that still needs finance approval, next to an irrelevant incumbent-vendor spend figure.",
+  "crm": { "company": "Northwind Logistics", "budget": null, "decisionMaker": null, "nextMeeting": null },
+  "transcript": {
+    "id": "t-budget-ex-01",
+    "occurredAt": "2026-03-10",
+    "participants": [
+      { "id": "dana", "name": "Dana Whitfield", "side": "rep", "title": "Account Executive" },
+      { "id": "priya", "name": "Priya Raman", "side": "customer", "title": "Head of Revenue Operations" }
+    ],
+    "turns": [
+      { "id": "t1", "speakerId": "dana", "text": "Before we get into pricing, what's the budget looking like on your side for this?" },
+      { "id": "t2", "speakerId": "priya", "text": "Yeah, I mean, last I heard from finance we're probably somewhere around the 100 range? But don't quote me on that, it still has to clear finance." },
+      { "id": "t3", "speakerId": "dana", "text": "Got it. And how does that compare to what you spend today?" },
+      { "id": "t4", "speakerId": "priya", "text": "We're paying our current vendor like 60 a year, which is part of why we're looking." },
+      { "id": "t5", "speakerId": "dana", "text": "Makes sense. I'll put together a proposal and send it over." },
+      { "id": "t6", "speakerId": "priya", "text": "Sounds good." }
+    ]
+  },
+  "expected": {
+    "budget": {
+      "action": "ASK",
+      "value": { "kind": "exact", "amount": 100000, "currency": "USD" },
+      "status": "CURRENT",
+      "certainty": "CONDITIONAL",
+      "sufficiency": "DIRECT",
+      "evidence": [
+        { "turnId": "t1", "speakerId": "dana", "quote": "what's the budget looking like on your side for this?" },
+        { "turnId": "t2", "speakerId": "priya", "quote": "last I heard from finance we're probably somewhere around the 100 range? But don't quote me on that, it still has to clear finance." }
+      ],
+      "rationale": "Answers the budget question directly, but the figure is hedged ('probably', 'around', 'don't quote me') and still pending finance approval. CONDITIONAL takes precedence over TENTATIVE, so ASK."
+    },
+    "decisionMaker": {
+      "action": "ABSTAIN",
+      "value": null,
+      "status": null,
+      "certainty": null,
+      "sufficiency": null,
+      "evidence": [],
+      "rationale": "'Finance' approves the budget, but no person or role is named as the final approver of the purchase."
+    },
+    "nextMeeting": {
+      "action": "ABSTAIN",
+      "value": null,
+      "status": null,
+      "certainty": null,
+      "sufficiency": null,
+      "evidence": [],
+      "rationale": "Sending a proposal is asynchronous; no meeting is discussed."
+    }
+  },
+  "notes": "Illustrative schema-validation case drafted by Claude. NOT part of the benchmark. The 60 (incumbent vendor spend) is a distractor that should not become the budget."
+}

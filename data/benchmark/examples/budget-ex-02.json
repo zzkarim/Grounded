@@ -1,0 +1,66 @@
+{
+  "id": "budget-ex-02",
+  "split": "example",
+  "source": "generated",
+  "labelStatus": "draft",
+  "tags": ["supersession", "existing_value", "multiple_numbers", "explicit"],
+  "description": "Budget in the CRM is superseded by a newly approved, lower figure. The new value is explicit but would overwrite existing CRM state. A follow-up meeting is agreed.",
+  "crm": {
+    "company": "Halcyon Health",
+    "budget": { "kind": "exact", "amount": 150000, "currency": "USD" },
+    "decisionMaker": null,
+    "nextMeeting": null
+  },
+  "transcript": {
+    "id": "t-budget-ex-02",
+    "occurredAt": "2026-03-12",
+    "participants": [
+      { "id": "marco", "name": "Marco Silva", "side": "rep", "title": "Account Executive" },
+      { "id": "ellen", "name": "Ellen Park", "side": "customer", "title": "Director of IT" }
+    ],
+    "turns": [
+      { "id": "t1", "speakerId": "marco", "text": "Last time we spoke you mentioned 150 had been set aside for this. Is that still where things stand?" },
+      { "id": "t2", "speakerId": "ellen", "text": "So, the 150, that's changed, unfortunately. Finance cut it after the reforecast." },
+      { "id": "t3", "speakerId": "marco", "text": "Sorry to hear that. Where did it land?" },
+      { "id": "t4", "speakerId": "ellen", "text": "We've got 120 approved now. That was signed off last week." },
+      { "id": "t5", "speakerId": "marco", "text": "Okay, 120. That still works for the core package. Should we get a follow-up on the calendar to walk through the revised scope?" },
+      { "id": "t6", "speakerId": "ellen", "text": "Yes, let's do Tuesday the 17th at 10 Eastern. Send me the invite." },
+      { "id": "t7", "speakerId": "marco", "text": "Will do." }
+    ]
+  },
+  "expected": {
+    "budget": {
+      "action": "ASK",
+      "value": { "kind": "exact", "amount": 120000, "currency": "USD" },
+      "status": "CURRENT",
+      "certainty": "EXPLICIT",
+      "sufficiency": "DIRECT",
+      "evidence": [
+        { "turnId": "t4", "speakerId": "ellen", "quote": "We've got 120 approved now. That was signed off last week." }
+      ],
+      "rationale": "120K is explicitly approved and supersedes 150K. But the CRM already holds 150K, and the default policy never overwrites an existing value autonomously, so ASK."
+    },
+    "decisionMaker": {
+      "action": "ABSTAIN",
+      "value": null,
+      "status": null,
+      "certainty": null,
+      "sufficiency": null,
+      "evidence": [],
+      "rationale": "'Finance' cut the budget; no person or role with final purchase authority is named."
+    },
+    "nextMeeting": {
+      "action": "ACT",
+      "value": { "date": "2026-03-17", "time": "10:00", "timezone": "Eastern", "asStated": "Tuesday the 17th at 10 Eastern" },
+      "status": "CURRENT",
+      "certainty": "EXPLICIT",
+      "sufficiency": "DIRECT",
+      "evidence": [
+        { "turnId": "t5", "speakerId": "marco", "quote": "Should we get a follow-up on the calendar to walk through the revised scope?" },
+        { "turnId": "t6", "speakerId": "ellen", "quote": "Yes, let's do Tuesday the 17th at 10 Eastern. Send me the invite." }
+      ],
+      "rationale": "The rep asks for a follow-up; the customer names a specific date and time and asks for the invite. 2026-03-17 is a Tuesday, so weekday and date agree. Agreed and specific: ACT."
+    }
+  },
+  "notes": "Illustrative schema-validation case drafted by Claude. NOT part of the benchmark. The superseded 150K equals the existing CRM value; the system must not treat it as a NO_OP corroboration."
+}

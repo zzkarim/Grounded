@@ -1,24 +1,28 @@
 # CLAUDE.md — Development constraints for Grounded
 
-Grounded is a research experiment first and a demo second. Read `SPEC.md` before making changes. Design decisions and their rationale go in `DECISIONS.md` (create it when the first decision is accepted).
+Grounded is a research experiment first and a demo second. Before changing anything, read `SPEC.md` (design), `LABELING_GUIDE.md` (ground-truth rules), and `DECISIONS.md` (why things are the way they are).
+
+## Environment
+- Node is installed user-locally at `~/.local/node/bin`. Prefix commands with `export PATH=~/.local/node/bin:$PATH;`.
+- Commands: `npm test`, `npm run typecheck`, `npm run lint`, `npm run validate-benchmark`, `npm run eval -- --system <name> --split dev`, `npm run report -- <run file>`.
 
 ## Architecture
-- Keep it minimal: TypeScript, Zod, Vitest, `@anthropic-ai/sdk`, `tsx` for scripts. Add Next.js + Tailwind only in the UI phase.
-- Do NOT add: LangChain or other agent frameworks, vector DBs, Redis, queues, SQLite/ORMs, auth, CRM integrations, MCP, multi-agent orchestration. If something seems to need one of these, ask first.
-- Data lives in local JSON files. Raw LLM outputs are written to `results/` and never overwritten.
-- The LLM provider sits behind one small interface (`LLMClient`). Only one file imports the Anthropic SDK.
-- Every LLM output is validated with Zod. Invalid output is recorded as a failure, never silently repaired.
-- The LLM does semantic work only: extraction, evidence quotes, certainty, sufficiency. ACT/ASK/ABSTAIN is decided by deterministic code in `policy.ts`, which must be table-test covered. Never ask an LLM to decide or approve the action inside Grounded.
-- Evidence grounding is deterministic: a quote must be a normalized substring of the turn it cites. If grounding fails, the result is never ACT.
-- Prefer plain functions and explicit code over abstractions. No numeric "confidence" scores unless they have actually been calibrated.
-- When you make a meaningful architectural decision, add a short entry to `DECISIONS.md`: what, why, and the alternatives considered.
+- Stack: Next.js, TypeScript, Tailwind, Zod, Vitest, `@anthropic-ai/sdk`, `tsx` for scripts. Do not add dependencies without a stated reason.
+- Do NOT add: LangChain or other agent frameworks, vector DBs, Redis, queues, SQLite/ORMs, auth, CRM integrations, MCP, or multi-agent orchestration.
+- Data lives in local JSON files. Run files under `data/runs/` are append-only: never overwrite or edit them.
+- Only `src/llm/` imports the Anthropic SDK. The model id lives in exactly one place, `src/llm/config.ts` (env `GROUNDED_MODEL`). All systems use the same model.
+- Every model output is validated with Zod. Invalid output → bounded retry → recorded as an error. It never becomes an ACT.
+- Inside Grounded, the LLM does semantic work only (extraction, quotes, status, certainty, sufficiency). ACT/ASK/ABSTAIN/NO_OP is decided by `src/core/policy.ts`. Never ask an LLM whether an action is safe.
+- Grounding and policy are deterministic and must have unit tests. Any policy change needs a test and a `DECISIONS.md` entry.
+- Prefer plain functions and explicit code over abstractions. No numeric confidence scores.
+- Record meaningful architectural decisions in `DECISIONS.md`: what was decided, why, and the alternatives considered.
 
 ## Benchmark integrity (non-negotiable)
-- Files under `benchmark/` are ground truth. **Never create, edit, or delete labels or inputs without explicit permission from the owner.** Propose changes in chat instead.
-- Once frozen (hash recorded in `benchmark/FROZEN.json`), the benchmark must not change. If a label looks wrong, report it and wait. Do not fix it.
-- LLM-generated cases are marked `source: "generated"` and `labelStatus: "draft"` until a human reviews them.
-- Iterate on prompts and policy against the `dev` split only. Run `test` only when explicitly asked, and record every test run.
-- No case-specific rules, no hardcoded phrases or names from benchmark cases, no few-shot examples copied from the benchmark. If a change helps one case but would not generalize, say so.
+- Files under `data/benchmark/` are ground truth. **Never create, edit, or delete labels or inputs without explicit permission from the owner.** Propose changes in chat.
+- Once a split is frozen (`data/benchmark/FROZEN.json`), it must not change. If a label looks wrong, report it and wait.
+- LLM-drafted cases are `source: "generated"` and `labelStatus: "draft"` until the owner reviews them.
+- Develop against `dev` only. Never run `test` unless the owner explicitly asks for the final evaluation. Never read test failure details during development.
+- No case-specific rules, no hardcoded phrases or names from benchmark cases, no few-shot examples taken from the benchmark. If a change helps one case but would not generalize, say so.
 
 ## Reporting
 - Never fabricate or estimate metrics. Every number must come from a stored run file.

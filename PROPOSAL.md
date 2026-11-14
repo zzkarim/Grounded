@@ -1,3 +1,5 @@
+> **Historical document (2026-11-13).** This was the pre-implementation proposal. Final decisions now live in `SPEC.md`, `LABELING_GUIDE.md`, and `DECISIONS.md`, and take precedence wherever they differ. Main differences: separate status and certainty axes, a fourth `NO_OP` outcome, a typed budget range, multiple decision makers, a 30/30 dev/test split, and a Sonnet model for all systems.
+
 # Grounded — Design Proposal (for review, nothing implemented yet)
 
 Sections: 1. Types/schemas · 2. Policy · 3. Benchmark format · 4. Baseline · 5. Grounded pipeline · 6. Implementation plan · 7. PRD issues to resolve.

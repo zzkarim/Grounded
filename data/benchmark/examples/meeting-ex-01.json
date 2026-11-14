@@ -1,0 +1,57 @@
+{
+  "id": "meeting-ex-01",
+  "split": "example",
+  "source": "generated",
+  "labelStatus": "draft",
+  "tags": ["explicit", "irrelevant_info"],
+  "description": "A meeting proposed by the rep and accepted without hedging. The customer's internal board meeting is a date distractor.",
+  "crm": { "company": "Lumen Analytics", "budget": null, "decisionMaker": null, "nextMeeting": null },
+  "transcript": {
+    "id": "t-meeting-ex-01",
+    "occurredAt": "2026-03-09",
+    "participants": [
+      { "id": "nina", "name": "Nina Brooks", "side": "rep", "title": "Solutions Engineer" },
+      { "id": "omar", "name": "Omar Haddad", "side": "customer", "title": "Head of Sales Operations" }
+    ],
+    "turns": [
+      { "id": "t1", "speakerId": "nina", "text": "Would Thursday at 2 work for the full demo with your team?" },
+      { "id": "t2", "speakerId": "omar", "text": "Thursday at 2 works. Send me the invite and I'll forward it to the team." },
+      { "id": "t3", "speakerId": "nina", "text": "Perfect, I'll send it right after this call." },
+      { "id": "t4", "speakerId": "omar", "text": "One thing: our board meets on the 20th, so we'd want pricing in hand before then." },
+      { "id": "t5", "speakerId": "nina", "text": "Understood, we'll have pricing to you well before the 20th." }
+    ]
+  },
+  "expected": {
+    "budget": {
+      "action": "ABSTAIN",
+      "value": null,
+      "status": null,
+      "certainty": null,
+      "sufficiency": null,
+      "evidence": [],
+      "rationale": "No budget discussed."
+    },
+    "decisionMaker": {
+      "action": "ABSTAIN",
+      "value": null,
+      "status": null,
+      "certainty": null,
+      "sufficiency": null,
+      "evidence": [],
+      "rationale": "The board is mentioned only as a meeting, with no approval role stated."
+    },
+    "nextMeeting": {
+      "action": "ACT",
+      "value": { "date": "2026-03-12", "time": "14:00", "timezone": null, "asStated": "Thursday at 2" },
+      "status": "CURRENT",
+      "certainty": "EXPLICIT",
+      "sufficiency": "DIRECT",
+      "evidence": [
+        { "turnId": "t1", "speakerId": "nina", "quote": "Would Thursday at 2 work for the full demo with your team?" },
+        { "turnId": "t2", "speakerId": "omar", "quote": "Thursday at 2 works. Send me the invite" }
+      ],
+      "rationale": "Rep proposes, customer accepts without hedging. Call date is Monday 2026-03-09, so Thursday = 2026-03-12; 'at 2' in business context = 14:00."
+    }
+  },
+  "notes": "Illustrative schema-validation case drafted by Claude. NOT part of the benchmark. The board meeting on the 20th is internal to the customer and must not become nextMeeting."
+}
