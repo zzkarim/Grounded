@@ -1,0 +1,39 @@
+{
+  "frozenAt": {
+    "dev": "2026-11-14T02:26:14.048Z"
+  },
+  "splits": {
+    "dev": {
+      "dev-gen-001.json": "efc8fc66df28550938d424d37f712b529c66ae84b6b127ad580be25d5f5cac15",
+      "dev-gen-002.json": "1f7d282de2c295e28492985d38a0d731bef67552fcc1702c136dc5a8df33a628",
+      "dev-gen-003.json": "5a3a7b60f272b482fb83e806429663e7858ed7bd80b9e22efac77dd537b07ce9",
+      "dev-gen-004.json": "2849b22cc8c48c514924b4460a3ec9c40d8f731746807d5b9c53f36b58df81e2",
+      "dev-gen-005.json": "555b66ccd08f091f1d8ca27201024f9fe8fa9d2b086456ae5484841f9b11b175",
+      "dev-gen-006.json": "821426c67e8f5b84033ee77579420162a7ece8d192106a57a226522f0b99d09f",
+      "dev-gen-007.json": "7784bf11e3266168674765b24661d3c6555ef5b35578863231152901dbaa5e68",
+      "dev-gen-008.json": "74cbf26f0ba1a3429ddf355edaf19d9e5a75f6fdbd71e0ad794ed03d12b33ccf",
+      "dev-gen-009.json": "5de4b5a4d3a0fbd15c11104bbffdac0022d7d2943d9ca399119c56e498209679",
+      "dev-gen-010.json": "52f4f048342965f8e8bca374771c557c22c31ab51661a423ad43ec643f7b76c3",
+      "dev-gen-011.json": "abd6efd0e3f94033cce87d736ae333170bfab042ffade9ecc5fc3306a33b8b01",
+      "dev-gen-012.json": "9fcb40f0196a3b1db9d034f12b5393601c45a6e7dac908c0bc1ff38c2d3d2da8",
+      "dev-gen-013.json": "9baed0e48640f25904e0ad4face28a432b833bac3aa1d6a0fb76bd4f73adad1e",
+      "dev-gen-014.json": "a4c40208c8e4111ce2659c326f7caf47b7cc02cdd1909dbd18b588f907d3ebb5",
+      "dev-gen-015.json": "1ae14ea4d0707a3ceb1110bbcc8756695b22af878025730b994c4888c444a54b",
+      "dev-gen-016.json": "2b7a4e2c4514c87797a44a97f4a38b37b0d530f2937207bb3156a3545c2191f9",
+      "dev-gen-017.json": "5f1529b561408001ed10c4b0f2dae657f225023b7e5216cd74931ea36f08a6e2",
+      "dev-gen-018.json": "656da14a7d18f4921923b1e6ab75ef986079beb12cae24852c7d0192b1dac100",
+      "dev-gen-019.json": "56eadbb197f7f92ee85ba4476b158ca6ebf584d6a1ce1955bad7a62adfbec14b",
+      "dev-gen-020.json": "b01ab2b002dd62239fefb17121ccad3283be4811d78f69f8d590648d77592a14",
+      "dev-gen-021.json": "068ffc63697b9cc75f3b34d2782b6d78fc9d62f1cd561cc05ce41dd2d4714dc3",
+      "dev-gen-022.json": "aceb63ed086e06463d288a6fca24d327f56464548077097c4cc1bdbf96d7ed55",
+      "dev-gen-023.json": "421ea7a1bb3966b1076add3150a74f658af8db93990224e9fcf5b50a966e48fc",
+      "dev-gen-024.json": "5f25c4738fb49d6e0944da1306d2bf42a62a2f07902584c82368ac5cb499472a",
+      "dev-gen-025.json": "7258bcfbd32ddddb7af1ccb72dae10fcbe78a36e593366526e7b9742d68cba9d",
+      "dev-gen-026.json": "1bf805a504d16062bfd4f138db611844820bebde09d07c82de629d711eccc64d",
+      "dev-gen-027.json": "c3c33cb6a0a458d919866d7b3bd111cfa02b66fb5362efe76e8134a70815e226",
+      "dev-gen-028.json": "592582c216cbef11c650ed652fc417023fe29b766b781752a629eaf2862d880c",
+      "dev-gen-029.json": "837ad4e3fd9d113f79e7ee687ae2cfb5a2d39fa9272d28756fb46b77e14cefe5",
+      "dev-gen-030.json": "9024c181458214492cfce351451df4296644a7ad96e3dda6fb4cf38e5a9e9939"
+    }
+  }
+}
