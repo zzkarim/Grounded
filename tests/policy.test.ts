@@ -339,6 +339,6 @@ describe("field reconciliation", () => {
 
   it("claims for one field never affect another field", () => {
     const b = claim("budget", usd(75000), [ev(t, "t2")]);
-    expect(reconcileField("decisionMaker", [{ claim: b, classification: null, grounding: groundEvidence(b.evidence, t), decision: { claimId: b.id, field: "budget", action: "ACT", reasons: ["SUPPORTED"] } }], t).decision.action).toBe("ABSTAIN");
+    expect(reconcileField("decisionMaker", [{ claim: b, classification: null, grounding: groundEvidence(b.evidence, t), validation: { verified: true, issues: [], originalValue: null }, decision: { claimId: b.id, field: "budget", action: "ACT", reasons: ["SUPPORTED"] } }], t).decision.action).toBe("ABSTAIN");
   });
 });

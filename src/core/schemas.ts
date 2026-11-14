@@ -162,6 +162,7 @@ export const PolicyReason = z.enum([
   "INDIRECT_SUPPORT",
   "NO_CUSTOMER_EVIDENCE",
   "UNDERSPECIFIED_VALUE",
+  "VALUE_UNVERIFIED", // v3: a normalized value component contradicted or lacked support in its evidence
   "SUPPORTED",
   // Field reconciliation
   "CONFLICTING_CANDIDATES",
@@ -175,6 +176,29 @@ export const PolicyReason = z.enum([
   "SYSTEM_ERROR",
 ]);
 export type PolicyReason = z.infer<typeof PolicyReason>;
+
+/**
+ * Grounded v3 structured-value validation (src/core/validation.ts). Deterministic checks of a
+ * normalized meeting value against its grounded evidence quotes and the call date.
+ */
+export const ValidationRule = z.enum([
+  "DATE_NOT_FUTURE",            // date is not strictly after the call date
+  "DATE_UNSUPPORTED",           // date set, but the evidence has no weekday, day of month, today or tomorrow
+  "DATE_WEEKDAY_MISMATCH",      // evidence names weekday(s); the date falls on a different one
+  "DATE_DAY_MISMATCH",          // evidence names day(s) of the month; the date has a different day
+  "DATE_MONTH_MISMATCH",        // evidence names a month (with a day); the date is in a different month
+  "DATE_AMBIGUOUS_NEXT_WEEKDAY",// evidence says "next <weekday>" with no day of month, so the guide requires date null
+  "TIME_UNSUPPORTED",           // time set, but no hour expression in the evidence reads as that time
+]);
+export type ValidationRule = z.infer<typeof ValidationRule>;
+
+export const ValueValidation = z.object({
+  verified: z.boolean(),
+  issues: z.array(z.object({ component: z.enum(["date", "time"]), rule: ValidationRule, detail: z.string() })),
+  /** The model-extracted value before unverified components were nulled; null if nothing changed. */
+  originalValue: z.unknown().nullable(),
+});
+export type ValueValidation = z.infer<typeof ValueValidation>;
 
 export const GroundingFailure = z.object({
   evidenceIndex: z.number().int(),

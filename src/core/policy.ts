@@ -21,17 +21,22 @@ import {
   PolicyReason,
   SemanticClassification,
   Transcript,
+  ValueValidation,
 } from "./schemas";
+import { validateClaim } from "./validation";
 import { valuesEqual } from "./values";
 
 /** Recorded with every run. Bump when any rule changes. */
-export const POLICY_CONFIG = "default-v2";
+/** v3 (Grounded v3): adds VALUE_UNVERIFIED as an ASK reason; no other rule changed (DECISIONS.md D21). */
+export const POLICY_CONFIG = "default-v3";
 
 export type ClaimPolicyInput = {
   claim: CandidateClaim;
   classification: SemanticClassification | null;
   grounding: GroundingResult;
   existing: AnyFieldValue | null;
+  /** v3 structured-value validation. decideCase always supplies it; absent here means "not validated". */
+  validation?: ValueValidation;
 };
 
 const STATUS_REASON = {
@@ -46,7 +51,7 @@ function isUnderspecified(claim: CandidateClaim): boolean {
 }
 
 /** Per-claim rules, evaluated in order. Rules 1–5 are terminal; rule 6 collects all ASK reasons. */
-export function decideClaim({ claim, classification, grounding, existing }: ClaimPolicyInput): ActionDecision {
+export function decideClaim({ claim, classification, grounding, existing, validation }: ClaimPolicyInput): ActionDecision {
   const decide = (action: ActionDecision["action"], reasons: PolicyReason[]): ActionDecision => ({
     claimId: claim.id,
     field: claim.field,
@@ -74,15 +79,19 @@ export function decideClaim({ claim, classification, grounding, existing }: Clai
   if (classification.sufficiency === "INDIRECT") ask.push("INDIRECT_SUPPORT");
   if (!grounding.hasCustomerEvidence) ask.push("NO_CUSTOMER_EVIDENCE");
   if (isUnderspecified(claim)) ask.push("UNDERSPECIFIED_VALUE");
+  // v3: a value component that contradicted or lacked support in its evidence can never be written autonomously.
+  if (validation && !validation.verified) ask.push("VALUE_UNVERIFIED");
   if (ask.length > 0) return decide("ASK", ask);
   // 7. CURRENT + EXPLICIT + DIRECT + grounded + customer-stated + specific + no CRM conflict.
   return decide("ACT", ["SUPPORTED"]);
 }
 
 export type ClaimRecord = {
+  /** The claim as decided on; for meetings, after validation may have nulled unverified components. */
   claim: CandidateClaim;
   classification: SemanticClassification | null;
   grounding: GroundingResult;
+  validation: ValueValidation;
   decision: ActionDecision;
 };
 
@@ -163,10 +172,13 @@ export function decideCase(
   crm: CRMState,
   transcript: Transcript,
 ): { records: ClaimRecord[]; fields: Record<CRMField, FieldDecision> } {
-  const initial: ClaimRecord[] = inputs.map((i) => ({
-    ...i,
-    decision: decideClaim({ ...i, existing: crm[i.claim.field] }),
-  }));
+  const initial: ClaimRecord[] = inputs.map((i) => {
+    // Every claim is validated. Grounded validates before classification and passes the result in;
+    // any other caller gets it computed here, so no path can skip validation.
+    const v = i.validation ? { claim: i.claim, validation: i.validation } : validateClaim(i.claim, transcript);
+    const input = { ...i, claim: v.claim, validation: v.validation };
+    return { ...input, decision: decideClaim({ ...input, existing: crm[v.claim.field] }) };
+  });
   const fields = {} as Record<CRMField, FieldDecision>;
   const finalDecisions = new Map<string, ActionDecision>();
   for (const f of CRM_FIELDS) {

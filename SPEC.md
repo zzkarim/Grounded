@@ -52,6 +52,17 @@ Every Grounded claim carries one or more `{turnId, speakerId, quote}` items. Det
 
 If **any** evidence item fails, the claim is ungrounded and can never ACT. A claim also needs at least one evidence item from a **customer-side** speaker to ACT.
 
+### 5a. Structured-value validation (Grounded v3)
+
+Grounding proves a quote exists. It doesn't prove the value normalized from it is faithful. After grounding and before classification, `src/core/validation.ts` checks each **meeting** value against its own evidence quotes and the call date:
+- the date must be after the call date
+- the date must be anchored by an explicit weekday, day of month, today or tomorrow
+- the date must match at least one explicit date mention completely (weekday, day, month)
+- "next <weekday>" without a day of month must stay null
+- a time must be readable from an explicit hour expression (business-hours reading for a bare hour)
+
+A component that fails is set to **null** (never corrected), the model's original value is kept in the trace, and the claim gets `VALUE_UNVERIFIED`. Budget and decision-maker values aren't validated.
+
 ## 6. Deterministic action policy (default configuration)
 
 Per claim, evaluated in order:
@@ -63,7 +74,7 @@ Per claim, evaluated in order:
 | 3 | Status ≠ CURRENT | ABSTAIN | `STATUS_NEGATED` / `STATUS_HISTORICAL` / `STATUS_SUPERSEDED` |
 | 4 | Sufficiency = NONE | ABSTAIN | `NO_SUPPORT` |
 | 5 | Value equals existing CRM value | NO_OP | `MATCHES_EXISTING` |
-| 6 | Any of: existing CRM value differs · TENTATIVE · CONDITIONAL · INDIRECT · no customer evidence · meeting date null | ASK | all that apply: `CONFLICTS_WITH_EXISTING`, `TENTATIVE`, `CONDITIONAL`, `INDIRECT_SUPPORT`, `NO_CUSTOMER_EVIDENCE`, `UNDERSPECIFIED_VALUE` |
+| 6 | Any of: existing CRM value differs · TENTATIVE · CONDITIONAL · INDIRECT · no customer evidence · meeting date null · value failed validation (v3) | ASK | all that apply: `CONFLICTS_WITH_EXISTING`, `TENTATIVE`, `CONDITIONAL`, `INDIRECT_SUPPORT`, `NO_CUSTOMER_EVIDENCE`, `UNDERSPECIFIED_VALUE`, `VALUE_UNVERIFIED` |
 | 7 | Otherwise | ACT | `SUPPORTED` |
 
 Per field (reconciliation):
@@ -82,7 +93,7 @@ All systems use one fixed model, set in `src/llm/config.ts` (env `GROUNDED_MODEL
 |---|---|---|
 | `baseline-naive` | 1 | Nobody. Every proposed update is a write (ACT). |
 | `baseline-self-assess` (**primary baseline**) | 1 | The model, choosing AUTO→ACT or REVIEW→ASK |
-| `grounded` | 2: extraction, then semantic classification | Deterministic code (§5–6) |
+| `grounded` | 2: extraction, then semantic classification | Deterministic code (§5, §5a, §6) |
 
 All three get the same field definitions. Only `baseline-self-assess` gets a short AUTO/REVIEW rubric, written as a high-level version of the ACT definition. No system sees benchmark labels, case ids, or examples taken from the benchmark.
 

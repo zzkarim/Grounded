@@ -35,12 +35,13 @@ describe("signal recall (diagnostic)", () => {
 });
 
 describe("historical run files stay readable", () => {
-  it("Run 1 (scored before scoringVersion existed) still parses, with scoringVersion absent", () => {
+  it("every stored dev run parses; Run 1 (pre-versioning) has no scoringVersion, later runs record v2", () => {
     const dir = path.join(process.cwd(), "data", "runs", "dev");
     if (!fs.existsSync(dir)) return;
     for (const f of fs.readdirSync(dir).filter((x) => x.endsWith(".json"))) {
       const r = EvaluationRun.parse(JSON.parse(fs.readFileSync(path.join(dir, f), "utf8")));
-      expect(r.scoringVersion).toBeUndefined();
+      const run1 = r.createdAt < "2026-11-14T10:00:00Z"; // Run 1 predates scoring v2 (POST_RUN1_DECISIONS §1)
+      expect(r.scoringVersion, f).toBe(run1 ? undefined : "v2");
     }
   });
 });

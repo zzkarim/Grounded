@@ -96,3 +96,21 @@ The naive baseline is unchanged (v1): it keeps only the shared field definitions
 **Versions.** baseline-naive v1→**v2** (definitions only), baseline-self-assess v2→**v3**, grounded v2→**v2.1** (definitions only). The Grounded extraction/classification instructions, grounding, policy (`default-v2`), reconciliation and model config are unchanged, and there is no value validation, so this is not v3.
 **Not given to the baselines.** Status/certainty/sufficiency labels, quote validation, reconciliation, the policy table, reason codes, structured-value validation, the two-call architecture. `tests/prompts.test.ts` guards this.
 **Purpose.** Run 2a measures the effect of equal information alone. Grounded v3 (structured-value validation) will be a separate, later run so its effect can be attributed.
+
+### D21. Grounded v3: deterministic structured meeting-value validation (2026-11-14, AFTER DEV Run 2a, BEFORE Run 2b; policy default-v3)
+**Problem.** In Runs 1 and 2a, dev-gen-029's extractor normalized a weekday plus day-of-month phrase to a date that falls on a different weekday. Grounding passed because the quote exists, classification accepted the claim, and the policy ACTed. Grounding proves a quote exists, not that the structured value derived from it is faithful. In Run 2a the self-assessing baseline made the same calendar error, despite an explicit prompt rule. This is a model-reasoning failure that a prompt doesn't reliably fix.
+**Decision.** Add one deterministic stage, `src/core/validation.ts`, between grounding and classification. It checks each `nextMeeting` value against its own evidence quotes and the call date, with general invariants from LABELING_GUIDE §2.3:
+- the date is future
+- the date is anchored by an explicit date expression
+- the date matches at least one date mention completely
+- "next <weekday>" without a day of month stays null
+- a time is supported by an explicit hour expression
+**Failure handling.** Failing components are set to null (never corrected, no model re-call). The original is kept in the trace (`validation.originalValue`). The policy adds `VALUE_UNVERIFIED` to rule 6's ASK reasons, so an unverified claim can never ACT. `decideCase` validates any claim passed without a validation result, so no caller can skip it.
+**Monotonic by construction.** Validation only nulls components and adds an ASK reason. Rules 1–4 (ABSTAIN) and the conflict/outranking logic are untouched. Test-verified: a decision is never more autonomous with validation than without it, given the same classification.
+**Design choices.**
+- *Date mentions, not loose token sets.* A value must match one whole mention ("Monday the 10th" = weekday Monday AND day 10). A rejected alternative ("the 9th is out… Thursday?") then doesn't block the chosen date, and a self-contradictory mention matches no date.
+- *Conservative parsing.* Only explicit forms are recognized: full weekday names, ordinals, month+day, h:mm, an hour with am/pm or o'clock, a standalone 1–12 digit, "at <number word>", noon. Unrecognized phrasing creates no constraint: it can't cause a failure, but a contradiction phrased that way isn't caught.
+- *The classifier sees the validated value.* This follows the pipeline order. It only affects claims that failed validation.
+- *Meetings only.* Budget numeric checks are brittle for spoken numbers. Decision-maker name checks were proposed as a later extension.
+**Out of scope (known remaining failures).** dev-gen-015's derived-total sufficiency (CLASSIFICATION), extraction recall (028), and contextual-signal recall. Prompts, baselines, scoring, model and the frozen benchmark are unchanged.
+**Caveat.** The validator was designed after observing dev failures. Its rules come from the guide, not from dev phrasing (`tests/validation.test.ts` checks the source for benchmark text), but final evidence must come from the held-out test split.

@@ -29,12 +29,15 @@ function predictionEvidence(out: SystemOutput | undefined, field: CRMField): str
   if (!out) return [];
   const trace = out.trace as Record<string, unknown> | null;
   if (out.system === "grounded" && trace && Array.isArray(trace.records)) {
-    return (trace.records as { claim: { field: string; value: unknown; evidence: { turnId: string; speakerId: string; quote: string }[] }; classification: { status: string; certainty: string; sufficiency: string } | null; decision: { action: string; reasons: string[] } }[])
+    return (trace.records as { claim: { field: string; value: unknown; evidence: { turnId: string; speakerId: string; quote: string }[] }; classification: { status: string; certainty: string; sufficiency: string } | null; decision: { action: string; reasons: string[] }; validation?: { verified: boolean; issues: { rule: string; detail: string }[]; originalValue: unknown } }[])
       .filter((r) => r.claim.field === field)
       .map((r) => {
         const cls = r.classification ? `${r.classification.status}/${r.classification.certainty}/${r.classification.sufficiency}` : "unclassified";
         const ev = r.claim.evidence.map((e) => `[${e.turnId}] ${e.speakerId}: "${e.quote}"`).join(" + ");
-        return `claim ${formatValue(field, r.claim.value)} · ${cls} → ${r.decision.action} (${r.decision.reasons.join(", ")}) · ${ev}`;
+        const val = r.validation && !r.validation.verified
+          ? ` · VALIDATION FAILED (${r.validation.issues.map((i) => i.rule).join(", ")}; model value was ${formatValue(field, r.validation.originalValue)})`
+          : "";
+        return `claim ${formatValue(field, r.claim.value)} · ${cls} → ${r.decision.action} (${r.decision.reasons.join(", ")})${val} · ${ev}`;
       });
   }
   const p = trace?.[field] as { evidenceQuote?: string; reason?: string } | null | undefined;

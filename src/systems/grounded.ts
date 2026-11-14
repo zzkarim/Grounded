@@ -5,10 +5,12 @@
  *                      Recall-oriented: includes negated/historical/hedged/distractor values.
  *   Call 2 (classify)  candidates + full transcript + CRM → status, certainty, sufficiency, explanation.
  *                      Labels semantics only; it is told it does NOT decide the CRM action.
- *   Code               schema validation → grounding → existing-state comparison → policy.
+ *   Code               schema validation → grounding → STRUCTURED-VALUE VALIDATION (v3, before Call 2)
+ *                      → existing-state comparison → policy → reconciliation.
  */
 import { z } from "zod";
 import { groundEvidence } from "@/core/grounding";
+import { validateClaim } from "@/core/validation";
 import { decideCase } from "@/core/policy";
 import {
   BudgetValue,
@@ -28,10 +30,11 @@ import type { System } from "./types";
 
 /**
  * v2   (2026-11-14): classifier prompt aligned to LABELING_GUIDE v1.1 before any dev run (D15). Run 1 version.
- * v2.1 (2026-11-14, after Run 1, before Run 2a): ONLY the shared field definitions changed (D20).
- *      Same extraction/classification instructions, grounding, policy and reconciliation. Not v3.
+ * v2.1 (2026-11-14, after Run 1, before Run 2a): ONLY the shared field definitions changed (D20). Run 2a version.
+ * v3   (2026-11-14, after Run 2a, before Run 2b): ONE architectural change, deterministic structured
+ *      meeting-value validation between grounding and classification (D21). Prompts unchanged.
  */
-export const GROUNDED_VERSION = "2.1";
+export const GROUNDED_VERSION = "3";
 
 // ───────── Call 1: extraction ─────────
 
@@ -122,8 +125,13 @@ export const grounded: System = {
     const extraction = await llm.generate({ label: "grounded.extract", system: EXTRACT_SYSTEM_PROMPT, user: context, schema: ExtractionOutput });
     if (!extraction.ok) return errorOutput(input.caseId, "grounded", `extraction failed: ${extraction.error}`, extraction.calls);
 
-    const claims: CandidateClaim[] = extraction.data.candidates.map((c, i) => ({ ...c, id: `c${i + 1}` }) as CandidateClaim);
+    const extracted: CandidateClaim[] = extraction.data.candidates.map((c, i) => ({ ...c, id: `c${i + 1}` }) as CandidateClaim);
     const calls = [...extraction.calls];
+
+    // Deterministic: evidence grounding, then structured-value validation (v3). Validation can only make
+    // a value less specific (unverified meeting date/time → null, original kept in the trace).
+    const checked = extracted.map((c) => ({ grounding: groundEvidence(c.evidence, input.transcript), ...validateClaim(c, input.transcript) }));
+    const claims = checked.map((c) => c.claim);
 
     // Call 2 (skipped when there is nothing to classify)
     let classifications = new Map<string, SemanticClassification>();
@@ -136,12 +144,13 @@ export const grounded: System = {
       else error = `classification failed: ${res.error}`;
     }
 
-    // Deterministic stage: grounding → existing-state comparison + policy
+    // Deterministic stage: existing-state comparison + policy (+ reconciliation)
     const { records, fields } = decideCase(
-      claims.map((claim) => ({
+      checked.map(({ claim, grounding, validation }) => ({
         claim,
         classification: classifications.get(claim.id) ?? null,
-        grounding: groundEvidence(claim.evidence, input.transcript),
+        grounding,
+        validation,
       })),
       input.crm,
       input.transcript,

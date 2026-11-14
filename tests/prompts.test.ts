@@ -60,20 +60,20 @@ describe("naive baseline: definitions only, no safety logic", () => {
   });
 });
 
-describe("Grounded stays v2.x: semantic labeling only, unchanged policy", () => {
+describe("Grounded v3: prompts still semantic-only; versions pinned", () => {
   it("never tells extraction or classification which action to take", () => {
     expect(EXTRACT_SYSTEM_PROMPT).not.toMatch(/\b(ACT|ASK|ABSTAIN|NO_OP)\b/);
     expect(CLASSIFY_SYSTEM_PROMPT).not.toMatch(/\b(ACT|ASK|ABSTAIN|NO_OP)\b/);
   });
-  it("is versioned as a v2.x specification alignment with policy default-v2", () => {
-    expect(GROUNDED_VERSION).toBe("2.1");
-    expect(POLICY_CONFIG).toBe("default-v2");
+  it("is versioned v3 (structured-value validation) with policy default-v3", () => {
+    expect(GROUNDED_VERSION).toBe("3");
+    expect(POLICY_CONFIG).toBe("default-v3");
   });
   it("system versions are bumped for every changed prompt", () => {
     expect(Object.fromEntries(Object.values(SYSTEMS).map((s) => [s.name, s.version]))).toEqual({
       "baseline-naive": "2",
       "baseline-self-assess": "3",
-      grounded: "2.1",
+      grounded: "3",
     });
   });
 });
