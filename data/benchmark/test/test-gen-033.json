@@ -1,0 +1,195 @@
+{
+  "id": "test-gen-033",
+  "split": "test",
+  "source": "generated",
+  "labelStatus": "reviewed",
+  "tags": [
+    "existing_value",
+    "supersession",
+    "multiple_stakeholders",
+    "tentative"
+  ],
+  "description": "One customer tentatively reconfirms the CRM budget; a colleague corrects it later; the signer is reconfirmed; the meeting time is moved by the second customer.",
+  "crm": {
+    "company": "Cascadia Outdoor Co.",
+    "budget": {
+      "kind": "exact",
+      "amount": 150000,
+      "currency": "USD"
+    },
+    "decisionMaker": {
+      "people": [
+        {
+          "name": "Nadine Ferreira",
+          "role": "VP Sales"
+        }
+      ]
+    },
+    "nextMeeting": null
+  },
+  "transcript": {
+    "id": "t-test-gen-033",
+    "occurredAt": "2026-06-29",
+    "participants": [
+      {
+        "id": "paz",
+        "name": "Paz Romero",
+        "side": "rep",
+        "title": "Account Executive"
+      },
+      {
+        "id": "cal",
+        "name": "Calvin Reed",
+        "side": "customer",
+        "title": "Merchandising Director"
+      },
+      {
+        "id": "mei",
+        "name": "Mei Chen",
+        "side": "customer",
+        "title": "FP&A Manager"
+      }
+    ],
+    "turns": [
+      {
+        "id": "t1",
+        "speakerId": "paz",
+        "text": "Budget's still one-fifty?"
+      },
+      {
+        "id": "t2",
+        "speakerId": "cal",
+        "text": "Yeah, I think it's still one-fifty."
+      },
+      {
+        "id": "t3",
+        "speakerId": "paz",
+        "text": "And Nadine's still final sign-off?"
+      },
+      {
+        "id": "t4",
+        "speakerId": "cal",
+        "text": "Nadine's still final sign-off, nothing new there."
+      },
+      {
+        "id": "t5",
+        "speakerId": "mei",
+        "text": "Wait, sorry, going back to budget. Finance told me Friday it's one-thirty now. They trimmed it."
+      },
+      {
+        "id": "t6",
+        "speakerId": "cal",
+        "text": "Oh, okay. One-thirty, then."
+      },
+      {
+        "id": "t7",
+        "speakerId": "paz",
+        "text": "Thanks, Mei. Can we do Wednesday at 3 to go through the order form?"
+      },
+      {
+        "id": "t8",
+        "speakerId": "cal",
+        "text": "Wednesday's fine."
+      },
+      {
+        "id": "t9",
+        "speakerId": "mei",
+        "text": "Can we make it 3:30? I've got a hard stop before."
+      },
+      {
+        "id": "t10",
+        "speakerId": "paz",
+        "text": "3:30 Wednesday works."
+      },
+      {
+        "id": "t11",
+        "speakerId": "cal",
+        "text": "Sure."
+      }
+    ]
+  },
+  "expected": {
+    "budget": {
+      "action": "ASK",
+      "value": {
+        "kind": "exact",
+        "amount": 130000,
+        "currency": "USD"
+      },
+      "status": "CURRENT",
+      "certainty": "EXPLICIT",
+      "sufficiency": "DIRECT",
+      "evidence": [
+        {
+          "turnId": "t5",
+          "speakerId": "mei",
+          "quote": "Finance told me Friday it's one-thirty now. They trimmed it."
+        },
+        {
+          "turnId": "t6",
+          "speakerId": "cal",
+          "quote": "Oh, okay. One-thirty, then."
+        }
+      ],
+      "rationale": "The tentative 150K reconfirmation is SUPERSEDED by the explicit correction to 130K, which the first speaker accepts. The CRM holds 150K → ASK."
+    },
+    "decisionMaker": {
+      "action": "NO_OP",
+      "value": {
+        "people": [
+          {
+            "name": "Nadine",
+            "role": null
+          }
+        ]
+      },
+      "status": "CURRENT",
+      "certainty": "EXPLICIT",
+      "sufficiency": "DIRECT",
+      "evidence": [
+        {
+          "turnId": "t3",
+          "speakerId": "paz",
+          "quote": "And Nadine's still final sign-off?"
+        },
+        {
+          "turnId": "t4",
+          "speakerId": "cal",
+          "quote": "Nadine's still final sign-off, nothing new there."
+        }
+      ],
+      "rationale": "Affirmed; equals CRM 'Nadine Ferreira' by first name."
+    },
+    "nextMeeting": {
+      "action": "ACT",
+      "value": {
+        "date": "2026-07-01",
+        "time": "15:30",
+        "timezone": null,
+        "asStated": "Wednesday at 3:30"
+      },
+      "status": "CURRENT",
+      "certainty": "EXPLICIT",
+      "sufficiency": "DIRECT",
+      "evidence": [
+        {
+          "turnId": "t9",
+          "speakerId": "mei",
+          "quote": "Can we make it 3:30? I've got a hard stop before."
+        },
+        {
+          "turnId": "t10",
+          "speakerId": "paz",
+          "quote": "3:30 Wednesday works."
+        },
+        {
+          "turnId": "t11",
+          "speakerId": "cal",
+          "quote": "Sure."
+        }
+      ],
+      "rationale": "3:00 is superseded by the second customer's 3:30, which the rep and the first customer accept. Call Monday 2026-06-29 → Wednesday 2026-07-01."
+    }
+  },
+  "notes": "Intended difficulty: hard. Batch: B. Coverage: B32, B34, B35, D36, M39, M19, F2, F9. Generated by Claude for the held-out TEST split from LABELING_GUIDE v1.2 only; labels are drafts pending owner review. Derived coverage: D1, D3, D18, F3, F12, M1, M10, M13, M16."
+}

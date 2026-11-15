@@ -61,6 +61,9 @@ Each field-item gets one expected outcome:
   - If a total is also stated outright, the stated total is the candidate (labeled on its own wording) and the components are `NONE`.
   - "Latest stated" (§4 step 4) never chooses between a component and its total. It resolves only genuinely competing claims about the same CRM value.
 - Vague magnitudes with no number ("six figures", "a decent budget") are **not representable**. Do not create a candidate. Mention it in `notes` if useful.
+- **Representability (approximate vs. vague).** Approximate language is representable when it is centered on a numeric anchor whose CRM value stays meaningful: "around 100K", "roughly 100K", "about 100K" → `exact` 100000 with `TENTATIVE` certainty.
+  - An expression that implies an *unknown amount* rather than an approximation centered on a value must **not** be turned into false precision. Examples: an amount "and change", "low six figures", "somewhere in the six figures".
+  - If the schema can't faithfully represent the amount, the field has no representable candidate: `value: null` → `ABSTAIN`, explained in the rationale.
 
 ### 2.2 `decisionMaker`
 
@@ -76,6 +79,10 @@ Each field-item gets one expected outcome:
 - **Distinct approval types:** "Sarah owns technical approval, but James signs the contract" means the decision maker is **James only**. Contract signature or final purchase approval is what counts. A technical, security, or legal approver is not a decision maker unless also described as final.
 - **Speaker as decision maker:** "I make the final call" means the speaker's name and title.
 - **Relative descriptions** ("my boss has final say") are recorded as stated in `role` ("Priya's manager") when no name or title is given.
+- **Identity must be established.** If a pronoun carries the final-authority statement ("…he's the one who signs") and has several plausible antecedents that the transcript doesn't resolve, the person is **not identifiable**.
+  - Don't guess the nearest antecedent, don't pick one, and don't build a joint value.
+  - The identity isn't representable as a `decisionMaker` value: `value: null` → `ABSTAIN`.
+  - This differs from an *identifiable* person with an INDIRECT role ("I need to run it by Sarah" → ASK [Sarah]). What matters is whether the candidate **person** is identifiable.
 
 **Sufficiency for `decisionMaker`:**
 - `DIRECT`: final authority is stated. Phrases: "final say", "final sign-off", "signs the contract", "it's her call", "approves the purchase".
@@ -100,6 +107,10 @@ Each field-item gets one expected outcome:
 - "Tomorrow" = D + 1. An explicit date ("the 17th") resolves within the current or next month, whichever is in the future.
 - "Next Thursday" is **ambiguous** unless the speakers disambiguate it. Then `date: null` and tag `ambiguous_date`.
 - If a stated weekday and date contradict each other ("Tuesday the 18th" when the 18th is a Wednesday), `date: null`.
+- **Same-day meetings.** `occurredAt` has date granularity only (no call time), so a meeting agreed for later on the call date ("later today at 4") can't be shown to be in the future.
+  - Keep the meeting candidate, with `date: null` and any supported `time` ("16:00"), and label it `ASK`: the future relationship can't be safely established.
+  - Don't normalize it to the call date, and don't ABSTAIN when a meeting is clearly agreed.
+  - This could be revisited if transcripts ever carry a call timestamp.
 
 **What counts as agreed:**
 - A proposal from one side **plus unhedged acceptance** from the other ("works", "see you then", "send the invite", "booked") is agreed. Certainty `EXPLICIT`.
@@ -171,7 +182,9 @@ Field-specific boundaries are listed in §2.
   - A **proposed future coordination action** (a meeting the rep proposes or books) that the customer neither accepts nor declines can remain a plausible pending action. It is `TENTATIVE` + `INDIRECT` and `ASK`s (§2.3). This needs an actual meeting proposal with specific timing; it does not turn a promise to look for times into a meeting candidate (§2.3, "What makes a meeting candidate").
   - In both cases, a customer who supports the rep's statement only partially is labeled on what the customer actually said.
 - **Denial:** "No" or a correction makes the rep's value `NEGATED` or `SUPERSEDED`.
-- **Pronouns:** resolve them only if the transcript makes the referent unambiguous. Otherwise treat the claim as `INDIRECT`.
+- **Pronouns:** resolve them only if the transcript makes the referent unambiguous.
+  - If the referent is one identifiable person but the link is weak (inference is needed), treat the claim as `INDIRECT`.
+  - If several plausible people could be meant and nothing resolves it, the value isn't identifiable: `ABSTAIN` with `value: null` (§2.2 "Identity must be established").
 
 ---
 
@@ -252,6 +265,7 @@ Tag the case with every applicable tag. They drive the per-category breakdowns. 
 | "Our budget last year was $100K." | budget | ABSTAIN, value 100000 · HISTORICAL |
 | "I said 100 before, but finance approved 75." | budget | ACT 75000 (100000 is SUPERSEDED). ASK instead if the CRM holds a different value. |
 | "We have between $80K and $100K approved." | budget | ACT range 80000–100000 |
+| "We've got low six figures approved." | budget | ABSTAIN, value null · vague magnitude, not representable |
 | "40 approved for licenses and another 10 approved for services." | budget | ASK 50000 · INDIRECT (derived total); 40000 and 10000 are NONE components, not competitors |
 | "Your quote of $120K is above what we'd like." | budget | ABSTAIN, value 120000 · NONE (price, not budget) |
 | Rep: "So your budget is $100K?" · Customer: "No." | budget | ABSTAIN, value 100000 · NEGATED |
@@ -261,6 +275,7 @@ Tag the case with every applicable tag. They drive the per-category breakdowns. 
 | "Sarah has final sign-off." | decisionMaker | ACT [Sarah] |
 | "Sarah is leading the evaluation." | decisionMaker | ASK [Sarah] · EXPLICIT/INDIRECT |
 | "I need to run this by James." | decisionMaker | ASK [James] · INDIRECT |
+| "Kim and Lee both reviewed it. He's the one who signs." (unresolved) | decisionMaker | ABSTAIN, value null · the signer isn't identifiable |
 | "Our CFO has final approval." | decisionMaker | ACT [{name: null, role: "CFO"}] |
 | "Sarah owns technical approval, but James signs the contract." | decisionMaker | ACT [James] (Sarah is INDIRECT and does not compete, §4 step 4) |
 | "Sarah has final sign-off." … later, unreconciled … "James has final sign-off on this." | decisionMaker | ASK (latest: James): two different DIRECT claims, no joint approval stated |
@@ -269,6 +284,7 @@ Tag the case with every applicable tag. They drive the per-category breakdowns. 
 | "Thursday should work; I'll confirm." | nextMeeting | ASK · TENTATIVE |
 | "Let's talk sometime next week." | nextMeeting | ASK {date: null} · underspecified |
 | "I'll have an answer Thursday." | nextMeeting | ABSTAIN, value {date: Thu} · NONE |
+| "Can we do later today at 4?" · "Today at 4 works." (call metadata has no time of day) | nextMeeting | ASK {date: null, time: 16:00} · same-day can't be shown to be future |
 | Rep: "When can we meet Rachel?" · Customer: "She's out until the 15th. I'll ask her assistant for times after that." | nextMeeting | ABSTAIN, value {date: the 15th} · NONE (constraint plus a promise to find times; no meeting candidate) |
 | Any supported value identical to the CRM value | any | NO_OP |
 | Any supported value different from a non-null CRM value | any | ASK |
@@ -286,3 +302,8 @@ Tag the case with every applicable tag. They drive the per-category breakdowns. 
   - §2.1: budget components are NONE signals, not competitors of their derived total; "latest stated" never picks between a component and its aggregate.
   - §2.3/§3.4: a meeting candidate needs an explicit agreement to meet or a specific proposed time; "I'll ask for times" and availability constraints are not meeting candidates.
   - §5: scoring uses exact match, with the meeting time equal including null (scoring v2). Semantic equality for NO_OP and conflicts is unchanged.
+- 2026-11-15: **v1.3: owner decisions made during gold-label review of the held-out TEST benchmark, BEFORE TEST was frozen, before any system was run on TEST, and before any TEST output existed.** They resolve representability cases the guide didn't specify; they don't result from system performance.
+  - §2.1: approximate amounts are representable only when centered on a meaningful numeric anchor. Vague magnitudes (an amount "and change", "low six figures") → `value: null` → ABSTAIN.
+  - §2.2/§3.4: an unresolved pronoun with several plausible antecedents makes the decision maker non-identifiable → ABSTAIN, value null. Don't guess.
+  - §2.3: a same-day meeting with date-only call metadata → ASK with `date: null` and any supported time.
+  - Three §8 rows added. Checked against the frozen DEV split: no DEV gold label is affected.
