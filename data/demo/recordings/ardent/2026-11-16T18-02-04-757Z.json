@@ -1,0 +1,325 @@
+{
+  "schemaVersion": 1,
+  "recordingId": "ardent_2026-11-16T18-02-04-757Z",
+  "scenarioId": "ardent",
+  "recordedAt": "2026-11-16T18:02:04.757Z",
+  "git": {
+    "commit": "d76292d6b4ba09b0cb178d9017f03fc5dc704ff8",
+    "cleanExceptRecordings": true
+  },
+  "scenarioFileSha256": "c0f9528b4f28afba55455e96337dd7a59bb3b3315392cf23f09e4424a93b1bde",
+  "input": {
+    "caseId": "ardent",
+    "crm": {
+      "company": "Ardent Biologics",
+      "budget": null,
+      "decisionMaker": null,
+      "nextMeeting": null
+    },
+    "transcript": {
+      "id": "ardent-call-1",
+      "occurredAt": "2026-11-12",
+      "participants": [
+        {
+          "id": "ansel",
+          "name": "Ansel Eriksen",
+          "side": "rep",
+          "title": "Account Executive"
+        },
+        {
+          "id": "tamsin",
+          "name": "Tamsin Okonkwo",
+          "side": "customer",
+          "title": "Head of IT"
+        }
+      ],
+      "turns": [
+        {
+          "id": "t1",
+          "speakerId": "ansel",
+          "text": "Thanks for the time, Tamsin. You mentioned over email that security questions were holding things up."
+        },
+        {
+          "id": "t2",
+          "speakerId": "tamsin",
+          "text": "Right. Before anything else moves, our security engineer wants to walk through your SSO setup and audit logging with someone technical."
+        },
+        {
+          "id": "t3",
+          "speakerId": "ansel",
+          "text": "That makes sense. I can bring our solutions engineer. When would suit you?"
+        },
+        {
+          "id": "t4",
+          "speakerId": "tamsin",
+          "text": "Sooner is better. Could the two of you do a call today at 3:30? I'll pull our security engineer in."
+        },
+        {
+          "id": "t5",
+          "speakerId": "ansel",
+          "text": "Yes, 3:30 today works. I'll send a video link in the next few minutes."
+        },
+        {
+          "id": "t6",
+          "speakerId": "tamsin",
+          "text": "Great. On the commercial side, last year we only had $25,000 for tooling pilots. This year we have $60,000 approved for this pilot, so budget is settled."
+        },
+        {
+          "id": "t7",
+          "speakerId": "ansel",
+          "text": "Good to know. I'll have a pilot proposal ready right after the security call."
+        }
+      ]
+    }
+  },
+  "config": {
+    "model": "claude-sonnet-5-5",
+    "effort": "medium",
+    "maxTokens": 16000
+  },
+  "system": {
+    "name": "grounded",
+    "version": "3",
+    "policyConfig": "default-v3",
+    "validatorVersion": "meeting-v1",
+    "promptHashes": {
+      "extract": "a1184542278c3360",
+      "classify": "0565ba90032f9826"
+    }
+  },
+  "responseModels": [
+    "claude-sonnet-5-5"
+  ],
+  "wallClockMs": 5959,
+  "output": {
+    "caseId": "ardent",
+    "system": "grounded",
+    "fields": {
+      "budget": {
+        "action": "ACT",
+        "value": {
+          "kind": "exact",
+          "amount": 60000,
+          "currency": "USD"
+        },
+        "reasons": [
+          "SUPPORTED"
+        ],
+        "claimIds": [
+          "c1",
+          "c2"
+        ]
+      },
+      "decisionMaker": {
+        "action": "ABSTAIN",
+        "value": null,
+        "reasons": [
+          "NO_CANDIDATE"
+        ],
+        "claimIds": []
+      },
+      "nextMeeting": {
+        "action": "ASK",
+        "value": {
+          "date": null,
+          "time": "15:30",
+          "timezone": null,
+          "asStated": "today at 3:30"
+        },
+        "reasons": [
+          "UNDERSPECIFIED_VALUE",
+          "VALUE_UNVERIFIED"
+        ],
+        "claimIds": [
+          "c3"
+        ]
+      }
+    },
+    "trace": {
+      "records": [
+        {
+          "claim": {
+            "field": "budget",
+            "value": {
+              "kind": "exact",
+              "amount": 60000,
+              "currency": "USD"
+            },
+            "evidence": [
+              {
+                "turnId": "t6",
+                "speakerId": "tamsin",
+                "quote": "This year we have $60,000 approved for this pilot, so budget is settled."
+              }
+            ],
+            "id": "c1"
+          },
+          "classification": {
+            "claimId": "c1",
+            "status": "CURRENT",
+            "certainty": "EXPLICIT",
+            "sufficiency": "DIRECT",
+            "explanation": "Tamsin plainly states $60,000 is approved for this pilot this year, which is the current approved budget."
+          },
+          "grounding": {
+            "grounded": true,
+            "hasCustomerEvidence": true,
+            "failures": []
+          },
+          "validation": {
+            "verified": true,
+            "issues": [],
+            "originalValue": null
+          },
+          "decision": {
+            "claimId": "c1",
+            "field": "budget",
+            "action": "ACT",
+            "reasons": [
+              "SUPPORTED"
+            ]
+          }
+        },
+        {
+          "claim": {
+            "field": "budget",
+            "value": {
+              "kind": "exact",
+              "amount": 25000,
+              "currency": "USD"
+            },
+            "evidence": [
+              {
+                "turnId": "t6",
+                "speakerId": "tamsin",
+                "quote": "last year we only had $25,000 for tooling pilots"
+              }
+            ],
+            "id": "c2"
+          },
+          "classification": {
+            "claimId": "c2",
+            "status": "SUPERSEDED",
+            "certainty": "EXPLICIT",
+            "sufficiency": "NONE",
+            "explanation": "The $25,000 was last year's tooling pilot funding, explicitly replaced by this year's $60,000 approved for this pilot, so it is not the current purchase budget."
+          },
+          "grounding": {
+            "grounded": true,
+            "hasCustomerEvidence": true,
+            "failures": []
+          },
+          "validation": {
+            "verified": true,
+            "issues": [],
+            "originalValue": null
+          },
+          "decision": {
+            "claimId": "c2",
+            "field": "budget",
+            "action": "ABSTAIN",
+            "reasons": [
+              "STATUS_SUPERSEDED"
+            ]
+          }
+        },
+        {
+          "claim": {
+            "field": "nextMeeting",
+            "value": {
+              "date": null,
+              "time": "15:30",
+              "timezone": null,
+              "asStated": "today at 3:30"
+            },
+            "evidence": [
+              {
+                "turnId": "t4",
+                "speakerId": "tamsin",
+                "quote": "Could the two of you do a call today at 3:30?"
+              },
+              {
+                "turnId": "t5",
+                "speakerId": "ansel",
+                "quote": "Yes, 3:30 today works."
+              }
+            ],
+            "id": "c3"
+          },
+          "classification": {
+            "claimId": "c3",
+            "status": "CURRENT",
+            "certainty": "EXPLICIT",
+            "sufficiency": "DIRECT",
+            "explanation": "Tamsin proposed a call today at 3:30 with the seller and solutions engineer and Ansel accepted without hedging, making it a mutually agreed upcoming meeting."
+          },
+          "grounding": {
+            "grounded": true,
+            "hasCustomerEvidence": true,
+            "failures": []
+          },
+          "validation": {
+            "verified": false,
+            "issues": [
+              {
+                "component": "date",
+                "rule": "DATE_NOT_FUTURE",
+                "detail": "2026-11-12 is not after the call date 2026-11-12"
+              }
+            ],
+            "originalValue": {
+              "date": "2026-11-12",
+              "time": "15:30",
+              "timezone": null,
+              "asStated": "today at 3:30"
+            }
+          },
+          "decision": {
+            "claimId": "c3",
+            "field": "nextMeeting",
+            "action": "ASK",
+            "reasons": [
+              "UNDERSPECIFIED_VALUE",
+              "VALUE_UNVERIFIED"
+            ]
+          }
+        }
+      ]
+    },
+    "llmCalls": [
+      {
+        "label": "grounded.extract",
+        "requestedModel": "claude-sonnet-5-5",
+        "responseModel": "claude-sonnet-5-5",
+        "attempt": 1,
+        "promptHash": "a1184542278c3360",
+        "durationMs": 3229,
+        "stopReason": "end_turn",
+        "rawText": "{\"candidates\":[{\"field\":\"budget\",\"value\":{\"kind\":\"exact\",\"amount\":60000,\"currency\":\"USD\"},\"evidence\":[{\"turnId\":\"t6\",\"speakerId\":\"tamsin\",\"quote\":\"This year we have $60,000 approved for this pilot, so budget is settled.\"}]},{\"field\":\"budget\",\"value\":{\"kind\":\"exact\",\"amount\":25000,\"currency\":\"USD\"},\"evidence\":[{\"turnId\":\"t6\",\"speakerId\":\"tamsin\",\"quote\":\"last year we only had $25,000 for tooling pilots\"}]},{\"field\":\"nextMeeting\",\"value\":{\"date\":\"2026-11-12\",\"time\":\"15:30\",\"timezone\":null,\"asStated\":\"today at 3:30\"},\"evidence\":[{\"turnId\":\"t4\",\"speakerId\":\"tamsin\",\"quote\":\"Could the two of you do a call today at 3:30?\"},{\"turnId\":\"t5\",\"speakerId\":\"ansel\",\"quote\":\"Yes, 3:30 today works.\"}]}]}",
+        "ok": true,
+        "error": null,
+        "usage": {
+          "inputTokens": 3861,
+          "outputTokens": 330
+        }
+      },
+      {
+        "label": "grounded.classify",
+        "requestedModel": "claude-sonnet-5-5",
+        "responseModel": "claude-sonnet-5-5",
+        "attempt": 1,
+        "promptHash": "0565ba90032f9826",
+        "durationMs": 2728,
+        "stopReason": "end_turn",
+        "rawText": "{\"classifications\":[{\"claimId\":\"c1\",\"status\":\"CURRENT\",\"certainty\":\"EXPLICIT\",\"sufficiency\":\"DIRECT\",\"explanation\":\"Tamsin plainly states $60,000 is approved for this pilot this year, which is the current approved budget.\"},{\"claimId\":\"c2\",\"status\":\"SUPERSEDED\",\"certainty\":\"EXPLICIT\",\"sufficiency\":\"NONE\",\"explanation\":\"The $25,000 was last year's tooling pilot funding, explicitly replaced by this year's $60,000 approved for this pilot, so it is not the current purchase budget.\"},{\"claimId\":\"c3\",\"status\":\"CURRENT\",\"certainty\":\"EXPLICIT\",\"sufficiency\":\"DIRECT\",\"explanation\":\"Tamsin proposed a call today at 3:30 with the seller and solutions engineer and Ansel accepted without hedging, making it a mutually agreed upcoming meeting.\"}]}",
+        "ok": true,
+        "error": null,
+        "usage": {
+          "inputTokens": 3572,
+          "outputTokens": 312
+        }
+      }
+    ],
+    "error": null
+  }
+}

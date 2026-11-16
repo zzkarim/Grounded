@@ -1,0 +1,405 @@
+{
+  "schemaVersion": 1,
+  "recordingId": "corrigan_2026-11-16T18-01-46-263Z",
+  "scenarioId": "corrigan",
+  "recordedAt": "2026-11-16T18:01:46.263Z",
+  "git": {
+    "commit": "d76292d6b4ba09b0cb178d9017f03fc5dc704ff8",
+    "cleanExceptRecordings": true
+  },
+  "scenarioFileSha256": "c4a758dd318ef339d76c92a0b231ab44724b14e7206f7fab799c1ad788fadf35",
+  "input": {
+    "caseId": "corrigan",
+    "crm": {
+      "company": "Corrigan Freight",
+      "budget": null,
+      "decisionMaker": null,
+      "nextMeeting": null
+    },
+    "transcript": {
+      "id": "corrigan-call-1",
+      "occurredAt": "2026-11-10",
+      "participants": [
+        {
+          "id": "callum",
+          "name": "Callum Ashby",
+          "side": "rep",
+          "title": "Account Executive"
+        },
+        {
+          "id": "thandiwe",
+          "name": "Thandiwe Ndlovu",
+          "side": "customer",
+          "title": "VP of Operations"
+        },
+        {
+          "id": "florian",
+          "name": "Florian Kessel",
+          "side": "customer",
+          "title": "Logistics Systems Manager"
+        }
+      ],
+      "turns": [
+        {
+          "id": "t1",
+          "speakerId": "callum",
+          "text": "Thanks for making time, Thandiwe and Florian. Last time we left off on dispatch automation. Where do things stand on your side?"
+        },
+        {
+          "id": "t2",
+          "speakerId": "thandiwe",
+          "text": "Good timing, actually. Leadership wants the dispatch backlog fixed before peak season, so this is now a priority project."
+        },
+        {
+          "id": "t3",
+          "speakerId": "florian",
+          "text": "From the systems side, the open question is the warehouse integration. We pay about $80K a year for the routing tool we have today, and it doesn't talk to anything else."
+        },
+        {
+          "id": "t4",
+          "speakerId": "callum",
+          "text": "That's helpful context. On budget for this project, have you landed on a number yet?"
+        },
+        {
+          "id": "t5",
+          "speakerId": "thandiwe",
+          "text": "Not formally. We're probably looking at something around $100K, but finance still has to bless a number."
+        },
+        {
+          "id": "t6",
+          "speakerId": "callum",
+          "text": "Understood. Whose signature goes on the contract itself?"
+        },
+        {
+          "id": "t7",
+          "speakerId": "thandiwe",
+          "text": "That would be Rosalind Achebe, our COO. She signs every vendor contract at this size."
+        },
+        {
+          "id": "t8",
+          "speakerId": "callum",
+          "text": "Great. Could we get Florian and your dispatch leads together for a technical demo? I have Thursday at 2 Eastern open."
+        },
+        {
+          "id": "t9",
+          "speakerId": "florian",
+          "text": "Thursday at 2 is fine by me."
+        },
+        {
+          "id": "t10",
+          "speakerId": "thandiwe",
+          "text": "Same here. Send the invite to both of us and I'll loop in the dispatch leads."
+        }
+      ]
+    }
+  },
+  "config": {
+    "model": "claude-sonnet-5-5",
+    "effort": "medium",
+    "maxTokens": 16000
+  },
+  "system": {
+    "name": "grounded",
+    "version": "3",
+    "policyConfig": "default-v3",
+    "validatorVersion": "meeting-v1",
+    "promptHashes": {
+      "extract": "a1184542278c3360",
+      "classify": "0565ba90032f9826"
+    }
+  },
+  "responseModels": [
+    "claude-sonnet-5-5"
+  ],
+  "wallClockMs": 9135,
+  "output": {
+    "caseId": "corrigan",
+    "system": "grounded",
+    "fields": {
+      "budget": {
+        "action": "ASK",
+        "value": {
+          "kind": "exact",
+          "amount": 100000,
+          "currency": "USD"
+        },
+        "reasons": [
+          "CONDITIONAL",
+          "INDIRECT_SUPPORT"
+        ],
+        "claimIds": [
+          "c1",
+          "c2"
+        ]
+      },
+      "decisionMaker": {
+        "action": "ACT",
+        "value": {
+          "people": [
+            {
+              "name": "Rosalind Achebe",
+              "role": "COO"
+            }
+          ]
+        },
+        "reasons": [
+          "SUPPORTED"
+        ],
+        "claimIds": [
+          "c3"
+        ]
+      },
+      "nextMeeting": {
+        "action": "ACT",
+        "value": {
+          "date": "2026-11-12",
+          "time": "14:00",
+          "timezone": "America/New_York",
+          "asStated": "Thursday at 2 Eastern"
+        },
+        "reasons": [
+          "SUPPORTED"
+        ],
+        "claimIds": [
+          "c4"
+        ]
+      }
+    },
+    "trace": {
+      "records": [
+        {
+          "claim": {
+            "field": "budget",
+            "value": {
+              "kind": "exact",
+              "amount": 100000,
+              "currency": "USD"
+            },
+            "evidence": [
+              {
+                "turnId": "t4",
+                "speakerId": "callum",
+                "quote": "On budget for this project, have you landed on a number yet?"
+              },
+              {
+                "turnId": "t5",
+                "speakerId": "thandiwe",
+                "quote": "Not formally. We're probably looking at something around $100K, but finance still has to bless a number."
+              }
+            ],
+            "id": "c1"
+          },
+          "classification": {
+            "claimId": "c1",
+            "status": "CURRENT",
+            "certainty": "CONDITIONAL",
+            "sufficiency": "INDIRECT",
+            "explanation": "Thandiwe says the figure is only around $100K and finance still has to approve a number, so it is not yet an approved budget and depends on a pending approval."
+          },
+          "grounding": {
+            "grounded": true,
+            "hasCustomerEvidence": true,
+            "failures": []
+          },
+          "validation": {
+            "verified": true,
+            "issues": [],
+            "originalValue": null
+          },
+          "decision": {
+            "claimId": "c1",
+            "field": "budget",
+            "action": "ASK",
+            "reasons": [
+              "CONDITIONAL",
+              "INDIRECT_SUPPORT"
+            ]
+          }
+        },
+        {
+          "claim": {
+            "field": "budget",
+            "value": {
+              "kind": "exact",
+              "amount": 80000,
+              "currency": "USD"
+            },
+            "evidence": [
+              {
+                "turnId": "t3",
+                "speakerId": "florian",
+                "quote": "We pay about $80K a year for the routing tool we have today"
+              }
+            ],
+            "id": "c2"
+          },
+          "classification": {
+            "claimId": "c2",
+            "status": "CURRENT",
+            "certainty": "EXPLICIT",
+            "sufficiency": "NONE",
+            "explanation": "The $80K is current spend on the existing routing tool, not approved budget for this purchase."
+          },
+          "grounding": {
+            "grounded": true,
+            "hasCustomerEvidence": true,
+            "failures": []
+          },
+          "validation": {
+            "verified": true,
+            "issues": [],
+            "originalValue": null
+          },
+          "decision": {
+            "claimId": "c2",
+            "field": "budget",
+            "action": "ABSTAIN",
+            "reasons": [
+              "NO_SUPPORT"
+            ]
+          }
+        },
+        {
+          "claim": {
+            "field": "decisionMaker",
+            "value": {
+              "people": [
+                {
+                  "name": "Rosalind Achebe",
+                  "role": "COO"
+                }
+              ]
+            },
+            "evidence": [
+              {
+                "turnId": "t6",
+                "speakerId": "callum",
+                "quote": "Whose signature goes on the contract itself?"
+              },
+              {
+                "turnId": "t7",
+                "speakerId": "thandiwe",
+                "quote": "That would be Rosalind Achebe, our COO. She signs every vendor contract at this size."
+              }
+            ],
+            "id": "c3"
+          },
+          "classification": {
+            "claimId": "c3",
+            "status": "CURRENT",
+            "certainty": "EXPLICIT",
+            "sufficiency": "DIRECT",
+            "explanation": "Thandiwe plainly states that COO Rosalind Achebe signs the contract and every vendor contract at this size, establishing final sign-off authority."
+          },
+          "grounding": {
+            "grounded": true,
+            "hasCustomerEvidence": true,
+            "failures": []
+          },
+          "validation": {
+            "verified": true,
+            "issues": [],
+            "originalValue": null
+          },
+          "decision": {
+            "claimId": "c3",
+            "field": "decisionMaker",
+            "action": "ACT",
+            "reasons": [
+              "SUPPORTED"
+            ]
+          }
+        },
+        {
+          "claim": {
+            "field": "nextMeeting",
+            "value": {
+              "date": "2026-11-12",
+              "time": "14:00",
+              "timezone": "America/New_York",
+              "asStated": "Thursday at 2 Eastern"
+            },
+            "evidence": [
+              {
+                "turnId": "t8",
+                "speakerId": "callum",
+                "quote": "I have Thursday at 2 Eastern open."
+              },
+              {
+                "turnId": "t9",
+                "speakerId": "florian",
+                "quote": "Thursday at 2 is fine by me."
+              },
+              {
+                "turnId": "t10",
+                "speakerId": "thandiwe",
+                "quote": "Same here. Send the invite to both of us and I'll loop in the dispatch leads."
+              }
+            ],
+            "id": "c4"
+          },
+          "classification": {
+            "claimId": "c4",
+            "status": "CURRENT",
+            "certainty": "EXPLICIT",
+            "sufficiency": "DIRECT",
+            "explanation": "Callum proposed Thursday at 2 Eastern (2026-11-12) and both customer participants accepted without hedging, agreeing to a future seller-customer demo."
+          },
+          "grounding": {
+            "grounded": true,
+            "hasCustomerEvidence": true,
+            "failures": []
+          },
+          "validation": {
+            "verified": true,
+            "issues": [],
+            "originalValue": null
+          },
+          "decision": {
+            "claimId": "c4",
+            "field": "nextMeeting",
+            "action": "ACT",
+            "reasons": [
+              "SUPPORTED"
+            ]
+          }
+        }
+      ]
+    },
+    "llmCalls": [
+      {
+        "label": "grounded.extract",
+        "requestedModel": "claude-sonnet-5-5",
+        "responseModel": "claude-sonnet-5-5",
+        "attempt": 1,
+        "promptHash": "a1184542278c3360",
+        "durationMs": 5472,
+        "stopReason": "end_turn",
+        "rawText": "{\"candidates\":[{\"field\":\"budget\",\"value\":{\"kind\":\"exact\",\"amount\":100000,\"currency\":\"USD\"},\"evidence\":[{\"turnId\":\"t4\",\"speakerId\":\"callum\",\"quote\":\"On budget for this project, have you landed on a number yet?\"},{\"turnId\":\"t5\",\"speakerId\":\"thandiwe\",\"quote\":\"Not formally. We're probably looking at something around $100K, but finance still has to bless a number.\"}]},{\"field\":\"budget\",\"value\":{\"kind\":\"exact\",\"amount\":80000,\"currency\":\"USD\"},\"evidence\":[{\"turnId\":\"t3\",\"speakerId\":\"florian\",\"quote\":\"We pay about $80K a year for the routing tool we have today\"}]},{\"field\":\"decisionMaker\",\"value\":{\"people\":[{\"name\":\"Rosalind Achebe\",\"role\":\"COO\"}]},\"evidence\":[{\"turnId\":\"t6\",\"speakerId\":\"callum\",\"quote\":\"Whose signature goes on the contract itself?\"},{\"turnId\":\"t7\",\"speakerId\":\"thandiwe\",\"quote\":\"That would be Rosalind Achebe, our COO. She signs every vendor contract at this size.\"}]},{\"field\":\"nextMeeting\",\"value\":{\"date\":\"2026-11-12\",\"time\":\"14:00\",\"timezone\":\"America/New_York\",\"asStated\":\"Thursday at 2 Eastern\"},\"evidence\":[{\"turnId\":\"t8\",\"speakerId\":\"callum\",\"quote\":\"I have Thursday at 2 Eastern open.\"},{\"turnId\":\"t9\",\"speakerId\":\"florian\",\"quote\":\"Thursday at 2 is fine by me.\"},{\"turnId\":\"t10\",\"speakerId\":\"thandiwe\",\"quote\":\"Same here. Send the invite to both of us and I'll loop in the dispatch leads.\"}]}]}",
+        "ok": true,
+        "error": null,
+        "usage": {
+          "inputTokens": 3999,
+          "outputTokens": 587
+        }
+      },
+      {
+        "label": "grounded.classify",
+        "requestedModel": "claude-sonnet-5-5",
+        "responseModel": "claude-sonnet-5-5",
+        "attempt": 1,
+        "promptHash": "0565ba90032f9826",
+        "durationMs": 3660,
+        "stopReason": "end_turn",
+        "rawText": "{\"classifications\":[{\"claimId\":\"c1\",\"status\":\"CURRENT\",\"certainty\":\"CONDITIONAL\",\"sufficiency\":\"INDIRECT\",\"explanation\":\"Thandiwe says the figure is only around $100K and finance still has to approve a number, so it is not yet an approved budget and depends on a pending approval.\"},{\"claimId\":\"c2\",\"status\":\"CURRENT\",\"certainty\":\"EXPLICIT\",\"sufficiency\":\"NONE\",\"explanation\":\"The $80K is current spend on the existing routing tool, not approved budget for this purchase.\"},{\"claimId\":\"c3\",\"status\":\"CURRENT\",\"certainty\":\"EXPLICIT\",\"sufficiency\":\"DIRECT\",\"explanation\":\"Thandiwe plainly states that COO Rosalind Achebe signs the contract and every vendor contract at this size, establishing final sign-off authority.\"},{\"claimId\":\"c4\",\"status\":\"CURRENT\",\"certainty\":\"EXPLICIT\",\"sufficiency\":\"DIRECT\",\"explanation\":\"Callum proposed Thursday at 2 Eastern (2026-11-12) and both customer participants accepted without hedging, agreeing to a future seller-customer demo.\"}]}",
+        "ok": true,
+        "error": null,
+        "usage": {
+          "inputTokens": 4061,
+          "outputTokens": 395
+        }
+      }
+    ],
+    "error": null
+  }
+}

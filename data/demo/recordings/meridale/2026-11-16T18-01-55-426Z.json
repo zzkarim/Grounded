@@ -1,0 +1,452 @@
+{
+  "schemaVersion": 1,
+  "recordingId": "meridale_2026-11-16T18-01-55-426Z",
+  "scenarioId": "meridale",
+  "recordedAt": "2026-11-16T18:01:55.426Z",
+  "git": {
+    "commit": "d76292d6b4ba09b0cb178d9017f03fc5dc704ff8",
+    "cleanExceptRecordings": true
+  },
+  "scenarioFileSha256": "926b7aa7e8db8dd21a9c466394d400c6d00771c4057d3f3b47bac80622f33c2e",
+  "input": {
+    "caseId": "meridale",
+    "crm": {
+      "company": "Meridale Health",
+      "budget": {
+        "kind": "exact",
+        "amount": 250000,
+        "currency": "USD"
+      },
+      "decisionMaker": {
+        "people": [
+          {
+            "name": "Lucian Ferro",
+            "role": "CFO"
+          }
+        ]
+      },
+      "nextMeeting": {
+        "date": "2026-11-18",
+        "time": "10:00",
+        "timezone": "ET",
+        "asStated": "Wednesday at 10"
+      }
+    },
+    "transcript": {
+      "id": "meridale-call-1",
+      "occurredAt": "2026-11-16",
+      "participants": [
+        {
+          "id": "gideon",
+          "name": "Gideon Barrow",
+          "side": "rep",
+          "title": "Senior Account Executive"
+        },
+        {
+          "id": "saoirse",
+          "name": "Saoirse Dunleavy",
+          "side": "customer",
+          "title": "Director of Revenue Cycle"
+        },
+        {
+          "id": "matthias",
+          "name": "Matthias Albrecht",
+          "side": "customer",
+          "title": "IT Director"
+        }
+      ],
+      "turns": [
+        {
+          "id": "t1",
+          "speakerId": "gideon",
+          "text": "Thanks for jumping on, Saoirse. I wanted to check in before Wednesday's session and see if anything has changed on your end."
+        },
+        {
+          "id": "t2",
+          "speakerId": "saoirse",
+          "text": "A couple of things. The good news first: the $250K is still the approved budget for this rollout. Nothing has changed there."
+        },
+        {
+          "id": "t3",
+          "speakerId": "gideon",
+          "text": "Great to hear. And Lucian is still the one signing the agreement?"
+        },
+        {
+          "id": "t4",
+          "speakerId": "saoirse",
+          "text": "Yes, Lucian signs. One addition, though. Matthias Albrecht just joined as our IT director, and he'll be leading the technical evaluation from here."
+        },
+        {
+          "id": "t5",
+          "speakerId": "matthias",
+          "text": "Hi Gideon. I'll mostly be looking at security and data retention."
+        },
+        {
+          "id": "t6",
+          "speakerId": "saoirse",
+          "text": "The other thing is Wednesday. Our quarterly close review landed on top of it. Could we move the session to Friday at 10 instead?"
+        },
+        {
+          "id": "t7",
+          "speakerId": "gideon",
+          "text": "Friday at 10 works on our side. I'll update the invite."
+        },
+        {
+          "id": "t8",
+          "speakerId": "saoirse",
+          "text": "Perfect. Same attendees, plus Matthias."
+        }
+      ]
+    }
+  },
+  "config": {
+    "model": "claude-sonnet-5-5",
+    "effort": "medium",
+    "maxTokens": 16000
+  },
+  "system": {
+    "name": "grounded",
+    "version": "3",
+    "policyConfig": "default-v3",
+    "validatorVersion": "meeting-v1",
+    "promptHashes": {
+      "extract": "a1184542278c3360",
+      "classify": "0565ba90032f9826"
+    }
+  },
+  "responseModels": [
+    "claude-sonnet-5-5"
+  ],
+  "wallClockMs": 9323,
+  "output": {
+    "caseId": "meridale",
+    "system": "grounded",
+    "fields": {
+      "budget": {
+        "action": "NO_OP",
+        "value": {
+          "kind": "exact",
+          "amount": 250000,
+          "currency": "USD"
+        },
+        "reasons": [
+          "MATCHES_EXISTING"
+        ],
+        "claimIds": [
+          "c1"
+        ]
+      },
+      "decisionMaker": {
+        "action": "NO_OP",
+        "value": {
+          "people": [
+            {
+              "name": "Lucian",
+              "role": null
+            }
+          ]
+        },
+        "reasons": [
+          "MATCHES_EXISTING"
+        ],
+        "claimIds": [
+          "c2",
+          "c3"
+        ]
+      },
+      "nextMeeting": {
+        "action": "ASK",
+        "value": {
+          "date": "2026-11-20",
+          "time": "10:00",
+          "timezone": null,
+          "asStated": "Friday at 10"
+        },
+        "reasons": [
+          "CONFLICTS_WITH_EXISTING"
+        ],
+        "claimIds": [
+          "c4",
+          "c5"
+        ]
+      }
+    },
+    "trace": {
+      "records": [
+        {
+          "claim": {
+            "field": "budget",
+            "value": {
+              "kind": "exact",
+              "amount": 250000,
+              "currency": "USD"
+            },
+            "evidence": [
+              {
+                "turnId": "t2",
+                "speakerId": "saoirse",
+                "quote": "the $250K is still the approved budget for this rollout"
+              }
+            ],
+            "id": "c1"
+          },
+          "classification": {
+            "claimId": "c1",
+            "status": "CURRENT",
+            "certainty": "EXPLICIT",
+            "sufficiency": "DIRECT",
+            "explanation": "The customer plainly states the $250K is still the approved budget for this rollout."
+          },
+          "grounding": {
+            "grounded": true,
+            "hasCustomerEvidence": true,
+            "failures": []
+          },
+          "validation": {
+            "verified": true,
+            "issues": [],
+            "originalValue": null
+          },
+          "decision": {
+            "claimId": "c1",
+            "field": "budget",
+            "action": "NO_OP",
+            "reasons": [
+              "MATCHES_EXISTING"
+            ]
+          }
+        },
+        {
+          "claim": {
+            "field": "decisionMaker",
+            "value": {
+              "people": [
+                {
+                  "name": "Lucian",
+                  "role": null
+                }
+              ]
+            },
+            "evidence": [
+              {
+                "turnId": "t3",
+                "speakerId": "gideon",
+                "quote": "And Lucian is still the one signing the agreement?"
+              },
+              {
+                "turnId": "t4",
+                "speakerId": "saoirse",
+                "quote": "Yes, Lucian signs."
+              }
+            ],
+            "id": "c2"
+          },
+          "classification": {
+            "claimId": "c2",
+            "status": "CURRENT",
+            "certainty": "EXPLICIT",
+            "sufficiency": "DIRECT",
+            "explanation": "The customer affirms the seller's question with 'Yes, Lucian signs', establishing current final signing authority."
+          },
+          "grounding": {
+            "grounded": true,
+            "hasCustomerEvidence": true,
+            "failures": []
+          },
+          "validation": {
+            "verified": true,
+            "issues": [],
+            "originalValue": null
+          },
+          "decision": {
+            "claimId": "c2",
+            "field": "decisionMaker",
+            "action": "NO_OP",
+            "reasons": [
+              "MATCHES_EXISTING"
+            ]
+          }
+        },
+        {
+          "claim": {
+            "field": "decisionMaker",
+            "value": {
+              "people": [
+                {
+                  "name": "Matthias Albrecht",
+                  "role": "IT Director"
+                }
+              ]
+            },
+            "evidence": [
+              {
+                "turnId": "t4",
+                "speakerId": "saoirse",
+                "quote": "Matthias Albrecht just joined as our IT director, and he'll be leading the technical evaluation from here."
+              }
+            ],
+            "id": "c3"
+          },
+          "classification": {
+            "claimId": "c3",
+            "status": "CURRENT",
+            "certainty": "EXPLICIT",
+            "sufficiency": "INDIRECT",
+            "explanation": "Matthias leads the technical evaluation and security review, which is not final sign-off authority."
+          },
+          "grounding": {
+            "grounded": true,
+            "hasCustomerEvidence": true,
+            "failures": []
+          },
+          "validation": {
+            "verified": true,
+            "issues": [],
+            "originalValue": null
+          },
+          "decision": {
+            "claimId": "c3",
+            "field": "decisionMaker",
+            "action": "ABSTAIN",
+            "reasons": [
+              "OUTRANKED_BY_DIRECT"
+            ]
+          }
+        },
+        {
+          "claim": {
+            "field": "nextMeeting",
+            "value": {
+              "date": "2026-11-20",
+              "time": "10:00",
+              "timezone": null,
+              "asStated": "Friday at 10"
+            },
+            "evidence": [
+              {
+                "turnId": "t6",
+                "speakerId": "saoirse",
+                "quote": "Could we move the session to Friday at 10 instead?"
+              },
+              {
+                "turnId": "t7",
+                "speakerId": "gideon",
+                "quote": "Friday at 10 works on our side."
+              }
+            ],
+            "id": "c4"
+          },
+          "classification": {
+            "claimId": "c4",
+            "status": "CURRENT",
+            "certainty": "EXPLICIT",
+            "sufficiency": "DIRECT",
+            "explanation": "The customer proposed moving to Friday at 10 and the seller accepted, with the customer confirming, making it an agreed upcoming meeting (Friday after Monday 2026-11-16 is 2026-11-20)."
+          },
+          "grounding": {
+            "grounded": true,
+            "hasCustomerEvidence": true,
+            "failures": []
+          },
+          "validation": {
+            "verified": true,
+            "issues": [],
+            "originalValue": null
+          },
+          "decision": {
+            "claimId": "c4",
+            "field": "nextMeeting",
+            "action": "ASK",
+            "reasons": [
+              "CONFLICTS_WITH_EXISTING"
+            ]
+          }
+        },
+        {
+          "claim": {
+            "field": "nextMeeting",
+            "value": {
+              "date": "2026-11-18",
+              "time": null,
+              "timezone": null,
+              "asStated": "Wednesday"
+            },
+            "evidence": [
+              {
+                "turnId": "t1",
+                "speakerId": "gideon",
+                "quote": "before Wednesday's session"
+              },
+              {
+                "turnId": "t6",
+                "speakerId": "saoirse",
+                "quote": "The other thing is Wednesday. Our quarterly close review landed on top of it."
+              }
+            ],
+            "id": "c5"
+          },
+          "classification": {
+            "claimId": "c5",
+            "status": "SUPERSEDED",
+            "certainty": "EXPLICIT",
+            "sufficiency": "DIRECT",
+            "explanation": "The Wednesday session was agreed earlier but is explicitly replaced by the move to Friday at 10."
+          },
+          "grounding": {
+            "grounded": true,
+            "hasCustomerEvidence": true,
+            "failures": []
+          },
+          "validation": {
+            "verified": true,
+            "issues": [],
+            "originalValue": null
+          },
+          "decision": {
+            "claimId": "c5",
+            "field": "nextMeeting",
+            "action": "ABSTAIN",
+            "reasons": [
+              "STATUS_SUPERSEDED"
+            ]
+          }
+        }
+      ]
+    },
+    "llmCalls": [
+      {
+        "label": "grounded.extract",
+        "requestedModel": "claude-sonnet-5-5",
+        "responseModel": "claude-sonnet-5-5",
+        "attempt": 1,
+        "promptHash": "a1184542278c3360",
+        "durationMs": 4442,
+        "stopReason": "end_turn",
+        "rawText": "{\"candidates\":[{\"field\":\"budget\",\"value\":{\"kind\":\"exact\",\"amount\":250000,\"currency\":\"USD\"},\"evidence\":[{\"turnId\":\"t2\",\"speakerId\":\"saoirse\",\"quote\":\"the $250K is still the approved budget for this rollout\"}]},{\"field\":\"decisionMaker\",\"value\":{\"people\":[{\"name\":\"Lucian\",\"role\":null}]},\"evidence\":[{\"turnId\":\"t3\",\"speakerId\":\"gideon\",\"quote\":\"And Lucian is still the one signing the agreement?\"},{\"turnId\":\"t4\",\"speakerId\":\"saoirse\",\"quote\":\"Yes, Lucian signs.\"}]},{\"field\":\"decisionMaker\",\"value\":{\"people\":[{\"name\":\"Matthias Albrecht\",\"role\":\"IT Director\"}]},\"evidence\":[{\"turnId\":\"t4\",\"speakerId\":\"saoirse\",\"quote\":\"Matthias Albrecht just joined as our IT director, and he'll be leading the technical evaluation from here.\"}]},{\"field\":\"nextMeeting\",\"value\":{\"date\":\"2026-11-20\",\"time\":\"10:00\",\"timezone\":null,\"asStated\":\"Friday at 10\"},\"evidence\":[{\"turnId\":\"t6\",\"speakerId\":\"saoirse\",\"quote\":\"Could we move the session to Friday at 10 instead?\"},{\"turnId\":\"t7\",\"speakerId\":\"gideon\",\"quote\":\"Friday at 10 works on our side.\"}]},{\"field\":\"nextMeeting\",\"value\":{\"date\":\"2026-11-18\",\"time\":null,\"timezone\":null,\"asStated\":\"Wednesday\"},\"evidence\":[{\"turnId\":\"t1\",\"speakerId\":\"gideon\",\"quote\":\"before Wednesday's session\"},{\"turnId\":\"t6\",\"speakerId\":\"saoirse\",\"quote\":\"The other thing is Wednesday. Our quarterly close review landed on top of it.\"}]}]}",
+        "ok": true,
+        "error": null,
+        "usage": {
+          "inputTokens": 4055,
+          "outputTokens": 618
+        }
+      },
+      {
+        "label": "grounded.classify",
+        "requestedModel": "claude-sonnet-5-5",
+        "responseModel": "claude-sonnet-5-5",
+        "attempt": 1,
+        "promptHash": "0565ba90032f9826",
+        "durationMs": 4878,
+        "stopReason": "end_turn",
+        "rawText": "{\"classifications\":[{\"claimId\":\"c1\",\"status\":\"CURRENT\",\"certainty\":\"EXPLICIT\",\"sufficiency\":\"DIRECT\",\"explanation\":\"The customer plainly states the $250K is still the approved budget for this rollout.\"},{\"claimId\":\"c2\",\"status\":\"CURRENT\",\"certainty\":\"EXPLICIT\",\"sufficiency\":\"DIRECT\",\"explanation\":\"The customer affirms the seller's question with 'Yes, Lucian signs', establishing current final signing authority.\"},{\"claimId\":\"c3\",\"status\":\"CURRENT\",\"certainty\":\"EXPLICIT\",\"sufficiency\":\"INDIRECT\",\"explanation\":\"Matthias leads the technical evaluation and security review, which is not final sign-off authority.\"},{\"claimId\":\"c4\",\"status\":\"CURRENT\",\"certainty\":\"EXPLICIT\",\"sufficiency\":\"DIRECT\",\"explanation\":\"The customer proposed moving to Friday at 10 and the seller accepted, with the customer confirming, making it an agreed upcoming meeting (Friday after Monday 2026-11-16 is 2026-11-20).\"},{\"claimId\":\"c5\",\"status\":\"SUPERSEDED\",\"certainty\":\"EXPLICIT\",\"sufficiency\":\"DIRECT\",\"explanation\":\"The Wednesday session was agreed earlier but is explicitly replaced by the move to Friday at 10.\"}]}",
+        "ok": true,
+        "error": null,
+        "usage": {
+          "inputTokens": 4187,
+          "outputTokens": 462
+        }
+      }
+    ],
+    "error": null
+  }
+}

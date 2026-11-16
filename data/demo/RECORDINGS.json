@@ -1,0 +1,213 @@
+{
+  "schemaVersion": 1,
+  "note": "Every demo recording attempt, successful or not. Entries are never removed. Selection for replay is an owner decision.",
+  "recordings": [
+    {
+      "recordingId": "corrigan_2026-11-16T18-01-46-263Z",
+      "scenarioId": "corrigan",
+      "recordedAt": "2026-11-16T18:01:46.263Z",
+      "file": "data/demo/recordings/corrigan/2026-11-16T18-01-46-263Z.json",
+      "gitCommit": "d76292d6b4ba09b0cb178d9017f03fc5dc704ff8",
+      "system": {
+        "name": "grounded",
+        "version": "3",
+        "policyConfig": "default-v3",
+        "validatorVersion": "meeting-v1",
+        "promptHashes": {
+          "extract": "a1184542278c3360",
+          "classify": "0565ba90032f9826"
+        }
+      },
+      "model": "claude-sonnet-5-5",
+      "effort": "medium",
+      "error": null,
+      "decisions": {
+        "budget": {
+          "action": "ASK",
+          "value": {
+            "kind": "exact",
+            "amount": 100000,
+            "currency": "USD"
+          },
+          "reasons": [
+            "CONDITIONAL",
+            "INDIRECT_SUPPORT"
+          ],
+          "matchesIntent": true
+        },
+        "decisionMaker": {
+          "action": "ACT",
+          "value": {
+            "people": [
+              {
+                "name": "Rosalind Achebe",
+                "role": "COO"
+              }
+            ]
+          },
+          "reasons": [
+            "SUPPORTED"
+          ],
+          "matchesIntent": true
+        },
+        "nextMeeting": {
+          "action": "ACT",
+          "value": {
+            "date": "2026-11-12",
+            "time": "14:00",
+            "timezone": "America/New_York",
+            "asStated": "Thursday at 2 Eastern"
+          },
+          "reasons": [
+            "SUPPORTED"
+          ],
+          "matchesIntent": true
+        }
+      },
+      "matchesIntent": true,
+      "validatorFired": false,
+      "validationRules": [],
+      "modelCalls": 2,
+      "inputTokens": 8060,
+      "outputTokens": 982,
+      "selected": true,
+      "selectionReason": "Only recording attempt; matched intended ACT/ASK behavior and preserved the incumbent-spend contextual claim."
+    },
+    {
+      "recordingId": "meridale_2026-11-16T18-01-55-426Z",
+      "scenarioId": "meridale",
+      "recordedAt": "2026-11-16T18:01:55.426Z",
+      "file": "data/demo/recordings/meridale/2026-11-16T18-01-55-426Z.json",
+      "gitCommit": "d76292d6b4ba09b0cb178d9017f03fc5dc704ff8",
+      "system": {
+        "name": "grounded",
+        "version": "3",
+        "policyConfig": "default-v3",
+        "validatorVersion": "meeting-v1",
+        "promptHashes": {
+          "extract": "a1184542278c3360",
+          "classify": "0565ba90032f9826"
+        }
+      },
+      "model": "claude-sonnet-5-5",
+      "effort": "medium",
+      "error": null,
+      "decisions": {
+        "budget": {
+          "action": "NO_OP",
+          "value": {
+            "kind": "exact",
+            "amount": 250000,
+            "currency": "USD"
+          },
+          "reasons": [
+            "MATCHES_EXISTING"
+          ],
+          "matchesIntent": true
+        },
+        "decisionMaker": {
+          "action": "NO_OP",
+          "value": {
+            "people": [
+              {
+                "name": "Lucian",
+                "role": null
+              }
+            ]
+          },
+          "reasons": [
+            "MATCHES_EXISTING"
+          ],
+          "matchesIntent": true
+        },
+        "nextMeeting": {
+          "action": "ASK",
+          "value": {
+            "date": "2026-11-20",
+            "time": "10:00",
+            "timezone": null,
+            "asStated": "Friday at 10"
+          },
+          "reasons": [
+            "CONFLICTS_WITH_EXISTING"
+          ],
+          "matchesIntent": true
+        }
+      },
+      "matchesIntent": true,
+      "validatorFired": false,
+      "validationRules": [],
+      "modelCalls": 2,
+      "inputTokens": 8242,
+      "outputTokens": 1080,
+      "selected": true,
+      "selectionReason": "Only recording attempt; matched intended NO_OP and deterministic overwrite-protection behavior."
+    },
+    {
+      "recordingId": "ardent_2026-11-16T18-02-04-757Z",
+      "scenarioId": "ardent",
+      "recordedAt": "2026-11-16T18:02:04.757Z",
+      "file": "data/demo/recordings/ardent/2026-11-16T18-02-04-757Z.json",
+      "gitCommit": "d76292d6b4ba09b0cb178d9017f03fc5dc704ff8",
+      "system": {
+        "name": "grounded",
+        "version": "3",
+        "policyConfig": "default-v3",
+        "validatorVersion": "meeting-v1",
+        "promptHashes": {
+          "extract": "a1184542278c3360",
+          "classify": "0565ba90032f9826"
+        }
+      },
+      "model": "claude-sonnet-5-5",
+      "effort": "medium",
+      "error": null,
+      "decisions": {
+        "budget": {
+          "action": "ACT",
+          "value": {
+            "kind": "exact",
+            "amount": 60000,
+            "currency": "USD"
+          },
+          "reasons": [
+            "SUPPORTED"
+          ],
+          "matchesIntent": true
+        },
+        "decisionMaker": {
+          "action": "ABSTAIN",
+          "value": null,
+          "reasons": [
+            "NO_CANDIDATE"
+          ],
+          "matchesIntent": true
+        },
+        "nextMeeting": {
+          "action": "ASK",
+          "value": {
+            "date": null,
+            "time": "15:30",
+            "timezone": null,
+            "asStated": "today at 3:30"
+          },
+          "reasons": [
+            "UNDERSPECIFIED_VALUE",
+            "VALUE_UNVERIFIED"
+          ],
+          "matchesIntent": true
+        }
+      },
+      "matchesIntent": true,
+      "validatorFired": true,
+      "validationRules": [
+        "DATE_NOT_FUTURE"
+      ],
+      "modelCalls": 2,
+      "inputTokens": 7433,
+      "outputTokens": 642,
+      "selected": true,
+      "selectionReason": "Only recording attempt; matched intended behavior and naturally exercised meeting-v1 on the same-day meeting."
+    }
+  ]
+}
