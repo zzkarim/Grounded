@@ -16,7 +16,8 @@
     "benchmark-review": "tsx scripts/benchmark-review.ts",
     "freeze-benchmark": "tsx scripts/freeze-benchmark.ts",
     "signal-recall": "tsx scripts/signal-recall.ts",
-    "check-demo-overlap": "tsx scripts/check-demo-overlap.ts"
+    "check-demo-overlap": "tsx scripts/check-demo-overlap.ts",
+    "record-demo": "tsx scripts/record-demo.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^1.8.0",
