@@ -1,0 +1,99 @@
+{
+  "id": "ardent",
+  "account": { "name": "Ardent Biologics", "segment": "Mid-market · Life sciences", "stage": "Security review" },
+  "title": "New deal: same-day security call",
+  "summary": "Security questions are blocking a pilot. The customer asks for a call later the same day and confirms an approved pilot budget.",
+  "showcases": [
+    "A same-day meeting can't be confirmed as future from a date-only call record. If the model resolves it to the call date, the meeting-v1 validator removes the date (DATE_NOT_FUTURE), and the meeting goes to review either way",
+    "Safe autonomous write: an explicitly approved budget, with last year's figure heard but not written"
+  ],
+  "crm": { "company": "Ardent Biologics", "budget": null, "decisionMaker": null, "nextMeeting": null },
+  "transcript": {
+    "id": "ardent-call-1",
+    "occurredAt": "2026-11-12",
+    "participants": [
+      { "id": "ansel", "name": "Ansel Eriksen", "side": "rep", "title": "Account Executive" },
+      { "id": "tamsin", "name": "Tamsin Okonkwo", "side": "customer", "title": "Head of IT" }
+    ],
+    "turns": [
+      { "id": "t1", "speakerId": "ansel", "text": "Thanks for the time, Tamsin. You mentioned over email that security questions were holding things up." },
+      { "id": "t2", "speakerId": "tamsin", "text": "Right. Before anything else moves, our security engineer wants to walk through your SSO setup and audit logging with someone technical." },
+      { "id": "t3", "speakerId": "ansel", "text": "That makes sense. I can bring our solutions engineer. When would suit you?" },
+      { "id": "t4", "speakerId": "tamsin", "text": "Sooner is better. Could the two of you do a call today at 3:30? I'll pull our security engineer in." },
+      { "id": "t5", "speakerId": "ansel", "text": "Yes, 3:30 today works. I'll send a video link in the next few minutes." },
+      { "id": "t6", "speakerId": "tamsin", "text": "Great. On the commercial side, last year we only had $25,000 for tooling pilots. This year we have $60,000 approved for this pilot, so budget is settled." },
+      { "id": "t7", "speakerId": "ansel", "text": "Good to know. I'll have a pilot proposal ready right after the security call." }
+    ]
+  },
+  "designIntent": {
+    "fields": {
+      "budget": {
+        "expectedAction": "ACT",
+        "expectedValue": { "kind": "exact", "amount": 60000, "currency": "USD" },
+        "why": "\"This year we have $60,000 approved for this pilot\" is an explicit, current, approved budget for this purchase, stated in digits. Last year's $25,000 is HISTORICAL, so it's ABSTAIN and appears in the ledger.",
+        "risks": ["If the classifier treats $25,000 as CURRENT (unlikely), the candidates conflict and the field becomes ASK."]
+      },
+      "decisionMaker": {
+        "expectedAction": "ABSTAIN",
+        "expectedValue": null,
+        "why": "Nobody says who signs. A Head of IT title alone doesn't establish final authority. Expected: no candidate, or an INDIRECT/NONE candidate → ABSTAIN or ASK.",
+        "risks": ["The extractor might propose Tamsin from her title. The classifier should label that NONE or INDIRECT; INDIRECT would make it ASK."]
+      },
+      "nextMeeting": {
+        "expectedAction": "ASK",
+        "expectedValue": { "date": null, "time": "15:30", "timezone": null, "asStated": "today at 3:30" },
+        "why": "Agreed, explicit, but same-day. The call record is date-only, so a same-day time can't be shown to be in the future. Two paths both end in ASK: (A) the extractor resolves the date to the call date, meeting-v1 fires DATE_NOT_FUTURE and removes it, VALUE_UNVERIFIED; (B) the extractor leaves the date null, UNDERSPECIFIED_VALUE. Only path A demonstrates the validator, and we can't make the model take it.",
+        "risks": [
+          "Path B (date null) means the validator doesn't fire; Ardent then shows the stored experiment trace for the validator demonstration.",
+          "Known meeting-v1 gap, reported, not fixed: if the extractor resolved \"today\" to a LATER date (for example the next day), no meeting-v1 rule would catch it, because \"today\" only satisfies DATE_UNSUPPORTED. The policy would then ACT. We don't expect this, but if a recording shows it, it will be preserved and reported."
+        ]
+      }
+    },
+    "dryRuns": [
+      {
+        "label": "Path A: extractor resolves 'today' to the call date (validator fires)",
+        "claims": [
+          {
+            "field": "budget",
+            "value": { "kind": "exact", "amount": 25000, "currency": "USD" },
+            "evidence": [{ "turnId": "t6", "speakerId": "tamsin", "quote": "last year we only had $25,000 for tooling pilots" }],
+            "status": "HISTORICAL", "certainty": "EXPLICIT", "sufficiency": "DIRECT"
+          },
+          {
+            "field": "budget",
+            "value": { "kind": "exact", "amount": 60000, "currency": "USD" },
+            "evidence": [{ "turnId": "t6", "speakerId": "tamsin", "quote": "This year we have $60,000 approved for this pilot, so budget is settled." }],
+            "status": "CURRENT", "certainty": "EXPLICIT", "sufficiency": "DIRECT"
+          },
+          {
+            "field": "nextMeeting",
+            "value": { "date": "2026-11-12", "time": "15:30", "timezone": null, "asStated": "today at 3:30" },
+            "evidence": [
+              { "turnId": "t4", "speakerId": "tamsin", "quote": "Could the two of you do a call today at 3:30?" },
+              { "turnId": "t5", "speakerId": "ansel", "quote": "Yes, 3:30 today works." }
+            ],
+            "status": "CURRENT", "certainty": "EXPLICIT", "sufficiency": "DIRECT"
+          }
+        ],
+        "expect": { "budget": "ACT", "decisionMaker": "ABSTAIN", "nextMeeting": "ASK" },
+        "expectValidationRules": ["DATE_NOT_FUTURE"]
+      },
+      {
+        "label": "Path B: extractor leaves the date null (validator has nothing to check)",
+        "claims": [
+          {
+            "field": "nextMeeting",
+            "value": { "date": null, "time": "15:30", "timezone": null, "asStated": "today at 3:30" },
+            "evidence": [
+              { "turnId": "t4", "speakerId": "tamsin", "quote": "Could the two of you do a call today at 3:30?" },
+              { "turnId": "t5", "speakerId": "ansel", "quote": "Yes, 3:30 today works." }
+            ],
+            "status": "CURRENT", "certainty": "EXPLICIT", "sufficiency": "DIRECT"
+          }
+        ],
+        "expect": { "budget": "ABSTAIN", "decisionMaker": "ABSTAIN", "nextMeeting": "ASK" },
+        "expectValidationRules": []
+      }
+    ]
+  }
+}

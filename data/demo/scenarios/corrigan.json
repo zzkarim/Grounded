@@ -1,0 +1,114 @@
+{
+  "id": "corrigan",
+  "account": { "name": "Corrigan Freight", "segment": "Mid-market · Freight & logistics", "stage": "Discovery" },
+  "title": "New deal: discovery follow-up",
+  "summary": "First substantive call on a new deal. The CRM record is empty. The customer names a signer and agrees to a demo, but only estimates the budget.",
+  "showcases": [
+    "Safe autonomous write: an explicitly named signer and an accepted meeting time",
+    "Uncertain information preserved but routed to review: a hedged budget estimate",
+    "What Grounded knows vs what it writes: current vendor spend is heard but is not a budget"
+  ],
+  "crm": { "company": "Corrigan Freight", "budget": null, "decisionMaker": null, "nextMeeting": null },
+  "transcript": {
+    "id": "corrigan-call-1",
+    "occurredAt": "2026-11-10",
+    "participants": [
+      { "id": "callum", "name": "Callum Ashby", "side": "rep", "title": "Account Executive" },
+      { "id": "thandiwe", "name": "Thandiwe Ndlovu", "side": "customer", "title": "VP of Operations" },
+      { "id": "florian", "name": "Florian Kessel", "side": "customer", "title": "Logistics Systems Manager" }
+    ],
+    "turns": [
+      { "id": "t1", "speakerId": "callum", "text": "Thanks for making time, Thandiwe and Florian. Last time we left off on dispatch automation. Where do things stand on your side?" },
+      { "id": "t2", "speakerId": "thandiwe", "text": "Good timing, actually. Leadership wants the dispatch backlog fixed before peak season, so this is now a priority project." },
+      { "id": "t3", "speakerId": "florian", "text": "From the systems side, the open question is the warehouse integration. We pay about $80K a year for the routing tool we have today, and it doesn't talk to anything else." },
+      { "id": "t4", "speakerId": "callum", "text": "That's helpful context. On budget for this project, have you landed on a number yet?" },
+      { "id": "t5", "speakerId": "thandiwe", "text": "Not formally. We're probably looking at something around $100K, but finance still has to bless a number." },
+      { "id": "t6", "speakerId": "callum", "text": "Understood. Whose signature goes on the contract itself?" },
+      { "id": "t7", "speakerId": "thandiwe", "text": "That would be Rosalind Achebe, our COO. She signs every vendor contract at this size." },
+      { "id": "t8", "speakerId": "callum", "text": "Great. Could we get Florian and your dispatch leads together for a technical demo? I have Thursday at 2 Eastern open." },
+      { "id": "t9", "speakerId": "florian", "text": "Thursday at 2 is fine by me." },
+      { "id": "t10", "speakerId": "thandiwe", "text": "Same here. Send the invite to both of us and I'll loop in the dispatch leads." }
+    ]
+  },
+  "designIntent": {
+    "fields": {
+      "budget": {
+        "expectedAction": "ASK",
+        "expectedValue": { "kind": "exact", "amount": 100000, "currency": "USD" },
+        "why": "\"Probably looking at something around $100K\" plus \"finance still has to bless a number\" is hedged (and arguably conditional). Grounded should keep ~$100K with the quote but must not write it.",
+        "risks": [
+          "If the classifier labels the $80K vendor spend INDIRECT instead of NONE, the two budget candidates conflict. The field is still ASK, with the later $100K value.",
+          "If the extractor doesn't emit the $80K vendor spend at all, the ledger simply won't show it (TEST recall of such context was 6/23)."
+        ]
+      },
+      "decisionMaker": {
+        "expectedAction": "ACT",
+        "expectedValue": { "people": [{ "name": "Rosalind Achebe", "role": "COO" }] },
+        "why": "The customer explicitly names the person who signs vendor contracts, in answer to \"whose signature goes on the contract\". Phrased as signing, not \"needs to approve\", which is a known classification weakness.",
+        "risks": ["The role could be extracted as \"Chief Operating Officer\". Display differs, but policy equality and the action are unaffected (empty CRM)."]
+      },
+      "nextMeeting": {
+        "expectedAction": "ACT",
+        "expectedValue": { "date": "2026-11-12", "time": "14:00", "timezone": "Eastern", "asStated": "Thursday at 2 Eastern" },
+        "why": "The seller proposes Thursday at 2 Eastern, and both customers accept. The call is Tuesday 2026-11-10, so Thursday is 2026-11-12, and \"at 2\" reads 14:00. meeting-v1 verifies the weekday and the time.",
+        "risks": ["The timezone may be extracted as \"ET\" or \"Eastern\". Display only; it's ignored in comparisons."]
+      }
+    },
+    "dryRuns": [
+      {
+        "label": "Primary: extraction and labels as intended",
+        "claims": [
+          {
+            "field": "budget",
+            "value": { "kind": "exact", "amount": 80000, "currency": "USD" },
+            "evidence": [{ "turnId": "t3", "speakerId": "florian", "quote": "We pay about $80K a year for the routing tool we have today" }],
+            "status": "CURRENT", "certainty": "TENTATIVE", "sufficiency": "NONE"
+          },
+          {
+            "field": "budget",
+            "value": { "kind": "exact", "amount": 100000, "currency": "USD" },
+            "evidence": [{ "turnId": "t5", "speakerId": "thandiwe", "quote": "We're probably looking at something around $100K, but finance still has to bless a number." }],
+            "status": "CURRENT", "certainty": "TENTATIVE", "sufficiency": "DIRECT"
+          },
+          {
+            "field": "decisionMaker",
+            "value": { "people": [{ "name": "Rosalind Achebe", "role": "COO" }] },
+            "evidence": [{ "turnId": "t7", "speakerId": "thandiwe", "quote": "That would be Rosalind Achebe, our COO. She signs every vendor contract at this size." }],
+            "status": "CURRENT", "certainty": "EXPLICIT", "sufficiency": "DIRECT"
+          },
+          {
+            "field": "nextMeeting",
+            "value": { "date": "2026-11-12", "time": "14:00", "timezone": "Eastern", "asStated": "Thursday at 2 Eastern" },
+            "evidence": [
+              { "turnId": "t8", "speakerId": "callum", "quote": "I have Thursday at 2 Eastern open." },
+              { "turnId": "t9", "speakerId": "florian", "quote": "Thursday at 2 is fine by me." },
+              { "turnId": "t10", "speakerId": "thandiwe", "quote": "Same here." }
+            ],
+            "status": "CURRENT", "certainty": "EXPLICIT", "sufficiency": "DIRECT"
+          }
+        ],
+        "expect": { "budget": "ASK", "decisionMaker": "ACT", "nextMeeting": "ACT" },
+        "expectValidationRules": []
+      },
+      {
+        "label": "Variant: budget labelled CONDITIONAL and vendor spend labelled INDIRECT",
+        "claims": [
+          {
+            "field": "budget",
+            "value": { "kind": "exact", "amount": 80000, "currency": "USD" },
+            "evidence": [{ "turnId": "t3", "speakerId": "florian", "quote": "We pay about $80K a year for the routing tool we have today" }],
+            "status": "CURRENT", "certainty": "TENTATIVE", "sufficiency": "INDIRECT"
+          },
+          {
+            "field": "budget",
+            "value": { "kind": "exact", "amount": 100000, "currency": "USD" },
+            "evidence": [{ "turnId": "t5", "speakerId": "thandiwe", "quote": "We're probably looking at something around $100K, but finance still has to bless a number." }],
+            "status": "CURRENT", "certainty": "CONDITIONAL", "sufficiency": "DIRECT"
+          }
+        ],
+        "expect": { "budget": "ASK", "decisionMaker": "ABSTAIN", "nextMeeting": "ABSTAIN" },
+        "expectValidationRules": []
+      }
+    ]
+  }
+}

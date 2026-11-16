@@ -1,0 +1,109 @@
+{
+  "id": "meridale",
+  "account": { "name": "Meridale Health", "segment": "Enterprise · Healthcare", "stage": "Evaluation" },
+  "title": "Existing account: pre-session check-in",
+  "summary": "A deal already in the CRM, with budget, signer and next session recorded. The customer reconfirms two of them, adds a new stakeholder, and asks to move the session.",
+  "showcases": [
+    "Corroboration: the budget and signer match the CRM, so nothing changes (NO_OP)",
+    "Deterministic overwrite protection: an explicit, agreed reschedule still goes to review because it would replace an existing CRM value",
+    "A new stakeholder is heard and kept, but isn't recorded as the decision maker"
+  ],
+  "crm": {
+    "company": "Meridale Health",
+    "budget": { "kind": "exact", "amount": 250000, "currency": "USD" },
+    "decisionMaker": { "people": [{ "name": "Lucian Ferro", "role": "CFO" }] },
+    "nextMeeting": { "date": "2026-11-18", "time": "10:00", "timezone": "ET", "asStated": "Wednesday at 10" }
+  },
+  "transcript": {
+    "id": "meridale-call-1",
+    "occurredAt": "2026-11-16",
+    "participants": [
+      { "id": "gideon", "name": "Gideon Barrow", "side": "rep", "title": "Senior Account Executive" },
+      { "id": "saoirse", "name": "Saoirse Dunleavy", "side": "customer", "title": "Director of Revenue Cycle" },
+      { "id": "matthias", "name": "Matthias Albrecht", "side": "customer", "title": "IT Director" }
+    ],
+    "turns": [
+      { "id": "t1", "speakerId": "gideon", "text": "Thanks for jumping on, Saoirse. I wanted to check in before Wednesday's session and see if anything has changed on your end." },
+      { "id": "t2", "speakerId": "saoirse", "text": "A couple of things. The good news first: the $250K is still the approved budget for this rollout. Nothing has changed there." },
+      { "id": "t3", "speakerId": "gideon", "text": "Great to hear. And Lucian is still the one signing the agreement?" },
+      { "id": "t4", "speakerId": "saoirse", "text": "Yes, Lucian signs. One addition, though. Matthias Albrecht just joined as our IT director, and he'll be leading the technical evaluation from here." },
+      { "id": "t5", "speakerId": "matthias", "text": "Hi Gideon. I'll mostly be looking at security and data retention." },
+      { "id": "t6", "speakerId": "saoirse", "text": "The other thing is Wednesday. Our quarterly close review landed on top of it. Could we move the session to Friday at 10 instead?" },
+      { "id": "t7", "speakerId": "gideon", "text": "Friday at 10 works on our side. I'll update the invite." },
+      { "id": "t8", "speakerId": "saoirse", "text": "Perfect. Same attendees, plus Matthias." }
+    ]
+  },
+  "designIntent": {
+    "fields": {
+      "budget": {
+        "expectedAction": "NO_OP",
+        "expectedValue": { "kind": "exact", "amount": 250000, "currency": "USD" },
+        "why": "The customer explicitly reconfirms the approved $250K, which equals the CRM value. That's corroboration, not a write.",
+        "risks": []
+      },
+      "decisionMaker": {
+        "expectedAction": "NO_OP",
+        "expectedValue": { "people": [{ "name": "Lucian", "role": null }] },
+        "why": "\"Yes, Lucian signs\" reconfirms the CRM signer (\"Lucian\" matches \"Lucian Ferro\" under the frozen name rule). Matthias leads the technical evaluation, which is a supporting role (INDIRECT). Reconciliation sets him aside because a DIRECT signer survives.",
+        "risks": [
+          "If the classifier labels Matthias DIRECT (a classification error), the two signers conflict and the field becomes ASK. That's safe, but not the intended demo.",
+          "If the extractor writes \"Lucian Ferro\" (from the CRM) instead of \"Lucian\", the result is the same NO_OP."
+        ]
+      },
+      "nextMeeting": {
+        "expectedAction": "ASK",
+        "expectedValue": { "date": "2026-11-20", "time": "10:00", "timezone": null, "asStated": "Friday at 10" },
+        "why": "The customer asks to move the session to Friday at 10, and the seller agrees: explicit, current and direct. The call is Monday 2026-11-16, so Friday is 2026-11-20 and \"at 10\" reads 10:00. Because the CRM already holds Wed 2026-11-18 10:00, policy rule 6 adds CONFLICTS_WITH_EXISTING: Grounded never overwrites autonomously. (This is the pattern the self-assessing baseline wrote automatically on TEST.)",
+        "risks": ["The extractor may also emit the old Wednesday session as a SUPERSEDED candidate. It's ABSTAIN and appears in the ledger; the field decision is unaffected."]
+      }
+    },
+    "dryRuns": [
+      {
+        "label": "Primary: extraction and labels as intended",
+        "claims": [
+          {
+            "field": "budget",
+            "value": { "kind": "exact", "amount": 250000, "currency": "USD" },
+            "evidence": [{ "turnId": "t2", "speakerId": "saoirse", "quote": "the $250K is still the approved budget for this rollout" }],
+            "status": "CURRENT", "certainty": "EXPLICIT", "sufficiency": "DIRECT"
+          },
+          {
+            "field": "decisionMaker",
+            "value": { "people": [{ "name": "Lucian", "role": null }] },
+            "evidence": [
+              { "turnId": "t3", "speakerId": "gideon", "quote": "And Lucian is still the one signing the agreement?" },
+              { "turnId": "t4", "speakerId": "saoirse", "quote": "Yes, Lucian signs." }
+            ],
+            "status": "CURRENT", "certainty": "EXPLICIT", "sufficiency": "DIRECT"
+          },
+          {
+            "field": "decisionMaker",
+            "value": { "people": [{ "name": "Matthias Albrecht", "role": "IT Director" }] },
+            "evidence": [{ "turnId": "t4", "speakerId": "saoirse", "quote": "Matthias Albrecht just joined as our IT director, and he'll be leading the technical evaluation from here." }],
+            "status": "CURRENT", "certainty": "EXPLICIT", "sufficiency": "INDIRECT"
+          },
+          {
+            "field": "nextMeeting",
+            "value": { "date": "2026-11-18", "time": null, "timezone": null, "asStated": "Wednesday's session" },
+            "evidence": [
+              { "turnId": "t1", "speakerId": "gideon", "quote": "I wanted to check in before Wednesday's session" },
+              { "turnId": "t6", "speakerId": "saoirse", "quote": "The other thing is Wednesday." }
+            ],
+            "status": "SUPERSEDED", "certainty": "EXPLICIT", "sufficiency": "DIRECT"
+          },
+          {
+            "field": "nextMeeting",
+            "value": { "date": "2026-11-20", "time": "10:00", "timezone": null, "asStated": "Friday at 10" },
+            "evidence": [
+              { "turnId": "t6", "speakerId": "saoirse", "quote": "Could we move the session to Friday at 10 instead?" },
+              { "turnId": "t7", "speakerId": "gideon", "quote": "Friday at 10 works on our side." }
+            ],
+            "status": "CURRENT", "certainty": "EXPLICIT", "sufficiency": "DIRECT"
+          }
+        ],
+        "expect": { "budget": "NO_OP", "decisionMaker": "NO_OP", "nextMeeting": "ASK" },
+        "expectValidationRules": []
+      }
+    ]
+  }
+}
