@@ -77,7 +77,7 @@ export const REASON: Record<PolicyReason, ReasonCopy> = {
   TENTATIVE: { short: "Hedged", explanation: "The customer hedged or approximated it, so it isn't a confirmed fact.", source: "classification" },
   CONDITIONAL: { short: "Conditional", explanation: "It depends on something that hasn't happened yet, such as an approval.", source: "classification" },
   INDIRECT_SUPPORT: { short: "Indirect", explanation: "Relevant, but the evidence doesn't establish this field directly.", source: "classification" },
-  CONFLICTS_WITH_EXISTING: { short: "Would overwrite CRM", explanation: "It differs from a value already in the CRM. Grounded never overwrites existing CRM data without a person.", source: "policy" },
+  CONFLICTS_WITH_EXISTING: { short: "Would overwrite CRM", explanation: "Would overwrite an existing CRM value. Grounded requires a person.", source: "policy" },
   VALUE_UNVERIFIED: { short: "Value didn't match quote", explanation: "Part of the model's structured value wasn't supported by the quoted words, so that part was removed.", source: "validation" },
   UNDERSPECIFIED_VALUE: { short: "No confirmed date", explanation: "There's no confirmed calendar date, so it can't be scheduled automatically.", source: "policy" },
   NO_CUSTOMER_EVIDENCE: { short: "Seller-only", explanation: "Only the seller said it; the customer didn't confirm it.", source: "grounding" },
@@ -154,7 +154,7 @@ export const SUFFICIENCY_LABEL: Record<EvidenceSufficiency, string> = {
 };
 
 export const VALIDATION_RULE_LABEL: Record<ValidationRule, string> = {
-  DATE_NOT_FUTURE: "Date is not after the call",
+  DATE_NOT_FUTURE: "The proposed date was not after the call date",
   DATE_UNSUPPORTED: "No date expression in the quote",
   DATE_WEEKDAY_MISMATCH: "Weekday doesn't match the date",
   DATE_DAY_MISMATCH: "Day of month doesn't match the date",
@@ -218,10 +218,29 @@ export function formatTime(hhmm: string): string {
   return `${h12}:${String(m).padStart(2, "0")} ${suffix}`;
 }
 
+const TIMEZONE_SHORT: Record<string, string> = {
+  "america/new_york": "ET", "us/eastern": "ET", eastern: "ET", "eastern time": "ET", et: "ET", est: "ET", edt: "ET",
+  "america/chicago": "CT", "us/central": "CT", central: "CT", "central time": "CT", ct: "CT", cst: "CT", cdt: "CT",
+  "america/denver": "MT", "us/mountain": "MT", mountain: "MT", "mountain time": "MT", mt: "MT", mst: "MT", mdt: "MT",
+  "america/los_angeles": "PT", "us/pacific": "PT", pacific: "PT", "pacific time": "PT", pt: "PT", pst: "PT", pdt: "PT",
+  utc: "UTC", gmt: "GMT", "etc/utc": "UTC",
+};
+
+/**
+ * Human-readable timezone for display only ("America/New_York" → "ET"). The stored value is untouched;
+ * timezones are ignored by every comparison in the frozen system.
+ */
+export function formatTimezone(tz: string): string {
+  const key = tz.trim().toLowerCase();
+  if (TIMEZONE_SHORT[key]) return TIMEZONE_SHORT[key];
+  if (key.includes("/")) return `${tz.trim().split("/").pop()!.replace(/_/g, " ")} time`;
+  return tz.trim();
+}
+
 export function formatMeeting(v: MeetingValue): string {
   const date = v.date ? formatDate(v.date) : "Date not confirmed";
   const time = v.time ? formatTime(v.time) : null;
-  return [date, time && `${time}${v.timezone ? ` ${v.timezone}` : ""}`].filter(Boolean).join(" · ");
+  return [date, time && `${time}${v.timezone ? ` ${formatTimezone(v.timezone)}` : ""}`].filter(Boolean).join(" · ");
 }
 
 /** Format any field value (untyped, as stored in FieldDecision / traces). Never throws. */

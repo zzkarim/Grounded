@@ -59,9 +59,9 @@ export function loadScenarioFile(file: string): DemoScenario {
   return s;
 }
 
-export function loadScenarios(dir = SCENARIO_DIR): DemoScenario[] {
-  const files = fs.readdirSync(dir).filter((f) => f.endsWith(".json"));
-  const all = files.map((f) => loadScenarioFile(path.join(dir, f)));
+export function loadScenarios(): DemoScenario[] {
+  const files = fs.readdirSync(SCENARIO_DIR).filter((f) => f.endsWith(".json"));
+  const all = files.map((f) => loadScenarioFile(path.join(process.cwd(), "data", "demo", "scenarios", f)));
   const rank = (id: string) => {
     const i = (SCENARIO_ORDER as readonly string[]).indexOf(id);
     return i === -1 ? Number.MAX_SAFE_INTEGER : i;

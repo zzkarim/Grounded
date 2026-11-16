@@ -171,18 +171,20 @@ export function saveRecording(rec: DemoRecording, root = RECORDINGS_DIR): string
 }
 
 export function loadRecording(file: string): DemoRecording {
-  return DemoRecording.parse(JSON.parse(fs.readFileSync(path.resolve(process.cwd(), file), "utf8")));
+  return DemoRecording.parse(JSON.parse(fs.readFileSync(path.resolve(/*turbopackIgnore: true*/ process.cwd(), file), "utf8")));
 }
 
 export function listRecordingFiles(root = RECORDINGS_DIR): string[] {
-  if (!fs.existsSync(root)) return [];
-  return (fs.readdirSync(root, { recursive: true }) as string[])
+  const dir = path.join(/*turbopackIgnore: true*/ root);
+  if (!fs.existsSync(dir)) return [];
+  return (fs.readdirSync(dir, { recursive: true }) as string[])
     .filter((f) => f.endsWith(".json"))
-    .map((f) => path.relative(process.cwd(), path.join(root, f)))
+    .map((f) => path.relative(process.cwd(), path.join(dir, f)))
     .sort();
 }
 
-export function loadManifest(file = MANIFEST_FILE): RecordingsManifest {
+export function loadManifest(manifestFile = MANIFEST_FILE): RecordingsManifest {
+  const file = path.join(/*turbopackIgnore: true*/ manifestFile);
   if (!fs.existsSync(file)) {
     return {
       schemaVersion: 1,
