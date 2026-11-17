@@ -9,6 +9,7 @@ import type { CRMField } from "@/core/schemas";
 import type { ClaimView, FieldView, WorkspaceView } from "@/product/workspace";
 import { ActionBadge, cx, Icon, LaneTag, TONE } from "./ui";
 import { presentAction, type Lane } from "@/product/present";
+import { ValidatorStoryView } from "../ValidatorStoryView";
 
 export function AuditDrawer({ view, field, onClose }: { view: WorkspaceView; field: CRMField | null; onClose: () => void }) {
   const ref = useRef<HTMLDialogElement>(null);
@@ -184,27 +185,17 @@ function ClaimTrace({ c, f }: { c: ClaimView; f: FieldView }) {
         <Step n={3} lane="CODE" title="Structured value validated" status={!v.applicable ? "na" : v.changed ? "changed" : "pass"}>
           {!v.applicable ? (
             <p className="text-[12px] text-zinc-600">Not applicable. meeting-v1 validates meeting values only.</p>
-          ) : v.changed ? (
-            <div className="rounded-lg border border-amber-200 bg-amber-50/60 p-2.5">
-              <ul className="space-y-1">
-                {v.issues.map((i, k) => (
-                  <li key={k} className="text-[12px]">
-                    <span className="flex items-baseline gap-1.5 font-medium text-zinc-900">
-                      <span className="text-rose-600" aria-hidden="true">✕</span>
-                      {i.label}
-                    </span>
-                    <span className="ml-4 block font-mono text-[11px] text-zinc-500">{i.rule} · {i.detail}</span>
-                  </li>
-                ))}
-              </ul>
-              <div className="mt-2 grid grid-cols-[auto_1fr] gap-x-3 gap-y-0.5 text-[12px]">
-                <span className="text-zinc-500">Model value</span>
-                <span className="text-zinc-500 tabular-nums line-through">{v.extractedText}</span>
-                <span className="text-zinc-500">Kept</span>
-                <span className="font-medium text-zinc-900 tabular-nums">{v.keptText}</span>
-              </div>
-              <p className="mt-1.5 text-[11px] text-zinc-600">Validation can only remove unsupported detail. It never adds or corrects a value, and an unverified value can never be written automatically.</p>
-            </div>
+          ) : v.changed && v.story ? (
+            <>
+              <ValidatorStoryView
+                story={v.story}
+                finalLabel={c.final.label}
+                finalDetail={v.removed.includes("date") ? "date not confirmed" : "time not confirmed"}
+              />
+              <p className="mt-1.5 text-[11px] leading-4 text-zinc-600">
+                Validation only removes detail it can&apos;t verify. It never corrects or adds a value, and an unverified value can never be written automatically.
+              </p>
+            </>
           ) : (
             <p className="text-[12px] text-zinc-600">Date and time match the quoted words and the call date ({v.keptText}).</p>
           )}

@@ -120,3 +120,20 @@ Made during owner review of the TEST gold labels. No system had been run on TEST
 1. **Unresolved pronoun (test-gen-029).** "Kofi and Samir… He's the one who signs." decisionMaker → **ABSTAIN, value null**. The transcript establishes that one of two people signs but not which one. Recording either (or both) would invent identity information. General rule (v1.3 §2.2/§3.4): a non-identifiable signer isn't representable. An identifiable INDIRECT person ("run it by Sarah") still gives ASK.
 2. **Vague magnitude (test-gen-032).** "A hundred and change approved." budget → **ABSTAIN, value null**. It implies an unknown amount above roughly 100K, not an approximation centered on 100K. General rule (v1.3 §2.1): approximations centered on a meaningful numeric anchor stay representable (TENTATIVE); vague magnitudes ("…and change", "low six figures") don't, and must not become false precision.
 3. **Same-day meeting (test-gen-034).** "Later today at 4", agreed. nextMeeting → **ASK, date null, time 16:00**. `occurredAt` is date-only, so 16:00 can't be shown to be after the call. The meeting is real, so the label is ASK, not ABSTAIN; it isn't normalized to the call date. General rule (v1.3 §2.3); revisit if call timestamps are added.
+
+### D23. Product demo layer built around the frozen experiment (2026-11-16, AFTER `experiment-v1-complete`)
+**Decision.** The demo product (Workspace, Results, How it works) is a separate layer: `src/product/`, `src/components/`, `src/app/`, `data/demo/`. It imports the frozen core and never modifies it. `tests/product-frozen.test.ts` pins the prompt hashes, versions, policy, validator, scoring and model defaults, and checks that every frozen path still matches the tag. It also checks that this file only grows.
+- **Replay-first.** Each demo scenario was run once through the real frozen Grounded v3 pipeline (`npm run record-demo`). The recordings store the full SystemOutput, including the raw model responses. The demo replays them by feeding those raw responses back through the unchanged `grounded.run()` via a replay `Transport`, so grounding, validation, policy and reconciliation re-execute on every build. A replay must reproduce the recorded decisions, trace and call sequence; otherwise the page shows an integrity failure and no decisions.
+- **Recordings live outside `data/runs/`.** They're in `data/demo/recordings/`: append-only, every attempt kept, all listed in `data/demo/RECORDINGS.json` with owner-approved selection. They're demo artifacts, not experiment results.
+- **The public demo is replay-only.** There's no live-analysis endpoint, so no API key on the server, no auth and no spend risk. Live analysis may be added later for local or interview use.
+- **No database.** The mock CRM and review decisions live in browser `localStorage`. Replay inputs never change.
+- **Results reads stored artifacts.** Every displayed experimental number is derived from the committed TEST run files. The stored outcomes are re-scored with the frozen scoring code as a check. The only curated text is short failure-cause labels, keyed by case and field and verified against the derived sets in tests.
+- **The UI never changes experiment behaviour.** Explanations come from a fixed reason-code mapping; the classifier's prose appears only as a "model note".
+
+**Why.** Live calls are slow (6–15 s) and stochastic, and the validator scenario may not fire on demand. Hardcoded decisions would be dishonest. Replaying recorded model output through the real deterministic code gives an instant, reproducible demo that is still the real system.
+**Alternatives rejected.**
+- Live-only demo: latency, cost and non-reproducibility.
+- Deserializing stored decisions: nothing would re-execute.
+- SQLite or another store for review state: prohibited and unnecessary.
+- Writing demo runs to `data/runs/`: they'd mix with experiment results.
+**Known frozen-system issue found while building the demo.** meeting-v1 accepts "today" resolved to a later date (PRODUCT_NOTES.md K1). It's documented and not fixed; no reported result is affected.

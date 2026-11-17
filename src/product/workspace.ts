@@ -11,7 +11,7 @@
  */
 import { isDeepStrictEqual } from "node:util";
 import { decideClaim, type ClaimRecord } from "@/core/policy";
-import { CRM_FIELDS, type Action, type CRMField, type CRMState, type FieldDecision, type PolicyReason } from "@/core/schemas";
+import { CRM_FIELDS, type Action, type CRMField, type CRMState, type FieldDecision, type MeetingValue, type PolicyReason } from "@/core/schemas";
 import {
   CERTAINTY_LABEL,
   FIELD_LABEL,
@@ -31,6 +31,7 @@ import {
   type Tone,
 } from "./present";
 import type { ReplayOutcome } from "./replay";
+import { validatorStory, type ValidatorStory } from "./validatorStory";
 import type { DemoScenario } from "./types";
 
 // ───────────────────────── Types ─────────────────────────
@@ -50,6 +51,8 @@ export type ValidationView = {
   extractedText: string;
   keptText: string;
   removed: ("date" | "time")[];
+  /** Plain-language account of the intervention (null when nothing was removed). */
+  story: ValidatorStory | null;
 };
 
 export type ClaimView = {
@@ -168,6 +171,10 @@ function buildClaim(r: ClaimRecord, s: DemoScenario): ClaimView {
     extractedText: formatFieldValue(field, extractedValue),
     keptText: formatFieldValue(field, r.claim.value),
     removed,
+    story:
+      field === "nextMeeting" && r.validation.originalValue !== null
+        ? validatorStory(r.validation.originalValue as MeetingValue, r.claim.value as MeetingValue, r.validation.issues, s.transcript.occurredAt)
+        : null,
   };
 
   const c = r.classification;

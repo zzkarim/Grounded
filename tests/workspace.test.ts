@@ -208,3 +208,19 @@ describe("stored state", () => {
     expect(parseStoredState(JSON.stringify(stale), fresh)).toBeNull();
   });
 });
+
+describe("Ardent validator story (audit drawer)", () => {
+  it("shows what the model extracted, the failed check, what was kept and what was REMOVED", () => {
+    const c = ardent.view.claims.find((x) => x.field === "nextMeeting")!;
+    expect(c.validation.story).toEqual({
+      extractedText: "Thu, Nov 12 · 3:30 PM",
+      checks: [{ rule: "DATE_NOT_FUTURE", requirement: "Meeting date must be after the call date.", failure: "Thu, Nov 12 is the call date." }],
+      keptText: "3:30 PM",
+      removedText: "Thu, Nov 12",
+    });
+    expect(JSON.stringify(c.validation.story)).not.toMatch(/correct/i);
+  });
+  it("non-meeting claims have no validator story", () => {
+    for (const c of ardent.view.claims.filter((x) => x.field !== "nextMeeting")) expect(c.validation.story).toBeNull();
+  });
+});

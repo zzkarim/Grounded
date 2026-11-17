@@ -1,6 +1,8 @@
 "use client";
 /** App header, replay provenance badge and account rail. */
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import type { ReactNode } from "react";
 import type { AccountNav } from "@/product/workspaceData";
 import type { WorkspaceView } from "@/product/workspace";
 import { cx, Icon } from "./ui";
@@ -16,7 +18,8 @@ export function ProvenanceBadge({ view }: { view: WorkspaceView }) {
         )}
       >
         {Icon.shield("size-3.5")}
-        {p.ok ? "Verified replay" : "Replay integrity failure"}
+        <span className="hidden sm:inline">{p.ok ? "Verified replay" : "Replay integrity failure"}</span>
+        <span className="sm:hidden">{p.ok ? "Verified" : "Failed"}</span>
         <span className="sr-only">: recorded model responses, deterministic stages re-executed. Show details.</span>
       </summary>
       <div className="absolute right-0 z-30 mt-2 w-[min(340px,calc(100vw-2rem))] rounded-xl border border-zinc-200 bg-white p-4 text-[12px] shadow-xl">
@@ -70,36 +73,72 @@ export function ProvenanceBadge({ view }: { view: WorkspaceView }) {
   );
 }
 
-export function AppHeader({ view, onReset }: { view: WorkspaceView; onReset: () => void }) {
+const NAV = [
+  { href: "/workspace/corrigan", match: "/workspace", label: "Workspace" },
+  { href: "/results", match: "/results", label: "Results" },
+  { href: "/how-it-works", match: "/how-it-works", label: "How it works" },
+];
+
+/** Site header shared by every page. `right` holds page-specific controls. */
+export function SiteHeader({ crumb, right }: { crumb?: string; right?: ReactNode }) {
+  const pathname = usePathname() ?? "";
   return (
-    <header className="sticky top-0 z-20 flex h-12 shrink-0 items-center gap-4 border-b border-zinc-200 bg-white/95 px-4 backdrop-blur">
-      <Link href="/workspace/corrigan" className="flex items-center gap-2 rounded focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900">
+    <header className="sticky top-0 z-20 flex h-12 shrink-0 items-center gap-3 border-b border-zinc-200 bg-white/95 px-4 backdrop-blur sm:gap-4">
+      <Link href="/workspace/corrigan" className="flex shrink-0 items-center gap-2 rounded focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900">
         <span className="grid size-6 place-items-center rounded-md bg-zinc-900 text-white" aria-hidden="true">
           {Icon.shield("size-3.5")}
         </span>
-        <span className="text-[14px] font-semibold tracking-tight">Grounded</span>
+        <span className="hidden text-[14px] font-semibold tracking-tight sm:inline">Grounded</span>
       </Link>
-      <nav aria-label="Primary" className="hidden items-center gap-1 text-[13px] sm:flex">
-        <span aria-current="page" className="rounded-md bg-zinc-100 px-2 py-1 font-medium text-zinc-900">
-          Workspace
-        </span>
+      <nav aria-label="Primary" className="flex min-w-0 items-center gap-0.5 overflow-x-auto text-[13px]">
+        {NAV.map((n) => {
+          const on = pathname.startsWith(n.match);
+          return (
+            <Link
+              key={n.href}
+              href={n.href}
+              aria-current={on ? "page" : undefined}
+              className={cx(
+                "shrink-0 rounded-md px-2 py-1 whitespace-nowrap transition-colors focus-visible:outline-2 focus-visible:outline-zinc-900",
+                on ? "bg-zinc-100 font-medium text-zinc-900" : "text-zinc-600 hover:bg-zinc-50 hover:text-zinc-900",
+              )}
+            >
+              {n.label}
+            </Link>
+          );
+        })}
       </nav>
-      <span className="hidden text-[12px] text-zinc-400 md:inline" aria-hidden="true">
-        /
-      </span>
-      <span className="hidden truncate text-[13px] text-zinc-600 md:inline">{view.scenario.accountName}</span>
-      <div className="ml-auto flex items-center gap-2">
-        <ProvenanceBadge view={view} />
-        <button
-          type="button"
-          onClick={onReset}
-          className="inline-flex items-center gap-1.5 rounded-md px-2 py-1 text-[12px] font-medium whitespace-nowrap text-zinc-600 ring-1 ring-zinc-200 transition-colors ring-inset hover:bg-zinc-50 hover:text-zinc-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900"
-        >
-          {Icon.reset()} <span className="hidden sm:inline">Reset demo</span>
-          <span className="sr-only sm:hidden">Reset demo</span>
-        </button>
-      </div>
+      {crumb && (
+        <>
+          <span className="hidden text-[12px] text-zinc-300 lg:inline" aria-hidden="true">
+            /
+          </span>
+          <span className="hidden truncate text-[13px] text-zinc-600 lg:inline">{crumb}</span>
+        </>
+      )}
+      {right && <div className="ml-auto flex shrink-0 items-center gap-2">{right}</div>}
     </header>
+  );
+}
+
+export function AppHeader({ view, onReset }: { view: WorkspaceView; onReset: () => void }) {
+  return (
+    <SiteHeader
+      crumb={view.scenario.accountName}
+      right={
+        <>
+          <ProvenanceBadge view={view} />
+          <button
+            type="button"
+            onClick={onReset}
+            className="inline-flex items-center gap-1.5 rounded-md px-2 py-1 text-[12px] font-medium whitespace-nowrap text-zinc-600 ring-1 ring-zinc-200 transition-colors ring-inset hover:bg-zinc-50 hover:text-zinc-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900"
+          >
+            {Icon.reset()} <span className="hidden sm:inline">Reset demo</span>
+            <span className="sr-only sm:hidden">Reset demo</span>
+          </button>
+        </>
+      }
+    />
   );
 }
 
