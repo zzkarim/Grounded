@@ -3,7 +3,10 @@ import { HowItWorksView, type InvariantExample } from "@/components/how/HowItWor
 import { loadResults } from "@/product/results";
 import { loadWorkspaceData } from "@/product/workspaceData";
 
-export const metadata: Metadata = { title: "How it works · Grounded" };
+export const metadata: Metadata = {
+  title: "How it works",
+  description: "Probabilistic understanding, deterministic control: how Grounded separates what a model understands from what it may write.",
+};
 
 /** Examples come from the verified demo replays; the overwrite count from the stored TEST runs. */
 async function getData() {

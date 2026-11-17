@@ -21,7 +21,7 @@ export function ResultsView({ r, demo }: { r: ResultsData; demo: Demo }) {
   return (
     <div className="min-h-dvh">
       <SiteHeader />
-      <main className="mx-auto max-w-[1120px] px-5 pt-10 pb-20 sm:px-8">
+      <main id="main" className="mx-auto max-w-[1120px] px-5 pt-10 pb-20 sm:px-8">
         {/* ───────── Hero ───────── */}
         <header className="max-w-[820px]">
           <p className="text-[12px] font-semibold uppercase tracking-[0.08em] text-zinc-500">Held-out evaluation</p>
@@ -42,8 +42,9 @@ export function ResultsView({ r, demo }: { r: ResultsData; demo: Demo }) {
           <h2 id="headline" className="sr-only">
             Headline results
           </h2>
-          <div className="overflow-x-auto rounded-xl border border-zinc-200 bg-white">
+          <div role="region" aria-label="Headline results (scrolls horizontally on small screens)" tabIndex={0} className="overflow-x-auto rounded-xl border border-zinc-200 bg-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900">
             <table className="w-full min-w-[720px] text-left">
+              <caption className="sr-only">ACT precision, ACT coverage, unsafe writes and reviews per system on the held-out TEST set</caption>
               <thead>
                 <tr className="border-b border-zinc-200 text-[11px] font-semibold uppercase tracking-[0.06em] text-zinc-500">
                   <th scope="col" className="px-5 py-3">System</th>

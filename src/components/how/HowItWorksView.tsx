@@ -23,7 +23,7 @@ export function HowItWorksView({ examples, overwrites, groundedOverwrites }: { e
   return (
     <div className="min-h-dvh">
       <SiteHeader />
-      <main className="mx-auto max-w-[1120px] px-5 pt-10 pb-20 sm:px-8">
+      <main id="main" className="mx-auto max-w-[1120px] px-5 pt-10 pb-20 sm:px-8">
         <header className="max-w-[760px]">
           <p className="text-[12px] font-semibold uppercase tracking-[0.08em] text-zinc-500">Architecture</p>
           <h1 className="mt-2 text-[32px] leading-[1.12] font-semibold tracking-tight text-zinc-950 sm:text-[40px]">Probabilistic understanding. Deterministic control.</h1>

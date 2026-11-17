@@ -3,7 +3,10 @@ import { ResultsView } from "@/components/results/ResultsView";
 import { loadResults } from "@/product/results";
 import { loadWorkspaceData } from "@/product/workspaceData";
 
-export const metadata: Metadata = { title: "Results · Grounded" };
+export const metadata: Metadata = {
+  title: "Results",
+  description: "Held-out evaluation of Grounded against naive and self-assessing LLM baselines on 60 frozen synthetic sales conversations.",
+};
 
 /** Everything on this page is derived from the committed TEST run files and the selected demo replay. */
 async function getData() {

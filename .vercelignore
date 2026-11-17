@@ -1,0 +1,5 @@
+# Never upload local credentials or tool state with a CLI deploy. The demo needs no env vars.
+.env
+.env.*
+!.env.example
+.claude

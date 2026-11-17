@@ -13,13 +13,12 @@ export function ProvenanceBadge({ view }: { view: WorkspaceView }) {
     <details className="group relative">
       <summary
         className={cx(
-          "flex cursor-pointer list-none items-center gap-1.5 rounded-full px-2.5 py-1 text-[12px] font-medium whitespace-nowrap ring-1 ring-inset select-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900 [&::-webkit-details-marker]:hidden",
+          "flex min-h-8 cursor-pointer list-none items-center gap-1.5 rounded-full px-2 py-1 text-[12px] sm:px-2.5 font-medium whitespace-nowrap ring-1 ring-inset select-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900 [&::-webkit-details-marker]:hidden",
           p.ok ? "bg-emerald-50 text-emerald-800 ring-emerald-600/25 hover:bg-emerald-100/70" : "bg-rose-50 text-rose-800 ring-rose-600/30",
         )}
       >
         {Icon.shield("size-3.5")}
-        <span className="hidden sm:inline">{p.ok ? "Verified replay" : "Replay integrity failure"}</span>
-        <span className="sm:hidden">{p.ok ? "Verified" : "Failed"}</span>
+        <span className="sr-only sm:not-sr-only">{p.ok ? "Verified replay" : "Replay integrity failure"}</span>
         <span className="sr-only">: recorded model responses, deterministic stages re-executed. Show details.</span>
       </summary>
       <div className="absolute right-0 z-30 mt-2 w-[min(340px,calc(100vw-2rem))] rounded-xl border border-zinc-200 bg-white p-4 text-[12px] shadow-xl">
@@ -84,7 +83,13 @@ export function SiteHeader({ crumb, right }: { crumb?: string; right?: ReactNode
   const pathname = usePathname() ?? "";
   return (
     <header className="sticky top-0 z-20 flex h-12 shrink-0 items-center gap-3 border-b border-zinc-200 bg-white/95 px-4 backdrop-blur sm:gap-4">
-      <Link href="/workspace/corrigan" className="flex shrink-0 items-center gap-2 rounded focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900">
+      <a
+        href="#main"
+        className="sr-only rounded-md bg-zinc-900 px-3 py-1.5 text-[13px] font-medium text-white focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50"
+      >
+        Skip to content
+      </a>
+      <Link href="/workspace/corrigan" aria-label="Grounded home" className="flex shrink-0 items-center gap-2 rounded focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900">
         <span className="grid size-6 place-items-center rounded-md bg-zinc-900 text-white" aria-hidden="true">
           {Icon.shield("size-3.5")}
         </span>

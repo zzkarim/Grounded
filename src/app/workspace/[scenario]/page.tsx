@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { scenario } = await params;
   if (!isScenarioId(scenario)) return {};
   const { view } = await getWorkspace(scenario);
-  return { title: `${view.scenario.accountName} · Workspace · Grounded` };
+  return { title: `${view.scenario.accountName} · Workspace` };
 }
 
 export default async function WorkspacePage({ params }: Props) {

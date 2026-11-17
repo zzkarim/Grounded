@@ -7,8 +7,8 @@ import { cx, LaneTag } from "./ui";
 
 export function PipelineStrip({ view }: { view: WorkspaceView }) {
   return (
-    <section aria-labelledby="pipeline-heading" className="rounded-xl border border-zinc-200 bg-white p-3">
-      <div className="mb-2.5 flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1 px-0.5">
+    <section aria-labelledby="pipeline-heading" className="rounded-xl border border-zinc-200 bg-white p-2.5">
+      <div className="mb-2 flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1 px-0.5">
         <h2 id="pipeline-heading" className="text-[11px] font-semibold uppercase tracking-[0.08em] text-zinc-500">
           How this call was processed
         </h2>
@@ -27,7 +27,7 @@ export function PipelineStrip({ view }: { view: WorkspaceView }) {
             key={s.id}
             title={s.detail}
             className={cx(
-              "relative flex min-w-0 flex-col rounded-lg px-2.5 pt-2 pb-2.5",
+              "relative flex min-w-0 flex-col rounded-lg px-2.5 pt-1.5 pb-2",
               s.attention
                 ? cx("border-amber-400 bg-amber-50/70", s.lane === "MODEL" ? "border border-dashed" : "border")
                 : s.lane === "MODEL"
@@ -41,8 +41,8 @@ export function PipelineStrip({ view }: { view: WorkspaceView }) {
                 {i + 1}
               </span>
             </div>
-            <span className="mt-1.5 text-[13px] leading-4 font-semibold text-zinc-900">{s.title}</span>
-            <span className={cx("mt-1 text-[11px] leading-[15px] whitespace-pre-line tabular-nums", s.attention ? "font-medium text-amber-800" : "text-zinc-600")}>
+            <span className="mt-1 text-[13px] leading-4 font-semibold text-zinc-900">{s.title}</span>
+            <span className={cx("mt-0.5 text-[11px] leading-[15px] whitespace-pre-line tabular-nums", s.attention ? "font-medium text-amber-800" : "text-zinc-600")}>
               {s.metric}
             </span>
             <span className="sr-only">. {s.detail}</span>

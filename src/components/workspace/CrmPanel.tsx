@@ -176,9 +176,9 @@ function PendingItem({ item, dispatch, onOpenTrace }: { item: ReviewItem; dispat
 
 const BTN = {
   primary:
-    "inline-flex items-center rounded-md bg-zinc-900 px-2.5 py-1 text-[12px] font-medium text-white transition-colors hover:bg-zinc-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900 disabled:cursor-not-allowed disabled:bg-zinc-300",
+    "inline-flex min-h-8 items-center rounded-md bg-zinc-900 px-3 py-1 text-[12px] font-medium text-white transition-colors hover:bg-zinc-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900 disabled:cursor-not-allowed disabled:bg-zinc-300",
   secondary:
-    "inline-flex items-center rounded-md bg-white px-2.5 py-1 text-[12px] font-medium text-zinc-800 ring-1 ring-zinc-300 transition-colors ring-inset hover:bg-zinc-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900",
+    "inline-flex min-h-8 items-center rounded-md bg-white px-3 py-1 text-[12px] font-medium text-zinc-800 ring-1 ring-zinc-300 transition-colors ring-inset hover:bg-zinc-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900",
 };
 
 /** Meetings without a confirmed date: the reviewer must supply the date before anything is written. */

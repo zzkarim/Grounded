@@ -28,8 +28,8 @@ export function DecisionCard({
 }) {
   const tone = TONE[f.presentation.tone];
   const empty = f.action === "ABSTAIN";
-  // Nothing changes for NO_OP / ABSTAIN, so those cards are compact; attention goes to writes and reviews.
-  const compact = f.action === "NO_OP" || f.action === "ABSTAIN";
+  // Only "Needs review" asks something of a person, so it gets the full card; the rest are compact.
+  const compact = f.action !== "ASK";
   return (
     <article
       aria-labelledby={`card-${f.field}`}

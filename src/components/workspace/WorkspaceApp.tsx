@@ -58,7 +58,7 @@ export function WorkspaceApp({ data }: { data: WorkspaceData }) {
       <AppHeader view={view} onReset={() => dispatch({ type: "reset", seeds })} />
       <AccountTabs nav={nav} current={view.scenario.id} pending={pending} />
 
-      <div className="grid min-h-0 flex-1 grid-cols-1 lg:grid-cols-[minmax(320px,5fr)_minmax(0,7fr)] xl:grid-cols-[208px_minmax(340px,380px)_minmax(0,1fr)_minmax(300px,340px)]">
+      <div className="grid min-h-0 flex-1 grid-cols-1 lg:grid-cols-[minmax(320px,5fr)_minmax(0,7fr)] xl:grid-cols-[184px_clamp(300px,26vw,380px)_minmax(0,1fr)_clamp(280px,23vw,340px)]">
         <aside className="hidden border-r border-zinc-200 bg-zinc-100/60 xl:block xl:overflow-y-auto">
           <AccountRail nav={nav} current={view.scenario.id} pending={pending} />
         </aside>
@@ -69,13 +69,12 @@ export function WorkspaceApp({ data }: { data: WorkspaceData }) {
           </div>
         </div>
 
-        <main id="main" className="order-1 min-w-0 space-y-4 px-4 py-4 lg:order-none lg:overflow-y-auto xl:px-5">
-          <div>
+        <main id="main" className="order-1 min-w-0 space-y-3.5 px-4 py-4 lg:order-none lg:overflow-y-auto xl:px-5">
+          <div className="flex flex-wrap items-baseline gap-x-3 gap-y-0.5">
+            <h1 className="text-[20px] font-semibold tracking-tight text-zinc-950">{view.scenario.accountName}</h1>
             <p className="text-[12px] text-zinc-500">
-              {view.scenario.segment} · {view.scenario.stage}
+              {view.scenario.title} · {view.scenario.segment}
             </p>
-            <h1 className="mt-0.5 text-[20px] font-semibold tracking-tight text-zinc-950">{view.scenario.accountName}</h1>
-            <p className="mt-0.5 text-[13px] text-zinc-600">{view.scenario.title}</p>
           </div>
 
           <PipelineStrip view={view} />
